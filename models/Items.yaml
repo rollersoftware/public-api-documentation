@@ -1,0 +1,90 @@
+title: Items
+x-stoplight:
+  id: plw364cz4mglr
+type: object
+properties:
+  bookingItemId:
+    type: integer
+    description: 'Unique ID of an item within the booking (can be multiple, and each item can have a quantity >1)'
+    example: 2387746211
+    x-stoplight:
+      id: 4hpk06f2hqowv
+  productId:
+    type: integer
+    description: Variation ID (Child Product ID) of the booking item
+    example: 123999221
+    x-stoplight:
+      id: yyofuksvg0kg9
+  quantity:
+    type: integer
+    description: Quantity of the booking item in the booking
+    example: 26
+    x-stoplight:
+      id: mhv71mej3t9tg
+  bookingDate:
+    type: string
+    description: The date the item is valid for (or from)
+    example: '2020-07-31'
+    x-stoplight:
+      id: m44j16oui8e4l
+  bookingEndDate:
+    type: string
+    description: The date the item is valid until
+    example: '2020-07-31'
+    x-stoplight:
+      id: svssmvpnl1lis
+  sessionStartTime:
+    type: string
+    description: Session start time in 24hr format
+    example: '14:30'
+    x-stoplight:
+      id: s0f0clgcflt8x
+  sessionEndTime:
+    type: string
+    description: "Session end time in 24hr format.\r\n\r\n(Note: an endtime of midnight will be 00:00)."
+    example: '16:30'
+    x-stoplight:
+      id: xf0rsyqtan993
+  tickets:
+    $ref: ./BookingTicket.yaml
+    x-stoplight:
+      id: awv43qofrc9p6
+  cost:
+    type: number
+    description: Unit cost for each quantity of this item
+    example: 8.9
+    x-stoplight:
+      id: 9fjl7m0lzqu7m
+  discount:
+    type: number
+    description: 'The total discount specifically against this booking item (across all quantities, not per quantity)'
+    example: 4.5
+    x-stoplight:
+      id: sun68s18d8h0c
+  modifiers:
+    type: array
+    x-stoplight:
+      id: spwg10vx21lhw
+    items:
+      type: object
+      x-stoplight:
+        id: 2e4b1bujtamhb
+      properties:
+        modifierId:
+          type: string
+          description: IDs of modifiers that have been added to this booking item
+          example: 657b6cc8-0532-4299-bd44-182674fcb68d
+          x-stoplight:
+            id: qe9lrpxmaictd
+        amount:
+          type: integer
+          description: The value of the modifier that has been added to the booking
+          example: 1
+          x-stoplight:
+            id: 4hko9p5t217zw
+        quantity:
+          type: integer
+          x-stoplight:
+            id: 01ojgx9xp5p6h
+          description: The number of times this modifier has been applied to this booking item
+          example: 1

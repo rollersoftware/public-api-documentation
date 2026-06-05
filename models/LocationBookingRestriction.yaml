@@ -1,0 +1,8 @@
+title: LocationBookingRestriction
+x-stoplight:
+  id: 2tpg7vvsf7xlv
+enum:
+  - Multiple Products
+  - SingleProduct
+  - SingleTicketType
+description: "For single booking resources, which booking rules apply when reserving resource capacity"

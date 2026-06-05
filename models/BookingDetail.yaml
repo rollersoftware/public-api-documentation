@@ -1,0 +1,180 @@
+title: BookingDetail
+x-stoplight:
+  id: fj5euhegrjy5r
+type: object
+properties:
+  bookingReference:
+    type: string
+    description: ROLLER Booking Id
+    example: '12345678'
+    x-stoplight:
+      id: 0p6axd67l98y7
+  externalId:
+    type: string
+    description: External Booking Id posted when booking created via API
+    example: ILLF2883456
+    x-stoplight:
+      id: kdytofd59p45q
+  uniqueId:
+    type: string
+    description: Unique Booking Id
+    example: ffdae420-a912-4d93-9234-9faca5e6194f
+    x-stoplight:
+      id: a27ofijiyou8z
+  createdDate:
+    type: string
+    description: DateTime the booking was made
+    example: '2020-07-31T03:43:40.4085882+00:00'
+    x-stoplight:
+      id: yt76uwab6qha5
+  channel:
+    type: string
+    description: The application that created the booking
+    enum:
+      - VenueManager
+      - POS
+      - Online
+      - Forms
+      - SSK
+      - DataImport
+      - Api
+      - Marketplaces
+    example: Api
+    x-stoplight:
+      id: e6fee32p8ujs6
+  status:
+    type: string
+    description: The current payment status of the booking
+    enum:
+      - Draft
+      - NoPaymentRequired
+      - PendingPayment
+      - PartiallyPaid
+      - Paid
+      - Cancelled
+      - Deleted
+    example: Paid
+    x-stoplight:
+      id: fti1d6vlllkpa
+  name:
+    type: string
+    description: Title of the booking. Name can be different to the booking owner name (defaults to the booking owner's name if not specified)
+    example: Sports Club Booking
+    x-stoplight:
+      id: ibbegu2mzbk0t
+  customerId:
+    type: integer
+    description: Id of the booking owner. Use the customer API to get customer detail
+    example: 77388293
+    x-stoplight:
+      id: pd5g9nyuam7zm
+  companyId:
+    type: integer
+    description: Id of the company who made the booking
+    example: 87732719
+    x-stoplight:
+      id: ugznbdasxlgeo
+  comments:
+    type: string
+    description: Additional information about the booking
+    example: Customer has not visited before
+    x-stoplight:
+      id: 079z0vb54cbh3
+  total:
+    type: number
+    description: Total cost of the booking
+    example: 55.5
+    x-stoplight:
+      id: t3xxh5zynmyqf
+  remainder:
+    type: number
+    description: Amount owing on the booking
+    example: 20.8
+    x-stoplight:
+      id: jmvpikk6z1gpe
+  fees:
+    type: number
+    description: Amount of booking fees applied to the booking
+    example: 1.5
+    x-stoplight:
+      id: qn6a4ia9sx2sq
+  discount:
+    type: number
+    description: Discount amount applied to the booking
+    example: 10.2
+    x-stoplight:
+      id: a8u8in1hkjeme
+  items:
+    $ref: ./Items.yaml
+    x-stoplight:
+      id: d6yy8bl1xgspp
+    description: Items in the booking
+  deviceId:
+    type: integer
+    description: Unique ID of the POS device used to make the sale (if applicable)
+    example: 37881
+    x-stoplight:
+      id: c9i8juc3x0km7
+  posNotes:
+    type: string
+    x-stoplight:
+      id: hybv4dzfklqwn
+    description: "Notes saved from POS when processing a booking\r\n"
+    example: 'Guest will return to pickup lost&found item #004'
+  payments:
+    type: array
+    x-stoplight:
+      id: btjo3uhhs27mz
+    description: Payment records against the booking
+    items:
+      x-stoplight:
+        id: e9lstzqx80kd6
+      type: object
+      properties:
+        bookingPaymentId:
+          type: integer
+          x-stoplight:
+            id: 99weifidl7lzd
+          description: Unique ID of the payment record
+        transactionId:
+          type: string
+          x-stoplight:
+            id: 1sx6jtzzqp5jp
+          description: "Unique ID of the transaction record.\r\n\r\nWhere the payment method is `Giftcard`, the `transactionId` is the giftcard ID used to make the payment."
+        paymentMethod:
+          type: string
+          x-stoplight:
+            id: gloza9qglhdn3
+          description: "The method of payment for this record. \r\n* CreditCard\r\n* CreditCardPreAuth\r\n* Cash\r\n* Eftpos\r\n* PayPal\r\n* Other\r\n* Giftcard\r\n* BankTransfer\r\n* BPay\r\n* Cheque\r\n* Prepaid\r\n* Points\r\n* Wallet\r\n* Groupon\r\n* Cashless Card\r\n* ThirdParty\r\n"
+        total:
+          type: number
+          x-stoplight:
+            id: jggjdoz18f2m9
+          description: Total payment amount
+        tip:
+          type: number
+          x-stoplight:
+            id: 20uwleuqfu33g
+          description: Total tip amount
+        createdDate:
+          type: string
+          x-stoplight:
+            id: pqh8iv7w1f46t
+          format: date-time
+          description: Created date of the payment record
+  source:
+    type: string
+    description: The application that created the booking
+    enum:
+      - VenueManager
+      - POS
+      - Online
+      - Forms
+      - SSK
+      - DataImport
+      - Api
+      - Marketplaces
+    example: Api
+    x-stoplight:
+      id: 65ld4hudecizv
+    deprecated: true

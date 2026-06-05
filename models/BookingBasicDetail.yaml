@@ -1,0 +1,69 @@
+title: BookingBasicDetail
+x-stoplight:
+  id: 2eruz4hcpotfj
+type: object
+properties:
+  bookingReference:
+    type: string
+    description: ROLLER Booking Id
+    example: '12345678'
+    x-stoplight:
+      id: g8491fsyfzgfj
+  uniqueId:
+    type: string
+    description: Unique Booking Id
+    example: ffdae420-a912-4d93-9234-9faca5e6194f
+    x-stoplight:
+      id: hawjpzm81qcwu
+  createdDate:
+    type: string
+    description: DateTime the booking was made
+    example: '2020-07-31T03:43:40.4085882+00:00'
+    x-stoplight:
+      id: vmsoxaij3i9t0
+  status:
+    type: string
+    description: "The current payment status of the booking.\r\n\r\n* For `cancelled` or `venueDraft` bookings please use the DataAPI."
+    enum:
+      - PendingPayment
+      - NoPaymentRequired
+      - PaidPart
+      - PaidFull
+    example: PaidPart
+    x-stoplight:
+      id: 8hkn3gvzq7es1
+  name:
+    type: string
+    description: Title of the booking. Name can be different to the booking owner name (defaults to the booking owner's name if not specified)
+    example: Sports Club Booking
+    x-stoplight:
+      id: v7h6cfc2cak19
+  customerId:
+    type: integer
+    description: Id of the booking owner. Use the customer API to get customer detail
+    example: 77388293
+    x-stoplight:
+      id: 3af499k4gofyr
+  total:
+    type: number
+    description: Total cost of the booking
+    example: 55.5
+    x-stoplight:
+      id: dxr2gyw66gn31
+  items:
+    type: array
+    x-stoplight:
+      id: z3ep9qzkbxz0b
+    items:
+      $ref: ./BookingItemBasicDetail.yaml
+      x-stoplight:
+        id: igjseocb2mhut
+  customerFlags:
+    type: array
+    x-stoplight:
+      id: rt7aajt64khnk
+    items:
+      $ref: ./CustomerFlag.yaml
+      x-stoplight:
+        id: pshnitqf5ehzy
+description: ''

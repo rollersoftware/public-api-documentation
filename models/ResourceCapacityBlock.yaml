@@ -1,0 +1,50 @@
+title: ResourceCapacityBlock
+x-stoplight:
+  id: y24jmheu064d4
+type: object
+x-internal: false
+description: Details of a resource capacity block
+properties:
+  blockId:
+    type: integer
+    x-stoplight:
+      id: yr0q02oxg59hj
+    description: The unique identifier for each capacity block
+  resourceId:
+    type: integer
+    x-stoplight:
+      id: lg7c353s6o7op
+    description: The ID of the resource being blocked
+    example: 30539
+  date:
+    type: string
+    x-stoplight:
+      id: j9py69mro03ug
+    format: date
+    description: The date of the capacity block (In ISO8601 date format only)
+    example: '2025-01-21'
+  startTime:
+    type: string
+    x-stoplight:
+      id: p0s6y23k1unhp
+    description: "Start time in 24h format \r\n\r\n* eg: 00:00 = 12:00 AM (Midnight)\r\n* eg: 23:59 = 11:59 PM\r\n\r\nRequired if `blockEntireDay` is `false`"
+    example: '14:30'
+  endTime:
+    type: string
+    x-stoplight:
+      id: g8uprchmbm3j7
+    description: "End time in 24h format \r\n\r\n* eg: 00:00 = 12:00 AM (Midnight)\r\n* eg: 23:59 = 11:59 PM\r\n\r\nRequired if `blockEntireDay` is `false`"
+    example: '16:00'
+  blockEntireDay:
+    type: boolean
+    x-stoplight:
+      id: 60bzp2mbt7ns5
+    description: Boolean indicating if the block applies to the entire day.
+    default: false
+  notes:
+    type: string
+    x-stoplight:
+      id: aj95hyhcxdgij
+    description: Additional notes or reason for the block.
+    maxLength: 200
+    example: Migrated booking from previous system

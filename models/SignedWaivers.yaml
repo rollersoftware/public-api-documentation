@@ -1,0 +1,32 @@
+title: SignedWaivers
+x-stoplight:
+  id: d86sklkh1wkcu
+type: array
+items:
+  $ref: ./SignedWaiver.yaml
+  x-stoplight:
+    id: ta994y27aozmh
+examples:
+  - - signedWaiverId: 18829121
+      waiverId: 13
+      firstName: Steven
+      lastName: Toast
+      guestId: 64310293
+      dateOfBirth: '1993-07-14'
+      email: steven@toastoflondon.com
+      contactNumber: '0475755223'
+      isForMinor: false
+      expiryDate: '2026-07-14T03:43:40.4085882Z'
+      isValid: true
+      createdDate: '2020-07-31T03:43:40.4085882Z'
+    - signedWaiverId: 18829122
+      parentSignedWaiverId: 18829121
+      waiverId: 13
+      firstName: Alison
+      lastName: Toast
+      guestId: 64310294
+      dateOfBirth: '2020-02-11'
+      isForMinor: true
+      expiryDate: '2026-07-14T03:43:40.4085882Z'
+      isValid: true
+      createdDate: '2020-07-31T03:43:40.4085882Z'

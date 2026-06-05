@@ -1,0 +1,17 @@
+title: WebhookFilterProductType
+x-stoplight:
+  id: wp3rm70jvnamn
+enum:
+  - Pass
+  - SessionPass
+  - AddOn
+  - Stock
+  - Package
+  - GiftCard
+  - Wallet
+  - Membership
+  - CashlessCard
+  - RecurringSession
+  - PartyPackage
+description: Product type
+x-internal: false

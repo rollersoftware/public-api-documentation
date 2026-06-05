@@ -1,0 +1,46 @@
+title: PaymentCreate
+x-stoplight:
+  id: v85w9wjapehn8
+type: object
+required:
+  - id
+  - paymentType
+  - amount
+properties:
+  id:
+    type: string
+    description: Payment or transaction Id
+    example: HYA728830013
+    x-stoplight:
+      id: 9lug01vlyrxpm
+  paymentType:
+    type: string
+    enum:
+      - CreditCard
+      - CreditCardPreAuth
+      - Cash
+      - Cheque
+      - BankTransfer
+      - Other
+    description: The tender type used
+    example: CreditCard
+    x-stoplight:
+      id: u7nehcpcsw9nr
+  amount:
+    type: number
+    description: "The payment total including fees, in venue local currency"
+    example: 25.5
+    x-stoplight:
+      id: wk9xca0ey9wdt
+  creditCardFees:
+    type: number
+    description: Credit card fees associated with the payment. Can ONLY be charged on Credit Card payment type.
+    example: 1.5
+    x-stoplight:
+      id: pmz8wijiftos7
+  transactionDate:
+    type: string
+    description: Optionally provide the transaction datetime in UTC - generally used when re-creating bookings and needing to retain the original datetime
+    example: "2020-07-29T06:57:18.5326035+00:00"
+    x-stoplight:
+      id: 9xr1u6drnck3x

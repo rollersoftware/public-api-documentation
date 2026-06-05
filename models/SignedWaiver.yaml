@@ -1,0 +1,91 @@
+title: SignedWaiver
+x-stoplight:
+  id: di2h8yfvddspm
+type: object
+properties:
+  signedWaiverId:
+    type: integer
+    x-stoplight:
+      id: 2l0hmey1fkbws
+    description: Unique ID of the signed waiver record
+    example: 18829122
+  parentSignedWaiverId:
+    type:
+      - integer
+      - 'null'
+    x-stoplight:
+      id: 68gcv5a33besr
+    description: The `signedWaiverId` of the parent/guardian's signed waiver (Only returned for minor's signed waivers)
+    example: 18829121
+  waiverId:
+    type: integer
+    x-stoplight:
+      id: grxt6hxpge4w0
+    description: Unique ID of the version of waiver the guest has signed
+    example: 13
+  firstName:
+    type: string
+    x-stoplight:
+      id: yxppws9ewz1z7
+    description: First name of the guest as completed on the signed waiver
+    example: Steven
+  lastName:
+    type: string
+    x-stoplight:
+      id: sl6jl2ast8hlk
+    description: Second name of the guest as completed on the signed waiver
+    example: Toast
+  guestId:
+    type:
+      - integer
+      - 'null'
+    x-stoplight:
+      id: 0ek4arsz6p8uo
+    description: Unique ID of the guest record of the signed waiver holder
+    example: 64310293
+  dateOfBirth:
+    type: string
+    x-stoplight:
+      id: plnv5cc010t17
+    format: date
+    description: Date of birth of the signed waiver holder
+    example: '2004-07-13'
+  email:
+    type: string
+    x-stoplight:
+      id: k67pzcrsb9fbz
+    description: Email of the signed waiver holder (not returned for minors).
+    example: steven@toastoflondon.com
+  contactNumber:
+    type: string
+    x-stoplight:
+      id: ad05q5j2k3924
+    description: Contact phone number of the signed waiver holder (not returned for minors).
+    example: '0475755223'
+  isForMinor:
+    type: boolean
+    x-stoplight:
+      id: huxbqnqekhaf7
+    description: 'Identifies whether the guest is a minor or not at the time of signing. Returns `true` for minors, `false` for adults.'
+  expiryDate:
+    type: string
+    x-stoplight:
+      id: epnzx7kez2wq6
+    format: date-time
+    description: Date the signed waiver expires
+    example: '2026-07-14T03:43:40.4085882Z'
+  isValid:
+    type:
+      - boolean
+      - 'null'
+    x-stoplight:
+      id: fre37e53sbar8
+    description: Only returned if "waiver verification" is required. Returns `true` for verified waivers and `false` for unverified.
+  createdDate:
+    type: string
+    x-stoplight:
+      id: fariuwuhreht0
+    format: date-time
+    description: Date the signed waiver record was created
+    example: '2020-07-31T03:43:40.4085882Z'
+description: Record of a waiver signed by a guest

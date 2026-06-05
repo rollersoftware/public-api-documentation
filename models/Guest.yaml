@@ -1,0 +1,135 @@
+title: Guest
+x-stoplight:
+  id: 8snanw2z6dilx
+type: object
+description: Record of guest details
+required:
+  - firstName
+  - lastName
+  - email
+  - phone
+properties:
+  firstName:
+    type: string
+    description: First name of the customer
+    example: John
+    x-stoplight:
+      id: 8tzb5nrpmx6ct
+    maxLength: 32
+  lastName:
+    type: string
+    description: Last name of the customer
+    example: Smith
+    x-stoplight:
+      id: hjnq37u7tbkj8
+    maxLength: 32
+  email:
+    type:
+      - string
+      - 'null'
+    description: "Email address of the customer (Required only if `phone` is not provided).\r\n* Provided value must be a valid email pattern."
+    example: johnsmith@noemail.com
+    x-stoplight:
+      id: hx1ovwwv6dlw8
+    maxLength: 256
+  phone:
+    type:
+      - string
+      - 'null'
+    description: Phone number of the customer (Required only if `email` is not provided).
+    example: '12345678'
+    x-stoplight:
+      id: 2zvxjbusrdl8q
+    maxLength: 20
+  dateOfBirth:
+    type:
+      - string
+      - 'null'
+    description: "Date of Birth of the guest in `YYYY-MM-DD` format.\r\n* Date of Birth must not be before 1900 or in the future."
+    example: '2001-03-26'
+    x-stoplight:
+      id: uqvvuzrr3ne8u
+  gender:
+    x-stoplight:
+      id: bouwehtx2kqj9
+    enum:
+      - Male
+      - Female
+      - Other
+      - PreferNotToSay
+    description: Gender of the guest
+  acceptMarketing:
+    type: boolean
+    description: When true the guest has accepted to receive email marketing content
+    example: false
+    x-stoplight:
+      id: 5rjyfj9pj5sec
+  acceptMarketingSms:
+    type: boolean
+    description: When true the guest has accepted to receive SMS marketing content
+    example: false
+    x-stoplight:
+      id: tzufulye6vb3a
+  taxIdentificationNumber:
+    type: string
+    x-stoplight:
+      id: 2gye7ealrwk7p
+    description: Tax identification number that may be used for maintaining fiscal compliance
+    maxLength: 64
+  address:
+    type:
+      - object
+      - 'null'
+    x-stoplight:
+      id: 4ngcmlttyn1fp
+    properties:
+      street:
+        type: string
+        description: Street number and name of the customer
+        example: 123 Fake Street
+        x-stoplight:
+          id: yhqiebnut8if2
+        maxLength: 256
+      suburb:
+        type: string
+        description: Suburb of the customer
+        example: Orange County
+        x-stoplight:
+          id: szsfiu9pe3i74
+        maxLength: 64
+      city:
+        type: string
+        description: City of the customer
+        example: Los Angeles
+        x-stoplight:
+          id: 5hj2ypn9q4mvv
+        maxLength: 64
+      state:
+        type: string
+        description: State / province of the customer
+        example: CA
+        x-stoplight:
+          id: hnomlzxfu7nbg
+        maxLength: 64
+      postcode:
+        type: string
+        description: Post code / ZIP code of the customer
+        example: '27385'
+        x-stoplight:
+          id: 05h7ad4c6mow7
+        maxLength: 12
+      country:
+        type: string
+        description: Country of the customer
+        example: United States
+        x-stoplight:
+          id: uo25xu6dv409r
+        maxLength: 64
+  flags:
+    type: array
+    x-stoplight:
+      id: 06gw1d9s1pyhr
+    items:
+      $ref: ./CustomerFlag.yaml
+      x-stoplight:
+        id: suf0lm0k6r6xz
