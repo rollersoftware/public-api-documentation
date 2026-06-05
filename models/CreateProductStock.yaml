@@ -1,0 +1,122 @@
+title: CreateProductStock
+x-stoplight:
+  id: uexp3cod9wrhk
+type: object
+required:
+  - externalId
+  - name
+  - products
+properties:
+  externalId:
+    type: string
+    x-stoplight:
+      id: nyznsp92d83hs
+    maxLength: 64
+    example: SHIRTS_M
+    description: External product reference (parent product).
+  name:
+    type: string
+    x-stoplight:
+      id: krhx9g2yuruqw
+    maxLength: 128
+    example: Coffee
+    description: Parent product name
+  hqMasterName:
+    type: string
+    x-stoplight:
+      id: izzobnlymtwfa
+    description: For use with HQ venues only. Allows linking all variations of this master product for management and reporting purposes.
+    example: Beverages
+  reportingCategory:
+    type: string
+    x-stoplight:
+      id: vlmdglkmfzsv7
+    description: Reporting category to map the product to
+    example: Food and beverage
+  products:
+    type: array
+    x-stoplight:
+      id: fowyke4sw609d
+    items:
+      x-stoplight:
+        id: kmlvqypfoq42l
+      type: object
+      required:
+        - name
+      properties:
+        externalId:
+          type: string
+          x-stoplight:
+            id: elpv2qgzyb8pk
+          maxLength: 64
+          default: SHIRTS_M_00177
+          description: External product reference (child/Variation product).
+        name:
+          type: string
+          x-stoplight:
+            id: ccyl2vr3k8jwd
+          description: Child/variation product name
+          maxLength: 128
+          example: Latte
+        hqMasterCode:
+          type: string
+          x-stoplight:
+            id: c13wnlpzknguu
+          description: For use with HQ venues only. Allows linking all variations of this master product for management and reporting purposes.
+          example: BEV
+        price:
+          type:
+            - number
+            - 'null'
+          x-stoplight:
+            id: uorj3blt2imyk
+          default: 0
+          description: Product price
+          example: 25.5
+        costOfGoods:
+          type:
+            - number
+            - 'null'
+          x-stoplight:
+            id: mob35hwr24usy
+          example: 1.5
+          description: Cost associated with producing/selling the stock item
+        parLevel:
+          type:
+            - integer
+            - 'null'
+          x-stoplight:
+            id: cup448bd2mm90
+          minimum: 0
+          description: 'The quantity at which the stock should be replenished  '
+          example: 5
+        taxCode:
+          type: string
+          x-stoplight:
+            id: r1641ga1anqqc
+          example: State Tax
+          description: The name of the custom tax variation defined within ROLLER
+        taxId:
+          type:
+            - integer
+            - 'null'
+          x-stoplight:
+            id: ml1iz1dar6eiw
+          description: The ID of the custom tax variation defined within ROLLER
+          example: 52
+        barcodeId:
+          type: string
+          x-stoplight:
+            id: fmwn03ssjgced
+          example: '588199203'
+          description: Barcode for the product which can be scanned
+        cost:
+          type:
+            - number
+            - 'null'
+          x-stoplight:
+            id: ymaipkpo9lj6z
+          example: 25.5
+          description: 'Cost of the product (Deprecated, replaced by `price`)'
+          default: 0
+          deprecated: true

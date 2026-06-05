@@ -1,0 +1,78 @@
+title: SaleProductPackageItem
+x-stoplight:
+  id: qb2b6mnujiya8
+type: object
+description: Details of the package item (inclusion) in the package
+properties:
+  parentProductId:
+    type: string
+    x-stoplight:
+      id: fvumxb9pguu8u
+    example: '107399'
+    description: 'The product ID of the parent of the product (package item/inclusion). Parent products never belong to a package, their variations (ticket types) do.'
+  productId:
+    type: string
+    x-stoplight:
+      id: xf67kp1rbi1pp
+    example: '107400'
+    description: Product ID of the product (package item/inclusion)
+  cost:
+    type: number
+    x-stoplight:
+      id: muxrqd4qspoq2
+    example: 3.5
+    description: Unit cost of this package item (inclusion)
+  quantity:
+    type: integer
+    x-stoplight:
+      id: uwscz2n1m7mps
+    example: 2
+    description: The quantity of this item within the package
+  quantityPerGuest:
+    type: integer
+    x-stoplight:
+      id: ypt2k6jlvr0c7
+    example: 5
+    description: 'The number of guests required to increment the product item (inclusion) quantity. For example, with a quantity of 2 inclusions and 5 quantityPerGuest, for every 5 additional guests 2 more inclusions are added'
+    nullable: true
+  quantityType:
+    x-stoplight:
+      id: dj36ttdd1pgsf
+    enum:
+      - Guest
+      - Package
+    description: 'The way inclusions are quantified for a party package product, either X items per guest or X items per package'
+  packageRequirement:
+    $ref: ./PackageRequirement.yaml
+    x-stoplight:
+      id: o73cw8dan3ao9
+  duration:
+    type:
+      - integer
+      - 'null'
+    x-stoplight:
+      id: p9huqebnbdrhs
+    description: Duration of the time-based product in minutes
+    example: 90
+  durationType:
+    x-stoplight:
+      id: abqfod8k59fs4
+    enum:
+      - perSession
+      - perGuest
+    description: Determines whether duration is based on session or guest count
+  meta:
+    type: object
+    x-stoplight:
+      id: 1wt6kdid5isrf
+    description: Meta values for the product
+    additionalProperties:
+      x-stoplight:
+        id: lpkaiiji1kqjl
+      type: string
+  packageProductId:
+    type: string
+    x-stoplight:
+      id: ln0wgngenisoh
+    example: '1422536'
+    description: The Product ID of the package this package item (inclusion) is part of

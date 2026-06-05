@@ -1,0 +1,7 @@
+title: PackageRequirement
+x-stoplight:
+  id: 3e21cmx5zhrqk
+enum:
+  - Before
+  - After
+description: "The way per-guest inclusions are quantified for a party package product, either X items per guest rounded up, or rounded down"

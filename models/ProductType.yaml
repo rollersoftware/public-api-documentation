@@ -1,0 +1,17 @@
+title: ProductType
+x-stoplight:
+  id: dbphu0e8rcqsf
+enum:
+  - pass
+  - sessionpass
+  - addon
+  - giftcard
+  - wallet
+  - package
+  - custom
+  - membership
+  - recurringpass
+  - cashlesscard
+  - partypackage
+description: Product type
+x-internal: false

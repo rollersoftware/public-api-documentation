@@ -1,0 +1,35 @@
+title: MembershipDetail
+x-stoplight:
+  id: hkcl5ny5t7x74
+type: object
+properties:
+  membershipId:
+    type: integer
+    x-stoplight:
+      id: dpzdr9xrbaod2
+  customerId:
+    type:
+      - integer
+      - 'null'
+    x-stoplight:
+      id: jv3bk4wcjkrgg
+  bookingItemId:
+    type: integer
+    x-stoplight:
+      id: mgf4lsl5l1yic
+  bookingItemPartId:
+    type: integer
+    x-stoplight:
+      id: rlv8l85zz8pgk
+  recurringCost:
+    type: number
+    x-stoplight:
+      id: 1vf0qrj0w7iux
+  name:
+    type: string
+    x-stoplight:
+      id: sn7xhz4n1c6uu
+  code:
+    type: string
+    x-stoplight:
+      id: ynjv648secyrq

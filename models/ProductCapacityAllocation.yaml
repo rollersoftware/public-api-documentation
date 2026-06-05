@@ -1,0 +1,43 @@
+title: ProductCapacityAllocation
+x-stoplight:
+  id: 2hr19du7ivz0n
+type: object
+description: Remaining product variation (ticket type) capacity
+properties:
+  productId:
+    type: string
+    description: Product ID
+    example: '107400'
+    x-stoplight:
+      id: ufk68wsvpzwut
+  capacityRemaining:
+    type: integer
+    description: "Summary of remaining resource capacity for display purposes\r\n\r\n- Null value means unlimited capacity\r\n- If it is a multi-booking resource, this is the total capacity remaining\r\n- If it is a single-booking type resource, this is the total number of different available resources\r\n  - eg: You have 3 single-booking party room resources that hold 20 people each, hence `capacityRemaining` = 3\r\n\r\nSee `locations` (and `resourceTimes` for time-based products)  for more detail."
+    example: 3
+    nullable: true
+    x-stoplight:
+      id: g4dz38v5gkg4p
+  bookableCapacityRemaining:
+    type: integer
+    description: "Resource capacity remaining\r\n\r\n- Null value means unlimited capacity\r\n- If it is a multi-booking resource, this is the total capacity remaining\r\n- If it is a single-booking type resource, this is the total capacity of all different available resources\r\n  - eg: You have 3 single-booking party room resources that hold 20 people each, hence `bookingCapacityRemaining` = 60\r\n  - eg: Furthermore if the product setup limits resources to \"Max Per Booking\" of 2, then `bookingCapacityRemaining` = 40\r\n"
+    example: 60
+    nullable: true
+    x-stoplight:
+      id: f5rkz4eq3wxkp
+  locations:
+    type: array
+    description: Resources connected to the product
+    x-stoplight:
+      id: zlgvqeqj3e9nj
+    items:
+      $ref: ./ProductLocation.yaml
+      x-stoplight:
+        id: tii2omzxab27x
+  resourceTimes:
+    type: array
+    x-stoplight:
+      id: nzp1gsfyp34od
+    items:
+      $ref: ./ProductResourceTimeUsage.yaml
+      x-stoplight:
+        id: psu466r4azzvz

@@ -1,0 +1,18 @@
+title: LocationTime
+x-stoplight:
+  id: 8fwvaucl5wd3e
+type: object
+description: A time range specific to resource capacity for time-based products
+properties:
+  startMinutes:
+    type: integer
+    x-stoplight:
+      id: z2pl27rt6iqbo
+    description: 'The start of a time range, expressed as the number of minutes after the time-based product begins'
+    example: 0
+  endMinutes:
+    type: integer
+    x-stoplight:
+      id: 4pyxnww33l92m
+    description: 'The end of a time range, expressed as the number of minutes after the time-based product begins'
+    example: 60

@@ -1,0 +1,25 @@
+title: SalesChannel
+x-stoplight:
+  id: nhrgvafmibdac
+enum:
+  - VenueManager
+  - Doorlist
+  - Consumer
+  - Forms
+  - SelfServe
+  - DataImport
+  - RecurringPayment
+  - Api
+  - ChannelPartners
+description: |-
+  Filter for bookings made through specific sales channels.
+
+  Enum|ID|Channel
+  -|-|-
+  `VenueManager`|`0`| Venue manager
+  `Doorlist`|`1`| Point of Sale (POS)
+  `Consumer`|`2`| Online Checkout
+  `Forms`|`3`| Forms
+  `SelfServe`|`4`| Self Serve Kiosk (SSK)
+  `DataImport`|`5`| Data Import
+  `Api`|`7`| API

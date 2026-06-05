@@ -1,0 +1,23 @@
+title: BookingCreateDiscount
+x-stoplight:
+  id: utzty9955tkol
+type: object
+properties:
+  code:
+    type: string
+    description: The discount code used by the customer
+    example: JMA99281
+    x-stoplight:
+      id: 9fw50yortxi1j
+  amount:
+    type: number
+    description: The dollar amount of the discount that applies to the booking
+    example: 4.5
+    x-stoplight:
+      id: jayu5p7iaedis
+  percentage:
+    type: number
+    description: "The discount percentage that applies to the booking as a whole, eg. 10 for 10% off"
+    example: 10
+    x-stoplight:
+      id: lijtx0dohmnrj

@@ -1,0 +1,35 @@
+title: CustomerFlag
+x-stoplight:
+  id: i68opz70kf2pd
+type: object
+description: |-
+  Flag information that may be associated with the guest record. 
+
+  * There cannot be multiple flags of the same type
+  * Guest flags will always be removed unless included in every update request
+properties:
+  type:
+    x-stoplight:
+      id: 7cxvn9p9h0ebh
+    enum:
+      - Ban
+      - VIP
+      - Medical
+      - Alert
+      - Competency
+    description: Type of flag associated with the guest
+  comment:
+    type: string
+    x-stoplight:
+      id: c81o0pea9pyfz
+    description: Further information regarding the flag
+    example: Guest has repeatedly ignored the rules
+  expiryDate:
+    type:
+      - string
+      - 'null'
+    x-stoplight:
+      id: qsz44lhwed1x9
+    format: date
+    description: The date the flag expires and is no longer relevant for the guest
+    example: '2025-07-14'

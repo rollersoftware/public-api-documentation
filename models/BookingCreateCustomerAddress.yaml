@@ -1,0 +1,41 @@
+title: BookingCreateCustomerAddress
+x-stoplight:
+  id: vttmrrxurm7tn
+type: object
+properties:
+  street:
+    type: string
+    description: Street number and name of the booking owner
+    example: 123 Fake Street
+    x-stoplight:
+      id: zyaw5uon6yr8r
+  suburb:
+    type: string
+    description: Suburb of the booking owner
+    example: Orange County
+    x-stoplight:
+      id: awpo32m1uqz89
+  state:
+    type: string
+    description: State / province of the booking owner
+    example: CA
+    x-stoplight:
+      id: dgm3b3av6mzve
+  postcode:
+    type: string
+    description: Post code / ZIP code of the booking owner
+    example: "27385"
+    x-stoplight:
+      id: inpice272p1aq
+  city:
+    type: string
+    description: City of the booking owner
+    example: Los Angeles
+    x-stoplight:
+      id: 3vkjkbi54m8t9
+  country:
+    type: string
+    description: Country of the booking owner
+    example: United States
+    x-stoplight:
+      id: th20owtzq7qry

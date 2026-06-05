@@ -1,0 +1,283 @@
+title: SaleProduct
+x-stoplight:
+  id: b7rcpv04sxytd
+type: object
+description: Sale details of the product variation (ticket type) on offer
+properties:
+  id:
+    type: string
+    description: Variation ID (Child Product ID)
+    example: '107400'
+    x-stoplight:
+      id: kimpidvblpqzl
+  name:
+    type: string
+    description: Variation Name (Child Product Name)
+    example: Adult Ticket
+    x-stoplight:
+      id: gbpkfk2j2d3za
+  description:
+    type: string
+    description: Brief description of the product
+    example: Adult tickets are for individuals 13 years and older
+    x-stoplight:
+      id: whhfwbj75utzr
+    maxLength: 150
+  imageurl:
+    type: string
+    description: Product image URL
+    example: 'https://someimage.com/10002'
+    x-stoplight:
+      id: 6wo11wxwdpbex
+  productCategoryIds:
+    type: array
+    x-stoplight:
+      id: c5bubvg8abwb9
+    description: The product categories this product belongs to
+    items:
+      x-stoplight:
+        id: 1c46f0coovv1e
+      type: string
+      example: /30007/2/
+  price:
+    type: number
+    x-stoplight:
+      id: brw3cyjsd169n
+    example: 25.5
+    description: Product price
+  costOfGoods:
+    type:
+      - number
+      - 'null'
+    x-stoplight:
+      id: e68pex54nu414
+    description: Cost associated with producing/selling the stock item
+  example: {}
+  tax:
+    type: number
+    description: The tax percentage to be charged on this product
+    example: 7.5
+    x-stoplight:
+      id: 008qld8u29ps4
+  taxId:
+    type:
+      - integer
+      - 'null'
+    x-stoplight:
+      id: ifj82y1ymwdzt
+    description: The ID of the custom tax variation defined within ROLLER
+    example: 45
+  fee:
+    type:
+      - number
+      - 'null'
+    description: A fee that is applied when the product is purchased
+    example: 25.5
+    x-stoplight:
+      id: nfokdaeglvi57
+  groupSize:
+    type: integer
+    description: "Group size is a multiple applied to the quantity purchased. \r\n- eg: Purchasing a single $300 product configured with a group size of 15, will still cost $300 but will reserve 15 resource capacity and generate 15 separate tickets"
+    example: 15
+    x-stoplight:
+      id: 6i0k9isko0odl
+  isTaxInclusive:
+    type: boolean
+    description: 'When true, the product cost already includes the tax amount. When false, tax must be added to the cost.'
+    x-stoplight:
+      id: r20qb94dwwafy
+  minPurchase:
+    type: integer
+    description: The minimum quantiy allowed to be purchased in a booking
+    example: 10
+    x-stoplight:
+      id: 3wd4rnmdx1ksa
+  maxPurchase:
+    type:
+      - integer
+      - 'null'
+    description: The maximum quantiy allowed to be purchased in a booking
+    example: 100
+    x-stoplight:
+      id: tvnxham5eauqz
+  forceMinPurchase:
+    type: boolean
+    description: 'Whether or not the user must purchase the `minPurchase` quantity of any variations (ticket types) of the product, when purchasing via progressive checkouts.'
+    x-stoplight:
+      id: 10ttaaq7g3p09
+  hasUserDefinedCost:
+    type: boolean
+    description: Whether or not the user is able to enter the price they want to pay for this product. Example would be a custom value gift card
+    x-stoplight:
+      id: psrjxno4nckbb
+  minUserDefinedCost:
+    type:
+      - number
+      - 'null'
+    description: The minimum product cost the purchaser can set
+    x-stoplight:
+      id: bkzlhxns9dy2s
+    example: 1000
+  maxUserDefinedCost:
+    type:
+      - number
+      - 'null'
+    description: The maximum product cost the purchaser can set
+    x-stoplight:
+      id: ex56j6dxgshno
+    example: 1000
+  locations:
+    type: array
+    x-stoplight:
+      id: rg7zm6bprf1xk
+    description: List of resources assigned to the product
+    items:
+      $ref: ./ProductLocation.yaml
+      x-stoplight:
+        id: 4s330oloyu8s9
+  locationTimes:
+    type: array
+    x-stoplight:
+      id: 1uqkmzhhh74e1
+    description: Resource time definitions
+    items:
+      $ref: ./ProductLocationTime.yaml
+      x-stoplight:
+        id: pz1m2kp3pnccu
+  packageItems:
+    x-stoplight:
+      id: drpbqi95evqmk
+    type: array
+    description: Product detail of items contained within a package
+    items:
+      $ref: ./SaleProductPackageItem.yaml
+      x-stoplight:
+        id: is110xlfnbi6j
+  packagePricingType:
+    x-stoplight:
+      id: yk8wsvxhm5zxh
+    enum:
+      - PerGuest
+      - PerPackage
+    description: 'The way inclusions are quantified for a party package product, either X items per guest or X items per package'
+  # packageOptionSets:
+  #   type: array
+  #   x-stoplight:
+  #     id: tjugu8aaecmve
+  #   items:
+  #     x-stoplight:
+  #       id: 63osk0nmz6cik
+  #     type: object
+  #     properties:
+  #       productPackageOptionSetId:
+  #         type: string
+  #         x-stoplight:
+  #           id: wp48hksfrwspr
+  #       packageProductId:
+  #         type: string
+  #         x-stoplight:
+  #           id: 82sdtxwdvlb27
+  #       productIds:
+  #         type: array
+  #         x-stoplight:
+  #           id: 3ek5atrcoayia
+  #         items:
+  #           x-stoplight:
+  #             id: 3v9urms8sron4
+  #           type: string
+  #       name:
+  #         type: string
+  #         x-stoplight:
+  #           id: bp66i12w4s0c0
+  #       quantity:
+  #         type: integer
+  #         x-stoplight:
+  #           id: 1f7j659e0qfoa
+  #       cost:
+  #         type: number
+  #         x-stoplight:
+  #           id: iof1knyb5fyz1
+  recurringPayment:
+    type: object
+    x-stoplight:
+      id: a5lcrivk6q827
+    description: Recurring payment detail for membership products
+    properties:
+      paymentFrequencyId:
+        x-stoplight:
+          id: yolx20atfzpf0
+        enum:
+          - Daily
+          - Weekly
+          - Monthly
+          - Yearly
+      paymentFrequencyMultiplier:
+        type: integer
+        x-stoplight:
+          id: urj4yqh1p8bwm
+      numberOfPayments:
+        type:
+          - integer
+          - 'null'
+        x-stoplight:
+          id: 32ghz01oglwkh
+      minNumberOfPayments:
+        type:
+          - integer
+          - 'null'
+        x-stoplight:
+          id: kb2xal223q39k
+  sessionDiscounts:
+    type: array
+    x-stoplight:
+      id: 8kyw60yg1cmnj
+    description: 'Discounts for buying consecutive sessions, if any.'
+    items:
+      x-stoplight:
+        id: nt0jf5d93o5x3
+      type: object
+      properties:
+        numberOfSessions:
+          type: integer
+          x-stoplight:
+            id: 1gbtdp8eifnnn
+        amountOff:
+          type:
+            - number
+            - 'null'
+          x-stoplight:
+            id: svl7f479qaeqg
+        percentOff:
+          type:
+            - number
+            - 'null'
+          x-stoplight:
+            id: vlmx3fwwikbuj
+  isSuspended:
+    type: boolean
+    x-stoplight:
+      id: 5davg48sv1e13
+    description: Whether the product is suspended from online sales
+  barcodeId:
+    type: string
+    x-stoplight:
+      id: mm6fikucp2jfl
+    description: Barcode for the product which can be scanned
+    example: '588199203'
+  parLevel:
+    type:
+      - integer
+      - 'null'
+    x-stoplight:
+      id: p66ypp32g2nwv
+    description: A predefined ideal minimum quantity
+    example: 35
+    minimum: 0
+    maximum: 32767
+  cost:
+    type: number
+    description: 'Cost of the product (Deprecated, replaced by `price`)'
+    example: 25.5
+    x-stoplight:
+      id: z7ixpml74hmz8
+    deprecated: true
