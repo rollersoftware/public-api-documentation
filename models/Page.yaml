@@ -1,0 +1,37 @@
+title: Page
+x-stoplight:
+  id: 3nntu847xbiah
+type: object
+properties:
+  currentPage:
+    type: integer
+    x-stoplight:
+      id: mr2gg9e3dfwku
+    description: Current page number
+    format: int64
+  totalPages:
+    type: integer
+    x-stoplight:
+      id: 65u2tjt2d9984
+    format: int64
+    description: Total number of pages
+  totalItems:
+    type: integer
+    x-stoplight:
+      id: ip80rt6amasux
+    description: Total number of items
+  itemsPerpage:
+    type: integer
+    x-stoplight:
+      id: dwxy5bsejq83q
+    format: int64
+    description: Number of items per page
+  items:
+    type: array
+    x-stoplight:
+      id: fhe5o5lpk93bw
+    description: List of each returned item/record
+    items:
+      x-stoplight:
+        id: fs5b1mn5nf578
+      type: object
