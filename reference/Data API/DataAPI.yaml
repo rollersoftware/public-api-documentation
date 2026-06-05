@@ -1,0 +1,2746 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Data API Specification
+  description: ''
+security:
+  - OAuth2: []
+servers:
+  - description: Production
+    url: 'https://api.roller.app'
+  - url: 'https://api.play.roller.app'
+    description: Playground (Test Environment)
+tags:
+  - name: Bookings
+    description: Get data related to bookings and payments against them
+  - name: Venue Information
+    description: Get venue configuration data
+  - name: Customers
+    description: 'Get data related to your customers, their waivers and visits'
+  - name: Revenue
+    description: Get revenue entry data relating to funds received and recognised revenue
+paths:
+  /data/bookingitems:
+    get:
+      tags:
+        - Bookings
+      summary: Get bookings
+      description: '> Returns detail on bookings and the items/tickets within those bookings based on the booking modified date'
+      parameters:
+        - name: startDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+          description: The date (yyyy-mm-dd) you need data for
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bookingReference:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '27738461'
+                  bookingUniqueId:
+                    type: string
+                    description: Unique Booking Id
+                    x-stoplight:
+                      id: 6u9j29gs2i6bw
+                    format: uuid
+                    example: 550e8400-e29b-41d4-a716-446655440000
+                  bookingName:
+                    type: string
+                    description: Name of the booking can be different to the booking owner (defaults to the booking owner's name)
+                    example: Alex's Birthday Party
+                    x-stoplight:
+                      id: fd2f1vbgofbky
+                  bookingItemId:
+                    type: string
+                    description: Unique ID of the specific instance of this product in the booking (can have multiple quantity of the same product within the same booking item)
+                    example: '588100203'
+                  bookingCustomerId:
+                    type: string
+                    description: Unique identifier of the customer linked to the booking
+                    example: '2993019922'
+                  bookingCompanyId:
+                    type: string
+                    description: Unique identifier of the company linked to the booking
+                    example: '9211'
+                    x-stoplight:
+                      id: 9ltylbmorbvn8
+                  bookingStatus:
+                    type: string
+                    description: Payment status of the booking
+                    enum:
+                      - Draft
+                      - NoPaymentRequired
+                      - PendingPayment
+                      - PartiallyPaid
+                      - Paid
+                      - Cancelled
+                      - Deleted
+                    example: Paid
+                  bookingLocation:
+                    description: "Sales channel the booking was created through.\r\n\r\nPlease note the following `bookingLocation` mapping:\r\n* `Doorlist` is equivalent to `POS`\r\n* `Consumer` and `Forms` are equivalent to `Online checkout`\r\n* `SelfServe` is equivalent to `Self-serve kiosk`\r\n* `RecurringPayment` is equivalent to `Recurring billing`"
+                    example: Doorlist
+                    enum:
+                      - VenueManager
+                      - Doorlist
+                      - Consumer
+                      - Forms
+                      - SelfServe
+                      - DataImport
+                      - RecurringPayment
+                      - Api
+                      - ChannelPartners
+                  bookingDate:
+                    type: string
+                    description: Booking date of the ticket - when the ticket is valid for/from
+                    example: '2019-01-29'
+                  bookingEndDate:
+                    type: string
+                    description: Expiry date of the booking item
+                    example: '2020-01-29'
+                    x-stoplight:
+                      id: i9ynzs4c1j56t
+                    format: date
+                  sessionStart:
+                    type: string
+                    description: Start time of the item if applicable
+                    example: '11:30'
+                  sessionEnd:
+                    type: string
+                    description: "End time of the item if applicable.\r\n\r\n(Note: an endtime of midnight will be 00:00)."
+                    example: '13:30'
+                  bookingNotes:
+                    type: string
+                    description: Additional information about the booking
+                    example: Customer has not visited before
+                  bookingPosNotes:
+                    type: string
+                    description: Notes saved from POS when processing a booking
+                    example: Customer has not visited before
+                    x-stoplight:
+                      id: 8gffrt1bbs2o5
+                  productId:
+                    type: string
+                    description: Unique identifier of the product
+                    example: '9337288'
+                  quantity:
+                    type: integer
+                    description: Quantity of the product on this booking item
+                    example: 5
+                  groupSize:
+                    type: integer
+                    description: The number of customers per quantity - eg. GroupSize of 4 with Quantity 3 would be 12 customers
+                    example: 1
+                  createdDate:
+                    type: string
+                    description: Date the booking item was created
+                    example: '2020-01-29T20:29:58Z'
+                  bookingCreatedDate:
+                    type: string
+                    description: Date the booking was created
+                    example: '2020-01-29T20:29:58Z'
+                    format: date-time
+                  bookingModifiedDate:
+                    type: string
+                    description: Date the booking was most recently modified
+                    example: '2020-01-29T20:30:05Z'
+                    format: date-time
+                  bookingCreatedByStaffId:
+                    type: string
+                    description: The ID of the staff member who created the booking
+                    example: '14697'
+                  meta:
+                    type: array
+                    description: Custom meta data associated to the booking item
+                    items:
+                      type: object
+                      properties:
+                        attribute:
+                          type: string
+                          example: MembershipStatus
+                        value:
+                          type: string
+                          example: Deactivated
+                  bookingDiscountIds:
+                    type: array
+                    description: The IDs of discount codes used against the booking as a whole
+                    items:
+                      type: string
+                      example: '2839911'
+                  bookingDiscountCodes:
+                    type: array
+                    description: The discount codes used against the booking as a whole
+                    items:
+                      type: string
+                      example: freemembership
+                  discounts:
+                    type: object
+                    x-stoplight:
+                      id: 60iznrxqm8q7l
+                    description: "Itemised discounts applied to this booking item. \r\n\r\nPlease note for **packages** and **party packages**: \r\n\r\n**Discounts applied to packages** will show `discounts` against the parent package container as well as each package item.\r\n1. `discounts` on the container will show `amount` as the rolled-up total, and total `quantity`\r\n    1. Applies to **packages** only (the rolled-up total for **party packages** will always be `0`).\r\n2. `discounts` on each package item will show `amount` per item, and always a `quantity` of `0`\r\n    1. This is to maintain the correct number of uses across all objects.\r\n\r\n**BuyXGetY discounts** will appear against all `Y` items in the response.\r\n1. `discounts` on each item will show `amount` per item, and a `quantity` of `0` for all but `1` of the items.\r\n    1. This is to maintain the correct number of uses across all objects."
+                    properties:
+                      discountId:
+                        type: integer
+                        x-stoplight:
+                          id: kb87yxh56e1w1
+                      code:
+                        type: string
+                        x-stoplight:
+                          id: xp6glnjatkq8f
+                      amount:
+                        type: number
+                        x-stoplight:
+                          id: 0vjnc3fzy8rd7
+                      quantity:
+                        type: integer
+                        x-stoplight:
+                          id: in2ojxyof3e9i
+                  discountAmount:
+                    type:
+                      - number
+                      - 'null'
+                    description: The amount discounted against this specific booking item
+                    example: 15.5
+                  bookingFeeAmount:
+                    type: number
+                    description: Total fees applied to the booking
+                    example: 15.5
+                    x-stoplight:
+                      id: kr79gbc26372g
+                  cost:
+                    type: number
+                    description: The unit cost / price the item was sold at
+                    example: 9.25
+                  bookingTotal:
+                    type: number
+                    description: Total cost of the booking
+                    example: 299.95
+                    x-stoplight:
+                      id: zvnuchygigq9u
+                  taxExemptId:
+                    type: string
+                    description: The Tax ID provided when overriding the tax amount
+                    example: '2990'
+                  modifiers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        modifierId:
+                          type: string
+                          description: IDs of modifiers that have been added to this booking item
+                        amount:
+                          type: number
+                          description: The value of the modifier that has been added to the booking
+                        quantity:
+                          type: integer
+                          description: The number of times this modifier has been applied to this booking item
+                          example: 1
+                  barcodeId:
+                    type: string
+                    example: '2931882001'
+                    description: The barcode ID or SKU assigned to the product in this booking item
+                  deviceId:
+                    type: string
+                    example: '1920'
+                    description: ID of the POS device this booking was created at (if sold at POS)
+              examples:
+                Example:
+                  value:
+                    bookingReference: '27738461'
+                    bookingItemId: '938276112'
+                    bookingCustomerId: '2993019922'
+                    bookingCompanyId: '9211'
+                    bookingDate: '2019-01-29'
+                    bookingStatus: Paid
+                    bookingLocation: Doorlist
+                    productId: '9337288'
+                    sessionStart: '11:30'
+                    sessionEnd: '13:30'
+                    quantity: 5
+                    groupSize: 1
+                    createdDate: '2020-01-29T20:29:58Z'
+                    bookingCreatedDate: '2020-01-29T20:29:58Z'
+                    bookingModifiedDate: '2020-01-29T20:30:05Z'
+                    meta:
+                      - attribute: MembershipStatus
+                        value: Deactivated
+                      - attribute: ExternalId
+                        value: '6888829'
+                    bookingCreatedByStaffId: '2990'
+                    taxExemptId: '283994383'
+                    discountAmount: 20.5
+                    bookingDiscountIds:
+                      - '288392'
+                      - '2883743'
+                    bookingDiscountCodes:
+                      - freemembership1
+                      - militarydiscount
+                    modifiers:
+                      - modifierId: d7780022-94e6-45c7-a5b8-7ea9e9bcc0ca
+                        amount: 0.5
+                    barcodeId: '0019927711'
+                    deviceId: '2810'
+                    cost: 29.95
+      operationId: bookingitems
+  /data/tickets:
+    get:
+      tags:
+        - Bookings
+      summary: Get tickets
+      description: "Returns detail on individual \"tickets\" within bookings, based on the **booking modified date**.\r\n\r\n> \"Tickets\" only includes the following product types: Standard Passes, Session Passes, Recurring Passes, and Memberships. This includes where these tickets were part of a Package product (not Party Packages).\r\n>\r\n> i.e. only booking items where `ProductType` == `Pass` are returned. See [**product type mapping**](https://docs.roller.app/docs/roller-api/branches/main/6e4snhv85tuk2) for more."
+      parameters:
+        - name: startDate
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bookingReference:
+                    description: Unique identifier for a booking
+                    example: '38299912'
+                  bookingItemId:
+                    type: string
+                    description: Unique booking item within the booking
+                    example: '588100203'
+                  ticketId:
+                    type: string
+                    description: Unique identifier of the ticket
+                    example: 38299912-399288123
+                  customTicketId:
+                    type: string
+                    description: Ticket identifier specified manually by the user e.g. the code from a pre-printed membership card
+                    example: '132252'
+                  name:
+                    type: string
+                    description: Ticket holder name
+                    example: Danny Smith
+                  customerId:
+                    type: string
+                    description: Unique identifier of the customer linked to the ticket
+                    example: '2299300211'
+                  productId:
+                    type: string
+                    description: Unique identifier of the product the ticket is for
+                    example: '201228'
+                  createdDate:
+                    type: string
+                    description: Date the ticket was created
+                    example: '2019-09-29T18:41:32Z'
+                  bookingDate:
+                    type: string
+                    description: Booking date of the ticket - when the ticket is valid for/from
+                    example: '2020-09-19'
+                  expiryDate:
+                    type: string
+                    description: Date the ticket is no longer valid
+                    example: '2020-09-26'
+                  productType:
+                    type: string
+                    description: The type/variation of the product
+                    example: Pass
+                  productSubType:
+                    type: string
+                    description: The sub type/variation of the product
+                    example: Membership
+                  discountIds:
+                    type: array
+                    description: 'When this ticket is a membership, these ID''s represent any discounts configured for the membership product that are used when redeeming this membership on other bookings.'
+                    items:
+                      type: string
+                      example: '9178'
+                  numberOfRecurringPayments:
+                    type: integer
+                    description: 'When this ticket is a membership, this is the number of recurring payments that have elapsed.'
+                    example: 4
+                  recurringPaymentFrequency:
+                    description: 'When this ticket is a membership, this is the recurring payment frequency of that membership.'
+                    example: Monthly
+              examples:
+                example:
+                  value:
+                    bookingReference: '38299912'
+                    bookingItemId: '588100203'
+                    ticketId: 38299912-399288123
+                    customTicketId: '132252'
+                    name: Danny Smith
+                    customerId: '2299300211'
+                    productId: '201228'
+                    createdDate: '2019-09-29T18:41:32Z'
+                    bookingDate: '2020-09-19'
+                    expiryDate: '2020-09-26'
+                    productType: Pass
+                    productSubType: Membership
+                    discountIds:
+                      - '9178'
+                    numberOfRecurringPayments: 4
+                    recurringPaymentFrequency: Monthly
+      operationId: tickets
+  /data/bookingpayments:
+    get:
+      tags:
+        - Bookings
+      summary: Get payments
+      description: '> Returns detail on payments made against bookings based on the payment date'
+      parameters:
+        - name: startDate
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bookingPaymentId:
+                    type: string
+                    description: Unique Identifier of a transaction
+                    example: '29910293'
+                  bookingReference:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '7001923'
+                  receiptNumber:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '7001923'
+                  staffId:
+                    type: string
+                    description: Identifier of the staff member who processed the transaction
+                    example: '29918'
+                  total:
+                    type: number
+                    description: Value of the transaction
+                    example: 27
+                  tip:
+                    type: number
+                    description: Gratuity amount against the transaction
+                    example: 4
+                  transactionFeeAmount:
+                    type: number
+                    description: The value of the transaction fee against a transaction
+                    example: 0
+                  transactionId:
+                    type: string
+                    description: The unique payment identifier from the payment gateway - or gift card number for gift card payments
+                    example: '2881992018265'
+                  creditCardLast4Digits:
+                    type: string
+                    description: Last 4 digits of the credit card used to take payment
+                    example: '1922'
+                  createdDate:
+                    type: string
+                    description: Date of the transaction
+                    example: '2020-01-29T17:08:39Z'
+                  authorizingStaffId:
+                    type: string
+                    description: StaffId of the staff member who provided their passcode to process a refund
+                    example: '2293'
+                  deviceId:
+                    type: string
+                    description: Unique Identifier of the POS/SSK device used to process the transaction
+                    example: '910293'
+                  paymentMethod:
+                    type: string
+                    description: The payment method used
+                    example: Cash
+              examples:
+                Example:
+                  value:
+                    bookingPaymentId: '29910293'
+                    bookingReference: '7001923'
+                    receiptNumber: '7001923'
+                    staffId: '29918'
+                    total: 27
+                    tip: 4
+                    transactionFeeAmount: 0
+                    transactionId: '2881992018265'
+                    creditCardLast4Digits: '1922'
+                    createdDate: '2020-01-29T17:08:39Z'
+                    authorizingStaffId: '2293'
+                    deviceId: '910293'
+                    paymentMethod: Cash
+      operationId: bookingpayments
+  /data/tillreconciliations:
+    get:
+      tags:
+        - Venue Information
+      summary: Get POS till reconciliations
+      description: '> Returns detail on POS till reconciliations based on till closed date'
+      parameters:
+        - name: endDate
+          in: query
+          description: Till closed date
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deviceId:
+                    type: integer
+                    description: Unique identifier of the POS Device
+                    example: 9886
+                  operatorName:
+                    type: string
+                    x-stoplight:
+                      id: dd6zvvr70eb9f
+                    description: Name of the staff member who performed the till reconciliation
+                  startDate:
+                    type: string
+                    description: Date/time of the first transaction for this till session
+                    example: '2018-07-20T03:23:07Z'
+                  endDate:
+                    type: string
+                    description: Date/time the till session was closed and reconciled
+                    example: '2018-07-20T09:23:07Z'
+                  cardTakings:
+                    type: number
+                    description: Credit Card takings for this till session
+                    example: 827.2
+                  cardRefunds:
+                    type: number
+                    description: Credit Card refunds for this till session
+                    example: -120.2
+                  giftCardTakings:
+                    type: number
+                    description: Gift Card takings for this till session (transactions paid for by gift cards)
+                    example: 22.2
+                  checkTakings:
+                    type: number
+                    description: Check takings for this till session
+                    example: 45.5
+                  cashFloat:
+                    type: number
+                    description: The amount of cash that was in the till at the beginning of the till session
+                    example: 827.2
+                  cashTakings:
+                    type: number
+                    description: Cash takings for this till session
+                    example: 266.2
+                  cashRefunds:
+                    type: number
+                    description: Cash Refunds for this till session
+                    example: -20
+                  cashAdded:
+                    type: number
+                    description: The amount of cash that was manually added to the till during the till session
+                    example: -20
+                  cashRemoved:
+                    type: number
+                    description: The amount of cash that was manually removed from the till during the till session
+                    example: -20
+                  expectedCashBalance:
+                    type: number
+                    description: The amount of cash expected to be in the till at the end of the till session. This is CashFloat + CashAddedIn + CashTakings - Cash Refunds - CashTakenOut
+                    example: 329.4
+                  actualCashBalance:
+                    type: number
+                    description: The amount of cash that was counted and reconciled as being in the till at the end of the till session
+                    example: 331.4
+                  cashVariance:
+                    type: number
+                    description: The difference between ExpectedCashBalance and ActualCashBalance. A positive number indicates excess cash a negative number indicates a shortage
+                    example: -20
+              examples:
+                Example:
+                  value:
+                    deviceId: 9886
+                    startDate: '2018-07-20T03:23:07Z'
+                    endDate: '2018-07-20T09:23:07Z'
+                    cardTakings: 2163.4
+                    cardRefunds: 128.5
+                    giftCardTakings: 105
+                    checkTakings: 200.9
+                    cashFloat: 200
+                    cashTakings: 744.1
+                    cashRefunds: 144.1
+                    cashAdded: 50
+                    cashRemoved: 0
+                    expectedCashBalance: 850
+                    actualCashBalance: 860.5
+                    cashVariance: 10.5
+      operationId: tillreconciliations
+  /data/devices:
+    get:
+      tags:
+        - Venue Information
+      summary: Get devices
+      description: '> Returns detail on POS, SSK and Check In Scanner devices'
+      parameters:
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deviceId:
+                    type: integer
+                    description: Unique identifier of the device
+                    example: 9886
+                  deviceName:
+                    type: string
+                    description: Name of the device
+                    example: Front Desk 2
+                  deviceType:
+                    type: integer
+                    description: "* `0`: POS Device\r\n* `1`: SSK Device\r\n* `2`: Mobile Check-in Device\r\n* `3`: Redemption Device"
+                    example: 1
+                  deviceStatus:
+                    type: string
+                    description: "* `Active`: Currently usable device\r\n* `Inactive`: Deleted device"
+                    example: Active
+                  createdDate:
+                    type: string
+                    description: The date the device was created
+                    example: '2018-07-20T03:23:07Z'
+              examples:
+                Example:
+                  value:
+                    deviceId: 9886
+                    deviceName: Front Desk 2
+                    deviceType: 0
+                    deviceStatus: Active
+                    createdDate: '2018-07-20T03:23:07Z'
+  /data/giftcards:
+    get:
+      tags:
+        - Bookings
+      summary: Get gift cards
+      description: '> Returns detail on gift cards based on the gift card modified date'
+      parameters:
+        - name: startDate
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  giftCardId:
+                    type: string
+                    description: Unique identifier of the gift card
+                    example: 2910HA000
+                  bookingReference:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '4611022'
+                  ticketId:
+                    type: string
+                    description: Unique identifier for a ticket within a booking
+                    example: 4611022-89100023
+                  giftCardNumber:
+                    type: string
+                    description: The identifier used to redeem the gift card - unique per venue
+                    example: '29938177283321'
+                  balance:
+                    type: number
+                    description: The current balance of the gift card
+                    example: 25.5
+                  initialValue:
+                    type: number
+                    description: The original balance of the gift card at purchase
+                    example: 50
+                  lastUsedDate:
+                    type: string
+                    description: Most recent date the gift card was redeemed
+                    example: '2020-01-12T00:00:00Z'
+                  expiryDate:
+                    type: string
+                    description: Date the gift card expires
+                    example: '2022-08-29T22:51:44Z'
+                  createdDate:
+                    type: string
+                    description: Date the gift card was created
+                    example: '2018-08-29T22:51:44Z'
+                  modifiedDate:
+                    type: string
+                    description: Most recent date the gift card was modified
+                    example: '2020-01-12T00:00:00Z'
+              examples:
+                Example:
+                  value:
+                    giftCardId: 2910HA000
+                    bookingReference: '4611022'
+                    ticketId: 4611022-89100023
+                    giftCardNumber: '29938177283321'
+                    balance: 25.5
+                    initialValue: 50
+                    lastUsedDate: '2020-01-12T00:00:00Z'
+                    expiryDate: '2022-08-29T22:51:44Z'
+                    createdDate: '2018-08-29T22:51:44Z'
+                    modifiedDate: '2020-01-12T00:00:00Z'
+      operationId: giftcards
+  /data/products:
+    get:
+      tags:
+        - Venue Information
+      summary: Get products
+      description: "Returns detail on all products. \r\n\r\n> Both parent products and child/variation products are returned in a single list together."
+      parameters:
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+        - schema:
+            type: string
+            example: pass
+          in: query
+          name: productType
+          description: 'Optionally filter by product type. See [**product type mapping**](https://docs.roller.app/docs/roller-api/6e4snhv85tuk2).'
+        - schema:
+            type: string
+            example: membership
+          in: query
+          name: productSubType
+          description: 'Optionally filter by product sub type. See [**product type mapping**](https://docs.roller.app/docs/roller-api/6e4snhv85tuk2).'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  productId:
+                    type: string
+                    description: Unique identifier of the product
+                    example: '983361'
+                  parentProductId:
+                    type: string
+                    description: Unique identifier of the parent product
+                    example: '983360'
+                  name:
+                    type: string
+                    description: Product Name
+                    example: Season Pass
+                  price:
+                    type:
+                      - number
+                      - 'null'
+                    x-stoplight:
+                      id: tausoq9l3vssb
+                    description: Product price
+                    example: 29.95
+                  costOfGoods:
+                    type:
+                      - number
+                      - 'null'
+                    x-stoplight:
+                      id: e68pex54nu414
+                    description: Cost associated with producing/selling the stock item
+                    example: 1.5
+                  productType:
+                    type: string
+                    description: 'The type/variation of the product. See [**product type mapping**](https://docs.roller.app/docs/roller-api/6e4snhv85tuk2).'
+                    example: Pass
+                  productSubType:
+                    type: string
+                    description: 'The sub type/variation of the product. See [**product type mapping**](https://docs.roller.app/docs/roller-api/6e4snhv85tuk2).'
+                    example: Membership
+                  reportingCategoryName:
+                    type: string
+                    description: Reporting category name the product is allocated to
+                    example: Memberships
+                  productStatus:
+                    type: string
+                    description: Published status of the product
+                    enum:
+                      - Draft
+                      - Published
+                      - Closed
+                      - Archived
+                    example: Published
+                  hqProductId:
+                    type: string
+                    description: Unique identifier of the HQ parent product it is linked to
+                    example: '836612'
+                  hqCode:
+                    type: string
+                    description: Unique identifier of the HQ product it is linked to
+                    example: '92110100'
+                  taxId:
+                    type:
+                      - integer
+                      - 'null'
+                    x-stoplight:
+                      id: ifj82y1ymwdzt
+                    description: The ID of the custom tax variation defined within ROLLER
+                    example: 45
+                  barcodeId:
+                    type: string
+                    x-stoplight:
+                      id: mm6fikucp2jfl
+                    description: Barcode for the product which can be scanned
+                    example: '588199203'
+                  parLevel:
+                    type:
+                      - integer
+                      - 'null'
+                    x-stoplight:
+                      id: p66ypp32g2nwv
+                    description: A predefined ideal minimum quantity
+                    example: 35
+                    minimum: 0
+                    maximum: 32767
+                  cost:
+                    type:
+                      - number
+                      - 'null'
+                    description: 'Cost of the product (Deprecated, replaced by `price`)'
+                    example: 59.99
+                    deprecated: true
+              examples:
+                Example:
+                  value:
+                    productId: '983361'
+                    parentProductId: '983360'
+                    name: Season Pass
+                    productType: Pass
+                    productSubType: Membership
+                    reportingCategoryName: Memberships
+                    cost: 59.99
+                    productStatus: Published
+                    hqProductId: '836612'
+                    hqCode: '92110100'
+      operationId: products
+  /data/modifiers:
+    get:
+      tags:
+        - Venue Information
+      summary: Get modifiers
+      description: '> Returns detail on all modifiers'
+      parameters:
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  modifierGroupId:
+                    type: string
+                    description: Unique identifier of the modifier group
+                    example: '647'
+                  modifierGroupName:
+                    type: string
+                    description: Name of the modifier group
+                    example: Coffee Modifiers
+                  modifierId:
+                    type: string
+                    description: Unique identifier of the modifier
+                    example: Season Pass
+                  modifierName:
+                    type: string
+                    description: The name of the modifier
+                    example: Soy milk
+                  modifierType:
+                    type: string
+                    description: Whether the modifier adds a specific $ amount of a % of the cost of the modified item
+                    example: price
+                  amount:
+                    type: number
+                    description: The cost of the modifier (as either a $ amount or %)
+                    example: 1.5
+              examples:
+                Example:
+                  value:
+                    modifierGroupId: '647'
+                    modifierGroupName: Coffee Modifiers
+                    modifierId: 6abfecb5-369c-494e-b82e-3292b99ac001
+                    modifierName: Soy Milk
+                    modifierType: price
+                    amount: 1.5
+      operationId: modifiers
+  /data/roles:
+    get:
+      summary: Get roles
+      tags:
+        - Venue Information
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  roleId:
+                    type: integer
+                    x-stoplight:
+                      id: 6cbufhjuh0d00
+                    description: Unique ID of the role
+                  roleName:
+                    type: string
+                    x-stoplight:
+                      id: s3iv01xbk3bhl
+                    description: Display name of the role
+      operationId: roles
+      x-stoplight:
+        id: jaeifjf1u4f2m
+      description: '> Returns detail on roles'
+      parameters:
+        - schema:
+            type: integer
+            example: 1
+          in: query
+          name: pageNumber
+          description: 'Optional, default value = 1'
+        - schema:
+            type: integer
+            example: 1
+          in: query
+          name: pageSize
+          description: 'Optional, default value = 100'
+  /data/staffs:
+    get:
+      tags:
+        - Venue Information
+      summary: Get staff
+      description: '> Returns detail on active staff accounts'
+      parameters:
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ../../models/Page.yaml
+                    x-stoplight:
+                      id: gkesemmse64q9
+                  - x-stoplight:
+                      id: q6rbw5y15o2g1
+                    type: array
+                    items:
+                      $ref: ../../models/Staff.yaml
+                      x-stoplight:
+                        id: bp5kbvx77jacl
+              examples: {}
+      operationId: staffs
+      x-internal: false
+  /data/reportingcategories:
+    get:
+      tags:
+        - Venue Information
+      summary: Get reporting categories
+      description: '> Returns detail on reporting categories'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Reporting Category name
+                    example: Birthday Parties
+                  glCode:
+                    type: string
+                    description: General ledger (GL) code
+                    example: '1900'
+                  productIds:
+                    type: array
+                    description: list of products in this category
+                    items:
+                      type: string
+                      example: '1099211'
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                      description: Sub-categories underneath this reporting category
+                      properties:
+                        name:
+                          type: string
+                          description: Reporting Category name
+                          example: Birthday Add Ons
+                        glCode:
+                          type: string
+                          description: General ledger (GL) code
+                          example: '1950'
+                        productIds:
+                          type: array
+                          description: list of products in this category
+                          items:
+                            type: string
+                            example: '1099257'
+                        categories:
+                          type: array
+                          description: Sub-categories underneath this reporting category. Will be empty if there are no sub categories
+                          items:
+                            type: string
+                            example: null
+                            nullable: true
+              examples:
+                Example:
+                  value:
+                    name: Birthday Parties
+                    glCode: '1900'
+                    productIds:
+                      - '1099211'
+                    categories:
+                      - name: Birthday Add Ons
+                        glCode: '1950'
+                        productIds:
+                          - '1099257'
+                        categories:
+                          - null
+      operationId: reportingcategories
+  /data/waivers:
+    get:
+      tags:
+        - Venue Information
+      summary: Get waivers information
+      description: '> Returns waiver terms and configuration on active and historic waivers. These are not records of waivers actually signed by customers, these are located on the Signed Waivers endpoint'
+      parameters:
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  waiverId:
+                    type: string
+                    description: Unique identifier of the waiver the customers are signing
+                    example: '9918'
+                  name:
+                    type: string
+                    description: Name of the waiver
+                    example: Adventure Land Waiver
+                  terms:
+                    type: string
+                    description: Terms of the waiver
+                    example: The terms of the waiver are...
+                  validityInDays:
+                    type: integer
+                    description: How long the waiver is valid for once signed
+                    example: 365
+                  minorAgeLimitsInYears:
+                    type: integer
+                    description: What age a customer must be to be considered an adult when signing the waiver
+                    example: 18
+                  createdDate:
+                    type: string
+                    description: Date the waiver was created
+                    example: '2018-07-30T12:53:56'
+                  requiresSignature:
+                    type: boolean
+                    description: Whether or not the waiver requires a signature
+                    example: true
+              examples:
+                Example:
+                  value:
+                    waiverId: '9918'
+                    name: Adventure Land Waiver
+                    terms: The terms of the waiver are...
+                    validityInDays: 365
+                    minorAgeLimitsInYears: 18
+                    createdDate: '2018-07-30T12:53:56'
+                    requiresSignature: true
+      operationId: waivers
+  /data/discounts:
+    get:
+      tags:
+        - Venue Information
+      summary: Get discounts
+      description: '> Returns detail on all discounts offered. These are not records of discount codes applied / discount usage'
+      parameters:
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 20000'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  discountId:
+                    type: string
+                    description: Unique identifier of the discount
+                    example: '29104'
+                  name:
+                    type: string
+                    description: Discount name
+                    example: Military Discount
+                  codeGenerationMode:
+                    type: string
+                    description: "How discount codes are generated. \r\n\r\n* `FromTicketId` refers to codes generated via membership sales. "
+                    enum:
+                      - ManuallyEnter
+                      - BatchUpload
+                      - IssuedToProduct
+                      - FromTicketId
+                  amountOff:
+                    type: number
+                    description: Dollar amount off the product cost (can only have one option of either AmountOff or PercentOff)
+                    example: 3.5
+                  percentOff:
+                    type: number
+                    description: Percentage off the product cost (can only have one option of either AmountOff or PercentOff)
+                    example: 4
+                  maxApplicableAmount:
+                    type: number
+                    description: Maximum discount that can be applied to a booking using this discount
+                    example: 50
+                  productIds:
+                    type: array
+                    description: 'Products this discount is valid for. When none, the discount applies to all products'
+                    items:
+                      type: string
+                      example: '1099211'
+                  isSingleUseCode:
+                    type: boolean
+                    description: 'When true, a code for this discount can only be used once'
+                    example: true
+                  startDate:
+                    type: string
+                    description: First day the discount can be used
+                    example: '2019-08-07T00:00:00Z'
+                  endDate:
+                    type: string
+                    description: Last day the discount can be used
+                    example: '2020-07-17T00:00:00Z'
+                  bookingDateRestrictions:
+                    type: object
+                    description: A restriction on which days the discount can be used to book in for (assuming bookings must be made for specific dates)
+                    properties:
+                      dateRange:
+                        type: object
+                        properties:
+                          startDate:
+                            type: string
+                            example: '2018-09-27'
+                          endDate:
+                            type: string
+                            example: '2018-12-14'
+                          days:
+                            type: array
+                            description: 'Monday = 1, Sunday = 7'
+                            items:
+                              type: string
+                              example: '1,2,3'
+                      from:
+                        type: object
+                        properties:
+                          number:
+                            type: integer
+                            example: 10
+                          type:
+                            type: string
+                            enum:
+                              - Days
+                              - Weeks
+                              - Months
+                            example: Days
+                  usageLimits:
+                    type: object
+                    description: The usage limits for each code based on a defined usage type
+                    properties:
+                      numberOfUses:
+                        type: integer
+                        description: The number of times the discount can be used based on the restriction type
+                        example: 5
+                      type:
+                        type: integer
+                        description: '0 = Per code, 1 = Per user, 2 = For each selected product (regardless of quantity purchased), 3 = Across selected products (quantity purchased counts towards uses), 4 = Per code per day, 5 = Per code per week, 6 = Per code per month, 7 = Per code per year'
+                        example: 0
+                  bookingRule:
+                    type: object
+                    description: The usage limits for each code per booking
+                    properties:
+                      numberOfUses:
+                        type: integer
+                        example: 3
+                      type:
+                        type: integer
+                        description: 1 = Across selected products (quantity purchased counts towards uses)
+                        example: 1
+                  codes:
+                    type: array
+                    description: The discount codes valid for this discount
+                    items:
+                      type: string
+                      example: 1997AHT631
+              examples:
+                Example:
+                  value:
+                    discountId: '29104'
+                    name: Military Discount
+                    codeGenerationMode: ManuallyEnter
+                    amountOff: 3.5
+                    percentOff: 4
+                    maxApplicableAmount: 50
+                    productIds:
+                      - '1099211'
+                    isSingleUseCode: true
+                    startDate: '2019-08-07T00:00:00Z'
+                    endDate: '2020-07-17T00:00:00Z'
+                    bookingDateRestrictions:
+                      dateRange:
+                        startDate: '2018-09-27'
+                        endDate: '2018-12-14'
+                        days:
+                          - '1,2,3'
+                      from:
+                        number: 10
+                        type: Days
+                    usageLimits:
+                      numberOfUses: 5
+                      type: 0
+                    bookingRule:
+                      numberOfUses: 3
+                      type: 1
+                    codes:
+                      - 1997AHT631
+      operationId: discounts
+  /data/locations:
+    get:
+      tags:
+        - Venue Information
+      summary: Get resources
+      description: '> Returns detail on resources (formerly `locations`)'
+      parameters:
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  locationId:
+                    type: string
+                    description: Unique identifier of the location
+                    example: '92117'
+                  parentLocationId:
+                    type: string
+                    description: Unique identifier of the location group if applicable
+                    example: '92116'
+                  name:
+                    type: string
+                    description: Location name
+                    example: General Admission
+                  allowMultipleBookings:
+                    type: boolean
+                    description: Whether the location allows multiple different bookings to occur within it at the same time
+                    example: true
+              examples:
+                Example:
+                  value:
+                    locationId: '92117'
+                    parentLocationId: '92116'
+                    name: General Admission
+                    allowMultipleBookings: true
+      operationId: resources
+  /data/customers:
+    get:
+      tags:
+        - Customers
+      summary: Get customers
+      description: '> Returns detail on customers based on the customer modified date'
+      parameters:
+        - name: startDate
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customerId:
+                    type: string
+                    description: Unique identifier of the customer
+                    example: '201882947'
+                  firstName:
+                    type: string
+                    description: First name of the customer
+                    example: Danny
+                  lastName:
+                    type: string
+                    description: Last name of the customer
+                    example: Smith
+                  email:
+                    type: string
+                    description: Email address of the customer
+                    example: dannysmith@noemail.com
+                  contactNumber:
+                    type: string
+                    description: Contact phone number of the customer
+                    example: 130-2291-5883
+                  dateOfBirth:
+                    type: string
+                    description: Date of birth of the customer
+                    example: '1978-12-28'
+                  gender:
+                    type: string
+                    description: Gender of the customer
+                    example: Male
+                  postcode:
+                    type: string
+                    description: Postcode of the customer
+                    example: '90277'
+                  country:
+                    type: string
+                    description: Country of address of the customer
+                    example: United States
+                  acceptMarketing:
+                    type: boolean
+                    description: When true the guest has accepted to receive email marketing content
+                    example: false
+                  acceptMarketingSms:
+                    type: boolean
+                    description: When true the guest has accepted to receive SMS marketing content
+                    example: false
+                    x-stoplight:
+                      id: q34t1n9ucex1u
+                  createdDate:
+                    type: string
+                    description: Date the customer record was created
+                    example: '2020-01-01T16:40:30Z'
+                  modifiedDate:
+                    type: string
+                    description: Date the customer record was most recently modified
+                    example: '2020-01-01T16:40:30Z'
+                  taxIdentificationNumber:
+                    type: string
+                    x-stoplight:
+                      id: nfsx6c5w4x166
+                    description: Tax identification number that may be used for maintaining fiscal compliance
+                  address:
+                    type: object
+                    properties:
+                      street:
+                        type: string
+                        description: Street number and name of the customer
+                        example: 123 Fake Street
+                      suburb:
+                        type: string
+                        description: Suburb of the customer
+                        example: Orange County
+                      state:
+                        type: string
+                        description: State / province of the customer
+                        example: CA
+                      postcode:
+                        type: string
+                        description: Post code / ZIP code of the customer
+                        example: '27385'
+                      city:
+                        type: string
+                        description: City of the customer
+                        example: Los Angeles
+                      country:
+                        type: string
+                        description: Country of the customer
+                        example: United States
+                  flags:
+                    type: array
+                    x-stoplight:
+                      id: hfv6kpix79oax
+                    items:
+                      x-stoplight:
+                        id: 4sqfsqbqi63ib
+                      type: object
+                      properties:
+                        type:
+                          x-stoplight:
+                            id: yu7wbj4qshwfn
+                          enum:
+                            - ban
+                            - vip
+                            - medical
+                            - alert
+                            - competency
+                          description: The type of flag against the customer
+                        comment:
+                          type: string
+                          x-stoplight:
+                            id: aq5uohy1nof8n
+                          description: Extra information about the flag
+                        expiryDate:
+                          type: string
+                          x-stoplight:
+                            id: qircy91cw56cm
+                          format: date
+                          description: The date the flag is set to expire
+              examples:
+                Example:
+                  value:
+                    customerId: '201882947'
+                    firstName: Danny
+                    lastName: Smith
+                    email: dannysmith@noemail.com
+                    contactNumber: 130-2291-5883
+                    dateOfBirth: '1978-12-28'
+                    gender: Male
+                    postcode: '90277'
+                    country: United States
+                    acceptMarketing: false
+                    createdDate: '2020-01-01T16:40:30Z'
+                    modifiedDate: '2020-01-01T16:40:30Z'
+                    address:
+                      street: 123 Fake Street
+                      suburb: Orange County
+                      state: CA
+                      postcode: '27385'
+                      city: Los Angeles
+                      country: United States
+      operationId: customers
+  /reporting/gxs:
+    get:
+      tags:
+        - Customers
+      summary: Get GX score responses
+      description: '> Returns GX Score Responses based on the response modified date'
+      parameters:
+        - name: startDate
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  gxsResponseId:
+                    type: string
+                    example: '32659'
+                    description: Unique ID of the GX score response
+                  customerId:
+                    type: string
+                    example: '49043110'
+                    description: Unique identifier of the customer submitting the GX score response
+                  bookingReference:
+                    type: string
+                    example: '80821183'
+                    description: 'Unique identifier for a booking. If this field has no data, then the GX Score response was commenced by the customer from either a QR Code or URL link'
+                  isFan:
+                    type: boolean
+                    example: true
+                    description: Is set to true when the overall rating is set as 4 or 5
+                  isCritic:
+                    type: boolean
+                    example: false
+                    description: 'Is set to true when the overall rating is set as 1, 2 or 3'
+                  overallRating:
+                    type: integer
+                    example: 4
+                    description: Customers answer to the first question of the GX Score survey
+                  serviceRating:
+                    type: integer
+                    example: 3
+                    description: Customer rating for the service received during their booking
+                  serviceRatingReasons:
+                    type: array
+                    items:
+                      type: string
+                      example: Professionalism
+                    description: Rating factors chosen by the customer as contributors to their service rating
+                  safetyRating:
+                    type: integer
+                    example: 4
+                    description: Customer rating for the cleanliness and safety experienced during their booking
+                  safetyRatingReasons:
+                    type: array
+                    items:
+                      type: string
+                      example: Cleanliness
+                    description: Rating factors chosen by the customer as contributors to their cleanliness and safety rating
+                  facilitiesRating:
+                    type: integer
+                    example: 3
+                    description: Customer rating for the state of the facilities during their booking
+                  facilitiesRatingReasons:
+                    type: array
+                    items:
+                      type: string
+                      example: FacilityAge
+                    description: Rating factors chosen by the customer as contributors to their facilities rating
+                  valueRating:
+                    type: integer
+                    example: 2
+                    description: Customer rating for how valuable their experience was at the venue
+                  valueRatingReasons:
+                    type: array
+                    items:
+                      type: string
+                      example: Variety
+                    description: Rating factors chosen by the customer as contributors to their value rating
+                  comments:
+                    type: string
+                    example: 'Kids had a great time, but the available parking was poor'
+                    description: Comment provided by the customer in their GX Score response
+                  actioned:
+                    type: boolean
+                    example: true
+                    description: Internal status flag of the GX Score response used by Venue Manager users to flag responses as "actioned"
+                  actionComments:
+                    type: string
+                    example: Contacted the customer and informed them of parking around the corner
+                    description: Internal note recorded against the response provided by a Venue Manager user
+                  actionedByStaffId:
+                    type: string
+                    example: '90221'
+                    description: 'Unique ID for the staff member who most recently updated the actioned field, or the actionComments field'
+                  actionedDate:
+                    type: string
+                    example: '2022-07-18T01:25:23Z'
+                    description: 'Local date and time for when the actioned field, or the actionComments field was most recently updated'
+                  createdDate:
+                    type: string
+                    format: date-time
+                    example: '2022-07-14T01:25:23Z'
+                    description: 'Local date and time for when the GX Score survey was emailed to the customer, or when the customer first accessed the QR code or URL link to commence a GX Score survey'
+                  modifiedDate:
+                    type: string
+                    format: date-time
+                    example: '2022-07-14T01:25:23Z'
+                    description: Local date and time for when the GX Score response was most recently updated from the customer
+              examples:
+                Example:
+                  value:
+                    gxsResponseId: '70182'
+                    customerId: '49043110'
+                    bookingReference: '80821183'
+                    isFan: true
+                    isCritic: false
+                    overallRating: 4
+                    serviceRating: 3
+                    serviceRatingReasons:
+                      - Professionalism
+                      - Consideration
+                    safetyRating: 3
+                    safetyRatingReasons:
+                      - Cleanliness
+                      - Hygiene
+                    facilitiesRating: 2
+                    facilitiesRatingReasons:
+                      - FacilityAge
+                      - Maintenance
+                    valueRating: 4
+                    valueRatingReasons:
+                      - Variety
+                      - FamilyFriendly
+                    comments: 'Kids had a great time, but the available parking was poor'
+                    actioned: true
+                    actionComments: Contacted the customer and informed them of parking around the corner
+                    actionedByStaffId: '90221'
+                    actionedDate: '2022-07-18T01:25:23Z'
+                    createdDate: '2022-07-14T01:25:23Z'
+                    modifiedDate: '2022-07-14T01:25:23Z'
+      operationId: GXscoreresponses
+  /data/attendances:
+    get:
+      tags:
+        - Customers
+      summary: Get attendance
+      description: "Returns attendance records for guests based on attendance date.\r\n\r\n> * Attendance is recorded when a booking item is redeemed\r\n> * **Stock** and **addon** type products are not included\r\n"
+      parameters:
+        - name: startDate
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  receiptNumber:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '7314557'
+                  bookingReference:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '7314557'
+                  checkInDateTime:
+                    type: string
+                    description: Date/time of the attendance
+                    example: '2020-01-01T19:25:00Z'
+                  productId:
+                    type: string
+                    description: Unique identifier of the product being checked in
+                    example: '1156321'
+                  parentProductId:
+                    type: string
+                    description: Unique identifier of the parent product being checked in
+                    example: '1156320'
+                  productName:
+                    type: string
+                    description: Name of the product being checked in
+                    example: General Admission
+                  bookingItemPartId:
+                    type: string
+                    description: Unique identifier for a ticket
+                    example: '190227361'
+                  sessionStart:
+                    type: string
+                    description: Start time of the ticket if applicable
+                    example: '13:00'
+                  sessionEnd:
+                    type: string
+                    description: End time of the ticket if applicable
+                    example: '14:30'
+                  customerId:
+                    type: string
+                    description: Unique identifier of the customer linked to the specific ticket
+                    example: '100284772'
+                  bookingCustomerId:
+                    type: string
+                    description: Unique identifier of the customer linked to the booking
+                    example: '288192001'
+                  locationIds:
+                    type: array
+                    description: Locations the ticket operates in the venue
+                    items:
+                      type: string
+                      example: '1099211'
+                  employeeId:
+                    type: string
+                    description: The identifier of the staff member who completed the check in
+                    example: '29182'
+              examples:
+                Example:
+                  value:
+                    receiptNumber: '7314557'
+                    bookingReference: '7314557'
+                    checkInDateTime: '2020-01-01T19:25:00Z'
+                    productId: '1156321'
+                    parentProductId: '1156320'
+                    productName: General Admission
+                    bookingItemPartId: '190227361'
+                    sessionStart: '13:00'
+                    sessionEnd: '14:30'
+                    customerId: '100284772'
+                    bookingCustomerId: '288192001'
+                    locationIds:
+                      - '1099211'
+                    employeeId: '29182'
+      operationId: attendances
+  /data/membershipredemptions:
+    get:
+      tags:
+        - Customers
+      summary: Get membership redemptions
+      description: '> Returns membership redemptions for customers based on redemption date'
+      parameters:
+        - name: date
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: bookingReference
+          in: query
+          description: Unique identifier for a booking
+          required: false
+          schema:
+            type: string
+            example: '6679917'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  redemptionDate:
+                    type: string
+                    description: The date/time of the redemption
+                    example: '2020-01-03T03:48:37Z'
+                  bookingReference:
+                    type: string
+                    description: Booking ID of the membership booking
+                    example: '2910029'
+                  ticketId:
+                    type: string
+                    description: Ticket ID of the specific membership
+                    example: '199201192'
+              examples:
+                Example:
+                  value:
+                    redemptionDate: '2020-01-03T03:48:37Z'
+                    bookingReference: '2910029'
+                    ticketId: '199201192'
+      operationId: membershipredemptions
+  /data/membershipstatuses:
+    get:
+      tags:
+        - Customers
+      summary: Get membership statuses
+      description: '> Returns status change log for memberships based on status modified date'
+      parameters:
+        - name: date
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: bookingReference
+          in: query
+          description: Unique identifier for a booking
+          required: false
+          schema:
+            type: string
+            example: '6679917'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  eventDate:
+                    type: string
+                    description: The date/time of the membership event
+                    example: '2020-02-25T01:26:01Z'
+                  bookingReference:
+                    type: string
+                    description: Booking ID of the membership booking
+                    example: '29918293'
+                  ticketId:
+                    type: string
+                    description: Ticket ID of the specific membership
+                    example: 29918293-672109201
+                  customTicketId:
+                    type: string
+                    description: Custom ticket ID of the specific membership
+                    example: '28819'
+                  previousStatus:
+                    type: string
+                    description: The membership status on the membership before
+                    example: New
+                  newStatus:
+                    type: string
+                    description: The membership status on the membership after
+                    example: Current
+              examples:
+                Example:
+                  value:
+                    eventDate: '2020-02-25T01:26:01Z'
+                    bookingReference: '29918293'
+                    ticketId: 29918293-672109201
+                    customTicketId: '28819'
+                    previousStatus: New
+                    newStatus: Current
+      operationId: membershipstatuses
+  /data/membershipcredits:
+    get:
+      tags:
+        - Customers
+      summary: Get membership credits
+      description: '> Returns credits that have been issued against memberships'
+      parameters:
+        - name: date
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: bookingReference
+          in: query
+          description: Unique identifier for a booking
+          required: false
+          schema:
+            type: string
+            example: '6679917'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  createdDate:
+                    type: string
+                    description: The date/time the membership credit was issued
+                    example: '2020-02-25T01:26:01Z'
+                  modifiedDate:
+                    type: string
+                    description: The date/time the membership credit was most recently modified
+                    example: '2020-02-28T01:26:01Z'
+                  creditValue:
+                    type: number
+                    description: Value of the credit issued
+                    example: 25.55
+                  bookingReference:
+                    type: string
+                    description: Booking ID of the membership booking
+                    example: '29918293'
+                  ticketId:
+                    type: string
+                    description: Ticket ID of the specific membership
+                    example: 2883771-3998167
+                  status:
+                    type: string
+                    description: 'The status of the membership credit - can be ''new'', ''applied'' or ''voided'''
+                    example: Voided
+                  comment:
+                    type: string
+                    description: The note provided by the staff member issuing the credit
+                    example: Customer was unsatisfied with service
+              examples:
+                Example:
+                  value:
+                    createdDate: '2020-02-25T01:26:01Z'
+                    modifiedDate: '2020-02-26T01:26:01Z'
+                    creditValue: 25.55
+                    bookingReference: '28819776'
+                    ticketId: New
+                    status: Voided
+                    comment: Customer was unsatisfied with service
+      operationId: membershipcredits
+  /data/signedwaivers:
+    get:
+      tags:
+        - Customers
+      summary: Get signed waivers
+      description: '> Returns records of waivers signed by customers'
+      parameters:
+        - name: startDate
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  signedWaiverId:
+                    type: string
+                    description: Unique identifier for the waiver record
+                    example: '18829122'
+                  parentSignedWaiverId:
+                    type: string
+                    description: Only returned for minor's waivers - will be the SignedWaiverId of their parent/guardians waiver
+                    example: '18829121'
+                  waiverId:
+                    type: string
+                    description: The identifier of the version of the waiver they have signed
+                    example: '2918'
+                  firstName:
+                    type: string
+                    description: First name of the customer as completed on the waiver
+                    example: Danny
+                  lastName:
+                    type: string
+                    description: Second name of the customer as completed on the waiver
+                    example: Smith
+                  customerId:
+                    type: string
+                    description: Unique identifier of the customer record of the waiver holder
+                    example: '64310293'
+                  dateOfBirth:
+                    type: string
+                    description: Date of birth of the waiver holder
+                    example: '2004-07-13'
+                  email:
+                    type: string
+                    description: Email address of the waiver holder. Not returned for minors.
+                    example: dannysmith@noemail.com
+                  contactNumber:
+                    type: string
+                    description: Contact phone number of the waiver holder. Not returned for minors.
+                  isForMinor:
+                    type: boolean
+                    description: 'Identifies whether the customer is a minor or not at the time of signing. Returns true for minors, false for adults.'
+                    example: true
+                  expiryDate:
+                    type: string
+                    description: Date the waiver expired
+                    example: '2020-02-11T12:56:02Z'
+                  modifiedDate:
+                    type: string
+                    description: Date the waiver record was most recently modified
+                    example: '2019-02-11T12:56:02Z'
+                  isValid:
+                    type: boolean
+                    description: Only returned if waiver verification is required. Returns true for verified waivers and false for unverified.
+                    example: true
+                  createdDate:
+                    type: string
+                    description: Date the waiver record was created
+                    example: '2019-02-11T12:56:02Z'
+              examples:
+                Example:
+                  value:
+                    signedWaiverId: '18829122'
+                    parentSignedWaiverId: '18829121'
+                    waiverId: '2918'
+                    firstName: Danny
+                    lastName: Smith
+                    customerId: '64310293'
+                    dateOfBirth: '2004-07-13'
+                    email: dannysmith@noemail.com
+                    contactNumber: string
+                    isForMinor: true
+                    expiryDate: '2020-02-11T12:56:02Z'
+                    modifiedDate: '2019-02-11T12:56:02Z'
+                    isValid: true
+                    createdDate: '2019-02-11T12:56:02Z'
+      operationId: signedwaivers
+  /data/bookingsignedwaivers:
+    get:
+      tags:
+        - Customers
+      summary: Get booking signed waivers
+      description: '> Returns records of specific waivers/customers and their association with specific bookings/tickets. This can be used to link specific customers to specific bookings/tickets without them needing to be the booking holder (purchasing customer)'
+      parameters:
+        - name: startDate
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  signedWaiverId:
+                    type: string
+                    description: Unique identifier for the waiver record
+                    example: '48992011'
+                  receiptNumber:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '2010922'
+                  bookingReference:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '2010922'
+                  ticketId:
+                    type: string
+                    description: Unique identifier for a ticket within a booking
+                    example: 2010922-19928331
+                  modifiedDate:
+                    type: string
+                    description: Most recent date the BookingSignedWaiver record was modified
+                    example: '2019-02-11T17:42:56Z'
+                  createdDate:
+                    type: string
+                    description: Date the BookingSignedWaiver record was created
+                    example: '2019-02-11T17:42:56Z'
+              examples:
+                Example:
+                  value:
+                    signedWaiverId: '48992011'
+                    receiptNumber: '2010922'
+                    bookingReference: '2010922'
+                    ticketId: 2010922-19928331
+                    modifiedDate: '2019-02-11T17:42:56Z'
+                    createdDate: '2019-02-11T17:42:56Z'
+      operationId: bookingsignedwaivers
+  /reporting/revenue-entries:
+    get:
+      tags:
+        - Revenue
+      summary: Get revenue entries
+      description: |-
+        Returns revenue entry data relating to funds received and recognised revenue.
+
+        > `startDate` and `endDate` parameters are not based on **modified date**, they're based on the **entry date** of the record which may be different than the modified date of the booking.
+      parameters:
+        - name: startDate
+          in: query
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate
+          required: true
+          schema:
+            type: string
+            format: yyyy-mm-dd
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: Optional. Specifies the page to return when multiple pages are available.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - schema:
+            type: string
+            example: '934483, 934484'
+          in: query
+          name: bookingReferences
+          description: Booking IDs in a comma separated value. Max limit is `100` references.
+          allowEmptyValue: true
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recordDate:
+                    type: string
+                    description: Date/time the revenue entry was recorded. Corresponding revenue figures should be recorded as being generated at this date/time
+                    example: '2022-09-26T04:14:30Z'
+                  entryType:
+                    type: string
+                    description: 'The type of revenue entry. This can be either Transaction, Recognition or Adjustment'
+                    example: Transaction
+                  bookingReference:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '26654'
+                  bookingLocation:
+                    description: The sales channel where the booking was created
+                    enum:
+                      - Venue manager
+                      - POS
+                      - Online Checkout
+                      - Self-serve kiosk
+                      - Data import
+                      - Recurring billing
+                      - API
+                      - Channel partners
+                  productId:
+                    type: string
+                    description: Unique identifier of a product
+                    example: '4331992'
+                  productType:
+                    type: string
+                    description: 'Passes, Add-ons, Custom Products, Gift Cards, Package, Wallet'
+                    example: Pass
+                  unitCost:
+                    type: number
+                    description: The price of the ticket being referenced in the entry
+                    example: 31.5
+                  discount:
+                    type: number
+                    description: The value of the discount against a transaction entry
+                    example: 0
+                  discountCode:
+                    type: string
+                    description: The discount code used
+                    example: NJJ89277112
+                  ticketQuantity:
+                    type: integer
+                    description: 'Quantity of tickets sold in this entry, this can be used to determine the sales quantity for products. Can have negative values if items are removed from bookings.'
+                    example: 5
+                  redeemedQuantity:
+                    type: integer
+                    description: Quantity of tickets redeemed in this entry
+                    example: 5
+                  expiredQuantity:
+                    type: integer
+                    description: Quantity of tickets redeemed in this entry
+                    example: 0
+                  bookingItemId:
+                    type: string
+                    description: 'Unique identifier for an item within a booking. A booking can have multiple items, and items can have a quantity >1'
+                    example: '29910292'
+                  packageBookingItemId:
+                    type: string
+                    description: Unique identifier for the related package booking item (if any)
+                    example: '9384021'
+                    x-stoplight:
+                      id: l2c9pst3h3myp
+                  transactionDate:
+                    type: string
+                    description: Date of the first transaction against a booking
+                    example: '2019-02-12T01:52:04Z'
+                  transactionLocation:
+                    type: string
+                    description: 'The sales channel the specific transaction was generated from. This is not necessarily the same as bookingLocation, which is where the booking was created'
+                    example: POS
+                  transactionValue:
+                    type: number
+                    description: The value of the amount paid against the booking that is being attributed to this entry
+                    example: 12.5
+                    x-stoplight:
+                      id: 7fujoqxgortwh
+                  fundsReceived:
+                    type: number
+                    description: The amount of money received for a transaction entry
+                    example: 12.5
+                  voucherFundsReceived:
+                    type: number
+                    description: 'Funds received from external voucher programs, such as Groupon or Redeam OTA channels'
+                    example: 0
+                  recognisedDiscount:
+                    type: number
+                    description: The value of the discount against a redemption or expiry entry
+                    example: 14.55
+                  taxPercent:
+                    type: number
+                    description: The tax percent against the product in this entry
+                    example: 7
+                  taxOnFundsReceived:
+                    type: number
+                    description: The amount of tax on funds received for a transaction entry
+                    example: 0.88
+                  feeTaxPercent:
+                    type: number
+                    description: The tax percent against the fees in this entry
+                    example: 2.2
+                    x-stoplight:
+                      id: 3s1gorq71p14q
+                  feeRevenue:
+                    type: number
+                    description: The amount of revenue from transaction fees for this entry
+                    example: 1.33
+                  taxPayable:
+                    type: number
+                    description: The amount of tax payable on recognised revenue for this entry
+                    example: 2.5
+                  netRevenue:
+                    type: number
+                    description: The after tax revenue generated for this entry
+                    example: 11.63
+                  paymentType:
+                    type: string
+                    description: The type of tender used for the transaction
+                    example: Cash
+                  bookingPaymentId:
+                    type: string
+                    description: Unique Identifier of a transaction
+                    example: '102991002'
+                  externalPaymentReference:
+                    type: string
+                    description: The unique payment identifier from the payment gateway - or gift card number for gift card payments
+                    example: 21398JJDUW992
+                  accountsReceivable:
+                    type: number
+                    description: The accounts receivable generated or removed for this entry
+                    example: 0
+                  deferredRevenue:
+                    type: number
+                    description: The deferred revenue generated or removed for this entry
+                    example: -12.5
+                  deferredRevenueOther:
+                    type: number
+                    description: 'The external deferred revenue generated or removed for this entry (used for integrations, eg. Groupon)'
+                    example: 0
+                  deferredRevenueGiftCards:
+                    type: number
+                    description: The giftcard deferred revenue generated or removed for this entry
+                    example: 0
+                  manualGiftCardAdjustment:
+                    type: number
+                    description: Manual gift card balance adjustments for this entry
+                    example: 25
+                    x-stoplight:
+                      id: joy1zel3m5lza
+                  multiVenueGiftCardPayable:
+                    type: string
+                    x-stoplight:
+                      id: pdb2tbd26ri9w
+                    description: Accounts payable for multi-venue gift card revenue
+                  multiVenueGiftCardReceivable:
+                    type: string
+                    x-stoplight:
+                      id: 36rnt17sah4qv
+                    description: Accounts recievable for multi-venue gift card revenue
+                  customerId:
+                    type: string
+                    description: Unique identifier of the booking holder for the booking
+                    example: '54661723'
+                  companyId:
+                    type:
+                      - integer
+                      - 'null'
+                    description: Unique identifier of the company linked as the booking holder for the booking
+                    example: 27777
+                  companyName:
+                    type: string
+                    description: Name of the company linked as the booking holder for the booking
+                    example: ROLLER
+              examples: {}
+      operationId: revenue-entries
+  /data/revenues:
+    get:
+      summary: Get revenue entries (Legacy)
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bookingPaymentId:
+                    type: string
+                    description: Unique Identifier of a transaction
+                    example: '102991002'
+                  bookingReference:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '9384021'
+                  receiptNumber:
+                    type: string
+                    description: Unique identifier for a booking
+                    example: '9384021'
+                    x-stoplight:
+                      id: er0iey3pcohvd
+                  productId:
+                    type: string
+                    description: Unique identifier of a product
+                    example: '4331992'
+                  productType:
+                    type: string
+                    description: 'Passes, Add-ons, Custom Products, Gift Cards, Package, Wallet'
+                    example: Pass
+                  ticketId:
+                    type: string
+                    description: Unique identifier for a ticket within a booking
+                    example: '51512'
+                    x-stoplight:
+                      id: 01ekolc6bqyjv
+                  transactionDate:
+                    type: string
+                    description: Date of the first transaction against a booking
+                    example: '2019-02-12T01:52:04Z'
+                  ticketUnitCost:
+                    type: number
+                    description: The price of the ticket being referenced in the entry
+                    example: 31.5
+                    x-stoplight:
+                      id: g76iby5g5pnfk
+                  ticketTransactionValue:
+                    type: number
+                    description: The value of the amount paid against the booking that is being attributed to this entry
+                    example: 31.5
+                    x-stoplight:
+                      id: s6qspnx7h8cp2
+                  discount:
+                    type: number
+                    description: The value of the discount against a transaction entry
+                    example: 0
+                  discountCode:
+                    type: string
+                    description: The discount code used
+                    example: NJJ89277112
+                  eventDate:
+                    type: string
+                    description: 'The date the entry occurred - not necessarily the date the entry was generated, but when the values should be recorded as occurring'
+                    example: '2022-09-26T04:14:30Z'
+                    x-stoplight:
+                      id: gvg2a1cq4vdt1
+                  eventType:
+                    type: string
+                    description: 'The type of revenue entry. This can be either Transaction, Recognition or Adjustment'
+                    example: Transaction
+                    x-stoplight:
+                      id: hm22m8wu86kn9
+                  transactionLocation:
+                    type: string
+                    description: 'The sales channel the specific transaction was generated from. This is not necessarily the same as bookingLocation, which is where the booking was created'
+                    example: POS
+                  bookingLocation:
+                    type: string
+                    description: The sales channel where the booking was created
+                  paymentType:
+                    type: string
+                    description: The type of tender used for the transaction
+                    example: Cash
+                  transactionFeeAmount:
+                    type: number
+                    description: The value of the transaction fee against a transaction entry
+                    example: 7
+                    x-stoplight:
+                      id: 4qy5o2icuqg66
+                  taxPercent:
+                    type: number
+                    description: The tax percent against the product in this entry
+                    example: 7
+                  fundsReceived:
+                    type: number
+                    description: The amount of money received for a transaction entry
+                    example: 0
+                  taxOnFundsReceived:
+                    type: number
+                    description: The amount of tax on funds received for a transaction entry
+                    example: 0
+                  voucherFundsReceived:
+                    type: number
+                    description: 'Funds received from external voucher programs, such as Groupon or Redeam OTA channels'
+                    example: 0
+                  feeRevenue:
+                    type: number
+                    description: The amount of revenue from transaction fees for this entry
+                    example: 0
+                  deferredRevenue:
+                    type: number
+                    description: The deferred revenue generated or removed for this entry
+                    example: -31.5
+                  deferredRevenueGiftCards:
+                    type: number
+                    description: The giftcard deferred revenue generated or removed for this entry
+                    example: 0
+                  deferredRevenueOther:
+                    type: number
+                    description: 'The external deferred revenue generated or removed for this entry (used for integrations, eg. Groupon)'
+                    example: 0
+                  accountsReceivable:
+                    type: number
+                    description: The accounts receivable generated or removed for this entry
+                    example: 0
+                  netRevenue:
+                    type: number
+                    description: The after tax revenue generated for this entry
+                    example: 29
+                  taxPayable:
+                    type: number
+                    description: The amount of tax payable on recognised revenue for this entry
+                    example: 2.5
+                  recognisedDiscount:
+                    type: number
+                    description: The value of the discount against a redemption or expiry entry
+                    example: 14.55
+                  customerId:
+                    type: string
+                    description: Unique identifier of the booking holder for the booking
+                    example: '54661723'
+                  externalPaymentReference:
+                    type: string
+                    description: The unique payment identifier from the payment gateway - or gift card number for gift card payments
+                    example: 21398JJDUW992
+      operationId: get-data-revenues
+      x-stoplight:
+        id: ipzw963u2r3cb
+      deprecated: true
+      x-internal: true
+      parameters:
+        - schema:
+            type: string
+            example: '2025-07-14'
+          in: query
+          name: startDate
+          description: The date (yyyy-mm-dd) you need data for
+          required: true
+        - schema:
+            type: string
+            example: '2025-07-18'
+          in: query
+          name: endDate
+          description: Should be +1 day from the startDate
+          required: true
+        - schema:
+            type: string
+            example: '1'
+          in: query
+          name: pageNumber
+          description: 'Optional, default value = 1'
+        - schema:
+            type: string
+            example: '2881992'
+          in: query
+          name: bookingReferences
+          description: Booking references specified in comma separated value. Max limit is 100.
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: {}
+  schemas: {}
+  parameters: {}
