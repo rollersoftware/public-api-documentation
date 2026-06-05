@@ -1,4 +1,6 @@
 openapi: 3.1.0
+x-stoplight:
+  id: 108a00599cc13
 info:
   version: 1.0.0
   title: Data API Specification
@@ -314,6 +316,8 @@ paths:
                     deviceId: '2810'
                     cost: 29.95
       operationId: bookingitems
+      x-stoplight:
+        id: cwtkneaqrj11i
   /data/tickets:
     get:
       tags:
@@ -439,6 +443,8 @@ paths:
                     numberOfRecurringPayments: 4
                     recurringPaymentFrequency: Monthly
       operationId: tickets
+      x-stoplight:
+        id: ohcdr5igxfe1o
   /data/bookingpayments:
     get:
       tags:
@@ -553,6 +559,8 @@ paths:
                     deviceId: '910293'
                     paymentMethod: Cash
       operationId: bookingpayments
+      x-stoplight:
+        id: oev488t9uca77
   /data/tillreconciliations:
     get:
       tags:
@@ -674,6 +682,8 @@ paths:
                     actualCashBalance: 860.5
                     cashVariance: 10.5
       operationId: tillreconciliations
+      x-stoplight:
+        id: 1y7fjnaz2dx02
   /data/devices:
     get:
       tags:
@@ -731,6 +741,8 @@ paths:
                     deviceType: 0
                     deviceStatus: Active
                     createdDate: '2018-07-20T03:23:07Z'
+      x-stoplight:
+        id: eg23hp8ps1ous
   /data/giftcards:
     get:
       tags:
@@ -830,6 +842,8 @@ paths:
                     createdDate: '2018-08-29T22:51:44Z'
                     modifiedDate: '2020-01-12T00:00:00Z'
       operationId: giftcards
+      x-stoplight:
+        id: n83esqaetvfjq
   /data/products:
     get:
       tags:
@@ -973,6 +987,8 @@ paths:
                     hqProductId: '836612'
                     hqCode: '92110100'
       operationId: products
+      x-stoplight:
+        id: nt0z03k0e56v4
   /data/modifiers:
     get:
       tags:
@@ -1036,6 +1052,8 @@ paths:
                     modifierType: price
                     amount: 1.5
       operationId: modifiers
+      x-stoplight:
+        id: oqg8hxy3jnj47
   /data/roles:
     get:
       summary: Get roles
@@ -1116,6 +1134,8 @@ paths:
               examples: {}
       operationId: staffs
       x-internal: false
+      x-stoplight:
+        id: ui7fo89y7uo3y
   /data/reportingcategories:
     get:
       tags:
@@ -1186,6 +1206,8 @@ paths:
                         categories:
                           - null
       operationId: reportingcategories
+      x-stoplight:
+        id: azcs8lk3fyw52
   /data/waivers:
     get:
       tags:
@@ -1254,6 +1276,8 @@ paths:
                     createdDate: '2018-07-30T12:53:56'
                     requiresSignature: true
       operationId: waivers
+      x-stoplight:
+        id: ixjx6m3ncbldx
   /data/discounts:
     get:
       tags:
@@ -1422,6 +1446,8 @@ paths:
                     codes:
                       - 1997AHT631
       operationId: discounts
+      x-stoplight:
+        id: rxlwfksmktoqt
   /data/locations:
     get:
       tags:
@@ -1475,6 +1501,8 @@ paths:
                     name: General Admission
                     allowMultipleBookings: true
       operationId: resources
+      x-stoplight:
+        id: yaj7hm60losqd
   /data/customers:
     get:
       tags:
@@ -1659,6 +1687,8 @@ paths:
                       city: Los Angeles
                       country: United States
       operationId: customers
+      x-stoplight:
+        id: 95md56e5mwamx
   /reporting/gxs:
     get:
       tags:
@@ -1831,6 +1861,8 @@ paths:
                     createdDate: '2022-07-14T01:25:23Z'
                     modifiedDate: '2022-07-14T01:25:23Z'
       operationId: GXscoreresponses
+      x-stoplight:
+        id: olm6ehatjbylt
   /data/attendances:
     get:
       tags:
@@ -1948,6 +1980,8 @@ paths:
                       - '1099211'
                     employeeId: '29182'
       operationId: attendances
+      x-stoplight:
+        id: usktuzh7m8i3d
   /data/membershipredemptions:
     get:
       tags:
@@ -1997,6 +2031,8 @@ paths:
                     bookingReference: '2910029'
                     ticketId: '199201192'
       operationId: membershipredemptions
+      x-stoplight:
+        id: 6afvkknm51i7x
   /data/membershipstatuses:
     get:
       tags:
@@ -2061,6 +2097,8 @@ paths:
                     previousStatus: New
                     newStatus: Current
       operationId: membershipstatuses
+      x-stoplight:
+        id: 0osow2xqjhb80
   /data/membershipcredits:
     get:
       tags:
@@ -2130,6 +2168,8 @@ paths:
                     status: Voided
                     comment: Customer was unsatisfied with service
       operationId: membershipcredits
+      x-stoplight:
+        id: 40wb8fan9y61n
   /data/signedwaivers:
     get:
       tags:
@@ -2248,6 +2288,8 @@ paths:
                     isValid: true
                     createdDate: '2019-02-11T12:56:02Z'
       operationId: signedwaivers
+      x-stoplight:
+        id: 5eqi1aqpivikx
   /data/bookingsignedwaivers:
     get:
       tags:
@@ -2327,6 +2369,8 @@ paths:
                     modifiedDate: '2019-02-11T17:42:56Z'
                     createdDate: '2019-02-11T17:42:56Z'
       operationId: bookingsignedwaivers
+      x-stoplight:
+        id: idynfhmhjomnw
   /reporting/revenue-entries:
     get:
       tags:
@@ -2552,6 +2596,8 @@ paths:
                     example: ROLLER
               examples: {}
       operationId: revenue-entries
+      x-stoplight:
+        id: f72yr33ihw13x
   /data/revenues:
     get:
       summary: Get revenue entries (Legacy)

@@ -1,0 +1,127 @@
+{
+  "collapseTableOfContents": false,
+  "items": [
+  {
+    "type": "divider",
+    "title": "🌱 Introduction"
+  },
+  {
+    "type": "item",
+    "title": "Overview",
+    "uri": "/docs/Introduction/Overview.md"
+  },
+  {
+    "type": "item",
+    "title": "Getting API Access",
+    "uri": "/docs/Introduction/GettingApiAccess.md"
+  },
+  {
+    "type": "item",
+    "title": "Environments",
+    "uri": "/docs/Introduction/Environments.md"
+  },
+  {
+    "type": "item",
+    "title": "Authentication",
+    "uri": "/docs/Introduction/Authentication.md"
+  },
+  {
+    "type": "item",
+    "title": "Rate Limits & Throttling [Data API]",
+    "uri": "/docs/Introduction/RateLimitsAndThrottling_DataApi.md"
+  },
+  {
+    "type": "item",
+    "title": "Changelog",
+    "uri": "/docs/Introduction/Changelog.md"
+  },
+  {
+    "type": "divider",
+    "title": "🧠 Core Concepts"
+  },
+  {
+    "type": "item",
+    "title": "Filtering & Pagination",
+    "uri": "/docs/Core Concepts/FilteringAndPagination.md"
+  },
+  {
+    "type": "item",
+    "title": "Formatting",
+    "uri": "/docs/Core Concepts/Formatting.md"
+  },
+  {
+    "type": "divider",
+    "title": "📦 Resources"
+  },
+  {
+    "type": "item",
+    "title": "Postman Collection",
+    "uri": "/docs/Resources/PostmanCollections.md"
+  },
+  {
+    "type": "item",
+    "title": "Product Type Mapping",
+    "uri": "/docs/Resources/ProductTypeMapping.md"
+  },
+  {
+    "type": "divider",
+    "title": "🚀 Use Cases"
+  },
+    {
+      "type": "group",
+      "title": "Guest Spend & Visitation",
+      "items": [
+        {
+          "type": "item",
+          "title": "Creation of Customer Records in ROLLER",
+          "uri": "/docs/Use Cases/Guest Spend And Visitation/1. Creation of Customer Records in ROLLER.md"
+        },
+        {
+          "type": "item",
+          "title": "Associating Signed Waivers to Customers",
+          "uri": "/docs/Use Cases/Guest Spend And Visitation/2. Associating Signed Waivers to Customers.md"
+        },
+        {
+          "type": "item",
+          "title": "Associating Customers to Bookings",
+          "uri": "/docs/Use Cases/Guest Spend And Visitation/3. Associating Customers to Bookings.md"
+        },
+        {
+          "type": "item",
+          "title": "Visitation",
+          "uri": "/docs/Use Cases/Guest Spend And Visitation/4. Visitation.md"
+        },
+        {
+          "type": "item",
+          "title": "Spend",
+          "uri": "/docs/Use Cases/Guest Spend And Visitation/5. Spend.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Membership Metrics",
+      "items": [
+        {
+          "type": "item",
+          "title": "Identifying Membership Bookings",
+          "uri": "/docs/Use Cases/Membership Metrics/1. Identifying Membership Bookings.md"
+        },
+        {
+          "type": "item",
+          "title": "Identifying Key Membership Properties",
+          "uri": "/docs/Use Cases/Membership Metrics/2. Identifying Key Membership Properties.md"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "title": "APIS"
+    },
+    {
+      "type": "item",
+      "title": "Data API Specification",
+      "uri": "/reference/Data API/DataAPI.yaml"
+    }
+  ]
+}

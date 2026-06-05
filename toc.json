@@ -1,75 +1,125 @@
 {
   "collapseTableOfContents": false,
   "items": [
-  {
-    "type": "divider",
-    "title": "🌱 Introduction"
-  },
-  {
-    "type": "item",
-    "title": "Overview",
-    "uri": "/docs/Introduction/Overview.md"
-  },
-  {
-    "type": "item",
-    "title": "Getting API Access",
-    "uri": "/docs/Introduction/GettingApiAccess.md"
-  },
-  {
-    "type": "item",
-    "title": "Environments",
-    "uri": "/docs/Introduction/Environments.md"
-  },
-  {
-    "type": "item",
-    "title": "Authentication",
-    "uri": "/docs/Introduction/Authentication.md"
-  },
-  {
-    "type": "item",
-    "title": "Rate Limits & Throttling [Data API]",
-    "uri": "/docs/Introduction/RateLimitsAndThrottling_DataApi.md"
-  },
-  {
-    "type": "item",
-    "title": "Changelog",
-    "uri": "/docs/Introduction/Changelog.md"
-  },
-  {
-    "type": "divider",
-    "title": "🧠 Core Concepts"
-  },
-  {
-    "type": "item",
-    "title": "Filtering & Pagination",
-    "uri": "/docs/Core Concepts/FilteringAndPagination.md"
-  },
-  {
-    "type": "item",
-    "title": "Formatting",
-    "uri": "/docs/Core Concepts/Formatting.md"
-  },
-  {
-    "type": "divider",
-    "title": "📦 Resources"
-  },
-  {
-    "type": "item",
-    "title": "Postman Collection",
-    "uri": "/docs/Resources/PostmanCollections.md"
-  },
-  {
-    "type": "item",
-    "title": "Product Type Mapping",
-    "uri": "/docs/Resources/ProductTypeMapping.md"
-  },
-  {
-    "type": "divider",
-    "title": "🚀 Use Cases"
-  },
+    {
+      "type": "divider",
+      "title": "API Use Cases"
+    },
     {
       "type": "group",
-      "title": "Guest Spend & Visitation",
+      "title": "3rd Party Checkout",
+      "items": [
+        {
+          "type": "item",
+          "title": "Checkout Workflow",
+          "uri": "/docs/API Use Cases/3rd Party Checkout/CheckoutWorkflow.md"
+        },
+        {
+          "type": "item",
+          "title": "Editing or deleting bookings",
+          "uri": "/docs/API Use Cases/3rd Party Checkout/EditingOrDeletingBookings.md"
+        },
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "/docs/API Use Cases/3rd Party Checkout/ExternalCheckoutOverview.md"
+        },
+        {
+          "type": "item",
+          "title": "Managing Refunds",
+          "uri": "/docs/API Use Cases/3rd Party Checkout/ManagingRefunds.md"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "title": "Core Concepts"
+    },
+    {
+      "type": "item",
+      "title": "Filtering and Pagination [DataAPI]",
+      "uri": "/docs/Core Concepts/FilteringAndPagination.md"
+    },
+    {
+      "type": "item",
+      "title": "Formatting",
+      "uri": "/docs/Core Concepts/Formatting.md"
+    },
+    {
+      "type": "divider",
+      "title": "Introduction"
+    },
+    {
+      "type": "item",
+      "title": "Authentication",
+      "uri": "/docs/Introduction/Authentication.md"
+    },
+    {
+      "type": "item",
+      "title": "Booking Limitations",
+      "uri": "/docs/Introduction/BookingLimitations.md"
+    },
+    {
+      "type": "item",
+      "title": "Changelog",
+      "uri": "/docs/Introduction/Changelog.md"
+    },
+    {
+      "type": "item",
+      "title": "Discounts",
+      "uri": "/docs/Introduction/Discounts.md"
+    },
+    {
+      "type": "item",
+      "title": "Environments",
+      "uri": "/docs/Introduction/Environments.md"
+    },
+    {
+      "type": "item",
+      "title": "Getting API Access",
+      "uri": "/docs/Introduction/GettingApiAccess.md"
+    },
+    {
+      "type": "item",
+      "title": "Rest API Overview",
+      "uri": "/docs/Introduction/Overview_RestApi.md"
+    },
+    {
+      "type": "item",
+      "title": "Overview",
+      "uri": "/docs/Introduction/Overview.md"
+    },
+    {
+      "type": "item",
+      "title": "Rate Limits & Throttling [Data API]",
+      "uri": "/docs/Introduction/RateLimitsAndThrottling_DataApi.md"
+    },
+    {
+      "type": "item",
+      "title": "Rate Limits & Throttling [Rest API]",
+      "uri": "/docs/Introduction/RateLimitsAndThrottling_RestApi.md"
+    },
+    {
+      "type": "divider",
+      "title": "Resources"
+    },
+    {
+      "type": "item",
+      "title": "Postman Collection",
+      "uri": "/docs/Resources/PostmanCollections.md"
+    },
+    {
+      "type": "item",
+      "title": "Product Type Mapping",
+      "uri": "/docs/Resources/ProductTypeMapping.md"
+    },
+    {
+      "type": "divider",
+      "title": "Use Cases"
+    },
+    {
+      "type": "group",
+      "title": "Guest Spend And Visitation",
       "items": [
         {
           "type": "item",
@@ -120,8 +170,262 @@
     },
     {
       "type": "item",
+      "title": "Rest API Specification",
+      "uri": "/reference/Rest-API.v1.yaml"
+    },
+    {
+      "type": "item",
       "title": "Data API Specification",
-      "uri": "/reference/Data API/DataAPI.yaml"
+      "uri": "/reference/DataAPI.yaml"
+    },
+    {
+      "type": "divider",
+      "title": "Schemas"
+    },
+    {
+      "type": "item",
+      "title": "0_Unused_PaymentCreate",
+      "uri": "/models/0_Unused_PaymentCreate.yaml"
+    },
+    {
+      "type": "item",
+      "title": "0_Unused_QuantityType",
+      "uri": "/models/0_Unused_QuantityType.yaml"
+    },
+    {
+      "type": "item",
+      "title": "0_Unused_ResourceCapacityBlock",
+      "uri": "/models/0_Unused_ResourceCapacityBlock.yaml"
+    },
+    {
+      "type": "item",
+      "title": "BookingCreateDiscount",
+      "uri": "/models/BookingCreateDiscount.yaml"
+    },
+    {
+      "type": "item",
+      "title": "BookingCreateGiftCard",
+      "uri": "/models/BookingCreateGiftCard.yaml"
+    },
+    {
+      "type": "item",
+      "title": "BookingCreateItem",
+      "uri": "/models/BookingCreateItem.yaml"
+    },
+    {
+      "type": "item",
+      "title": "BookingDetail",
+      "uri": "/models/BookingDetail.yaml"
+    },
+    {
+      "type": "item",
+      "title": "BookingItemBasicDetail",
+      "uri": "/models/BookingItemBasicDetail.yaml"
+    },
+    {
+      "type": "item",
+      "title": "BookingTicket",
+      "uri": "/models/BookingTicket.yaml"
+    },
+    {
+      "type": "item",
+      "title": "CreateWebhookConfiguration",
+      "uri": "/models/CreateWebhookConfiguration.yaml"
+    },
+    {
+      "type": "item",
+      "title": "CustomerDetail",
+      "uri": "/models/CustomerDetail.yaml"
+    },
+    {
+      "type": "item",
+      "title": "CustomerFlag",
+      "uri": "/models/CustomerFlag.yaml"
+    },
+    {
+      "type": "item",
+      "title": "CustomerMultiPass",
+      "uri": "/models/CustomerMultiPass.yaml"
+    },
+    {
+      "type": "item",
+      "title": "Discount",
+      "uri": "/models/Discount.yaml"
+    },
+    {
+      "type": "item",
+      "title": "Discount",
+      "uri": "/models/DiscountCreate.yaml"
+    },
+    {
+      "type": "item",
+      "title": "Guest",
+      "uri": "/models/Guest.yaml"
+    },
+    {
+      "type": "item",
+      "title": "Items",
+      "uri": "/models/Items.yaml"
+    },
+    {
+      "type": "item",
+      "title": "LocationBookingRestriction",
+      "uri": "/models/LocationBookingRestriction.yaml"
+    },
+    {
+      "type": "item",
+      "title": "LocationTime",
+      "uri": "/models/LocationTime.yaml"
+    },
+    {
+      "type": "item",
+      "title": "MembershipDetail",
+      "uri": "/models/MembershipDetail.yaml"
+    },
+    {
+      "type": "item",
+      "title": "MultiPass",
+      "uri": "/models/MultiPass.yaml"
+    },
+    {
+      "type": "item",
+      "title": "PackageRequirement",
+      "uri": "/models/PackageRequirement.yaml"
+    },
+    {
+      "type": "item",
+      "title": "Page",
+      "uri": "/models/Page.yaml"
+    },
+    {
+      "type": "item",
+      "title": "PaymentCreate",
+      "uri": "/models/PaymentCreate.yaml"
+    },
+    {
+      "type": "item",
+      "title": "PaymentLink",
+      "uri": "/models/PaymentLink.yaml"
+    },
+    {
+      "type": "item",
+      "title": "ProductAvailability",
+      "uri": "/models/ProductAvailability.yaml"
+    },
+    {
+      "type": "item",
+      "title": "ProductCapacityAllocation",
+      "uri": "/models/ProductCapacityAllocation.yaml"
+    },
+    {
+      "type": "item",
+      "title": "ProductInfo",
+      "uri": "/models/ProductInfo.yaml"
+    },
+    {
+      "type": "item",
+      "title": "ProductLocation",
+      "uri": "/models/ProductLocation.yaml"
+    },
+    {
+      "type": "item",
+      "title": "ProductLocationTime",
+      "uri": "/models/ProductLocationTime.yaml"
+    },
+    {
+      "type": "item",
+      "title": "ProductResourceTimeUsage",
+      "uri": "/models/ProductResourceTimeUsage.yaml"
+    },
+    {
+      "type": "item",
+      "title": "ProductSession",
+      "uri": "/models/ProductSession.yaml"
+    },
+    {
+      "type": "item",
+      "title": "ProductType",
+      "uri": "/models/ProductType.yaml"
+    },
+    {
+      "type": "item",
+      "title": "RedemptionDetail",
+      "uri": "/models/RedemptionDetail.yaml"
+    },
+    {
+      "type": "item",
+      "title": "SaleProduct",
+      "uri": "/models/SaleProduct.yaml"
+    },
+    {
+      "type": "item",
+      "title": "SaleProductPackageItem",
+      "uri": "/models/SaleProductPackageItem.yaml"
+    },
+    {
+      "type": "item",
+      "title": "SalesChannel",
+      "uri": "/models/SalesChannel.yaml"
+    },
+    {
+      "type": "item",
+      "title": "SignedWaiver",
+      "uri": "/models/SignedWaiver.yaml"
+    },
+    {
+      "type": "item",
+      "title": "SignedWaivers",
+      "uri": "/models/SignedWaivers.yaml"
+    },
+    {
+      "type": "item",
+      "title": "Staff",
+      "uri": "/models/Staff.yaml"
+    },
+    {
+      "type": "item",
+      "title": "UpdateProductStock",
+      "uri": "/models/UpdateProductStock.yaml"
+    },
+    {
+      "type": "item",
+      "title": "WebhookFilterProductType",
+      "uri": "/models/WebhookFilterProductType.yaml"
+    },
+    {
+      "type": "item",
+      "title": "BookingBasicDetail",
+      "uri": "/models/BookingBasicDetail.yaml"
+    },
+    {
+      "type": "item",
+      "title": "BookingCreateCustomer",
+      "uri": "/models/BookingCreateCustomer.yaml"
+    },
+    {
+      "type": "item",
+      "title": "BookingCreateCustomerAddress",
+      "uri": "/models/BookingCreateCustomerAddress.yaml"
+    },
+    {
+      "type": "item",
+      "title": "CreateProductStock",
+      "uri": "/models/CreateProductStock.yaml"
+    },
+    {
+      "type": "item",
+      "title": "Discount",
+      "uri": "/models/DiscountUpdate.yaml"
+    },
+    {
+      "type": "item",
+      "title": "ResourceCapacityBlock",
+      "uri": "/models/ResourceCapacityBlock.yaml"
+    },
+    {
+      "type": "item",
+      "title": "WebhookConfiguration",
+      "uri": "/models/WebhookConfiguration.yaml"
     }
   ]
 }
