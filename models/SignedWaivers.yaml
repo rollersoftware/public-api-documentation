@@ -1,11 +1,8 @@
 title: SignedWaivers
-x-stoplight:
-  id: d86sklkh1wkcu
+description: A collection of signed waiver records.
 type: array
 items:
   $ref: ./SignedWaiver.yaml
-  x-stoplight:
-    id: ta994y27aozmh
 examples:
   - - signedWaiverId: 18829121
       waiverId: 13

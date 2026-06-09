@@ -1,6 +1,4 @@
 title: ProductInfo
-x-stoplight:
-  id: ftygq2axasuk9
 type: object
 description: Details of the product variation (ticket type) on offer
 properties:
@@ -8,72 +6,48 @@ properties:
     type: string
     description: Product ID
     example: '107400'
-    x-stoplight:
-      id: yz92zy82ie9j7
   name:
     type: string
     description: Product name
     example: Adult Ticket
     maxLength: 75
-    x-stoplight:
-      id: pks5l260c8ed6
   description:
     type: string
     description: Brief description of the product variation (ticket type)
     example: Adult tickets are for individuals 13 years and older
     maxLength: 150
-    x-stoplight:
-      id: fz209ig1q05i3
   imageUrl:
     type: string
     description: Product image URL
     example: 'https://someimage.com/10002'
-    x-stoplight:
-      id: 95172zy92485u
   cost:
     type: number
     description: Product cost
     example: 24.99
-    x-stoplight:
-      id: 2s5l2nr9p0hhv
   tax:
     type: number
     description: Tax percentage used to calculate the tax amount
     example: 7.5
-    x-stoplight:
-      id: epv2i9ghq7f8l
   isTaxInclusive:
     type: boolean
     description: 'When true, the product cost already includes the tax amount. When false, tax will be added to the cost.'
-    x-stoplight:
-      id: ves2a0babnvqs
   isSuspended:
     type: boolean
-    x-stoplight:
-      id: h6b28u55vrpjd
     description: 'For stock type products, whether sale has been suspended'
   locations:
+    description: The locations at which the product is available.
     type: array
-    x-stoplight:
-      id: 0tggsum5hccna
     items:
       $ref: ./ProductLocation.yaml
-      x-stoplight:
-        id: w65dgi2o61xa2
   recurringSessionDates:
     type: array
-    x-stoplight:
-      id: zqhlil3g6xut3
     description: 'For recurring pass type products, the dates of each session in the format: `yyyy-MM-dd`'
     items:
-      x-stoplight:
-        id: g26dj9wd8sjkf
       type: string
       example: '2025-07-14'
   remainingRecurringSessions:
-    type: integer
-    x-stoplight:
-      id: jobo0jve4xw2h
+    type:
+      - integer
+      - 'null'
     description: The number of sessions remaining for a recurring pass type product
-    nullable: true
     example: 4

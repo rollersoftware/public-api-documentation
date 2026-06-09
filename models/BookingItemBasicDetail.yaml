@@ -1,30 +1,20 @@
 title: BookingItemBasicDetail
-x-stoplight:
-  id: nbab0cmxhsq49
 type: object
 properties:
   productId:
     type: integer
     description: The Id of the product
     example: 12345678
-    x-stoplight:
-      id: pcvefoye35rsw
   quantity:
     type: integer
     description: Quantity of the booking item in the booking
     example: 26
-    x-stoplight:
-      id: 2v49p1hbzfi79
   bookingDate:
     type: string
     description: The date the item is valid for (or from)
     example: '2020-07-31'
-    x-stoplight:
-      id: syv99u2a1wfrw
   startTime:
     type: string
     description: Session start time in 24hr format
     example: '14:30'
-    x-stoplight:
-      id: nrkgc01teszqd
 description: Basic information on a booking item in a booking

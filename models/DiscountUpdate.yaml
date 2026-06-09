@@ -1,21 +1,15 @@
 title: Discount
-x-stoplight:
-  id: etf0v1njhrji9
 type: object
 x-internal: false
 description: 'Configuration details of a discount that specify its behaviour, for updating a discount'
 properties:
   status:
-    x-stoplight:
-      id: dysnv1cpdjqjb
     enum:
       - Active
       - Archived
     description: Whether this discount is valid for use or disabled (archived) instead.
   name:
     type: string
-    x-stoplight:
-      id: b0wpd3mhgxpjs
     example: Summer Discount 2025
     description: Name of the discount (This is not the discount **code**)
     maxLength: 128
@@ -23,36 +17,24 @@ properties:
     type:
       - number
       - 'null'
-    x-stoplight:
-      id: xsnwqga3o54w4
     example: 25.5
     description: The fixed value amount to discount (in venue currency). This field must be `null` if this is a `percentOff` type discount.
   percentOff:
     type:
       - number
       - 'null'
-    x-stoplight:
-      id: y4snlb2v1tk3h
     example: 15
     description: The percent of eligible products to discount. This field must be `null` if this is an `amountOff` type discount.
   productIds:
     type: array
-    x-stoplight:
-      id: iht6yz7mpx1hm
     description: "List of product ID's eligible for being discounted.\r\n- If this is left blank, **all products** ongoing (excl. gift cards) will be eligible.\r\n- If gift card products are included in the list, then it can **only** contain gift card products."
     items:
-      x-stoplight:
-        id: 4xjlmy6ohfuyl
       type: string
       example: '145664'
   salesChannels:
-    x-stoplight:
-      id: 7bieqztqmaxm1
     description: Sales channels where this discount can be redeemed. Optional. An empty list means the discount applies to all sales channels.
     type: array
     items:
-      x-stoplight:
-        id: s6syjjrzqo5nh
       enum:
         - VenueManager
         - POS
@@ -60,12 +42,8 @@ properties:
         - SSK
   discountGenerationChannels:
     type: array
-    x-stoplight:
-      id: m4tjh33sctbfy
     description: Sales channels on which discount codes will be auto-generated for this discount when an eligible booking is completed. Optional. An empty list means generation runs on all sales channels.
     items:
-      x-stoplight:
-        id: jips4z2nyn53c
       enum:
         - VenueManager
         - POS
@@ -73,15 +51,11 @@ properties:
         - SSK
   printDiscountsOnReceipt:
     type: boolean
-    x-stoplight:
-      id: p2pdnrugxmspw
     description: Whether we print issued discount codes on receipts for this discount
   startDate:
     type:
       - string
       - 'null'
-    x-stoplight:
-      id: jiruj0dcfqz6g
     example: '2025-07-14'
     description: 'Booking dates that occur after this date (inclusive) are eligible to have this discount applied. If this field is used, `endDate` will not be `null`.'
     format: date
@@ -89,8 +63,6 @@ properties:
     type:
       - string
       - 'null'
-    x-stoplight:
-      id: l7l8vcq81vpr5
     example: '2025-07-14'
     format: date
     description: 'Booking dates that occur before this date (inclusive) are eligible to have this discount applied. If this field is used, `startDate` will not be `null`.'
@@ -98,13 +70,9 @@ properties:
     type:
       - integer
       - 'null'
-    x-stoplight:
-      id: k8mpoyzcv7y89
     example: 3
     description: 'The number of uses of this discount when a usage limit rule is configured for the discount. This field is `null` when the discount has unlimited usage. If this field is used, `usageLimitType` will not be `null`.'
   usageLimitType:
-    x-stoplight:
-      id: ipsok45uzm71v
     enum:
       - PerCode
     description: 'The type of usage limit rule configured for the discount. This field is `null` when the discount has unlimited usage. If this field is used, `usageLimit` will not be `null`.'

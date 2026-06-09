@@ -1,12 +1,8 @@
 title: BookingCreateGiftCard
-x-stoplight:
-  id: z5zyez6u3eg97
 type: object
 description: A gift card applied to a booking
 properties:
   giftCardNumber:
     type: string
-    x-stoplight:
-      id: 8f2ueieag9xak
     description: A ROLLER or external gift card number
     example: '264445645'

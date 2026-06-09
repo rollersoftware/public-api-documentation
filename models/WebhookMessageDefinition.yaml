@@ -1,0 +1,38 @@
+title: WebhookMessageDefinition
+type: object
+description: 'A received webhook message, containing a data payload'
+properties:
+  id:
+    type: string
+    description: Unique ID of this webhook message
+    example: 67d2ada6-10cc-4177-909d-430f3b2593d4
+    format: uuid
+  sendDate:
+    type: string
+    description: The datetime this webhook message was sent
+    example: '2024-06-14T05:30:48.1597733Z'
+    format: date-time
+  type:
+    description: "The type of webhook payload\r\n\r\nENUM|ID\r\n-|-\r\n`Booking`|`1`\r\n`Redemption`|`3`\r\n`Customer`|`4`\r\n`BulkExport`|`5`\r\n`SignedWaiver`|`7`\r\n`PaymentLink`|`8`"
+    enum:
+      - Booking
+      - Redemption
+      - Customer
+      - BulkExport
+      - SignedWaiver
+      - PaymentLink
+  eventType:
+    description: "The type of event\r\n\r\nENUM|ID\r\n-|-\r\n`Created`|`1`\r\n`Updated`|`2`\r\n`Cancelled`|`3`\r\n`Deleted`|`4`"
+    enum:
+      - Created
+      - Updated
+      - Cancelled
+      - Deleted
+  eventDate:
+    type: string
+    description: The datetime of the event that triggered the webhook message
+    example: '2024-06-14T05:30:48.1132441Z'
+    format: date-time
+  data:
+    type: object
+    description: 'The data payload, for example a [**booking payload**](./BookingDetail.yaml).'

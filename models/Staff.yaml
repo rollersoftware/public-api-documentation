@@ -1,6 +1,4 @@
 title: Staff
-x-stoplight:
-  id: ocpy2l63yo701
 type: object
 description: A ROLLER staff member record
 properties:
@@ -8,64 +6,42 @@ properties:
     type: string
     description: Staff ID of the staff member
     example: '91002'
-    x-stoplight:
-      id: 1xnpzq84jomvx
     deprecated: true
   uniqueId:
     type: string
-    x-stoplight:
-      id: x2n2dlrmfyeaf
     description: Unique ID of the staff member
     format: uuid
   externalId:
     type: string
-    x-stoplight:
-      id: f9wbmrt24j87s
     description: External ID of the staff member
   email:
     type: string
     description: Email address of the staff member
     example: dannysmith@funpark.com
-    x-stoplight:
-      id: y84gn7zxkpv0a
   firstName:
     type: string
     description: First name of the staff member
     example: Danny
-    x-stoplight:
-      id: wbgw63ygbq3sw
   lastName:
     type: string
     description: Last name of the staff member
     example: Smith
-    x-stoplight:
-      id: gr8b2khy0ynkz
   contactNumber:
     type: string
     description: Contact phone number of the staff member
     example: 192-0029-2213
-    x-stoplight:
-      id: pkbqsoc1ver4f
   role:
     type: string
     description: Staff role / permission level
     example: Administrator
-    x-stoplight:
-      id: 5qh5jfo62o3zb
   createdDate:
     type: string
     description: Date the staff record was created
     example: '2020-07-14T03:23:07Z'
     format: date-time
-    x-stoplight:
-      id: 0ezxds7z4exah
   hasVerifiedEmail:
     type: boolean
-    x-stoplight:
-      id: mh0fvd8uur1k0
     description: Indicates whether the staff member's email address has been verified
   isLocked:
     type: boolean
-    x-stoplight:
-      id: u1fudkcsfs8lj
     description: Lock status for the staff member. Prevents login

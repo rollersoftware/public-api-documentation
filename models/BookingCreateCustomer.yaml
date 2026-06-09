@@ -1,6 +1,5 @@
 title: BookingCreateCustomer
-x-stoplight:
-  id: mi2v807wi7qr2
+description: The booking owner (customer) details supplied when creating a booking.
 type: object
 required:
   - firstName
@@ -12,26 +11,18 @@ properties:
     type: string
     description: First name of the booking owner
     example: John
-    x-stoplight:
-      id: s33iicls9dl74
   lastName:
     type: string
     description: Last name of the bookingowner
     example: Smith
-    x-stoplight:
-      id: w23wpga5vaer4
   email:
     type: string
     description: Email address of the booking owner
     example: johnsmith@noemail.com
-    x-stoplight:
-      id: 8rt9y8mq7kjq3
   phone:
     type: string
     description: Phone number of the booking owner
     example: '12345678'
-    x-stoplight:
-      id: z25l62yol2rey
   gender:
     type: string
     enum:
@@ -40,27 +31,17 @@ properties:
       - Other
       - PreferNotToSay
     description: Gender of the booking owner
-    x-stoplight:
-      id: sjcgzxlvk5en6
   acceptMarketing:
     type: boolean
     description: When true the guest has accepted to receive email marketing content
     example: false
-    x-stoplight:
-      id: euydchjbcnk8l
   acceptMarketingSms:
     type: boolean
     description: When true the guest has accepted to receive SMS marketing content
     example: false
-    x-stoplight:
-      id: f4x7tybhcjkma
   taxIdentificationNumber:
     type: string
-    x-stoplight:
-      id: qxprt4c6qpwcn
     maxLength: 64
     description: Tax identification number that may be used for maintaining fiscal compliance
   address:
     $ref: ./BookingCreateCustomerAddress.yaml
-    x-stoplight:
-      id: o3w014j0f2vtl

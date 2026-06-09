@@ -1,28 +1,16 @@
 title: ProductResourceTimeUsage
-x-stoplight:
-  id: oitloh0kdvaog
 allOf:
   - $ref: ./LocationTime.yaml
-    x-stoplight:
-      id: o7swbcjy78a1e
   - type: object
-    x-stoplight:
-      id: lwg1ofz88noqw
     properties:
       remainingCapacity:
         type: integer
-        x-stoplight:
-          id: vihg1fh853zyz
         description: 'Capacity remaining for attached resource(s) for the given time range '
         example: 12
       resourceIds:
         type: array
-        x-stoplight:
-          id: fm1ud0lhq9cdk
         description: List of resource IDs to consume capacity from
         items:
-          x-stoplight:
-            id: chl53i351lras
           type: integer
           example: 30539
 description: Capacity remaining for attached resource(s) for the given time range
