@@ -1,6 +1,4 @@
 title: WebhookFilterProductType
-x-stoplight:
-  id: wp3rm70jvnamn
 enum:
   - Pass
   - SessionPass

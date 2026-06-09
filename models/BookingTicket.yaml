@@ -1,71 +1,48 @@
 title: BookingTicket
-x-stoplight:
-  id: o8szylhory7eb
+description: A single ticket within a booking.
 type: object
 properties:
   ticketId:
     type: string
     description: The ROLLER ticket Id
     example: 2880029-2746533
-    x-stoplight:
-      id: d6s87o0e48j9z
   customTicketId:
     type: string
     description: Ticket identifier specified manually by the user e.g. the code from a pre-printed membership card
     example: '2299300211'
-    x-stoplight:
-      id: njc6zznhjnodt
   ticketHolderName:
     type: string
     description: Name of the ticket holder
     example: Ben Smith
-    x-stoplight:
-      id: aildtp3po7z92
   membershipStatus:
     type: string
     description: 'Only returned if the ticket is a Membership, returns the current status of the membership. Can be - Current, Pending Activation, Declined Payment, Terminated, Pending Cancellation, Upgraded, Expired.'
     example: Current
-    x-stoplight:
-      id: hrr744gdlq0jb
   photoUrl:
     type: string
     description: URL of the photo taken for the ticket holder
     example: 'https://cdn.rollerdigital.com/ticket/6DLMXCk-Efzpkv8XgGg.jpe'
-    x-stoplight:
-      id: nj1u1603ynoj6
   locations:
     type: array
     description: Array of resourceIds of the resources this ticket has reserved capacity for
     example:
       - 2334
       - 2883
-    x-stoplight:
-      id: rhz0y6smq1zn8
     items:
       type: integer
-      x-stoplight:
-        id: 7wcr9tshtyr2g
   customerId:
     type: integer
     description: Customer ID of the customer linked to this specific ticket via an attached waiver
     example: 849993002
-    x-stoplight:
-      id: 78fqun1jqr7w7
   signedWaiverId:
     type: integer
     description: Signed waiver ID of the waiver linked to this specific ticket
     example: 849995753
-    x-stoplight:
-      id: i1nzq9prom9xv
   externalTicketId:
     type: string
-    x-stoplight:
-      id: kj6igw88ik1ui
     description: Deprecated. Replaced by `customTicketId`.
     deprecated: true
   name:
     type: string
-    x-stoplight:
-      id: dfqv5fpyeg9dr
     description: Deprecated. Replaced by `ticketHolderName`.
     deprecated: true

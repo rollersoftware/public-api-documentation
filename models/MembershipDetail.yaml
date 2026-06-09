@@ -1,35 +1,24 @@
 title: MembershipDetail
-x-stoplight:
-  id: hkcl5ny5t7x74
+description: Detail of a membership associated with a booking.
 type: object
 properties:
   membershipId:
     type: integer
-    x-stoplight:
-      id: dpzdr9xrbaod2
+    description: The unique identifier of the membership.
   customerId:
     type:
       - integer
       - 'null'
-    x-stoplight:
-      id: jv3bk4wcjkrgg
+    description: The unique identifier of the customer the membership belongs to.
   bookingItemId:
     type: integer
-    x-stoplight:
-      id: mgf4lsl5l1yic
+    description: The unique identifier of the booking item the membership corresponds to.
   bookingItemPartId:
     type: integer
-    x-stoplight:
-      id: rlv8l85zz8pgk
   recurringCost:
     type: number
-    x-stoplight:
-      id: 1vf0qrj0w7iux
+    description: The recurring payment amount charged for the membership.
   name:
     type: string
-    x-stoplight:
-      id: sn7xhz4n1c6uu
   code:
     type: string
-    x-stoplight:
-      id: ynjv648secyrq

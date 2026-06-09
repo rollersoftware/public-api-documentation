@@ -1,45 +1,31 @@
 title: RedemptionDetail
-x-stoplight:
-  id: jeh5xeo9m5pt6
+description: The redemption detail returned for one or more tickets.
 type: object
 properties:
   redemptions:
+    description: The list of ticket redemptions.
     type: array
-    x-stoplight:
-      id: z0wpp2my5xwpq
     items:
       type: object
-      x-stoplight:
-        id: wh2nxs1jxnv0y
       properties:
         redemptionDate:
           type: string
           description: Date/time of the redemption
           example: '2021-12-07T04:20:35Z'
-          x-stoplight:
-            id: 8ndmljwvoeusr
         ticketHolderName:
           type: string
           description: Name of the ticket holder
           example: Ben Smith
-          x-stoplight:
-            id: i2b8629r6viv3
         ticketId:
           type: string
           description: The ROLLER ticket Id
           example: 2880029-2746533
-          x-stoplight:
-            id: upyeo2bjtnjsj
         customTicketId:
           type: string
           description: Ticket identifier specified manually by the user e.g. the code from a pre-printed membership card
           example: '2299300211'
-          x-stoplight:
-            id: o9eglt1hcu170
         photoUrl:
           type: string
-          x-stoplight:
-            id: xk863z4wp912e
           description: URL of the photo on the ticket
         quantityRedeemed:
           type:
@@ -47,74 +33,48 @@ properties:
             - 'null'
           description: The number of times the ticket has been redeemed (including past redemptions)
           example: 3
-          x-stoplight:
-            id: c0ytq8s9yhne3
         isUsed:
           type: boolean
           description: Whether or not all uses of the ticket have been redeemed. This will always show `false` if the ticket has unlimited uses.
           example: true
-          x-stoplight:
-            id: 3urdqog1djw4d
         deviceId:
           type:
             - integer
             - 'null'
           description: POS device where the ticket was redeemed
           example: 984
-          x-stoplight:
-            id: suy5yk0t7zvuh
         customerId:
           type:
             - integer
             - 'null'
-          x-stoplight:
-            id: 4fphii4p8efux
           example: 1522
           description: Guest ID
         customerFlags:
           type: array
-          x-stoplight:
-            id: qrkhm8ynd2lfk
           items:
             $ref: ./CustomerFlag.yaml
-            x-stoplight:
-              id: cu2jgmp7qmu2h
         membershipStatus:
           type: string
-          x-stoplight:
-            id: a2jbj9sm9qzdn
           description: Status of the membership
           example: Current
         locations:
           type: array
-          x-stoplight:
-            id: hbisoq9hu3lo3
           description: List of resource IDs
           items:
-            x-stoplight:
-              id: fu39oavyiecif
             type: string
         multiPass:
           $ref: ./MultiPass.yaml
-          x-stoplight:
-            id: fmro0ejvacuf0
         numberRedeemed:
           type:
             - integer
             - 'null'
-          x-stoplight:
-            id: eewk9p4f2ht83
           deprecated: true
           description: see `quantityRedeemed`
         externalTicketId:
           type: string
-          x-stoplight:
-            id: ey3tfkxr5040k
           deprecated: true
           description: See `customTicketId`
         name:
           type: string
-          x-stoplight:
-            id: k93q4yz5h8ju0
           deprecated: true
           description: See `ticketHolderName`

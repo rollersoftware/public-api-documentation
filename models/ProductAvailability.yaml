@@ -1,6 +1,4 @@
 title: ProductAvailability
-x-stoplight:
-  id: cp5hunh2zux29
 type: object
 description: Product variation (ticket type) availability
 properties:
@@ -8,19 +6,12 @@ properties:
     type: string
     description: 'Availability date in the format: `yyyy-MM-dd`'
     example: '2025-07-14'
-    x-stoplight:
-      id: edf8hggcvfxuo
   onlineSalesOpen:
     type: boolean
     description: Whether the product is within its sale period
     example: true
-    x-stoplight:
-      id: lw91qcx66xorf
   allocations:
+    description: The capacity allocations available for the product.
     type: array
     items:
       $ref: ./ProductCapacityAllocation.yaml
-      x-stoplight:
-        id: ozn0zfjvidqip
-    x-stoplight:
-      id: yn3p1b4yx45sy

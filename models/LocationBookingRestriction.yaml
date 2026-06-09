@@ -1,6 +1,4 @@
 title: LocationBookingRestriction
-x-stoplight:
-  id: 2tpg7vvsf7xlv
 enum:
   - Multiple Products
   - SingleProduct

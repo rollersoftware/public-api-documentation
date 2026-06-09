@@ -1,6 +1,4 @@
 title: PackageRequirement
-x-stoplight:
-  id: 3e21cmx5zhrqk
 enum:
   - Before
   - After

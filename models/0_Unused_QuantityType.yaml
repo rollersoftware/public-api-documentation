@@ -1,8 +1,0 @@
-title: 0_Unused_QuantityType
-x-stoplight:
-  id: j5xcltvlhy99b
-enum:
-  - Guest
-  - Package
-description: 'The way inclusions are quantified for a party package product, either X items per guest or X items per package'
-x-internal: true

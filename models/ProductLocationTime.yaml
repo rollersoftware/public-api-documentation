@@ -1,28 +1,18 @@
 title: ProductLocationTime
-x-stoplight:
-  id: 08yn51ik9xnpl
 type: object
 description: "Specification for allocating capacity for a specified time, and resource(s)"
 properties:
   startMinutes:
     type: integer
-    x-stoplight:
-      id: 3p5smp3ks8bxm
     description: "The number of minutes after the session begins, to start consuming capacity from the specified resource(s)"
     example: 0
   endMinutes:
     type: integer
-    x-stoplight:
-      id: bgh6ted66w2m2
     description: "The number of minutes after the session begins, to stop consuming capacity from the specified resource(s)"
     example: 60
   locationIds:
     type: array
-    x-stoplight:
-      id: wt76at7xlfj6c
     description: List of resource IDs to consume capacity from
     items:
-      x-stoplight:
-        id: us7s3rc2g91lx
       type: string
       example: "30539"

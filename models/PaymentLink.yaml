@@ -1,49 +1,33 @@
 title: PaymentLink
-x-stoplight:
-  id: ibvfmklcq1qh2
 type: object
 description: Details of a payment event via a payment link
 properties:
   id:
     type: integer
-    x-stoplight:
-      id: drwxhhzenceol
     description: Unique ID of the payment link
     example: 188
   bookingUniqueIdentifier:
     type: string
-    x-stoplight:
-      id: rvufyjlocjmdc
     description: Unique ID of the booking the payment link is for
     example: ffdae420-a912-4d93-9234-9faca5e6194f
   amount:
     type: number
-    x-stoplight:
-      id: 3wkirex0tygmb
     description: Amount paid via the payment link
     example: 23.3
   url:
     type: string
-    x-stoplight:
-      id: 3g1ge2g1p1z6g
     description: URL of the payment link
     example: steven@toastoflondon.com
   email:
     type: string
-    x-stoplight:
-      id: qxvqo6zc7vigw
     description: Email of the booking holder
     example: steven@toastoflondon.com
   phone:
     type: string
-    x-stoplight:
-      id: yynzay06k8m58
     description: Contact phone number of the booking holder
     example: '0475755223'
   bookingPaymentId:
     type:
       - integer
       - 'null'
-    x-stoplight:
-      id: 557fyk9eecvtq
     description: Unique ID of the booking payment record

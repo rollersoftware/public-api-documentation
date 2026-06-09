@@ -1,6 +1,4 @@
 title: ProductSession
-x-stoplight:
-  id: qrqnps3hlmtvv
 type: object
 description: Product variation (ticket type) availability for products that support session times
 properties:
@@ -8,25 +6,17 @@ properties:
     type: string
     description: 'Session availability date in the format: `yyyy-MM-dd`'
     example: '2025-07-14'
-    x-stoplight:
-      id: qqv3h470o0j97
   name:
     type: string
     description: Session name
     example: '1:30 pm'
-    x-stoplight:
-      id: dnrntml6tnse2
   startTime:
     type: string
     description: 'Session start time in the format: `HH:mm`'
     example: '13:30'
-    x-stoplight:
-      id: f350ybfejnwce
   endTime:
     type: string
     description: 'Session end time in the format: `HH:mm`'
-    x-stoplight:
-      id: 7zucouin3ecow
     example: '15:30'
   capacityRemaining:
     type:
@@ -34,42 +24,28 @@ properties:
       - 'null'
     description: "Summary of remaining resource capacity for display purposes\r\n\r\n- Null value means unlimited capacity\r\n- This value varies depending on the type of attached resources\r\n\r\nSee `allocations` for more detailed resource capacity"
     example: 60
-    x-stoplight:
-      id: z2se51f0pwaak
   onlineSalesOpen:
     type: boolean
     description: Whether the product is within its sale period
-    x-stoplight:
-      id: n3jw5rkk6qtca
   resourceCapacityRemaining:
     type:
       - integer
       - 'null'
-    x-stoplight:
-      id: oy9zrvd25693p
     description: Summary of remaining resource capacity. `null` value means no single booking resources are attached to this session.
   ticketCapacityRemaining:
     type:
       - integer
       - 'null'
-    x-stoplight:
-      id: g18wnxgwwx3qn
     description: Summary of remaining ticket capacity. `null` value means unlimited capacity.
   allocations:
+    description: The capacity allocations available for the session.
     type: array
-    x-stoplight:
-      id: 2deju0q3lj7xj
     items:
       $ref: ./ProductCapacityAllocation.yaml
-      x-stoplight:
-        id: x52xn1exo2vwm
   remainingSessionCapacity:
     type:
       - integer
       - 'null'
-    x-stoplight:
-      id: vxz5ea5ffu5i6
     deprecated: true
     description: This has been replaced by other capacity properties
-    nullable: true
     example: 0

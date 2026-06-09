@@ -1,53 +1,33 @@
 title: CustomerMultiPass
-x-stoplight:
-  id: jgyda5l6ryhii
 type: object
 description: Multi-pass balance for a guest
 properties:
   BookingItemId:
     type: integer
-    x-stoplight:
-      id: 815u9g5mldu6y
     description: The booking item identifier for this multi-pass
   ProductId:
     type: integer
-    x-stoplight:
-      id: zk39y8u6syoqx
     description: The product identifier for the multi-pass variation
   ParentProductName:
     type: string
-    x-stoplight:
-      id: feui6s72ciuq3
     description: Name of the parent product the multi-pass belongs to
   Name:
     type: string
-    x-stoplight:
-      id: vqwlfeebrlnhf
     description: Name of the product variation
   UsesRemaining:
     type: integer
-    x-stoplight:
-      id: zwztuec14mnkk
     description: Number of uses remaining on the multi-pass
   UsesTotal:
     type: integer
-    x-stoplight:
-      id: 81x5zsqlo9s8x
     description: Total number of uses allocated to this multi-pass
   ExpiryDate:
     type:
       - string
       - 'null'
-    x-stoplight:
-      id: l3vmm5fajg0vh
     description: 'Date the multi-pass expires, if applicable'
   IsExpired:
     type: boolean
-    x-stoplight:
-      id: mybw0qenjhvpn
     description: Whether the multi-pass has passed its expiry date
   IsExhausted:
     type: boolean
-    x-stoplight:
-      id: 3sbhe0qksk9p9
     description: Whether the multi-pass has no remaining uses

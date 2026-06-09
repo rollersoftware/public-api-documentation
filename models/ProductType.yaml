@@ -1,6 +1,4 @@
 title: ProductType
-x-stoplight:
-  id: dbphu0e8rcqsf
 enum:
   - pass
   - sessionpass

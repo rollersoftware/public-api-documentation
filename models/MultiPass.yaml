@@ -1,66 +1,44 @@
 title: MultiPass
-x-stoplight:
-  id: 9yyxibn9ahypy
 type: object
 description: Multi-pass entitlement details including usage tracking and ownership.
 properties:
   bookingItemId:
     type: integer
-    x-stoplight:
-      id: c0gc1ww4979q6
     description: The booking item identifier for this multi-pass
     example: 257902
   bookingItemPartId:
     type: integer
-    x-stoplight:
-      id: fr95wqom7bn22
     description: The booking item part ID of the multi-pass line item (the specific guest/ticket entry within the multi-pass booking item)
     example: 598032
   productId:
     type: integer
-    x-stoplight:
-      id: yujizep7g0yw8
     description: The product identifier for the multi-pass variation
     example: 37792
   usesRemaining:
     type: integer
-    x-stoplight:
-      id: 2vkgl7hbqcr89
     description: "Number of uses remaining on the multi-pass.\r\n\r\nThis will aggregate all `usesRemaining` if there are several multi-passes originating from the same booking."
     example: 2
   usesTotal:
     type: integer
-    x-stoplight:
-      id: 1va73wfztq7ko
     description: "Total number of uses allocated to this multi-pass.\r\n\r\nThis will not aggregate all `usesTotal` if there are several multi-passes originating from the same booking, it refers to only a single multi-pass."
     example: 3
   expiryDate:
     type:
       - string
       - 'null'
-    x-stoplight:
-      id: upbewzuagw4qi
     description: 'Date the multi-pass expires, if applicable'
     example: '2027-06-03'
   isExpired:
     type: boolean
-    x-stoplight:
-      id: l7t7w0y889ee5
     description: Whether the multi-pass has passed its expiry date
   isExhausted:
     type: boolean
-    x-stoplight:
-      id: 3in1beajq33ru
     description: Whether the multi-pass has no remaining uses
   bookingUniqueId:
     type: string
-    x-stoplight:
-      id: mntc3tn4s0d1n
     description: The unique Id of the booking containing the multi-pass
     example: 51992a23-1036-4ccb-9fa1-09060769d006
   customerId:
     type: string
-    x-stoplight:
-      id: d7thfdv3rrb50
     description: The Guest ID of the guest who purchased the multi-pass
     example: '74545'

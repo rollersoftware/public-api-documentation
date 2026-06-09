@@ -4,81 +4,176 @@ stoplight-id: iglgjf34psufs
 
 # Changelog
 
-> 📝 **Legend**
->
-> - 🖼️ New Function — Several added changes to achieve an overall objective
-> - 🧩 New Interface — Newly added endpoint or webhook
-> - 🏷️ New Property — Newly added property to an existing data structure
-> - 🔧 Improvement — Any changes to naming, behaviour, performance or documentation
-> - 🐛 Bug Fix — Corrections to align actual behaviour with expected behaviour
+All notable changes to ROLLER's public APIs are documented here. This changelog follows the [Keep a Changelog](https://keepachangelog.com/) convention, adapted for ROLLER's release cadence.
 
-**The following table captures recent key changes to ROLLER's Public APIs:**
+Releases are grouped by month and listed most-recent-first. Within each release, changes are grouped by type:
 
-| RELEASE | CHANGE                | DESCRIPTION                                                                                                                                                                                                                                 |
-| ------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |   
-| MAY26 | 🏷️ New Property      | ???Added itemised `discounts` to [**get bookings**](https://docs.roller.app/docs/roller-api/15e02538d6f25) on the DataAPI???
-| MAY26 | 🔧 Improvement        | Added ability to filter by `productType` and `productSubType` to [**get products**](https://docs.roller.app/docs/roller-api/7bbac8eaac480) and [**get product detail**](https://docs.roller.app/docs/rest-api/4036b3635053a)
-| MAY26 | 🏷️ New Property      | Added `multiPass` to [**redemption detail**](https://docs.roller.app/docs/rest-api/jeh5xeo9m5pt6) payload that is sent with redemption webhooks
-| APR26 | 🏷️ New Property      | Added itemised `discounts` to [**get bookings**](https://docs.roller.app/docs/roller-api/15e02538d6f25) on the DataAPI
-| MAR26   | 🖼️ New Function      | Added ability to **Get**, **Create**, **Update**, and **Delete** venue staff accounts via RestAPI. [**Available upon request**](https://helpcenter.roller.software/).
-| MAR26 | 🏷️ New Property      | Added `taxComponents` to [**get venue detail**](https://docs.roller.app/docs/rest-api/e2c768c93c2d6) on the RestAPI
-| MAR26 | 🏷️ New Property      | Added `ianaTimeZone` to [**get venue detail**](https://docs.roller.app/docs/rest-api/e2c768c93c2d6) on the RestAPI
-| MAR26   | 🖼️ New Function      | Added ability to generate and cancel payment links for bookings via API
-| -   | 🧩 New Interface      | Added [**add payment link**](https://docs.roller.app/docs/rest-api/hzi18m1t6nee5) to the RestAPI
-| -   | 🧩 New Interface      | Added [**cancel payment link**](https://docs.roller.app/docs/rest-api/4svhhqdspro2l) to the RestAPI
-| - | 🧩 New Interface      | Added a [**payment link webhook**](https://docs.roller.app/docs/webhooks/7gn4zuznopwes) to be notified when a new payment link has payment submitted
-| FEB26 | 🏷️ New Property      | Added `automaticCancelHours` to [**create booking**](https://docs.roller.app/docs/rest-api/5703708522c6b) on the RestAPI
-| JAN26 | 🏷️ New Property      | Added `operatorName` to [**get POS till reconciliations**](https://docs.roller.app/docs/roller-api/b705c76e55e76) on the DataAPI
-| JAN26 | 🏷️ New Property      | Added a list of booking `payments` to [**get booking detail**](https://docs.roller.app/docs/rest-api/olt8a8nxs75ev) and as an available inclusion for [**booking webhooks**](https://docs.roller.app/docs/rest-api/3a934c551891e)
-| NOV25 | 🏷️ New Property      | Added `acceptMarketingSms` to [**get customers**](https://docs.roller.app/docs/roller-api/67bddadddf571) via DataAPI and [**create a booking**](https://docs.roller.app/docs/rest-api/5703708522c6b), [**create draft booking**](https://docs.roller.app/docs/rest-api/516f25029993a), [**get guest detail**](https://docs.roller.app/docs/rest-api/ee8wtxgbkc0ut), [**update guest detail**](https://docs.roller.app/docs/rest-api/2cfjtwtpmlzp4) via RestAPI
-| OCT25 | 🧩 New Interface      | Added [**signed waivers webhook**](https://docs.roller.app/docs/webhooks/vynaklh7qg8d1) to be notified when a new waiver is signed  
-| OCT25 | 🧩 New Interface      | Added [**get signed waivers**](https://docs.roller.app/docs/rest-api/ajx7r36nll3ez) to the RestAPI
-| OCT25   | 🔧 Improvement      | Added _"Modifying assigned resources for booking items"_ as a new [**Booking Webhook**](https://docs.roller.app/docs/webhooks/branches/main/1tjb4whgq33f0) `Updated` trigger
-| OCT25   | 🏷️ New Property      | Added `multiVenueGiftCardReceivable` and `multiVenueGiftCardPayable` to [**get revenue entries**](https://docs.roller.app/docs/roller-api/branches/main/5cc8264046482) via the DataAPI
-| SEP25   | 🏷️ New Property      | Added `taxIdentificationNumber` to [**get guest detail**](https://docs.roller.app/docs/rest-api/ee8wtxgbkc0ut), [**update guest detail**](https://docs.roller.app/docs/rest-api/2cfjtwtpmlzp4), [**create draft booking**](https://docs.roller.app/docs/rest-api/516f25029993a) and [**create booking**](https://docs.roller.app/docs/rest-api/5703708522c6b) via the RestAPI, and [**get customers**](https://docs.roller.app/docs/roller-api/branches/main/67bddadddf571) via the DataAPI
-| AUG25   | 🏷️ New Property      | Added `fees`, `feeTax`, `subTotal`, `subTotalTax` to [**get booking costs**](https://docs.roller.app/docs/rest-api/branches/main/62e21c34b7ef3) via the RestAPI
-| AUG25   | 🏷️ New Property      | Added booking modifiers `quantity` to [**get bookings**](https://docs.roller.app/docs/roller-api/15e02538d6f25) via the DataAPI
-| AUG25   | 🐛 Bug Fix      | Fixed issue where sometimes booking modifiers would be missing or would have an incorrect `amount` value via the DataAPI 
-| AUG25   | 🖼️ New Function      | Added ability to manage stock products via the RestAPI
-| -   | 🧩 New Interface      | Added [**create stock products**](https://docs.roller.app/docs/rest-api/branches/main/ubj2tlego6it3) to the RestAPI
-| -   | 🧩 New Interface      | Added [**update stock products**](https://docs.roller.app/docs/rest-api/branches/main/4tm9nigd46q92) to the RestAPI
-| -   | 🧩 New Interface      | Added [**update stock quantity**](https://docs.roller.app/docs/rest-api/branches/main/7r5npm6bhkbps) to the RestAPI
-| JUL25   | 🏷️ New Property      | Added `quantity` to [**get booking detail**](https://docs.roller.app/docs/rest-api/olt8a8nxs75ev) via the RestAPI
-| JUL25   | 🏷️ New Property      | Added `manualGiftCardAdjustment` to [**get revenue entries**](https://docs.roller.app/docs/roller-api/5cc8264046482) to surface any manual gift card  adjustments                                                                           |
-| JUL25   | 🏷️ New Property      | Added `taxes` to [**get venue detail**](https://docs.roller.app/docs/rest-api/branches/main/e2c768c93c2d6) to return a list of tax rates defined for the venue                                                                              |
-| JUL25   | 🏷️ New Property      | Added `price`, `taxId`, `barcodeId`, `costOfGoods`, `parLevel` to [**get product detail**](https://docs.roller.app/docs/rest-api/4036b3635053a) via RestAPI                                                                             |
-| JUL25   | 🏷️ New Property      | Added `price`, `taxId`, `barcodeId`, `costOfGoods`, `parLevel` to [**get products**](https://docs.roller.app/docs/roller-api/7bbac8eaac480) via DataAPI                                                                                 |
-| JUN25   | 🐛 Bug Fix            | Fixed issue where [**get booking detail**](https://docs.roller.app/docs/rest-api/olt8a8nxs75ev) via RestAPI did not return discounts at booking item level                                                                                  |
-| JUN25   | 🐛 Bug Fix            | Fixed issue where [**get reporting categories**](https://docs.roller.app/docs/roller-api/45e84b45de286) via DataAPI did not return all productID's if utilising HQ reporting category syncs                                                 |
-| MAY25   | 🏷️ New Property      | Added ability to update ticket `name` to [**update a booking**](https://docs.roller.app/docs/rest-api/v4mzj4t4erwa9) endpoint via RestAPI                                                                                                   |
-| MAY25   | 🔧 Improvement        | Added 'delete guest' as a trigger to `Updated` events for the [**guest webhook**](https://docs.roller.app/docs/webhooks/c9f31wv1iiubf)                                                                                                      |
-| MAY25   | 🧩 New Interface      | Added [**update guest detail**](https://docs.roller.app/docs/rest-api/2cfjtwtpmlzp4) to RestAPI                                                                                                                                         |
-| MAY25   | 🖼️ New Function | Added the ability to backfill historical data over multiple days via [**Bulk Export API**](https://docs.roller.app/docs/bulk-exports/66otoe75x30hk)                                                                                         |
-| -       | 🧩 New Interface      | Added [**bulk export request**](https://docs.roller.app/docs/bulk-exports/w8rlc9iamhm5j) for requesting async downloading of data via bulk export webhook                                                                                   |
-| -       | 🧩 New Interface      | Added new [**bulk export webhook**](https://docs.roller.app/docs/webhooks/qg14o9szv8d26) to be notified when bulk export requests are complete                                                                                              |
-| MAY25   | 🏷️ New Property      | Added `ticketCapacityRemaining` and `resourceCapacityRemaining` properties to [**get product availability**](https://docs.roller.app/docs/rest-api/efb9788ea3808) endpoint via RestAPI.                                                     |
-| MAY25   | 🖼️ New Function | Added the ability to [**manage discounts**](https://docs.roller.app/docs/rest-api/xy4jtgqlldj5o) and discount codes via RestAPI                                                                                                         |
-| -       | 🧩 New Interface      | Added [**get discount**](https://docs.roller.app/docs/rest-api/bmsh1zsubdb7e) to RestAPI                                                                                                                                                    |
-| -       | 🧩 New Interface      | Added ability to [**create discount**](https://docs.roller.app/docs/rest-api/ou0fhbpecax13) via RestAPI                                                                                                                                     |
-| -       | 🧩 New Interface      | Added ability to [**update discount**](https://docs.roller.app/docs/rest-api/cvm27qdwoqjk2) via RestAPI                                                                                                                                     |
-| -       | 🧩 New Interface      | Added ability to [**create discount codes**](https://docs.roller.app/docs/rest-api/armugwijxjpqd) for adding to existing discounts via RestAPI                                                                                              |
-| -       | 🧩 New Interface      | Added ability to [**delete discount codes**](https://docs.roller.app/docs/rest-api/kd4qopxryu3cs) from existing discounts via RestAPI                                                                                                       |
-| MAY25   | 🧩 New Interface      | Added [**get guest detail**](https://docs.roller.app/docs/rest-api/ee8wtxgbkc0ut) to replace "get customer detail" in RestAPI                                                                                                           |
-| MAY25   | 🔧 Improvement        | Marked [**get customer detail**](https://docs.roller.app/docs/rest-api/rx9yreablf0rn) as **deprecated** to rename "customer" to "guest" via RestAPI                                                                                      |
-| APR25   | 🖼️ New Function | Released ability to utilise [**ROLLER Payments via API**](https://docs.roller.app/docs/roller-payments/e4x9qrxpg5iwd) to process transactions when creating bookings via RestAPI.                                                       |
-| APR25   | 🔧 Improvement        | Added the ability to filter by **Product Category** when registering triggers for the [**redemption webhook**](https://docs.roller.app/docs/webhooks/c9ntvneweithh)                                                                         |
-| MAR25   | 🐛 Bug Fix            | Correction of issue where the `cost` field returned by [**get booking detail**](https://docs.roller.app/docs/rest-api/olt8a8nxs75ev) sometimes returned an empty value via RestAPI                                                      |
-| FEB25   | 🖼️ New Function | Added the ability to validate ticket redemptions by the time they were redeemed, using existing redemption devices configured in VM, via RestAPI                                                                                        |
-| -       | 🏷️ New Property      | Added `redemptionDevice` to [**redeem tickets**](https://docs.roller.app/docs/rest-api/fb1d84952285f) via RestAPI                                                                                                                        |
-| FEB25   | 🖼️ New Function | Added ability to manage blocked capacity via RestAPI                                                                                                                                                                                        |
-| -       | 🧩 New Interface      | Added [**search blocked capacity**](https://docs.roller.app/docs/rest-api/l05sayuiqmtk6) via RestAPI                                                                                                                                        |
-| -       | 🧩 New Interface      | Added [**get blocked capacity**](https://docs.roller.app/docs/rest-api/a8e52r56hn5y1) via RestAPI                                                                                                                                           |
-| -       | 🧩 New Interface      | Added ability to [**block capacity**](https://docs.roller.app/docs/rest-api/b50kcv6g4rn95) via RestAPI                                                                                                                                      |
-| -       | 🧩 New Interface      | Added ability to [**delete blocked capacity**](https://docs.roller.app/docs/rest-api/nbs0n5tm0dirn) via RestAPI                                                                                                                             |
-| FEB25   | 🏷️ New Property      | Added guest `flags` to [**get customers**](https://docs.roller.app/docs/roller-api/67bddadddf571) via DataAPI                                                                                                                               |
-| FEB25   | 🏷️ New Property      | Added guest `flags` to [**get customer detail**](https://docs.roller.app/docs/roller-api/67bddadddf571) via RestAPI                                                                                                                         |
-| FEB25   | 🏷️ New Property      | Added `BookingUniqueId`, `meta`: {`ExternalBookingId`}, `bookingName`, `bookingPosNotes`, `bookingTotal`, `bookingFeeAmount`, `bookingEndDate` to [**get bookings**](https://docs.roller.app/docs/roller-api/15e02538d6f25) via DataAPI |
-| FEB25   | 🏷️ New Property      | Added `bookingEndDate`, `customTicketId` to [**update a booking**](https://docs.roller.app/docs/rest-api/v4mzj4t4erwa9) via RestAPI                                                                                                     |
-| FEB25   | 🏷️ New Property      | Added `posNotes` to [**get booking detail**](https://docs.roller.app/docs/webhooks/c9ntvneweithh) via RestAPI                                                                                                                           |
-| FEB25   | 🏷️ New Property      | Added `deviceId` to the [**redemption webhook**](https://docs.roller.app/docs/webhooks/c9ntvneweithh) payload returned via RestAPI                                                                                                      |
-| JAN25   | 🔧 Improvement        | Officially created dedicated API Integration Team to take ownership of our Public API's and documentation                                                                                                                                   |
+- **Added** — New endpoints, webhooks, properties, or capabilities.
+- **Changed** — Changes to naming, behaviour, performance, or documentation.
+- **Deprecated** — Features still available but scheduled for removal.
+- **Fixed** — Corrections that align actual behaviour with expected behaviour.
+
+Each entry notes the affected API (Data API or Rest API) and links to the relevant reference.
+
+## 2026-05
+
+### Added
+
+- `multiPass` property to the [**redemption detail**](../webhooks/webhook-types/redemption-webhook.md) payload sent with redemption webhooks (Rest API).
+
+### Changed
+
+- Added the ability to filter by `productType` and `productSubType` to [**Get products**](../../reference/data-api.yaml#/paths/~1data~1products/get) (Data API) and [**Get product detail**](../../reference/rest-api.yaml#/paths/~1products/get) (Rest API).
+
+## 2026-04
+
+### Added
+
+- Itemised `discounts` to [**Get bookings**](../../reference/data-api.yaml#/paths/~1data~1bookingitems/get) (Data API).
+
+## 2026-03
+
+### Added
+
+- Ability to **get**, **create**, **update**, and **delete** venue staff accounts (Rest API). [**Available upon request**](https://helpcenter.roller.software/).
+- Ability to generate and cancel payment links for bookings via API (Rest API):
+  - [**Add payment link**](../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}~1payments~1links/post) (Rest API).
+  - [**Cancel payment link**](../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}~1payments~1links~1{paymentLinkId}/delete) (Rest API).
+  - [**Payment link webhook**](../webhooks/webhook-types/payment-link-webhook.md) to be notified when a payment is submitted against a new payment link.
+- `taxComponents` property to [**Get venue detail**](../../reference/rest-api.yaml#/paths/~1venues~1me/get) (Rest API).
+- `ianaTimeZone` property to [**Get venue detail**](../../reference/rest-api.yaml#/paths/~1venues~1me/get) (Rest API).
+
+## 2026-02
+
+### Added
+
+- `automaticCancelHours` property to [**Create booking**](../../reference/rest-api.yaml#/paths/~1bookings/post) (Rest API).
+
+## 2026-01
+
+### Added
+
+- `operatorName` property to [**Get POS till reconciliations**](../../reference/data-api.yaml#/paths/~1data~1tillreconciliations/get) (Data API).
+- A list of booking `payments` to [**Get booking detail**](../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}/get), and as an available inclusion for [**booking webhooks**](../webhooks/webhook-types/booking-webhook.md) (Rest API).
+
+## 2025-11
+
+### Added
+
+- `acceptMarketingSms` property to [**Get customers**](../../reference/data-api.yaml#/paths/~1data~1customers/get) (Data API), and to [**Create a booking**](../../reference/rest-api.yaml#/paths/~1bookings/post), [**Create draft booking**](../../reference/rest-api.yaml#/paths/~1bookings~1draft/post), [**Get guest detail**](../../reference/rest-api.yaml#/paths/~1guests~1{guestId}/get), and [**Update guest detail**](../../reference/rest-api.yaml#/paths/~1guests~1{guestId}/put) (Rest API).
+
+## 2025-10
+
+### Added
+
+- [**Signed waivers webhook**](../webhooks/webhook-types/signed-waiver-webhook.md) to be notified when a new waiver is signed.
+- [**Get signed waivers**](../../reference/rest-api.yaml#/paths/~1signed-waivers~1{signedWaiverId}/get) endpoint (Rest API).
+- `multiVenueGiftCardReceivable` and `multiVenueGiftCardPayable` properties to [**Get revenue entries**](../../reference/data-api.yaml#/paths/~1reporting~1revenue-entries/get) (Data API).
+
+### Changed
+
+- Added _"Modifying assigned resources for booking items"_ as a new [**booking webhook**](../webhooks/webhook-types/booking-webhook.md) `Updated` trigger.
+
+## 2025-09
+
+### Added
+
+- `taxIdentificationNumber` property to [**Get guest detail**](../../reference/rest-api.yaml#/paths/~1guests~1{guestId}/get), [**Update guest detail**](../../reference/rest-api.yaml#/paths/~1guests~1{guestId}/put), [**Create draft booking**](../../reference/rest-api.yaml#/paths/~1bookings~1draft/post), and [**Create booking**](../../reference/rest-api.yaml#/paths/~1bookings/post) (Rest API), and to [**Get customers**](../../reference/data-api.yaml#/paths/~1data~1customers/get) (Data API).
+
+## 2025-08
+
+### Added
+
+- Ability to manage stock products (Rest API):
+  - [**Create stock products**](../../reference/rest-api.yaml#/paths/~1products~1stock/post) (Rest API).
+  - [**Update stock products**](../../reference/rest-api.yaml#/paths/~1products~1stock/put) (Rest API).
+  - [**Update stock quantity**](../../reference/rest-api.yaml#/paths/~1products~1stock~1{parentProductId}~1quantity/put) (Rest API).
+- `fees`, `feeTax`, `subTotal`, and `subTotalTax` properties to [**Get booking costs**](../../reference/rest-api.yaml#/paths/~1bookings~1draft~1costs/post) (Rest API).
+- Booking modifiers `quantity` to [**Get bookings**](../../reference/data-api.yaml#/paths/~1data~1bookingitems/get) (Data API).
+
+### Fixed
+
+- Issue where booking modifiers would sometimes be missing or have an incorrect `amount` value (Data API).
+
+## 2025-07
+
+### Added
+
+- `quantity` property to [**Get booking detail**](../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}/get) (Rest API).
+- `manualGiftCardAdjustment` property to [**Get revenue entries**](../../reference/data-api.yaml#/paths/~1reporting~1revenue-entries/get) to surface manual gift card adjustments (Data API).
+- `taxes` property to [**Get venue detail**](../../reference/rest-api.yaml#/paths/~1venues~1me/get) to return a list of tax rates defined for the venue (Rest API).
+- `price`, `taxId`, `barcodeId`, `costOfGoods`, and `parLevel` properties to [**Get product detail**](../../reference/rest-api.yaml#/paths/~1products/get) (Rest API).
+- `price`, `taxId`, `barcodeId`, `costOfGoods`, and `parLevel` properties to [**Get products**](../../reference/data-api.yaml#/paths/~1data~1products/get) (Data API).
+
+## 2025-06
+
+### Fixed
+
+- Issue where [**Get booking detail**](../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}/get) did not return discounts at the booking item level (Rest API).
+- Issue where [**Get reporting categories**](../../reference/data-api.yaml#/paths/~1data~1reportingcategories/get) did not return all product IDs when using HQ reporting category syncs (Data API).
+
+## 2025-05
+
+### Added
+
+- Ability to update ticket `name` via the [**Update a booking**](../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}/put) endpoint (Rest API).
+- [**Update guest detail**](../../reference/rest-api.yaml#/paths/~1guests~1{guestId}/put) endpoint (Rest API).
+- Ability to backfill historical data over multiple days via the [**Bulk Export API**](https://docs.roller.app/docs/bulk-exports/66otoe75x30hk):
+  - [**Bulk export request**](https://docs.roller.app/docs/bulk-exports/w8rlc9iamhm5j) for requesting asynchronous data downloads via the bulk export webhook.
+  - [**Bulk export webhook**](../webhooks/webhook-types/bulk-export-webhook.md) to be notified when bulk export requests are complete.
+- `ticketCapacityRemaining` and `resourceCapacityRemaining` properties to the [**Get product availability**](../../reference/rest-api.yaml#/paths/~1product-availability/get) endpoint (Rest API).
+- Ability to [**manage discounts**](discounts.md) and discount codes (Rest API):
+  - [**Get discount**](../../reference/rest-api.yaml#/paths/~1discounts~1{discountId}/get) (Rest API).
+  - [**Create discount**](../../reference/rest-api.yaml#/paths/~1discounts/post) (Rest API).
+  - [**Update discount**](../../reference/rest-api.yaml#/paths/~1discounts~1{discountId}/put) (Rest API).
+  - [**Create discount codes**](../../reference/rest-api.yaml#/paths/~1discounts~1{discountId}~1codes/post) for adding to existing discounts (Rest API).
+  - [**Delete discount codes**](../../reference/rest-api.yaml#/paths/~1discounts~1{discountId}~1codes/delete) from existing discounts (Rest API).
+- [**Get guest detail**](../../reference/rest-api.yaml#/paths/~1guests~1{guestId}/get) endpoint to replace "get customer detail" (Rest API).
+
+### Changed
+
+- Added "delete guest" as a trigger for `Updated` events on the [**guest webhook**](../webhooks/webhook-types/guest-webhook.md).
+
+### Deprecated
+
+- Marked [**Get customer detail**](../../reference/rest-api.yaml#/paths/~1customers~1{customerId}/get) as deprecated as part of renaming "customer" to "guest" (Rest API).
+
+## 2025-04
+
+### Added
+
+- Ability to use [**ROLLER Payments via API**](https://docs.roller.app/docs/roller-payments/e4x9qrxpg5iwd) to process transactions when creating bookings (Rest API).
+
+### Changed
+
+- Added the ability to filter by **product category** when registering triggers for the [**redemption webhook**](../webhooks/webhook-types/redemption-webhook.md).
+
+## 2025-03
+
+### Fixed
+
+- Issue where the `cost` field returned by [**Get booking detail**](../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}/get) sometimes returned an empty value (Rest API).
+
+## 2025-02
+
+### Added
+
+- Ability to validate ticket redemptions by the time they were redeemed, using existing redemption devices configured in Venue Manager (Rest API):
+  - `redemptionDevice` property to [**Redeem tickets**](../../reference/rest-api.yaml#/paths/~1redemptions/post) (Rest API).
+- Ability to manage blocked capacity (Rest API):
+  - [**Search blocked capacity**](../../reference/rest-api.yaml#/paths/~1capacity-reservation~1block/get) (Rest API).
+  - [**Get blocked capacity**](../../reference/rest-api.yaml#/paths/~1capacity-reservation~1block~1{blockId}/get) (Rest API).
+  - [**Block capacity**](../../reference/rest-api.yaml#/paths/~1capacity-reservation~1block/post) (Rest API).
+  - [**Delete blocked capacity**](../../reference/rest-api.yaml#/paths/~1capacity-reservation~1block~1{blockId}/delete) (Rest API).
+- Guest `flags` to [**Get customers**](../../reference/data-api.yaml#/paths/~1data~1customers/get) (Data API).
+- Guest `flags` to [**Get customer detail**](../../reference/rest-api.yaml#/paths/~1customers~1{customerId}/get) (Rest API).
+- `BookingUniqueId`, `meta`: { `ExternalBookingId` }, `bookingName`, `bookingPosNotes`, `bookingTotal`, `bookingFeeAmount`, and `bookingEndDate` properties to [**Get bookings**](../../reference/data-api.yaml#/paths/~1data~1bookingitems/get) (Data API).
+- `bookingEndDate` and `customTicketId` properties to [**Update a booking**](../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}/put) (Rest API).
+- `posNotes` property to [**Get booking detail**](../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}/get) (Rest API).
+- `deviceId` property to the [**redemption webhook**](../webhooks/webhook-types/redemption-webhook.md) payload (Rest API).
+
+## 2025-01
+
+### Changed
+
+- Established a dedicated API Integration Team to take ownership of ROLLER's public APIs and documentation.

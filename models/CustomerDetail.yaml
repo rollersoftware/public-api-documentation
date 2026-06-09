@@ -1,44 +1,30 @@
 title: CustomerDetail
-x-stoplight:
-  id: yddxdbi3d67av
 type: object
 properties:
   customerId:
     type: integer
     description: Unique ID of the customer record
     example: 27718291
-    x-stoplight:
-      id: 97bbjjb3ym71r
   firstName:
     type: string
     description: First name of the customer
     example: John
-    x-stoplight:
-      id: ne21zbjug2qrb
   lastName:
     type: string
     description: Last name of the customer
     example: Smith
-    x-stoplight:
-      id: pesszaxsgf8j8
   email:
     type: string
     description: Email address of the customer
     example: johnsmith@noemail.com
-    x-stoplight:
-      id: 3eip93e4dgdxv
   phone:
     type: string
     description: Phone number of the customer
     example: '12345678'
-    x-stoplight:
-      id: hkstgzfqx23ja
   dateOfBirth:
     type: string
     description: Date of Birth of the customer in YYYY-MM-DD format
     example: '2001-03-26'
-    x-stoplight:
-      id: arklguk0tzjn8
   gender:
     type: string
     enum:
@@ -48,56 +34,40 @@ properties:
       - PreferNotToSay
     description: 'Gender of the customer, if provided'
     example: Female
-    x-stoplight:
-      id: gh533tancg445
   acceptMarketing:
     type: boolean
     description: When true the customer has accepted to receive marketing content
     example: false
-    x-stoplight:
-      id: mxbcu11u3ubr1
   address:
+    description: The customer's postal address.
     type: object
     properties:
       street:
         type: string
         description: Street number and name of the customer
         example: 123 Fake Street
-        x-stoplight:
-          id: rava5hew8o88k
       suburb:
         type: string
         description: Suburb of the customer
         example: Orange County
-        x-stoplight:
-          id: nei1bnp0z2qcj
       state:
         type: string
         description: State / province of the customer
         example: CA
-        x-stoplight:
-          id: n9nxkoa03rb3i
       postcode:
         type: string
         description: Post code / ZIP code of the customer
         example: '27385'
-        x-stoplight:
-          id: 853wqovega64n
       city:
         type: string
         description: City of the customer
         example: Los Angeles
-        x-stoplight:
-          id: tx6gf0kf4sbm9
       country:
         type: string
         description: Country of the customer
         example: United States
-        x-stoplight:
-          id: 2ujbnifuuohlz
-    x-stoplight:
-      id: y3gcva46rdci0
   flags:
+    description: The flags associated with the customer.
     type: array
     items:
       type: object
@@ -106,22 +76,12 @@ properties:
           type: string
           description: The type of flag against the customer
           example: VIP
-          x-stoplight:
-            id: yvsabcudxeoop
         comment:
           type: string
           description: Extra information about the flag
           example: Friend of the owner
-          x-stoplight:
-            id: jbzsl3wb1pxvv
         expiryDate:
           type: string
           description: The date the flag is set to expire
           example: '2024-11-22'
-          x-stoplight:
-            id: iqc17j97moti7
-      x-stoplight:
-        id: wfky5nirdok0o
-    x-stoplight:
-      id: nq7mbgul94ahp
 description: Detail of a guest record

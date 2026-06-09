@@ -1,37 +1,24 @@
 title: ProductLocation
-x-stoplight:
-  id: mok13ij9icqhl
 type: object
 description: Configuration of resource(s) attached to the product
 properties:
   id:
     type: string
-    x-stoplight:
-      id: jgb86jw3x2ojs
     description: Resource ID
     example: '30539'
   allowMultipleBookings:
     type: boolean
-    x-stoplight:
-      id: 1z2dwnm4cgppd
     description: 'If this is false, this is a single booking resource type'
   bookingRestriction:
     $ref: ./LocationBookingRestriction.yaml
-    x-stoplight:
-      id: t21bvfblbsv9d
   times:
+    description: The times at which the product is available at this location.
     type: array
-    x-stoplight:
-      id: qaiqykx4anrg1
     items:
       $ref: ./LocationTime.yaml
-      x-stoplight:
-        id: eey8113gmedgs
   capacity:
     type:
       - integer
       - 'null'
-    x-stoplight:
-      id: uokrop6c9n1ep
     example: 100
     description: Total resource capacity

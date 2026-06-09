@@ -1,6 +1,5 @@
 title: WebhookConfiguration
-x-stoplight:
-  id: dpd3hesh30jvg
+description: A registered webhook configuration.
 type: object
 x-internal: false
 properties:
@@ -8,250 +7,158 @@ properties:
     type: string
     description: 'The URL we''ll send webhook notifications, must be HTTPS.'
     example: 'https://your-url-to-receive-webhook.com/12345'
-    x-stoplight:
-      id: bhyrdbxx4j3x1
   enabled:
     type: boolean
     description: Whether the webhook subscription is currently active
-    x-stoplight:
-      id: j15sf828plvh1
     default: false
   authentication:
+    description: The authentication details used to secure delivery of the webhook.
     type: object
-    x-stoplight:
-      id: hd14681ka88dq
     properties:
       apiKey:
         type: string
         description: A value used to identify this webhook. Subsequent webhook payloads will include a HTTP header 'x-roller-apikey' with this value.
         example: CRM Trigger Webhook 002
-        x-stoplight:
-          id: 9ep5wwt1kk7hz
   webhooks:
+    description: The set of webhook subscriptions and their configuration.
     type: object
-    x-stoplight:
-      id: gxrgx3lhk1sg7
     properties:
       booking:
         type: object
-        x-stoplight:
-          id: 2ci8yhtoite6m
         properties:
           events:
             type: array
             description: Receive payloads for specific events
-            x-stoplight:
-              id: 7310br381t9wn
             items:
               enum:
                 - Created
                 - Updated
                 - Cancelled
-              x-stoplight:
-                id: ul1i6ff7t1lvi
           include:
             type: object
             description: Additional properties that can be returned with the webhook payload (optional)
-            x-stoplight:
-              id: 0390yjk875cju
             properties:
               externalId:
                 type: boolean
                 description: An ID that can be attached to bookings generated external of ROLLER (eg. 3rd party ticket sales or API created bookings)
                 example: true
-                x-stoplight:
-                  id: vvce3b9487tg3
               tickets:
                 type: boolean
                 description: Return information about specific tickets in the booking such as ticket ID and ticket holder name
                 example: true
-                x-stoplight:
-                  id: ctv5cb0910w0w
               membershipDetail:
                 type: boolean
                 description: Return information about the status of memberships in the booking (if applicable)
                 example: true
-                x-stoplight:
-                  id: 4m3dsmue44ato
               locations:
                 type: boolean
                 description: Return information about which resource each ticket in the booking reserves capacity for
-                x-stoplight:
-                  id: wnktyu18lq6eb
               customerFlags:
                 type: boolean
-                x-stoplight:
-                  id: c2mvet3uzyxnn
                 description: Return information on any guest flags that may be assigned to the guest
               payments:
                 type: boolean
-                x-stoplight:
-                  id: gg65thh6w81ng
                 description: Return information on any payment records that may be against the booking
           filter:
             type: object
             description: Conditional filters on what triggers the webhook (optional).
-            x-stoplight:
-              id: 7v3s6tbafu17h
             properties:
               channels:
                 type: array
-                x-stoplight:
-                  id: mjjenambfum1q
                 items:
                   $ref: ./SalesChannel.yaml
-                  x-stoplight:
-                    id: kwtcyn70o4pel
               productTypes:
                 type: array
                 description: Filter for bookings for specific product types.
-                x-stoplight:
-                  id: a1lkhb8jpoo46
                 items:
                   $ref: ./WebhookFilterProductType.yaml
-                  x-stoplight:
-                    id: oieovfbs0ip1y
               productIds:
                 type: array
                 description: Filter for bookings for specific products by Product ID
-                x-stoplight:
-                  id: fpflwpm43wjc3
                 uniqueItems: true
                 items:
-                  x-stoplight:
-                    id: hstappryz9xv8
                   type: integer
                   example: 42331
               productCategory:
                 type: string
                 description: Filter for bookings for products in a specific product category
                 example: Entry Tickets
-                x-stoplight:
-                  id: q6ks96suufq9i
       redemption:
         type: object
-        x-stoplight:
-          id: zf4i6lm25lqbx
         properties:
           events:
             type: array
             description: Receive payloads for specific events
-            x-stoplight:
-              id: c4bjt868k03rx
             items:
-              x-stoplight:
-                id: nxq0itxz5k3lm
               enum:
                 - Created
           include:
             type: object
             description: Additional properties that can be returned with the webhook payload (optional)
-            x-stoplight:
-              id: 4621vrp7emdbj
             properties:
               membershipDetail:
                 type: boolean
                 example: true
                 description: Return information about the status of memberships in the booking (if applicable)
-                x-stoplight:
-                  id: flwx7zqf71qt3
               multiPassDetail:
                 type: boolean
                 example: true
                 description: Returns information about the multi-pass product (if applicable)
-                x-stoplight:
-                  id: mhmtrhee0kfbt
           filter:
             type: object
-            x-stoplight:
-              id: 3t8q0iejynnlm
             description: Conditional filters on what triggers the webhook (optional).
             properties:
               productIds:
                 type: array
-                x-stoplight:
-                  id: faqhfa21o1wmg
                 description: Filter for redemptions of specific products by Product ID
                 items:
-                  x-stoplight:
-                    id: ezvhnv8n7ty5i
                   type: integer
                   example: 42331
               productCategory:
                 type: string
-                x-stoplight:
-                  id: hu0zep308j2bb
                 description: Filter for redemptions of specific products belonging to a product category
                 example: Entry Tickets
       customer:
         type: object
-        x-stoplight:
-          id: f4qtef6zov5tj
         properties:
           events:
             description: Receive payloads for specific events
             type: array
-            x-stoplight:
-              id: 7bessh497t0fg
             items:
-              x-stoplight:
-                id: 4eqmnq2l43ulf
               enum:
                 - Created
                 - Updated
           include:
             type: object
-            x-stoplight:
-              id: nuee28lk9kswj
             description: Additional properties that can be returned with the webhook payload (optional)
             properties:
               flags:
                 type: boolean
-                x-stoplight:
-                  id: bsnmrvr12c7t1
                 description: Return information on any guest flags that may be assigned to the guest
       bulkExport:
         type: object
-        x-stoplight:
-          id: p2h4njb7y8734
         properties:
           events:
             type: array
-            x-stoplight:
-              id: uq2pfirmay792
             description: Receive payloads for specific events
             items:
-              x-stoplight:
-                id: cv0otnek9gf95
               enum:
                 - Created
       signedWaiver:
         type: object
-        x-stoplight:
-          id: cfj1thzs5qbpk
         properties:
           events:
             type: array
             description: Receive payloads for specific events
-            x-stoplight:
-              id: qbyqk0loofht9
             items:
-              x-stoplight:
-                id: z23apbn1q1dr4
               enum:
                 - Created
       paymentLink:
         type: object
-        x-stoplight:
-          id: znqvoh2ky2vv1
         properties:
           events:
             type: array
             description: Receive payloads for specific events
-            x-stoplight:
-              id: 7i2rs0efyjrfw
             items:
-              x-stoplight:
-                id: ikhcgptqtvnp7
               enum:
                 - Created
