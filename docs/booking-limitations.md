@@ -25,4 +25,4 @@ The maximum booking limitations are:
 
 Where larger bookings are required beyond these limits, we recommend creating several bookings instead.
 
-> Attempting to [**create a booking**](../../reference/rest-api.yaml#/paths/~1bookings/post) beyond these limits returns a `409 Conflict` describing the error.
+> Attempting to [**create a booking**](../reference/rest-api.yaml#/paths/~1bookings/post) beyond these limits returns a `409 Conflict` describing the error.
