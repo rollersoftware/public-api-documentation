@@ -10,7 +10,7 @@ You'll be required to specify a URL for ROLLER to send these notifications with 
 
 All webhooks are sent using HTTP POST.
 
-All webhooks must respect the conditions outlined in [**retry logic and response handling**](RetryLogic.md).
+All webhooks must respect the conditions outlined in [**retry logic and response handling**](retry-logic-and-response-handling.md).
 
 Available webhook types can be found in the sidebar.
 
@@ -20,10 +20,10 @@ Available webhook types can be found in the sidebar.
 
 ## Rest API endpoints for managing webhooks
 
-- [**Create webhooks**](../../reference/rest-api.yaml#/paths/~1webhooks/post)
-- [**View existing webhooks**](../../reference/rest-api.yaml#/paths/~1webhooks/get)
-- [**Update existing webhooks**](../../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/put)
-- [**Delete webhooks**](../../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/delete)
+- [**Create webhooks**](../reference/rest-api.yaml#/paths/~1webhooks/post)
+- [**View existing webhooks**](../reference/rest-api.yaml#/paths/~1webhooks/get)
+- [**Update existing webhooks**](../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/put)
+- [**Delete webhooks**](../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/delete)
 
 <!-- theme: warning -->
 > Please note, deleted or disabled API keys do not currently delete or disable webhooks registered with that API key.

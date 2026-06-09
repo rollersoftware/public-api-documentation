@@ -4,11 +4,11 @@ stoplight-id: 1tjb4whgq33f0
 
 # Booking Webhook
 
-> [**Create**](../../../reference/rest-api.yaml#/paths/~1webhooks/post), [**view**](../../../reference/rest-api.yaml#/paths/~1webhooks/get) and [**delete**](../../../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/delete) webhooks using our Rest API.
+> [**Create**](../reference/rest-api.yaml#/paths/~1webhooks/post), [**view**](../reference/rest-api.yaml#/paths/~1webhooks/get) and [**delete**](../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/delete) webhooks using our Rest API.
 
 ## Payload
 
-The endpoint at the specified URL will receive a [**webhook message definition**](../../../models/WebhookMessageDefinition.yaml) with a [**booking payload**](../../../models/BookingDetail.yaml) under the `data` object.
+The endpoint at the specified URL will receive a [**webhook message definition**](../models/WebhookMessageDefinition.yaml) with a [**booking payload**](../models/BookingDetail.yaml) under the `data` object.
 
 ---
 
@@ -75,7 +75,7 @@ Bookings that trigger this webhook can be specified by including the following o
 * Product IDs
 * Product Category
 
-View the [**create**](../../../reference/rest-api.yaml#/paths/~1webhooks/post) webhooks endpoint for more detail.
+View the [**create**](../reference/rest-api.yaml#/paths/~1webhooks/post) webhooks endpoint for more detail.
 
 > Specifying filters is optional. If multiple filters are specified, the result will be the intersection of both filters. For example if specifying a `productId` and `productCategory` filter, the resulting product must belong to both.
 
@@ -83,16 +83,16 @@ View the [**create**](../../../reference/rest-api.yaml#/paths/~1webhooks/post) w
 
 ## Optional Fields
 
-The following fields will only be returned in the [**booking payload**](../../../models/BookingDetail.yaml) if their corresponding value in the `include` object is `true`:
+The following fields will only be returned in the [**booking payload**](../models/BookingDetail.yaml) if their corresponding value in the `include` object is `true`:
 
-* [**Membership Detail**](../../../models/MembershipDetail.yaml)
-* [**Guest Flags**](../../../models/CustomerFlag.yaml)
+* [**Membership Detail**](../models/MembershipDetail.yaml)
+* [**Guest Flags**](../models/CustomerFlag.yaml)
 * External ID
 * Tickets
 * Locations
 * Payments
 
-View the [**create**](../../../reference/rest-api.yaml#/paths/~1webhooks/post) webhooks endpoint for more detail.
+View the [**create**](../reference/rest-api.yaml#/paths/~1webhooks/post) webhooks endpoint for more detail.
 
 ---
 

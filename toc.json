@@ -1,72 +1,301 @@
 {
   "collapseTableOfContents": false,
   "items": [
-    { "type": "divider", "title": "🌱 Introduction" },
-    { "type": "item", "title": "Overview", "uri": "/docs/introduction/overview.md" },
-    { "type": "item", "title": "Changelog", "uri": "/docs/introduction/changelog.md" },
-    { "type": "item", "title": "Getting API Access", "uri": "/docs/introduction/getting-api-access.md" },
-    { "type": "item", "title": "Environments", "uri": "/docs/introduction/environments.md" },
-    { "type": "item", "title": "Authentication", "uri": "/docs/introduction/authentication.md" },
-    { "type": "item", "title": "Formatting", "uri": "/docs/core-concepts/formatting.md" },
-
-    { "type": "divider", "title": "📦 Resources" },
-    { "type": "item", "title": "Postman Collection", "uri": "/docs/resources/postman-collection.md" },
-    { "type": "item", "title": "Product Type Mapping", "uri": "/docs/resources/product-type-mapping.md" },
-
-    { "type": "divider", "title": "🟢 Rest API" },
-    { "type": "item", "title": "Rate Limits & Throttling [Rest API]", "uri": "/docs/introduction/rate-limits-and-throttling-rest-api.md" },
-    { "type": "item", "title": "Booking Limitations", "uri": "/docs/introduction/booking-limitations.md" },
-    { "type": "item", "title": "Discounts", "uri": "/docs/introduction/discounts.md" },
-    { "type": "group", "title": "Use Cases: Third-Party Checkout", "items": [
-      { "type": "item", "title": "Overview", "uri": "/docs/use-cases/third-party-checkout/overview.md" },
-      { "type": "item", "title": "Checkout Workflow", "uri": "/docs/use-cases/third-party-checkout/checkout-workflow.md" },
-      { "type": "item", "title": "Editing or Deleting Bookings", "uri": "/docs/use-cases/third-party-checkout/editing-or-deleting-bookings.md" },
-      { "type": "item", "title": "Managing Refunds", "uri": "/docs/use-cases/third-party-checkout/managing-refunds.md" }
-    ]},
-    { "type": "item", "title": "Rest API Reference", "uri": "/reference/rest-api.yaml" },
-    { "type": "group", "title": "Schemas", "items": [
-      { "type": "item", "title": "BookingDetail", "uri": "/models/BookingDetail.yaml" },
-      { "type": "item", "title": "CustomerDetail", "uri": "/models/CustomerDetail.yaml" },
-      { "type": "item", "title": "RedemptionDetail", "uri": "/models/RedemptionDetail.yaml" },
-      { "type": "item", "title": "SignedWaivers", "uri": "/models/SignedWaivers.yaml" },
-      { "type": "item", "title": "PaymentLink", "uri": "/models/PaymentLink.yaml" },
-      { "type": "item", "title": "MembershipDetail", "uri": "/models/MembershipDetail.yaml" },
-      { "type": "item", "title": "CustomerFlag", "uri": "/models/CustomerFlag.yaml" },
-      { "type": "item", "title": "MultiPass", "uri": "/models/MultiPass.yaml" }
-    ]},
-
-    { "type": "divider", "title": "🔵 Data API" },
-    { "type": "item", "title": "Rate Limits & Throttling [Data API]", "uri": "/docs/introduction/rate-limits-and-throttling-data-api.md" },
-    { "type": "item", "title": "Filtering & Pagination", "uri": "/docs/core-concepts/filtering-and-pagination.md" },
-    { "type": "group", "title": "Use Cases: Guest Spend & Visitation", "items": [
-      { "type": "item", "title": "Creating Customer Records in ROLLER", "uri": "/docs/use-cases/guest-spend-and-visitation/creating-customer-records.md" },
-      { "type": "item", "title": "Associating Signed Waivers to Customers", "uri": "/docs/use-cases/guest-spend-and-visitation/associating-signed-waivers-to-customers.md" },
-      { "type": "item", "title": "Associating Customers to Bookings", "uri": "/docs/use-cases/guest-spend-and-visitation/associating-customers-to-bookings.md" },
-      { "type": "item", "title": "Visitation", "uri": "/docs/use-cases/guest-spend-and-visitation/visitation.md" },
-      { "type": "item", "title": "Spend", "uri": "/docs/use-cases/guest-spend-and-visitation/spend.md" }
-    ]},
-    { "type": "group", "title": "Use Cases: Membership Metrics", "items": [
-      { "type": "item", "title": "Identifying Membership Bookings", "uri": "/docs/use-cases/membership-metrics/identifying-membership-bookings.md" },
-      { "type": "item", "title": "Identifying Key Membership Properties", "uri": "/docs/use-cases/membership-metrics/identifying-key-membership-properties.md" }
-    ]},
-    { "type": "item", "title": "Data API Reference", "uri": "/reference/data-api.yaml" },
-    { "type": "group", "title": "Schemas", "items": [
-      { "type": "item", "title": "Page", "uri": "/models/Page.yaml" },
-      { "type": "item", "title": "Staff", "uri": "/models/Staff.yaml" }
-    ]},
-
-    { "type": "divider", "title": "🪝 Webhooks" },
-    { "type": "item", "title": "Webhooks Overview", "uri": "/docs/webhooks/overview.md" },
-    { "type": "item", "title": "Creating Webhooks", "uri": "/docs/webhooks/creating-webhooks.md" },
-    { "type": "item", "title": "Retry Logic and Response Handling", "uri": "/docs/webhooks/retry-logic-and-response-handling.md" },
-    { "type": "group", "title": "Webhook Types", "items": [
-      { "type": "item", "title": "Booking Webhook", "uri": "/docs/webhooks/webhook-types/booking-webhook.md" },
-      { "type": "item", "title": "Guest Webhook", "uri": "/docs/webhooks/webhook-types/guest-webhook.md" },
-      { "type": "item", "title": "Redemption Webhook", "uri": "/docs/webhooks/webhook-types/redemption-webhook.md" },
-      { "type": "item", "title": "Bulk Export Webhook", "uri": "/docs/webhooks/webhook-types/bulk-export-webhook.md" },
-      { "type": "item", "title": "Signed Waiver Webhook", "uri": "/docs/webhooks/webhook-types/signed-waiver-webhook.md" },
-      { "type": "item", "title": "Payment Link Webhook", "uri": "/docs/webhooks/webhook-types/payment-link-webhook.md" }
-    ]},
-    { "type": "item", "title": "WebhookMessageDefinition", "uri": "/models/WebhookMessageDefinition.yaml" }
+    {
+      "type": "divider",
+      "title": "\ud83c\udf31 Introduction"
+    },
+    {
+      "type": "item",
+      "title": "Overview",
+      "uri": "/docs/overview.md"
+    },
+    {
+      "type": "item",
+      "title": "Changelog",
+      "uri": "/docs/changelog.md"
+    },
+    {
+      "type": "item",
+      "title": "Getting API Access",
+      "uri": "/docs/getting-api-access.md"
+    },
+    {
+      "type": "item",
+      "title": "Environments",
+      "uri": "/docs/environments.md"
+    },
+    {
+      "type": "item",
+      "title": "Authentication",
+      "uri": "/docs/authentication.md"
+    },
+    {
+      "type": "item",
+      "title": "Formatting",
+      "uri": "/docs/formatting.md"
+    },
+    {
+      "type": "divider",
+      "title": "\ud83d\udce6 Resources"
+    },
+    {
+      "type": "item",
+      "title": "Postman Collection",
+      "uri": "/docs/postman-collection.md"
+    },
+    {
+      "type": "item",
+      "title": "Product Type Mapping",
+      "uri": "/docs/product-type-mapping.md"
+    },
+    {
+      "type": "divider",
+      "title": "\ud83d\udfe2 Rest API"
+    },
+    {
+      "type": "item",
+      "title": "Rest API Reference",
+      "uri": "/reference/rest-api.yaml"
+    },
+    {
+      "type": "item",
+      "title": "Rate Limits & Throttling [Rest API]",
+      "uri": "/docs/rate-limits-and-throttling-rest-api.md"
+    },
+    {
+      "type": "item",
+      "title": "Booking Limitations",
+      "uri": "/docs/booking-limitations.md"
+    },
+    {
+      "type": "item",
+      "title": "Discounts",
+      "uri": "/docs/discounts.md"
+    },
+    {
+      "type": "group",
+      "title": "Schemas",
+      "items": [
+        {
+          "type": "item",
+          "title": "BookingDetail",
+          "uri": "/models/BookingDetail.yaml"
+        },
+        {
+          "type": "item",
+          "title": "CustomerDetail",
+          "uri": "/models/CustomerDetail.yaml"
+        },
+        {
+          "type": "item",
+          "title": "RedemptionDetail",
+          "uri": "/models/RedemptionDetail.yaml"
+        },
+        {
+          "type": "item",
+          "title": "SignedWaivers",
+          "uri": "/models/SignedWaivers.yaml"
+        },
+        {
+          "type": "item",
+          "title": "PaymentLink",
+          "uri": "/models/PaymentLink.yaml"
+        },
+        {
+          "type": "item",
+          "title": "MembershipDetail",
+          "uri": "/models/MembershipDetail.yaml"
+        },
+        {
+          "type": "item",
+          "title": "CustomerFlag",
+          "uri": "/models/CustomerFlag.yaml"
+        },
+        {
+          "type": "item",
+          "title": "MultiPass",
+          "uri": "/models/MultiPass.yaml"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "title": "\ud83d\udd35 Data API"
+    },
+    {
+      "type": "item",
+      "title": "Data API Reference",
+      "uri": "/reference/data-api.yaml"
+    },
+    {
+      "type": "item",
+      "title": "Rate Limits & Throttling [Data API]",
+      "uri": "/docs/rate-limits-and-throttling-data-api.md"
+    },
+    {
+      "type": "item",
+      "title": "Filtering & Pagination",
+      "uri": "/docs/filtering-and-pagination.md"
+    },
+    {
+      "type": "group",
+      "title": "Schemas",
+      "items": [
+        {
+          "type": "item",
+          "title": "Page",
+          "uri": "/models/Page.yaml"
+        },
+        {
+          "type": "item",
+          "title": "Staff",
+          "uri": "/models/Staff.yaml"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "title": "\ud83e\ude9d Webhooks"
+    },
+    {
+      "type": "item",
+      "title": "Webhooks Overview",
+      "uri": "/docs/webhooks-overview.md"
+    },
+    {
+      "type": "item",
+      "title": "Creating Webhooks",
+      "uri": "/docs/creating-webhooks.md"
+    },
+    {
+      "type": "item",
+      "title": "Retry Logic and Response Handling",
+      "uri": "/docs/retry-logic-and-response-handling.md"
+    },
+    {
+      "type": "group",
+      "title": "Webhook Types",
+      "items": [
+        {
+          "type": "item",
+          "title": "Booking Webhook",
+          "uri": "/docs/booking-webhook.md"
+        },
+        {
+          "type": "item",
+          "title": "Guest Webhook",
+          "uri": "/docs/guest-webhook.md"
+        },
+        {
+          "type": "item",
+          "title": "Redemption Webhook",
+          "uri": "/docs/redemption-webhook.md"
+        },
+        {
+          "type": "item",
+          "title": "Bulk Export Webhook",
+          "uri": "/docs/bulk-export-webhook.md"
+        },
+        {
+          "type": "item",
+          "title": "Signed Waiver Webhook",
+          "uri": "/docs/signed-waiver-webhook.md"
+        },
+        {
+          "type": "item",
+          "title": "Payment Link Webhook",
+          "uri": "/docs/payment-link-webhook.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Schemas",
+      "items": [
+        {
+          "type": "item",
+          "title": "WebhookMessageDefinition",
+          "uri": "/models/WebhookMessageDefinition.yaml"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "title": "\ud83e\udde9 Use Cases"
+    },
+    {
+      "type": "group",
+      "title": "Third-Party Checkout",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "/docs/third-party-checkout-overview.md"
+        },
+        {
+          "type": "item",
+          "title": "Checkout Workflow",
+          "uri": "/docs/checkout-workflow.md"
+        },
+        {
+          "type": "item",
+          "title": "Editing or Deleting Bookings",
+          "uri": "/docs/editing-or-deleting-bookings.md"
+        },
+        {
+          "type": "item",
+          "title": "Managing Refunds",
+          "uri": "/docs/managing-refunds.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Guest Spend & Visitation",
+      "items": [
+        {
+          "type": "item",
+          "title": "Creating Customer Records in ROLLER",
+          "uri": "/docs/creating-customer-records.md"
+        },
+        {
+          "type": "item",
+          "title": "Associating Signed Waivers to Customers",
+          "uri": "/docs/associating-signed-waivers-to-customers.md"
+        },
+        {
+          "type": "item",
+          "title": "Associating Customers to Bookings",
+          "uri": "/docs/associating-customers-to-bookings.md"
+        },
+        {
+          "type": "item",
+          "title": "Visitation",
+          "uri": "/docs/visitation.md"
+        },
+        {
+          "type": "item",
+          "title": "Spend",
+          "uri": "/docs/spend.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Membership Metrics",
+      "items": [
+        {
+          "type": "item",
+          "title": "Identifying Membership Bookings",
+          "uri": "/docs/identifying-membership-bookings.md"
+        },
+        {
+          "type": "item",
+          "title": "Identifying Key Membership Properties",
+          "uri": "/docs/identifying-key-membership-properties.md"
+        }
+      ]
+    }
   ]
 }

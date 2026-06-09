@@ -11,8 +11,8 @@ Processing a refund via the API only adds a record of the transaction in ROLLER 
 
 Bookings can be refunded via the API in two ways:
 
-1. Using the [**Payments**](../../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}~1payments/post) endpoint.
-2. Using the [**Cancel a booking**](../../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}~1cancel/post) endpoint.
+1. Using the [**Payments**](../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}~1payments/post) endpoint.
+2. Using the [**Cancel a booking**](../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}~1cancel/post) endpoint.
 
 <!-- theme: warning -->
 > #### When processing refunds via the API
@@ -27,7 +27,7 @@ Bookings can be refunded via the API in two ways:
 2. You create the booking via the API and include the payment transaction details.
 3. Later, the booking is cancelled:
    1. You refund the $30 externally.
-   2. You then cancel the booking via [**Cancel a booking**](../../../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}~1cancel/post) and include the refund transaction details, which logs the refund in ROLLER.
+   2. You then cancel the booking via [**Cancel a booking**](../reference/rest-api.yaml#/paths/~1bookings~1{uniqueId}~1cancel/post) and include the refund transaction details, which logs the refund in ROLLER.
 
 ### Example 2
 

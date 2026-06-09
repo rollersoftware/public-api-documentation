@@ -4,11 +4,11 @@ stoplight-id: 7gn4zuznopwes
 
 # Payment Link Webhook
 
-> [**Create**](../../../reference/rest-api.yaml#/paths/~1webhooks/post), [**view**](../../../reference/rest-api.yaml#/paths/~1webhooks/get) and [**delete**](../../../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/delete) webhooks using our Rest API.
+> [**Create**](../reference/rest-api.yaml#/paths/~1webhooks/post), [**view**](../reference/rest-api.yaml#/paths/~1webhooks/get) and [**delete**](../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/delete) webhooks using our Rest API.
 
 ## Payload
 
-The endpoint at the specified URL will receive a [**webhook message definition**](../../../models/WebhookMessageDefinition.yaml) with a [**payment link payload**](../../../models/PaymentLink.yaml) under the `data` object.
+The endpoint at the specified URL will receive a [**webhook message definition**](../models/WebhookMessageDefinition.yaml) with a [**payment link payload**](../models/PaymentLink.yaml) under the `data` object.
 
 ---
 
