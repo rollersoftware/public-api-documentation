@@ -15,7 +15,7 @@ The Rest API allows you to create and update discount configurations, including 
 
 ## Available discount endpoints
 
-- Data API > [**Get discounts**](../reference/data-api.yaml)
+- Reporting API > [**Get discounts**](../reference/reporting-api.yaml)
 - Rest API > [**Get discount**](../reference/rest-api.yaml)
 - Rest API > [**Update discount**](../reference/rest-api.yaml)
 - Rest API > [**Create discount**](../reference/rest-api.yaml)
@@ -45,14 +45,14 @@ Discount `codes` can be added to or removed from any discount in your venue. How
 | Additional booking rules | ❌ |
 | "Allow multiple uses of a code in the same booking" | ❌ |
 
-> Additional configuration detail can be found using [**Get discounts**](../reference/data-api.yaml) via the Data API.
+> Additional configuration detail can be found using [**Get discounts**](../reference/reporting-api.yaml) via the Reporting API.
 
 ## How do I get all codes for a discount?
 
-Use [**Get discounts**](../reference/data-api.yaml) via the Data API.
+Use [**Get discounts**](../reference/reporting-api.yaml) via the Reporting API.
 
 <!-- theme: warning -->
-> The Data API is not to be used for real-time scenarios. We recommend that discounts are cached on a daily basis or called infrequently.
+> The Reporting API is not to be used for real-time scenarios. We recommend that discounts are cached on a daily basis or called infrequently.
 
 ## How do I validate codes in real time?
 

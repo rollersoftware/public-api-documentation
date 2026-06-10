@@ -1,15 +1,15 @@
 openapi: 3.1.0
 info:
-  title: ROLLER Data API
+  title: ROLLER Reporting API
   version: 1.0.0
   description: >-
-    The ROLLER Data API enables secure, structured, read-only access to your
+    The ROLLER Reporting API enables secure, structured, read-only access to your
     ROLLER data for integration with enterprise data warehouses, analytics
     platforms, and cloud storage solutions. It supports use cases such as
     business intelligence, custom reporting, and data synchronization.
 
 
-    The Data API does not write data to ROLLER and is not intended for
+    The Reporting API does not write data to ROLLER and is not intended for
     real-time use. It is optimised for periodic, paginated export of records on
     a daily frequency, returning data based on each record's modified date so
     that both new and updated records are retrieved in a single call.

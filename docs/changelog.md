@@ -13,7 +13,7 @@ Releases are grouped by month and listed most-recent-first. Within each release,
 - **Deprecated** — Features still available but scheduled for removal.
 - **Fixed** — Corrections that align actual behaviour with expected behaviour.
 
-Each entry notes the affected API (Data API or Rest API) and links to the relevant reference.
+Each entry notes the affected API (Reporting API or Rest API) and links to the relevant reference.
 
 ## 2026-05
 
@@ -23,13 +23,13 @@ Each entry notes the affected API (Data API or Rest API) and links to the releva
 
 ### Changed
 
-- Added the ability to filter by `productType` and `productSubType` to [**Get products**](../reference/data-api.yaml) (Data API) and [**Get product detail**](../reference/rest-api.yaml) (Rest API).
+- Added the ability to filter by `productType` and `productSubType` to [**Get products**](../reference/reporting-api.yaml) (Reporting API) and [**Get product detail**](../reference/rest-api.yaml) (Rest API).
 
 ## 2026-04
 
 ### Added
 
-- Itemised `discounts` to [**Get bookings**](../reference/data-api.yaml) (Data API).
+- Itemised `discounts` to [**Get bookings**](../reference/reporting-api.yaml) (Reporting API).
 
 ## 2026-03
 
@@ -53,14 +53,14 @@ Each entry notes the affected API (Data API or Rest API) and links to the releva
 
 ### Added
 
-- `operatorName` property to [**Get POS till reconciliations**](../reference/data-api.yaml) (Data API).
+- `operatorName` property to [**Get POS till reconciliations**](../reference/reporting-api.yaml) (Reporting API).
 - A list of booking `payments` to [**Get booking detail**](../reference/rest-api.yaml), and as an available inclusion for [**booking webhooks**](booking-webhook.md) (Rest API).
 
 ## 2025-11
 
 ### Added
 
-- `acceptMarketingSms` property to [**Get customers**](../reference/data-api.yaml) (Data API), and to [**Create a booking**](../reference/rest-api.yaml), [**Create draft booking**](../reference/rest-api.yaml), [**Get guest detail**](../reference/rest-api.yaml), and [**Update guest detail**](../reference/rest-api.yaml) (Rest API).
+- `acceptMarketingSms` property to [**Get customers**](../reference/reporting-api.yaml) (Reporting API), and to [**Create a booking**](../reference/rest-api.yaml), [**Create draft booking**](../reference/rest-api.yaml), [**Get guest detail**](../reference/rest-api.yaml), and [**Update guest detail**](../reference/rest-api.yaml) (Rest API).
 
 ## 2025-10
 
@@ -68,7 +68,7 @@ Each entry notes the affected API (Data API or Rest API) and links to the releva
 
 - [**Signed waivers webhook**](signed-waiver-webhook.md) to be notified when a new waiver is signed.
 - [**Get signed waivers**](../reference/rest-api.yaml) endpoint (Rest API).
-- `multiVenueGiftCardReceivable` and `multiVenueGiftCardPayable` properties to [**Get revenue entries**](../reference/data-api.yaml) (Data API).
+- `multiVenueGiftCardReceivable` and `multiVenueGiftCardPayable` properties to [**Get revenue entries**](../reference/reporting-api.yaml) (Reporting API).
 
 ### Changed
 
@@ -78,7 +78,7 @@ Each entry notes the affected API (Data API or Rest API) and links to the releva
 
 ### Added
 
-- `taxIdentificationNumber` property to [**Get guest detail**](../reference/rest-api.yaml), [**Update guest detail**](../reference/rest-api.yaml), [**Create draft booking**](../reference/rest-api.yaml), and [**Create booking**](../reference/rest-api.yaml) (Rest API), and to [**Get customers**](../reference/data-api.yaml) (Data API).
+- `taxIdentificationNumber` property to [**Get guest detail**](../reference/rest-api.yaml), [**Update guest detail**](../reference/rest-api.yaml), [**Create draft booking**](../reference/rest-api.yaml), and [**Create booking**](../reference/rest-api.yaml) (Rest API), and to [**Get customers**](../reference/reporting-api.yaml) (Reporting API).
 
 ## 2025-08
 
@@ -89,28 +89,28 @@ Each entry notes the affected API (Data API or Rest API) and links to the releva
   - [**Update stock products**](../reference/rest-api.yaml) (Rest API).
   - [**Update stock quantity**](../reference/rest-api.yaml) (Rest API).
 - `fees`, `feeTax`, `subTotal`, and `subTotalTax` properties to [**Get booking costs**](../reference/rest-api.yaml) (Rest API).
-- Booking modifiers `quantity` to [**Get bookings**](../reference/data-api.yaml) (Data API).
+- Booking modifiers `quantity` to [**Get bookings**](../reference/reporting-api.yaml) (Reporting API).
 
 ### Fixed
 
-- Issue where booking modifiers would sometimes be missing or have an incorrect `amount` value (Data API).
+- Issue where booking modifiers would sometimes be missing or have an incorrect `amount` value (Reporting API).
 
 ## 2025-07
 
 ### Added
 
 - `quantity` property to [**Get booking detail**](../reference/rest-api.yaml) (Rest API).
-- `manualGiftCardAdjustment` property to [**Get revenue entries**](../reference/data-api.yaml) to surface manual gift card adjustments (Data API).
+- `manualGiftCardAdjustment` property to [**Get revenue entries**](../reference/reporting-api.yaml) to surface manual gift card adjustments (Reporting API).
 - `taxes` property to [**Get venue detail**](../reference/rest-api.yaml) to return a list of tax rates defined for the venue (Rest API).
 - `price`, `taxId`, `barcodeId`, `costOfGoods`, and `parLevel` properties to [**Get product detail**](../reference/rest-api.yaml) (Rest API).
-- `price`, `taxId`, `barcodeId`, `costOfGoods`, and `parLevel` properties to [**Get products**](../reference/data-api.yaml) (Data API).
+- `price`, `taxId`, `barcodeId`, `costOfGoods`, and `parLevel` properties to [**Get products**](../reference/reporting-api.yaml) (Reporting API).
 
 ## 2025-06
 
 ### Fixed
 
 - Issue where [**Get booking detail**](../reference/rest-api.yaml) did not return discounts at the booking item level (Rest API).
-- Issue where [**Get reporting categories**](../reference/data-api.yaml) did not return all product IDs when using HQ reporting category syncs (Data API).
+- Issue where [**Get reporting categories**](../reference/reporting-api.yaml) did not return all product IDs when using HQ reporting category syncs (Reporting API).
 
 ## 2025-05
 
@@ -165,9 +165,9 @@ Each entry notes the affected API (Data API or Rest API) and links to the releva
   - [**Get blocked capacity**](../reference/rest-api.yaml) (Rest API).
   - [**Block capacity**](../reference/rest-api.yaml) (Rest API).
   - [**Delete blocked capacity**](../reference/rest-api.yaml) (Rest API).
-- Guest `flags` to [**Get customers**](../reference/data-api.yaml) (Data API).
+- Guest `flags` to [**Get customers**](../reference/reporting-api.yaml) (Reporting API).
 - Guest `flags` to [**Get customer detail**](../reference/rest-api.yaml) (Rest API).
-- `BookingUniqueId`, `meta`: { `ExternalBookingId` }, `bookingName`, `bookingPosNotes`, `bookingTotal`, `bookingFeeAmount`, and `bookingEndDate` properties to [**Get bookings**](../reference/data-api.yaml) (Data API).
+- `BookingUniqueId`, `meta`: { `ExternalBookingId` }, `bookingName`, `bookingPosNotes`, `bookingTotal`, `bookingFeeAmount`, and `bookingEndDate` properties to [**Get bookings**](../reference/reporting-api.yaml) (Reporting API).
 - `bookingEndDate` and `customTicketId` properties to [**Update a booking**](../reference/rest-api.yaml) (Rest API).
 - `posNotes` property to [**Get booking detail**](../reference/rest-api.yaml) (Rest API).
 - `deviceId` property to the [**redemption webhook**](redemption-webhook.md) payload (Rest API).

@@ -6,13 +6,13 @@ stoplight-id: wz838jhemokzh
 
 ROLLER offers two public APIs that serve different integration needs. Use this page to choose the right one for your use case, then follow the links in the sidebar for setup and reference detail.
 
-## Data API
+## Reporting API
 
-The ROLLER Data API enables secure, structured access to your ROLLER data for integration with enterprise data warehouses, analytics platforms, and cloud storage solutions. It supports use cases like business intelligence, custom reporting, and data synchronization.
+The ROLLER Reporting API enables secure, structured access to your ROLLER data for integration with enterprise data warehouses, analytics platforms, and cloud storage solutions. It supports use cases like business intelligence, custom reporting, and data synchronization.
 
 Key characteristics:
 
-- The Data API is read-only. It does not provide the ability to write data to ROLLER, and it should not be used for real-time use cases, as it does not allow you to query specific records and instead returns paginated data for a time period only.
+- The Reporting API is read-only. It does not provide the ability to write data to ROLLER, and it should not be used for real-time use cases, as it does not allow you to query specific records and instead returns paginated data for a time period only.
 - It is optimised for the periodic export of records on a daily frequency.
 - Available data is returned based on the modified date of the record, so both new and adjusted records are returned in the same call each day and can be updated in your external database.
 

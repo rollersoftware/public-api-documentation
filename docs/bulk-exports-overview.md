@@ -9,7 +9,7 @@ Bulk exports via API allows the ability to backfill historical ROLLER data from 
 ## Steps to setup
 
 1. [**Create a webhook**](creating-webhooks.md) with type **bulkExport** and subscribe to the `Created` event type
-2. Use the [**bulk data export request endpoint**](../reference/data-api.yaml) to submit a new export request
+2. Use the [**bulk data export request endpoint**](../reference/reporting-api.yaml) to submit a new export request
 3. Once the request has finished processing, you'll receive a [**bulk data export payload**](../models/BulkDataExportCompleted.yaml) via the webhook registered in step 1, containing presigned URL's hosting the requested data.
 
 ---
@@ -32,7 +32,7 @@ The following `exportType`'s are supported:
 * `SignedWaivers`
 * `BookingSignedWaivers`
 
-> The format of each export is the same as the corresponding export requests via the [**Data API**](../reference/data-api.yaml).
+> The format of each export is the same as the corresponding export requests via the [**Reporting API**](../reference/reporting-api.yaml).
 
 ---
 
