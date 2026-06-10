@@ -11,5 +11,5 @@ The recommended workflow for an external checkout is as follows:
 3. When the customer proceeds to the next stage of the checkout, collect the required customer information (name, email, and phone).
 4. At this stage, create a [**Capacity reservation**](../reference/rest-api.yaml) for the items the customer has selected. Capacity reservations are valid for 10 minutes.
 5. If the customer adjusts their order or abandons the checkout, [**delete**](../reference/rest-api.yaml) the capacity reservation so that the capacity can be booked by others, or so that a new capacity reservation can be created for the updated order.
-6. Take payment. See [**ROLLER Payments**](https://docs.roller.app/docs/roller-payments/e4x9qrxpg5iwd) for payment processing using ROLLER Payments. If you process payments outside of ROLLER, only a record of a successful payment can be created in ROLLER.
+6. Take payment. See [**ROLLER Payments**](roller-payments-workflow.md) for payment processing using ROLLER Payments. If you process payments outside of ROLLER, only a record of a successful payment can be created in ROLLER.
 7. Once payment is successful, create the booking along with the associated payment and customer information using the [**Create booking**](../reference/rest-api.yaml) endpoint.

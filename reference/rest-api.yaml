@@ -36,6 +36,8 @@ tags:
     description: Retrieve detail about the authenticated venue.
   - name: Webhooks
     description: Webhooks
+  - name: Staff
+    description: 'Create, retrieve, update, and delete staff accounts. Lock, unlock, and send email invitations to staff members.'
 paths:
   /product-availability:
     get:
@@ -2406,6 +2408,178 @@ paths:
       operationId: get-product-availability-calendar
       x-stoplight:
         id: zwrne60rufld4
+  /staff:
+    post:
+      summary: Create staff
+      tags:
+        - Staff
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffResponse'
+        '403':
+          description: Forbidden - Staff management API may be disabled for the venue
+        '409':
+          description: Conflict - Validation or business rule error
+      operationId: create-staff
+      x-stoplight:
+        id: h7d52xvbkchk1
+      description: Create a staff account. See [**managing staff via API**](../docs/managing-staff-via-api.md) for more detail on staff account states and lifecycle.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StaffRequest'
+  '/staff/{uniqueId}':
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: uniqueId
+        in: path
+        required: true
+        description: Unique ID of the staff member
+    get:
+      summary: Get staff
+      tags:
+        - Staff
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffResponse'
+        '403':
+          description: Forbidden - Staff management API may be disabled for the venue
+        '404':
+          description: Not Found - Staff `uniqueId` not found
+      operationId: get-staff
+      x-stoplight:
+        id: 8fxeddhz12zj8
+      description: Get staff detail
+    put:
+      summary: Update staff
+      tags:
+        - Staff
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffResponse'
+        '403':
+          description: Forbidden - Staff management API may be disabled for the venue
+        '404':
+          description: Not Found - Staff `uniqueId` not found
+        '409':
+          description: Conflict - Validation or business rule error
+      operationId: update-staff
+      x-stoplight:
+        id: w4wkae8oqzmtt
+      description: Update staff
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StaffRequest'
+    delete:
+      summary: Delete staff
+      tags:
+        - Staff
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Forbidden - Staff management API may be disabled for the venue
+        '404':
+          description: Not Found - Staff `uniqueId` not found
+      operationId: delete-staff
+      x-stoplight:
+        id: n3q42kie5rjhu
+      description: Delete staff
+  '/staff/{uniqueId}/send-invitation':
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: uniqueId
+        in: path
+        required: true
+        description: Unique ID of the staff member
+    post:
+      summary: Send invitation
+      tags:
+        - Staff
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Forbidden - Staff management API may be disabled for the venue
+        '404':
+          description: Not Found - Staff `uniqueId` not found
+        '409':
+          description: Conflict - Validation or business rule error
+      operationId: send-invitation
+      x-stoplight:
+        id: r3ugbd9cpa2ev
+      description: Send an email invitation to a staff member
+  '/staff/{uniqueId}/lock':
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: uniqueId
+        in: path
+        required: true
+        description: Unique ID of the staff member
+    post:
+      summary: Lock staff
+      tags:
+        - Staff
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Forbidden - Staff management API may be disabled for the venue
+        '404':
+          description: Not Found - Staff `uniqueId` not found
+        '409':
+          description: Conflict - Validation or business rule error
+      operationId: lock-staff
+      x-stoplight:
+        id: xgit2fqsadj2f
+      description: Lock a staff account. Prevents login via email/password and POS PIN.
+  '/staff/{uniqueId}/unlock':
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: uniqueId
+        in: path
+        required: true
+        description: Unique ID of the staff member
+    post:
+      summary: Unlock staff
+      tags:
+        - Staff
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Forbidden - Staff management API may be disabled for the venue
+        '404':
+          description: Not Found - Staff `uniqueId` not found
+        '409':
+          description: Conflict - Validation or business rule error
+      operationId: unlock-staff
+      x-stoplight:
+        id: begjp2uz3c98u
+      description: Unlock a staff account. Only possible if the staff member's email is verified.
 components:
   securitySchemes:
     OAuth2:
@@ -2489,5 +2663,171 @@ components:
       schema:
         type: string
       description: Unique ID of a payment link generated to take payment against a booking
+  schemas:
+    StaffRequest:
+      title: Staff Request
+      x-stoplight:
+        id: dfxems9qj50gp
+      type: object
+      required:
+        - roleId
+        - firstName
+        - lastName
+      properties:
+        roleId:
+          type: integer
+          x-stoplight:
+            id: 5mijjuw926jm9
+          description: 'The unique ID of the role to assign to this staff member, that determines the user''s permissions'
+          example: 1234
+        firstName:
+          type: string
+          x-stoplight:
+            id: zl0xckwpwf5km
+          description: First name of the staff member
+          example: John
+        lastName:
+          type: string
+          x-stoplight:
+            id: hdz5vammj5sny
+          description: Last name of the staff member
+          example: Smith
+        email:
+          type: string
+          x-stoplight:
+            id: vzk9unlwjvqq9
+          description: Email of the staff member. Either an email address or a POS PIN is required.
+          example: john@smith.com
+        posPin:
+          type: string
+          x-stoplight:
+            id: 7evpj1lo773n5
+          description: 'Staff members accessing POS require a PIN, which must be unique to the venue. Either an email address or a POS PIN is required.'
+          example: '123456'
+        externalId:
+          type: string
+          x-stoplight:
+            id: 7rfexjuztvid0
+          description: External ID of the staff member
+          example: abcd
+        contactNumber:
+          type: string
+          x-stoplight:
+            id: 7zs1y74fc7auv
+          description: Contact phone number of the staff member
+          example: '0450000000'
+        displayName:
+          type: string
+          x-stoplight:
+            id: wxsv9x0kdz25f
+          description: An optional nickname used for display purposes in apps and the activity stream
+          example: John Smith
+        staffIdentities:
+          type: array
+          x-stoplight:
+            id: r71fmk8b0tgzw
+          description: 'List of optional staff identities to attribute to this staff member. Requires an email address to set. Updating `staffIdentities` replaces the existing set — if setting several identities, always send the full list.'
+          items:
+            x-stoplight:
+              id: 9afv35a6bcnsj
+            enum:
+              - Account Owner
+              - Primary Contact
+              - Billing Contact
+              - Technical Contact
+        hqVenueGroupTags:
+          type: array
+          x-stoplight:
+            id: b6qgadcghk1hk
+          description: List of hqVenueGroupTags the staff member should have access to (for HQ venues only)
+          items:
+            x-stoplight:
+              id: 9ut9un9j8rre9
+            type: string
+            example: Managed Venues
+        hqVenueUniqueIds:
+          type: array
+          x-stoplight:
+            id: u5sl638vjye3b
+          description: List of hqVenueUniqueIds the staff member should have access to (for HQ venues only)
+          items:
+            x-stoplight:
+              id: fxni8wjniqu5o
+            type: string
+            example: 00000000-0000-0000-0000-000000000000
+            format: uuid
+    StaffResponse:
+      title: Staff Response
+      x-stoplight:
+        id: xz2z8x249es11
+      type: object
+      properties:
+        uniqueId:
+          type: string
+          x-stoplight:
+            id: lhoymo88x84cr
+          description: Unique ID of the staff member
+          format: uuid
+          example: 3c95e94e-242e-4f38-85f6-7270fbfffeac
+        roleId:
+          type: integer
+          description: 'The unique ID of the role to assign to this staff member, that determines the user''s permissions'
+          example: 1234
+        firstName:
+          type: string
+          description: First name of the staff member
+          example: John
+        lastName:
+          type: string
+          description: Last name of the staff member
+          example: Smith
+        email:
+          type: string
+          description: Email of the staff member
+          example: john@smith.com
+        externalId:
+          type: string
+          description: External ID of the staff member
+          example: abcd
+        contactNumber:
+          type: string
+          description: Contact phone number of the staff member
+          example: '0450000000'
+        displayName:
+          type: string
+          description: An optional nickname used for display purposes in apps and the activity stream
+          example: John Smith
+        staffIdentities:
+          type: array
+          description: 'List of optional staff identities attributed to this staff member.'
+          items:
+            enum:
+              - Account Owner
+              - Primary Contact
+              - Billing Contact
+              - Technical Contact
+        hqVenueGroupTags:
+          type: array
+          description: List of hqVenueGroupTags the staff member has access to (for HQ venues only)
+          items:
+            type: string
+            example: Managed Venues
+        hqVenueUniqueIds:
+          type: array
+          description: List of hqVenueUniqueIds the staff member has access to (for HQ venues only)
+          items:
+            type: string
+            example: 00000000-0000-0000-0000-000000000000
+            format: uuid
+        hasVerifiedEmail:
+          type: boolean
+          x-stoplight:
+            id: 9xpvo1m10dicn
+          description: Indicates whether the staff member's email address has been verified
+        isLocked:
+          type: boolean
+          x-stoplight:
+            id: 3fqmo5imjy5lf
+          description: Lock status for the staff member. Prevents login.
 security:
   - OAuth2: []

@@ -31,3 +31,37 @@ The Data API does not support querying individual records. Instead, it provides 
 - Your monthly call limit is governed by your **ROLLER agreement** or API access **add-on plan**.
 - Exceeding limits may lead to **additional charges** or **suspension** of access.
 - API usage stats per endpoint are viewable in **Venue Manager > Settings > Integrations > API keys**.
+
+---
+
+## Bulk Exports
+
+### Rate limit
+
+* You are limited to **one request every 6 hours**, per `exportType`, per venue.
+* There is no limit on date range.
+
+<!-- theme: warning -->
+> * This rate limit is enforced and will result in a `429 Too Many Requests` response if ignored.
+
+### API usage
+
+API usage is calculated depending on the size and date range of the request:
+
+* `1 usage` per 10,000 records, per calendar month.
+
+> #### Usage Examples
+> * A request from `2020/01/01` to `2020/04/01` spans 3 calendar months, and returns `1` record per month
+>   * This would count as `3 uses`
+> ---
+> * A request from `2020/01/28` to `2020/03/5` spans 3 calendar months, and returns `25,000` records per month
+>   * This would count as `9 uses`
+> ---
+> * A request from `2020/04/10` to `2020/05/10` spans 2 calendar months, and returns `600` and `0` records for **APR**, **MAY** respectively
+>   * This would count as `1 use`
+
+### Monthly call limit
+
+- This is governed by your **ROLLER agreement** or API access **Add-On plan**.
+- Exceeding limits may lead to **additional charges** or **suspension** of access.
+- API usage stats per endpoint are viewable via `Venue Manager > Settings > Integrations > API Keys`.

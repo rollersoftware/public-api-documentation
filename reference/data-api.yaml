@@ -2711,6 +2711,73 @@ paths:
           in: query
           name: bookingReferences
           description: Booking references specified in comma separated value. Max limit is 100.
+  /reporting/bulk:
+    post:
+      summary: Bulk data export request
+      tags:
+        - Bulk Exports
+      responses:
+        '200':
+          description: Successful
+        '400':
+          description: Bad Request
+        '429':
+          description: Too Many Requests
+      operationId: post-reporting-bulk
+      x-stoplight:
+        id: w8rlc9iamhm5j
+      description: Submit a bulk data export request. Once processed, a webhook of type `bulkExport` will be sent to subscribed endpoints containing presigned URL(s) to download the exported data.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - exportType
+                - startDate
+                - endDate
+              properties:
+                exportType:
+                  x-stoplight:
+                    id: 3cck3fduwwo2r
+                  example: RevenueEntries
+                  enum:
+                    - RevenueEntries
+                    - Customers
+                    - Attendance
+                    - Payments
+                    - MembershipRedemptions
+                    - MembershipStatuses
+                    - MembershipCredits
+                    - Tickets
+                    - Giftcards
+                    - BookingItems
+                    - PosTillReconciliations
+                    - SignedWaivers
+                    - BookingSignedWaivers
+                  description: The type of data to export.
+                startDate:
+                  type: string
+                  x-stoplight:
+                    id: sln6iu5jgpcpk
+                  format: date
+                  description: 'The start date (inclusive) you need the data for. Format: `yyyy-MM-dd`'
+                  example: '2020-01-01'
+                endDate:
+                  type: string
+                  x-stoplight:
+                    id: vui3c30dcj5r4
+                  format: date
+                  example: '2021-06-01'
+                  description: "The end date (exclusive) you need data for in ISO8601 date format (`yyyy-MM-dd`)\n\nNote: Must be at least 1 day after `startDate`\n\nNote: The end date is exclusive, so if you want data for all of July 2025:\n- `startDate`: `2025-07-01`\n- `endDate`: `2025-08-01`"
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - Offset
+          in: header
+          name: TimeZone-Designators
+          description: 'Optional. By default all dates and times in the export files will be in UTC unless this header value is specified as `offset`, after which the venue timezone will be used instead. Note: This does not affect the date range parameters `startDate` or `endDate` which are always in the venue timezone.'
 components:
   securitySchemes:
     OAuth2:
