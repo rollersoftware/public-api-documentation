@@ -111,6 +111,11 @@
       "uri": "/docs/booking-limitations.md"
     },
     {
+      "type": "item",
+      "title": "Managing Staff via API",
+      "uri": "/docs/managing-staff-via-api.md"
+    },
+    {
       "type": "divider",
       "title": "🔵 Data API"
     },
@@ -134,6 +139,11 @@
           "uri": "/models/Staff.yaml"
         }
       ]
+    },
+    {
+      "type": "item",
+      "title": "Bulk Exports Overview",
+      "uri": "/docs/bulk-exports-overview.md"
     },
     {
       "type": "item",
@@ -162,6 +172,11 @@
           "type": "item",
           "title": "WebhookMessageDefinition",
           "uri": "/models/WebhookMessageDefinition.yaml"
+        },
+        {
+          "type": "item",
+          "title": "BulkDataExportCompleted",
+          "uri": "/models/BulkDataExportCompleted.yaml"
         }
       ]
     },
@@ -243,6 +258,22 @@
           "type": "item",
           "title": "Managing Refunds",
           "uri": "/docs/managing-refunds.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "ROLLER Payments",
+      "items": [
+        {
+          "type": "item",
+          "title": "Workflow",
+          "uri": "/docs/roller-payments-workflow.md"
+        },
+        {
+          "type": "item",
+          "title": "Version History",
+          "uri": "/docs/roller-payments-version-history.md"
         }
       ]
     },

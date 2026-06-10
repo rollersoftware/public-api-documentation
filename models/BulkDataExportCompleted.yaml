@@ -1,0 +1,45 @@
+title: Bulk Data Export Completed
+x-stoplight:
+  id: 407cs5vvmjb16
+type: object
+properties:
+  venueId:
+    type: integer
+    x-stoplight:
+      id: d37ovve1o98oj
+    description: Venue ID
+    example: 3066
+  preSignedUrls:
+    type: array
+    description: 'The URL(s) with the data to be downloaded in JSON format. '
+    x-stoplight:
+      id: 1ajzammwk33fx
+    items:
+      x-stoplight:
+        id: dkhhyilm7q3l6
+      type: string
+      example: 'https://roller-locala.s3.ap-southeast-2.amazonaws.com/bulk-exports/4-EbqmlvPZW0mA-ZVgfGrgGg-20240501-BookingItems.json'
+  exportType:
+    type: string
+    description: The type of export that was requested
+    example: BookingItems
+    x-stoplight:
+      id: k3ohsoxfl8v8l
+  processId:
+    type: string
+    description: Unique IDs for a sequence batch
+    example: EbqmlvPZW0mA-ZVgfGrgGg
+    x-stoplight:
+      id: lqtuhvzbhl0yn
+  sequenceNumber:
+    type: integer
+    description: The current webhook response number
+    example: 1
+    x-stoplight:
+      id: kk58u40ofl7h2
+  sequenceTotal:
+    type: integer
+    description: The number of expected webhook responses
+    example: 6
+    x-stoplight:
+      id: g3tib78fd9a4h
