@@ -15,13 +15,13 @@ The Rest API allows you to create and update discount configurations, including 
 
 ## Available discount endpoints
 
-- Data API > [**Get discounts**](../reference/data-api.yaml#/paths/~1data~1discounts/get)
-- Rest API > [**Get discount**](../reference/rest-api.yaml#/paths/~1discounts~1{discountId}/get)
-- Rest API > [**Update discount**](../reference/rest-api.yaml#/paths/~1discounts~1{discountId}/put)
-- Rest API > [**Create discount**](../reference/rest-api.yaml#/paths/~1discounts/post)
-- Rest API > [**Create discount codes**](../reference/rest-api.yaml#/paths/~1discounts~1{discountId}~1codes/post)
-- Rest API > [**Delete discount codes**](../reference/rest-api.yaml#/paths/~1discounts~1{discountId}~1codes/delete)
-- Rest API > [**Booking costs**](../reference/rest-api.yaml#/paths/~1bookings~1draft~1costs/post) (for **discount code validation**)
+- Data API > [**Get discounts**](../reference/data-api.yaml)
+- Rest API > [**Get discount**](../reference/rest-api.yaml)
+- Rest API > [**Update discount**](../reference/rest-api.yaml)
+- Rest API > [**Create discount**](../reference/rest-api.yaml)
+- Rest API > [**Create discount codes**](../reference/rest-api.yaml)
+- Rest API > [**Delete discount codes**](../reference/rest-api.yaml)
+- Rest API > [**Booking costs**](../reference/rest-api.yaml) (for **discount code validation**)
 
 ## What discount configurations are currently supported?
 
@@ -45,21 +45,21 @@ Discount `codes` can be added to or removed from any discount in your venue. How
 | Additional booking rules | ❌ |
 | "Allow multiple uses of a code in the same booking" | ❌ |
 
-> Additional configuration detail can be found using [**Get discounts**](../reference/data-api.yaml#/paths/~1data~1discounts/get) via the Data API.
+> Additional configuration detail can be found using [**Get discounts**](../reference/data-api.yaml) via the Data API.
 
 ## How do I get all codes for a discount?
 
-Use [**Get discounts**](../reference/data-api.yaml#/paths/~1data~1discounts/get) via the Data API.
+Use [**Get discounts**](../reference/data-api.yaml) via the Data API.
 
 <!-- theme: warning -->
 > The Data API is not to be used for real-time scenarios. We recommend that discounts are cached on a daily basis or called infrequently.
 
 ## How do I validate codes in real time?
 
-Use the [**Booking costs**](../reference/rest-api.yaml#/paths/~1bookings~1draft~1costs/post) endpoint.
+Use the [**Booking costs**](../reference/rest-api.yaml) endpoint.
 
 ## What happens when I add new codes to an existing discount?
 
-When using [**Update discount**](../reference/rest-api.yaml#/paths/~1discounts~1{discountId}/put), all codes are additional to existing codes — they do not replace them. Codes can only be removed via [**Delete discount codes**](../reference/rest-api.yaml#/paths/~1discounts~1{discountId}~1codes/delete).
+When using [**Update discount**](../reference/rest-api.yaml), all codes are additional to existing codes — they do not replace them. Codes can only be removed via [**Delete discount codes**](../reference/rest-api.yaml).
 
 > When codes are batch uploaded to a discount manually via Venue Manager, **this overwrites all existing codes**.

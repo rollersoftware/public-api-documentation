@@ -15,7 +15,7 @@ Depending on the type and quantity of data, endpoints are either filtered by the
 - See the [**Formatting**](formatting.md) page for more information.
 
 <!-- theme: warning -->
-> The [**Get revenue entries**](../reference/data-api.yaml#/paths/~1reporting~1revenue-entries/get) endpoint is an exception and **does not** filter based on modified date — it filters based on the **event date**.
+> The [**Get revenue entries**](../reference/data-api.yaml) endpoint is an exception and **does not** filter based on modified date — it filters based on the **event date**.
 >
 > Booking records can be updated without any change to the event date. Records for bookings can occur over multiple dates, and individual records are **never modified**, so you should not clear out stored records (unless you are calling data for a date you previously stored data for).
 >

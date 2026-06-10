@@ -4,7 +4,7 @@ stoplight-id: c9ntvneweithh
 
 # Redemption Webhook
 
-> [**Create**](../reference/rest-api.yaml#/paths/~1webhooks/post), [**view**](../reference/rest-api.yaml#/paths/~1webhooks/get) and [**delete**](../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/delete) webhooks using our Rest API.
+> [**Create**](../reference/rest-api.yaml), [**view**](../reference/rest-api.yaml) and [**delete**](../reference/rest-api.yaml) webhooks using our Rest API.
 
 ## Payload
 
@@ -32,7 +32,7 @@ Bookings that trigger this webhook can be specified by including the following o
 * Product IDs
 * Product Category
 
-View the [**create**](../reference/rest-api.yaml#/paths/~1webhooks/post) webhooks endpoint for more detail.
+View the [**create**](../reference/rest-api.yaml) webhooks endpoint for more detail.
 
 > Specifying filters is optional. If multiple filters are specified, the result will be the intersect of both filters. For example if specifying a `productId` and `productCategory` filter, the resulting product must belong to both.
 
@@ -45,4 +45,4 @@ The following fields will only be returned in the [**redemption payload**](../mo
 * [**Membership Detail**](../models/MembershipDetail.yaml)
 * [**Multi-Pass Detail**](../models/MultiPass.yaml)
 
-View the [**create**](../reference/rest-api.yaml#/paths/~1webhooks/post) webhooks endpoint for more detail.
+View the [**create**](../reference/rest-api.yaml) webhooks endpoint for more detail.
