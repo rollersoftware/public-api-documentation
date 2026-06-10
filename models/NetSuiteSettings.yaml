@@ -1,0 +1,17 @@
+title: NetSuiteSettings
+x-stoplight:
+  id: of2spa3c2ucvo
+type: object
+properties:
+  locationId:
+    type: string
+    x-stoplight:
+      id: 9wsnfid028ii8
+    example: SZ-USA-RIVERSIDE-01
+    description: "External venue identifier used to map this venue to a location in NetSuite.\r\nConsumed by the HQ consolidated reports. Up to 64 characters. Pass null or omit to clear."
+  exportId:
+    type: string
+    x-stoplight:
+      id: quw0f5x8fpa66
+    example: NS-EXPORT-2026
+    description: "NetSuite export identifier used as a prefix for export row IDs. Up to 64 characters.\r\nPass null or omit to clear."
