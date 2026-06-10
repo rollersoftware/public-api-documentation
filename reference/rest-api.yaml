@@ -1,9 +1,9 @@
 openapi: 3.1.0
 info:
-  title: ROLLER Rest API
+  title: ROLLER REST API
   version: 1.0.0
   description: |-
-    The ROLLER Rest API is a general-purpose API that supports real-time use cases and enables the creation of ROLLER bookings. Use it to check product availability, reserve capacity, create and manage bookings, record payments, manage discounts, redeem tickets, and configure webhooks.
+    The ROLLER REST API is a general-purpose API that supports real-time use cases and enables the creation of ROLLER bookings. Use it to check product availability, reserve capacity, create and manage bookings, record payments, manage discounts, redeem tickets, and configure webhooks.
 
     All requests are authenticated using the OAuth 2.0 client credentials flow. See the Authentication and Getting API Access guides for setup, and the Environments guide for base URLs.
   contact:

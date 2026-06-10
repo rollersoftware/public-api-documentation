@@ -4,7 +4,7 @@ stoplight-id: qg14o9szv8d26
 
 # Bulk Export Webhook
 
-> [**Create**](../reference/rest-api.yaml), [**view**](../reference/rest-api.yaml) and [**delete**](../reference/rest-api.yaml) webhooks using our Rest API.
+> [**Create**](../reference/rest-api.yaml), [**view**](../reference/rest-api.yaml) and [**delete**](../reference/rest-api.yaml) webhooks using our REST API.
 
 ## Payload
 
