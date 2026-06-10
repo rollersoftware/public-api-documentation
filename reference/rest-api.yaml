@@ -2,16 +2,10 @@ openapi: 3.1.0
 info:
   title: ROLLER Rest API
   version: 1.0.0
-  description: >-
-    The ROLLER Rest API is a general-purpose API that supports real-time use
-    cases and enables the creation of ROLLER bookings. Use it to check product
-    availability, reserve capacity, create and manage bookings, record
-    payments, manage discounts, redeem tickets, and configure webhooks.
+  description: |-
+    The ROLLER Rest API is a general-purpose API that supports real-time use cases and enables the creation of ROLLER bookings. Use it to check product availability, reserve capacity, create and manage bookings, record payments, manage discounts, redeem tickets, and configure webhooks.
 
-
-    All requests are authenticated using the OAuth 2.0 client credentials flow.
-    See the Authentication and Getting API Access guides for setup, and the
-    Environments guide for base URLs.
+    All requests are authenticated using the OAuth 2.0 client credentials flow. See the Authentication and Getting API Access guides for setup, and the Environments guide for base URLs.
   contact:
     name: ROLLER API Integration Team
     url: 'https://www.roller.software/'
@@ -23,29 +17,21 @@ servers:
     description: Playground (Test Environment)
 tags:
   - name: Product
-    description: >-
-      Retrieve product availability and product detail, and manage stock
-      products.
+    description: 'Retrieve product availability and product detail, and manage stock products.'
   - name: Booking Information
     description: Search for bookings and retrieve the detail of a single booking.
   - name: Booking Management
-    description: >-
-      Create, update, cancel, and delete bookings, including draft bookings.
+    description: 'Create, update, cancel, and delete bookings, including draft bookings.'
   - name: Capacity Reservation
-    description: >-
-      Reserve and release product capacity, and manage resource capacity
-      blocks.
+    description: 'Reserve and release product capacity, and manage resource capacity blocks.'
   - name: Transaction
-    description: >-
-      Record payments and refunds against bookings, calculate booking costs,
-      and manage payment links.
+    description: 'Record payments and refunds against bookings, calculate booking costs, and manage payment links.'
   - name: Discount
-    description: Create, retrieve, and update discounts, and manage discount codes.
+    description: 'Create, retrieve, and update discounts, and manage discount codes.'
   - name: Redemption
     description: Redeem tickets against a booking.
   - name: Guest
-    description: >-
-      Retrieve and update guest records, multi-passes, and signed waivers.
+    description: 'Retrieve and update guest records, multi-passes, and signed waivers.'
   - name: Venue Information
     description: Retrieve detail about the authenticated venue.
   - name: Webhooks
@@ -160,13 +146,13 @@ paths:
             example: Pass
           in: query
           name: productType
-          description: 'Optionally filter by product type. See [**product type mapping**](../docs/product-type-mapping.md).'
+          description: 'Optionally filter by product type. See [**product type mapping**](../docs/resources/product-type-mapping.md).'
         - schema:
             type: string
             example: Membership
           in: query
           name: productSubType
-          description: 'Optionally filter by product sub type. See [**product type mapping**](../docs/product-type-mapping.md).'
+          description: 'Optionally filter by product sub type. See [**product type mapping**](../docs/resources/product-type-mapping.md).'
       responses:
         '200':
           description: Successful
@@ -2384,15 +2370,47 @@ paths:
                             type: string
                             format: uuid
       operationId: getVenueDetail
+  /netsuite-settings:
+    get:
+      summary: Get NetSuite Settings
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/NetSuiteSettings.yaml
+      operationId: get-netsuite-settings
+      x-stoplight:
+        id: 2s4y3w6nppfgh
+    put:
+      summary: Update NetSuite Settings
+      tags: []
+      responses:
+        '200':
+          description: OK
+      operationId: put-netsuite-settings
+      x-stoplight:
+        id: nz5lwfjddm03o
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/NetSuiteSettings.yaml
+  /product-availability/calendar:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-product-availability-calendar
+      x-stoplight:
+        id: zwrne60rufld4
 components:
   securitySchemes:
     OAuth2:
       type: oauth2
-      description: >-
-        OAuth 2.0 client credentials flow. Exchange your `client_id` and
-        `client_secret` for a bearer token at the token endpoint, then send it
-        in the `Authorization` header as `Bearer <access_token>`. See the
-        Authentication guide for details.
+      description: 'OAuth 2.0 client credentials flow. Exchange your `client_id` and `client_secret` for a bearer token at the token endpoint, then send it in the `Authorization` header as `Bearer <access_token>`. See the Authentication guide for details.'
       flows:
         clientCredentials:
           tokenUrl: 'https://api.roller.app/token'
