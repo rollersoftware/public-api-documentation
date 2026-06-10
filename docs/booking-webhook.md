@@ -4,7 +4,7 @@ stoplight-id: 1tjb4whgq33f0
 
 # Booking Webhook
 
-> [**Create**](../reference/rest-api.yaml#/paths/~1webhooks/post), [**view**](../reference/rest-api.yaml#/paths/~1webhooks/get) and [**delete**](../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/delete) webhooks using our Rest API.
+> [**Create**](../reference/rest-api.yaml), [**view**](../reference/rest-api.yaml) and [**delete**](../reference/rest-api.yaml) webhooks using our Rest API.
 
 ## Payload
 
@@ -19,7 +19,7 @@ The following are events compatible with the booking webhook:
 Enum | ID | Description
 -|-|-
 `Created`|`1`|A new reserved booking is created (does not include draft bookings).
-`Updated`|`2`|An existing booking is updated with new information such as changes to booking items, booking contacts, payments or refunds that are made, or adjustments to tickets. See more [**below**](#booking-actions-considered-an-updated-event).
+`Updated`|`2`|An existing booking is updated with new information such as changes to booking items, booking contacts, payments or refunds that are made, or adjustments to tickets. See more [**below**](#actions-that-create-a-booking-updated-event).
 `Cancelled`|`3`|An existing booking is cancelled
 
 > #### Actions that create a booking `Updated` event
@@ -75,7 +75,7 @@ Bookings that trigger this webhook can be specified by including the following o
 * Product IDs
 * Product Category
 
-View the [**create**](../reference/rest-api.yaml#/paths/~1webhooks/post) webhooks endpoint for more detail.
+View the [**create**](../reference/rest-api.yaml) webhooks endpoint for more detail.
 
 > Specifying filters is optional. If multiple filters are specified, the result will be the intersection of both filters. For example if specifying a `productId` and `productCategory` filter, the resulting product must belong to both.
 
@@ -92,7 +92,7 @@ The following fields will only be returned in the [**booking payload**](../model
 * Locations
 * Payments
 
-View the [**create**](../reference/rest-api.yaml#/paths/~1webhooks/post) webhooks endpoint for more detail.
+View the [**create**](../reference/rest-api.yaml) webhooks endpoint for more detail.
 
 ---
 

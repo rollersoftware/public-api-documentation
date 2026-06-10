@@ -4,7 +4,7 @@ stoplight-id: vpaprygcuft6t
 
 # Associating Signed Waivers to Customers
 
-A [**signed waiver**](../reference/data-api.yaml#/paths/~1data~1signedwaivers/get) record has three important identifiers:
+A [**signed waiver**](../reference/data-api.yaml) record has three important identifiers:
 
 - **`SignedWaiverId`** – The unique identifier for that specific person's waiver record.
 - **`ParentSignedWaiverId`** – The `SignedWaiverId` of the parent who signed on behalf of a minor.

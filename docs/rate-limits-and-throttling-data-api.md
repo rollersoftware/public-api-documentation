@@ -24,7 +24,7 @@ The Data API does not support querying individual records. Instead, it provides 
 - Requests to the Data API should be made no more frequently than once a day.
 - We recommend making calls outside business hours — for example, anywhere between `01:00` and `07:00` (for the previous day).
 
-> For [**Get revenue entries**](rate-limits-and-throttling-data-api.md), the default page size is 100 and cannot be adjusted.
+> For [**Get revenue entries**](../reference/data-api.yaml), the default page size is 100 and cannot be adjusted.
 
 ### Monthly call limit
 

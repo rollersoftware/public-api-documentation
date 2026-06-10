@@ -4,7 +4,7 @@ stoplight-id: c9f31wv1iiubf
 
 # Guest Webhook
 
-> [**Create**](../reference/rest-api.yaml#/paths/~1webhooks/post), [**view**](../reference/rest-api.yaml#/paths/~1webhooks/get) and [**delete**](../reference/rest-api.yaml#/paths/~1webhooks~1{webhookId}/delete) webhooks using our Rest API.
+> [**Create**](../reference/rest-api.yaml), [**view**](../reference/rest-api.yaml) and [**delete**](../reference/rest-api.yaml) webhooks using our Rest API.
 
 ## Payload
 
@@ -40,4 +40,4 @@ The following fields will only be returned in the [**guest payload**](../models/
 
 * [**Guest Flags**](../models/CustomerFlag.yaml)
 
-View the [**create**](../reference/rest-api.yaml#/paths/~1webhooks/post) webhooks endpoint for more detail.
+View the [**create**](../reference/rest-api.yaml) webhooks endpoint for more detail.

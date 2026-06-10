@@ -3,7 +3,7 @@
   "items": [
     {
       "type": "divider",
-      "title": "\ud83c\udf31 Introduction"
+      "title": "🌱 Introduction"
     },
     {
       "type": "item",
@@ -36,10 +36,6 @@
       "uri": "/docs/formatting.md"
     },
     {
-      "type": "divider",
-      "title": "\ud83d\udce6 Resources"
-    },
-    {
       "type": "item",
       "title": "Postman Collection",
       "uri": "/docs/postman-collection.md"
@@ -51,27 +47,12 @@
     },
     {
       "type": "divider",
-      "title": "\ud83d\udfe2 Rest API"
+      "title": "🟢 Rest API"
     },
     {
       "type": "item",
       "title": "Rest API Reference",
       "uri": "/reference/rest-api.yaml"
-    },
-    {
-      "type": "item",
-      "title": "Rate Limits & Throttling [Rest API]",
-      "uri": "/docs/rate-limits-and-throttling-rest-api.md"
-    },
-    {
-      "type": "item",
-      "title": "Booking Limitations",
-      "uri": "/docs/booking-limitations.md"
-    },
-    {
-      "type": "item",
-      "title": "Discounts",
-      "uri": "/docs/discounts.md"
     },
     {
       "type": "group",
@@ -120,23 +101,23 @@
       ]
     },
     {
+      "type": "item",
+      "title": "Rate Limits & Throttling [Rest API]",
+      "uri": "/docs/rate-limits-and-throttling-rest-api.md"
+    },
+    {
+      "type": "item",
+      "title": "Booking Limitations",
+      "uri": "/docs/booking-limitations.md"
+    },
+    {
       "type": "divider",
-      "title": "\ud83d\udd35 Data API"
+      "title": "🔵 Data API"
     },
     {
       "type": "item",
       "title": "Data API Reference",
       "uri": "/reference/data-api.yaml"
-    },
-    {
-      "type": "item",
-      "title": "Rate Limits & Throttling [Data API]",
-      "uri": "/docs/rate-limits-and-throttling-data-api.md"
-    },
-    {
-      "type": "item",
-      "title": "Filtering & Pagination",
-      "uri": "/docs/filtering-and-pagination.md"
     },
     {
       "type": "group",
@@ -155,8 +136,18 @@
       ]
     },
     {
+      "type": "item",
+      "title": "Rate Limits & Throttling [Data API]",
+      "uri": "/docs/rate-limits-and-throttling-data-api.md"
+    },
+    {
+      "type": "item",
+      "title": "Filtering & Pagination",
+      "uri": "/docs/filtering-and-pagination.md"
+    },
+    {
       "type": "divider",
-      "title": "\ud83e\ude9d Webhooks"
+      "title": "🪝 Webhooks"
     },
     {
       "type": "item",
@@ -164,14 +155,15 @@
       "uri": "/docs/webhooks-overview.md"
     },
     {
-      "type": "item",
-      "title": "Creating Webhooks",
-      "uri": "/docs/creating-webhooks.md"
-    },
-    {
-      "type": "item",
-      "title": "Retry Logic and Response Handling",
-      "uri": "/docs/retry-logic-and-response-handling.md"
+      "type": "group",
+      "title": "Schemas",
+      "items": [
+        {
+          "type": "item",
+          "title": "WebhookMessageDefinition",
+          "uri": "/models/WebhookMessageDefinition.yaml"
+        }
+      ]
     },
     {
       "type": "group",
@@ -210,19 +202,23 @@
       ]
     },
     {
-      "type": "group",
-      "title": "Schemas",
-      "items": [
-        {
-          "type": "item",
-          "title": "WebhookMessageDefinition",
-          "uri": "/models/WebhookMessageDefinition.yaml"
-        }
-      ]
+      "type": "item",
+      "title": "Creating Webhooks",
+      "uri": "/docs/creating-webhooks.md"
+    },
+    {
+      "type": "item",
+      "title": "Retry Logic and Response Handling",
+      "uri": "/docs/retry-logic-and-response-handling.md"
     },
     {
       "type": "divider",
-      "title": "\ud83e\udde9 Use Cases"
+      "title": "🧩 Use Cases"
+    },
+    {
+      "type": "item",
+      "title": "Discounts",
+      "uri": "/docs/discounts.md"
     },
     {
       "type": "group",
