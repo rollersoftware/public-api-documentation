@@ -4,7 +4,7 @@ stoplight-id: c9f31wv1iiubf
 
 # Guest Webhook
 
-> [**Create**](../reference/rest-api.yaml), [**view**](../reference/rest-api.yaml) and [**delete**](../reference/rest-api.yaml) webhooks using our Rest API.
+> [**Create**](../reference/rest-api.yaml), [**view**](../reference/rest-api.yaml) and [**delete**](../reference/rest-api.yaml) webhooks using our REST API.
 
 ## Payload
 

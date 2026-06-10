@@ -4,7 +4,7 @@ stoplight-id: xy4jtgqlldj5o
 
 # Discounts
 
-The Rest API allows you to create and update discount configurations, including adding or removing usable `codes` for a discount. This enables external discount management, which can be used in scenarios such as:
+The REST API allows you to create and update discount configurations, including adding or removing usable `codes` for a discount. This enables external discount management, which can be used in scenarios such as:
 
 - Registering promotional codes created by a third party, such as those issued via email/SMS marketing or on pre-printed voucher/coupon stock.
 - Automating the regular, manual bulk upload of discount codes.
@@ -16,16 +16,16 @@ The Rest API allows you to create and update discount configurations, including 
 ## Available discount endpoints
 
 - Reporting API > [**Get discounts**](../reference/reporting-api.yaml)
-- Rest API > [**Get discount**](../reference/rest-api.yaml)
-- Rest API > [**Update discount**](../reference/rest-api.yaml)
-- Rest API > [**Create discount**](../reference/rest-api.yaml)
-- Rest API > [**Create discount codes**](../reference/rest-api.yaml)
-- Rest API > [**Delete discount codes**](../reference/rest-api.yaml)
-- Rest API > [**Booking costs**](../reference/rest-api.yaml) (for **discount code validation**)
+- REST API > [**Get discount**](../reference/rest-api.yaml)
+- REST API > [**Update discount**](../reference/rest-api.yaml)
+- REST API > [**Create discount**](../reference/rest-api.yaml)
+- REST API > [**Create discount codes**](../reference/rest-api.yaml)
+- REST API > [**Delete discount codes**](../reference/rest-api.yaml)
+- REST API > [**Booking costs**](../reference/rest-api.yaml) (for **discount code validation**)
 
 ## What discount configurations are currently supported?
 
-Discount `codes` can be added to or removed from any discount in your venue. However, creating and updating discounts via the Rest API can only be done with certain discount configurations:
+Discount `codes` can be added to or removed from any discount in your venue. However, creating and updating discounts via the REST API can only be done with certain discount configurations:
 
 | Configuration | Supported? |
 |---|---|

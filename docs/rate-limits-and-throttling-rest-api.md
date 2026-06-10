@@ -2,7 +2,7 @@
 stoplight-id: ijcp98ygumj0w
 ---
 
-# Rate Limits & Throttling [Rest API]
+# Rate Limits & Throttling [REST API]
 
 ## Rate limit
 

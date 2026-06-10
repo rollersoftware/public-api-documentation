@@ -4,7 +4,7 @@ stoplight-id: qxor5bzienbyu
 
 # Creating Webhooks
 
-To manage webhooks requires subscribing to events you wish to be notified about and which payload/s you wish to receive, using the webhook endpoints in the Rest API. 
+To manage webhooks requires subscribing to events you wish to be notified about and which payload/s you wish to receive, using the webhook endpoints in the REST API. 
 
 You'll be required to specify a URL for ROLLER to send these notifications with a secure HTTPS endpoint. 
 
@@ -18,7 +18,7 @@ Available webhook types can be found in the sidebar.
 
 ---
 
-## Rest API endpoints for managing webhooks
+## REST API endpoints for managing webhooks
 
 - [**Create webhooks**](../reference/rest-api.yaml)
 - [**View existing webhooks**](../reference/rest-api.yaml)

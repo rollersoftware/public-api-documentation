@@ -3,7 +3,7 @@
   "items": [
     {
       "type": "divider",
-      "title": "🌱 Introduction"
+      "title": "📘 Introduction"
     },
     {
       "type": "item",
@@ -12,18 +12,8 @@
     },
     {
       "type": "item",
-      "title": "Changelog",
-      "uri": "/docs/changelog.md"
-    },
-    {
-      "type": "item",
       "title": "Getting API Access",
       "uri": "/docs/getting-api-access.md"
-    },
-    {
-      "type": "item",
-      "title": "Environments",
-      "uri": "/docs/environments.md"
     },
     {
       "type": "item",
@@ -32,8 +22,18 @@
     },
     {
       "type": "item",
+      "title": "Environments",
+      "uri": "/docs/environments.md"
+    },
+    {
+      "type": "item",
       "title": "Formatting",
       "uri": "/docs/formatting.md"
+    },
+    {
+      "type": "item",
+      "title": "Product Type Mapping",
+      "uri": "/docs/product-type-mapping.md"
     },
     {
       "type": "item",
@@ -42,21 +42,21 @@
     },
     {
       "type": "item",
-      "title": "Product Type Mapping",
-      "uri": "/docs/product-type-mapping.md"
+      "title": "Changelog",
+      "uri": "/docs/changelog.md"
     },
     {
       "type": "divider",
-      "title": "🟢 Rest API"
+      "title": "🔌 REST API"
     },
     {
       "type": "item",
-      "title": "Rest API Reference",
+      "title": "REST API Reference",
       "uri": "/reference/rest-api.yaml"
     },
     {
       "type": "group",
-      "title": "Schemas",
+      "title": "REST API Schemas",
       "items": [
         {
           "type": "item",
@@ -102,7 +102,7 @@
     },
     {
       "type": "item",
-      "title": "Rate Limits & Throttling [Rest API]",
+      "title": "Rate Limits & Throttling [REST API]",
       "uri": "/docs/rate-limits-and-throttling-rest-api.md"
     },
     {
@@ -117,7 +117,7 @@
     },
     {
       "type": "divider",
-      "title": "🔵 Reporting API"
+      "title": "📊 Reporting API"
     },
     {
       "type": "item",
@@ -126,7 +126,7 @@
     },
     {
       "type": "group",
-      "title": "Schemas",
+      "title": "Reporting API Schemas",
       "items": [
         {
           "type": "item",
@@ -166,7 +166,7 @@
     },
     {
       "type": "group",
-      "title": "Schemas",
+      "title": "Webhook Schemas",
       "items": [
         {
           "type": "item",

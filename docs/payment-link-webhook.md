@@ -4,7 +4,7 @@ stoplight-id: 7gn4zuznopwes
 
 # Payment Link Webhook
 
-> [**Create**](../reference/rest-api.yaml), [**view**](../reference/rest-api.yaml) and [**delete**](../reference/rest-api.yaml) webhooks using our Rest API.
+> [**Create**](../reference/rest-api.yaml), [**view**](../reference/rest-api.yaml) and [**delete**](../reference/rest-api.yaml) webhooks using our REST API.
 
 ## Payload
 
