@@ -2,12 +2,12 @@
 stoplight-id: 0cfnlry8rdx2k
 ---
 
-# Rate Limits & Throttling [Data API]
+# Rate Limits & Throttling [Reporting API]
 
 <!-- theme: warning -->
-> The ROLLER Data API is **read-only** and not intended for real-time use cases.
+> The ROLLER Reporting API is **read-only** and not intended for real-time use cases.
 
-The Data API does not support querying individual records. Instead, it provides **paginated exports** based on a record's **modified date**, which is ideal for **daily batch exports**. This lets you retrieve both new and updated records in a single call for syncing with external systems such as enterprise data warehouses or analytics platforms.
+The Reporting API does not support querying individual records. Instead, it provides **paginated exports** based on a record's **modified date**, which is ideal for **daily batch exports**. This lets you retrieve both new and updated records in a single call for syncing with external systems such as enterprise data warehouses or analytics platforms.
 
 ## Rate & call limits
 
@@ -21,10 +21,10 @@ The Data API does not support querying individual records. Instead, it provides 
 
 ### Call frequency recommendations
 
-- Requests to the Data API should be made no more frequently than once a day.
+- Requests to the Reporting API should be made no more frequently than once a day.
 - We recommend making calls outside business hours — for example, anywhere between `01:00` and `07:00` (for the previous day).
 
-> For [**Get revenue entries**](../reference/data-api.yaml), the default page size is 100 and cannot be adjusted.
+> For [**Get revenue entries**](../reference/reporting-api.yaml), the default page size is 100 and cannot be adjusted.
 
 ### Monthly call limit
 

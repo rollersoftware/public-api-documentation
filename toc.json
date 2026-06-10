@@ -117,12 +117,12 @@
     },
     {
       "type": "divider",
-      "title": "🔵 Data API"
+      "title": "🔵 Reporting API"
     },
     {
       "type": "item",
-      "title": "Data API Reference",
-      "uri": "/reference/data-api.yaml"
+      "title": "Reporting API Reference",
+      "uri": "/reference/reporting-api.yaml"
     },
     {
       "type": "group",
@@ -147,8 +147,8 @@
     },
     {
       "type": "item",
-      "title": "Rate Limits & Throttling [Data API]",
-      "uri": "/docs/rate-limits-and-throttling-data-api.md"
+      "title": "Rate Limits & Throttling [Reporting API]",
+      "uri": "/docs/rate-limits-and-throttling-reporting-api.md"
     },
     {
       "type": "item",

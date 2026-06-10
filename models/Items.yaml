@@ -1,5 +1,5 @@
 title: Items
-description: A booking item record as returned by the Data API.
+description: A booking item record as returned by the Reporting API.
 type: object
 properties:
   bookingItemId:

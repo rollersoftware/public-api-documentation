@@ -16,5 +16,5 @@ When retrieving memberships and associated data, it helps to understand how memb
 
 To identify bookings containing memberships:
 
-1. Use the [**Get products**](../reference/data-api.yaml) endpoint to retrieve all `productId`s for your products (including memberships). Using the returned `productSubType` property and our [**Product Type Mapping**](product-type-mapping.md) resource, you can determine which `productId`s are memberships.
-2. Use this `productId` property in the response from [**Get bookings**](../reference/data-api.yaml) or [**Get booking**](../reference/rest-api.yaml) to identify memberships on bookings.
+1. Use the [**Get products**](../reference/reporting-api.yaml) endpoint to retrieve all `productId`s for your products (including memberships). Using the returned `productSubType` property and our [**Product Type Mapping**](product-type-mapping.md) resource, you can determine which `productId`s are memberships.
+2. Use this `productId` property in the response from [**Get bookings**](../reference/reporting-api.yaml) or [**Get booking**](../reference/rest-api.yaml) to identify memberships on bookings.
