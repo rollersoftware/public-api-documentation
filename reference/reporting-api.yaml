@@ -2,27 +2,13 @@ openapi: 3.1.0
 info:
   title: ROLLER Reporting API
   version: 1.0.0
-  description: >-
-    The ROLLER Reporting API enables secure, structured, read-only access to your
-    ROLLER data for integration with enterprise data warehouses, analytics
-    platforms, and cloud storage solutions. It supports use cases such as
-    business intelligence, custom reporting, and data synchronization.
-
-
-    The Reporting API does not write data to ROLLER and is not intended for
-    real-time use. It is optimised for periodic, paginated export of records on
-    a daily frequency, returning data based on each record's modified date so
-    that both new and updated records are retrieved in a single call.
-
-
-    All requests are authenticated using the OAuth 2.0 client credentials flow.
-    See the Authentication and Getting API Access guides for setup, the
-    Environments guide for base URLs, and the Filtering & Pagination and
-    Formatting guides for query conventions.
+  description: ''
   contact:
-    name: ROLLER API Integration Team
-    url: 'https://www.roller.software/'
+    name: ROLLER Help Centre
+    url: 'https://mysupport.roller.software/'
+    email: ''
   termsOfService: 'https://www.roller.software/terms'
+  summary: ''
 security:
   - OAuth2: []
 servers:
@@ -198,7 +184,7 @@ paths:
                       properties:
                         attribute:
                           type: string
-                          description: "The name of the meta attribute. For example, `MembershipStatus` or `ExternalId`."
+                          description: 'The name of the meta attribute. For example, `MembershipStatus` or `ExternalId`.'
                           example: MembershipStatus
                         value:
                           type: string
@@ -2025,17 +2011,17 @@ paths:
                     description: "The membership status before the event. This is the status change log (reporting) value.\r\n\r\nVALUE|ID\r\n-|-\r\n`Current`|`1`\r\n`Pending Activation`|`2`\r\n`Declined Payment`|`4`\r\n`Terminated`|`5`\r\n`Pending Cancellation`|`6`\r\n`Upgraded`|`7`\r\n`Expired`|`8`\r\n`Upgraded from pass`|`9`\r\n`Renewed`|`10`\r\n`Imported`|`11`\r\n`GroupMembership`|`12`\r\n`Pending Pause`|`13`\r\n`Paused`|`14`"
                     enum:
                       - Current
-                      - 'Pending Activation'
-                      - 'Declined Payment'
+                      - Pending Activation
+                      - Declined Payment
                       - Terminated
-                      - 'Pending Cancellation'
+                      - Pending Cancellation
                       - Upgraded
                       - Expired
-                      - 'Upgraded from pass'
+                      - Upgraded from pass
                       - Renewed
                       - Imported
                       - GroupMembership
-                      - 'Pending Pause'
+                      - Pending Pause
                       - Paused
                     example: Current
                   newStatus:
@@ -2043,17 +2029,17 @@ paths:
                     description: "The membership status after the event. This is the status change log (reporting) value.\r\n\r\nVALUE|ID\r\n-|-\r\n`Current`|`1`\r\n`Pending Activation`|`2`\r\n`Declined Payment`|`4`\r\n`Terminated`|`5`\r\n`Pending Cancellation`|`6`\r\n`Upgraded`|`7`\r\n`Expired`|`8`\r\n`Upgraded from pass`|`9`\r\n`Renewed`|`10`\r\n`Imported`|`11`\r\n`GroupMembership`|`12`\r\n`Pending Pause`|`13`\r\n`Paused`|`14`"
                     enum:
                       - Current
-                      - 'Pending Activation'
-                      - 'Declined Payment'
+                      - Pending Activation
+                      - Declined Payment
                       - Terminated
-                      - 'Pending Cancellation'
+                      - Pending Cancellation
                       - Upgraded
                       - Expired
-                      - 'Upgraded from pass'
+                      - Upgraded from pass
                       - Renewed
                       - Imported
                       - GroupMembership
-                      - 'Pending Pause'
+                      - Pending Pause
                       - Paused
                     example: Current
               examples:
@@ -2726,7 +2712,7 @@ paths:
       operationId: post-reporting-bulk
       x-stoplight:
         id: w8rlc9iamhm5j
-      description: Submit a bulk data export request. Once processed, a webhook of type `bulkExport` will be sent to subscribed endpoints containing presigned URL(s) to download the exported data.
+      description: 'Submit a bulk data export request. Once processed, a webhook of type `bulkExport` will be sent to subscribed endpoints containing presigned URL(s) to download the exported data.'
       requestBody:
         content:
           application/json:
@@ -2769,7 +2755,14 @@ paths:
                     id: vui3c30dcj5r4
                   format: date
                   example: '2021-06-01'
-                  description: "The end date (exclusive) you need data for in ISO8601 date format (`yyyy-MM-dd`)\n\nNote: Must be at least 1 day after `startDate`\n\nNote: The end date is exclusive, so if you want data for all of July 2025:\n- `startDate`: `2025-07-01`\n- `endDate`: `2025-08-01`"
+                  description: |-
+                    The end date (exclusive) you need data for in ISO8601 date format (`yyyy-MM-dd`)
+
+                    Note: Must be at least 1 day after `startDate`
+
+                    Note: The end date is exclusive, so if you want data for all of July 2025:
+                    - `startDate`: `2025-07-01`
+                    - `endDate`: `2025-08-01`
       parameters:
         - schema:
             type: string
@@ -2782,11 +2775,7 @@ components:
   securitySchemes:
     OAuth2:
       type: oauth2
-      description: >-
-        OAuth 2.0 client credentials flow. Exchange your `client_id` and
-        `client_secret` for a bearer token at the token endpoint, then send it
-        in the `Authorization` header as `Bearer <access_token>`. See the
-        Authentication guide for details.
+      description: 'OAuth 2.0 client credentials flow. Exchange your `client_id` and `client_secret` for a bearer token at the token endpoint, then send it in the `Authorization` header as `Bearer <access_token>`. See the Authentication guide for details.'
       flows:
         clientCredentials:
           tokenUrl: 'https://api.roller.app/token'
