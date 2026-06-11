@@ -1,0 +1,24 @@
+title: WebhookFilterEventChannel
+enum:
+  - VenueManager
+  - PointOfSale
+  - Checkout
+  - SelfServeKiosk
+  - Api
+  - ChannelPartners
+  - DataImport
+  - System
+description: |-
+  The application that triggered the booking event.
+
+  Enum|Channel
+  -|-
+  `VenueManager`| Venue Manager
+  `PointOfSale`| Point of Sale (POS)
+  `Checkout`| Online Checkout
+  `SelfServeKiosk`| Self-Serve Kiosk (SSK)
+  `Api`| Public API
+  `ChannelPartners`| Channel Partners
+  `DataImport`| Data Import
+  `System`| System (e.g. automatic cancellation)
+x-internal: false

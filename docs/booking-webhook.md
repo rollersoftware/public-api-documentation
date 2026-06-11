@@ -70,7 +70,8 @@ Enum | ID | Description
 
 Bookings that trigger this webhook can be specified by including the following objects in the `filter` object:
 
-* Sales Channel
+* Sales Channel (`channels`) — filter by the channel the booking was **created** in
+* Event Channel (`eventChannels`) — filter by the application that **triggered the specific event**
 * Product Type
 * Product IDs
 * Product Category
@@ -78,6 +79,19 @@ Bookings that trigger this webhook can be specified by including the following o
 View the [**create**](../reference/rest-api.yaml) webhooks endpoint for more detail.
 
 > Specifying filters is optional. If multiple filters are specified, the result will be the intersection of both filters. For example if specifying a `productId` and `productCategory` filter, the resulting product must belong to both.
+
+### Sales Channel vs Event Channel
+
+The `channels` and `eventChannels` filters serve different purposes:
+
+| Filter | Filters on... | Use when... |
+|---|---|---|
+| `channels` | The channel the **booking was created in** | You only want events for bookings made at POS, or bookings made online |
+| `eventChannels` | The application that **triggered this specific event** | You want to react to a specific action in a specific app, regardless of where the booking was originally created |
+
+**Example:** A booking created online (`channels: [Consumer]`) can later be updated by a staff member at POS. Filtering by `eventChannels: [PointOfSale]` will deliver the `Updated` event for that action; filtering by `channels: [Consumer]` will not.
+
+> Existing webhook subscriptions without an `eventChannels` filter continue to receive events from all applications — no changes are required to existing integrations.
 
 ---
 

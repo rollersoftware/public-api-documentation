@@ -68,8 +68,19 @@ properties:
             properties:
               channels:
                 type: array
+                description: Filter by the sales channel the booking was **created** in. To filter by the application that triggered a specific event, use `eventChannels` instead.
                 items:
                   $ref: ./SalesChannel.yaml
+              eventChannels:
+                type: array
+                description: |-
+                  Filter by the application that **triggered the specific event**. Unlike `channels` (which filters on where the booking was created), `eventChannels` filters on what application performed the action that fired this webhook.
+
+                  For example, to receive only `Updated` events triggered from POS — such as a waiver being attached at POS — set `eventChannels: [PointOfSale]`.
+
+                  If omitted, events from all channels are delivered (backwards compatible).
+                items:
+                  $ref: ./WebhookFilterEventChannel.yaml
               productTypes:
                 type: array
                 description: Filter for bookings for specific product types.
