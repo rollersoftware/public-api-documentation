@@ -175,6 +175,11 @@
       "uri": "/docs/webhooks-overview.md"
     },
     {
+      "type": "item",
+      "title": "Creating Webhooks",
+      "uri": "/docs/creating-webhooks.md"
+    },
+    {
       "type": "group",
       "title": "Webhook Schemas",
       "items": [
@@ -228,11 +233,6 @@
     },
     {
       "type": "item",
-      "title": "Creating Webhooks",
-      "uri": "/docs/creating-webhooks.md"
-    },
-    {
-      "type": "item",
       "title": "Retry Logic and Response Handling",
       "uri": "/docs/retry-logic-and-response-handling.md"
     },
@@ -242,7 +242,7 @@
     },
     {
       "type": "item",
-      "title": "Discounts",
+      "title": "Managing Discounts over API",
       "uri": "/docs/discounts.md"
     },
     {
@@ -268,28 +268,28 @@
           "type": "item",
           "title": "Managing Refunds",
           "uri": "/docs/managing-refunds.md"
-        }
-      ]
-    },
-    {
-      "type": "group",
-      "title": "ROLLER Payments",
-      "items": [
-        {
-          "type": "item",
-          "title": "Workflow",
-          "uri": "/docs/roller-payments-workflow.md"
         },
         {
-          "type": "item",
-          "title": "Version History",
-          "uri": "/docs/roller-payments-version-history.md"
+          "type": "group",
+          "title": "ROLLER Payments",
+          "items": [
+            {
+              "type": "item",
+              "title": "Workflow",
+              "uri": "/docs/roller-payments-workflow.md"
+            },
+            {
+              "type": "item",
+              "title": "Version History",
+              "uri": "/docs/roller-payments-version-history.md"
+            }
+          ]
         }
       ]
     },
     {
       "type": "group",
-      "title": "Guest Spend & Visitation",
+      "title": "Guest Activity Analysis",
       "items": [
         {
           "type": "item",
@@ -320,7 +320,7 @@
     },
     {
       "type": "group",
-      "title": "Membership Metrics",
+      "title": "Membership Reporting",
       "items": [
         {
           "type": "item",

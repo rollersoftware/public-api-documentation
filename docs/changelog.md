@@ -25,11 +25,15 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - Added the ability to filter by `productType` and `productSubType` to [**Get products**](../reference/reporting-api.yaml) (Reporting API) and [**Get product detail**](../reference/rest-api.yaml) (REST API).
 
+---
+
 ## 2026-04
 
 ### Added
 
 - Itemised `discounts` to [**Get bookings**](../reference/reporting-api.yaml) (Reporting API).
+
+---
 
 ## 2026-03
 
@@ -43,11 +47,15 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - `taxComponents` property to [**Get venue detail**](../reference/rest-api.yaml) (REST API).
 - `ianaTimeZone` property to [**Get venue detail**](../reference/rest-api.yaml) (REST API).
 
+---
+
 ## 2026-02
 
 ### Added
 
 - `automaticCancelHours` property to [**Create booking**](../reference/rest-api.yaml) (REST API).
+
+---
 
 ## 2026-01
 
@@ -56,11 +64,15 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - `operatorName` property to [**Get POS till reconciliations**](../reference/reporting-api.yaml) (Reporting API).
 - A list of booking `payments` to [**Get booking detail**](../reference/rest-api.yaml), and as an available inclusion for [**booking webhooks**](booking-webhook.md) (REST API).
 
+---
+
 ## 2025-11
 
 ### Added
 
 - `acceptMarketingSms` property to [**Get customers**](../reference/reporting-api.yaml) (Reporting API), and to [**Create a booking**](../reference/rest-api.yaml), [**Create draft booking**](../reference/rest-api.yaml), [**Get guest detail**](../reference/rest-api.yaml), and [**Update guest detail**](../reference/rest-api.yaml) (REST API).
+
+---
 
 ## 2025-10
 
@@ -74,11 +86,15 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - Added _"Modifying assigned resources for booking items"_ as a new [**booking webhook**](booking-webhook.md) `Updated` trigger.
 
+---
+
 ## 2025-09
 
 ### Added
 
 - `taxIdentificationNumber` property to [**Get guest detail**](../reference/rest-api.yaml), [**Update guest detail**](../reference/rest-api.yaml), [**Create draft booking**](../reference/rest-api.yaml), and [**Create booking**](../reference/rest-api.yaml) (REST API), and to [**Get customers**](../reference/reporting-api.yaml) (Reporting API).
+
+---
 
 ## 2025-08
 
@@ -95,6 +111,8 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - Issue where booking modifiers would sometimes be missing or have an incorrect `amount` value (Reporting API).
 
+---
+
 ## 2025-07
 
 ### Added
@@ -105,12 +123,16 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - `price`, `taxId`, `barcodeId`, `costOfGoods`, and `parLevel` properties to [**Get product detail**](../reference/rest-api.yaml) (REST API).
 - `price`, `taxId`, `barcodeId`, `costOfGoods`, and `parLevel` properties to [**Get products**](../reference/reporting-api.yaml) (Reporting API).
 
+---
+
 ## 2025-06
 
 ### Fixed
 
 - Issue where [**Get booking detail**](../reference/rest-api.yaml) did not return discounts at the booking item level (REST API).
 - Issue where [**Get reporting categories**](../reference/reporting-api.yaml) did not return all product IDs when using HQ reporting category syncs (Reporting API).
+
+---
 
 ## 2025-05
 
@@ -138,6 +160,8 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - Marked [**Get customer detail**](../reference/rest-api.yaml) as deprecated as part of renaming "customer" to "guest" (REST API).
 
+---
+
 ## 2025-04
 
 ### Added
@@ -148,11 +172,15 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - Added the ability to filter by **product category** when registering triggers for the [**redemption webhook**](redemption-webhook.md).
 
+---
+
 ## 2025-03
 
 ### Fixed
 
 - Issue where the `cost` field returned by [**Get booking detail**](../reference/rest-api.yaml) sometimes returned an empty value (REST API).
+
+---
 
 ## 2025-02
 
@@ -171,6 +199,8 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - `bookingEndDate` and `customTicketId` properties to [**Update a booking**](../reference/rest-api.yaml) (REST API).
 - `posNotes` property to [**Get booking detail**](../reference/rest-api.yaml) (REST API).
 - `deviceId` property to the [**redemption webhook**](redemption-webhook.md) payload (REST API).
+
+---
 
 ## 2025-01
 
