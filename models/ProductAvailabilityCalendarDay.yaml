@@ -24,11 +24,3 @@ properties:
       - notAvailable
       - onlineSalesClosed
     example: available
-  bestPrice:
-    type:
-      - number
-      - 'null'
-    description: >-
-      The lowest price applicable for this date, based on the venue's date-time pricing rules.
-      Only present when date-time pricing rules are configured for the product; `null` otherwise.
-    example: 24.99
