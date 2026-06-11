@@ -91,6 +91,7 @@ The following fields will only be returned in the [**booking payload**](../model
 * Tickets
 * Locations
 * Payments
+* Metadata
 
 View the [**create**](../reference/rest-api.yaml) webhooks endpoint for more detail.
 

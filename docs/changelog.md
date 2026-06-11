@@ -20,6 +20,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 ### Added
 
 - [**Get product availability calendar**](../reference/rest-api.yaml) endpoint (`GET /product-availability/calendar`) to retrieve the availability status for each day in a given month for a single product. Designed for date picker and calendar UIs in third-party checkouts (REST API).
+- **Booking metadata** — User-defined key-value pairs can now be stored against bookings. The `metadata` property is supported on [**Create booking**](../reference/rest-api.yaml), [**Create draft booking**](../reference/rest-api.yaml), and [**Update booking**](../reference/rest-api.yaml) (with merge semantics). The field is returned in [**Get booking**](../reference/rest-api.yaml) responses and can be opted into via the [**booking webhook**](booking-webhook.md) `include.metadata` flag (REST API).
 
 ---
 
