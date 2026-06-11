@@ -59,6 +59,9 @@ properties:
               payments:
                 type: boolean
                 description: Return information on any payment records that may be against the booking
+              metadata:
+                type: boolean
+                description: Return any user-defined key-value metadata stored against the booking
           filter:
             type: object
             description: Conditional filters on what triggers the webhook (optional).
