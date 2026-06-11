@@ -15,6 +15,14 @@ Releases are grouped by month and listed most-recent-first. Within each release,
 
 Each entry notes the affected API (Reporting API or REST API) and links to the relevant reference.
 
+## 2026-06
+
+### Added
+
+- [**Get product availability calendar**](../reference/rest-api.yaml) endpoint (`GET /product-availability/calendar`) to retrieve the availability status for each day in a given month for a single product. Designed for date picker and calendar UIs in third-party checkouts (REST API).
+
+---
+
 ## 2026-05
 
 ### Added
