@@ -1,0 +1,61 @@
+title: StaffRequest
+type: object
+required:
+  - roleId
+  - firstName
+  - lastName
+properties:
+  roleId:
+    type: integer
+    description: 'The unique ID of the role to assign to this staff member, that determines the user''s permissions'
+    example: 1234
+  firstName:
+    type: string
+    description: First name of the staff member
+    example: John
+  lastName:
+    type: string
+    description: Last name of the staff member
+    example: Smith
+  email:
+    type: string
+    description: Email of the staff member. Either an email address or a POS PIN is required.
+    example: john@smith.com
+  posPin:
+    type: string
+    description: 'Staff members accessing POS require a PIN, which must be unique to the venue. Either an email address or a POS PIN is required.'
+    example: '123456'
+  externalId:
+    type: string
+    description: External ID of the staff member
+    example: abcd
+  contactNumber:
+    type: string
+    description: Contact phone number of the staff member
+    example: '0450000000'
+  displayName:
+    type: string
+    description: An optional nickname used for display purposes in apps and the activity stream
+    example: John Smith
+  staffIdentities:
+    type: array
+    description: 'List of optional staff identities to attribute to this staff member. Requires an email address to set. Updating `staffIdentities` replaces the existing set — if setting several identities, always send the full list.'
+    items:
+      enum:
+        - Account Owner
+        - Primary Contact
+        - Billing Contact
+        - Technical Contact
+  hqVenueGroupTags:
+    type: array
+    description: List of hqVenueGroupTags the staff member should have access to (for HQ venues only)
+    items:
+      type: string
+      example: Managed Venues
+  hqVenueUniqueIds:
+    type: array
+    description: List of hqVenueUniqueIds the staff member should have access to (for HQ venues only)
+    items:
+      type: string
+      example: 00000000-0000-0000-0000-000000000000
+      format: uuid
