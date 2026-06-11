@@ -97,6 +97,16 @@
           "type": "item",
           "title": "MultiPass",
           "uri": "/models/MultiPass.yaml"
+        },
+        {
+          "type": "item",
+          "title": "StaffRequest",
+          "uri": "/models/StaffRequest.yaml"
+        },
+        {
+          "type": "item",
+          "title": "StaffResponse",
+          "uri": "/models/StaffResponse.yaml"
         }
       ]
     },
