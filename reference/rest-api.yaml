@@ -2479,7 +2479,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StaffResponse'
+                $ref: ../models/StaffResponse.yaml
         '403':
           description: Forbidden - Staff management API may be disabled for the venue
         '409':
@@ -2492,7 +2492,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/StaffRequest'
+              $ref: ../models/StaffRequest.yaml
   '/staff/{uniqueId}':
     parameters:
       - schema:
@@ -2512,7 +2512,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StaffResponse'
+                $ref: ../models/StaffResponse.yaml
         '403':
           description: Forbidden - Staff management API may be disabled for the venue
         '404':
@@ -2531,7 +2531,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StaffResponse'
+                $ref: ../models/StaffResponse.yaml
         '403':
           description: Forbidden - Staff management API may be disabled for the venue
         '404':
@@ -2546,7 +2546,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/StaffRequest'
+              $ref: ../models/StaffRequest.yaml
     delete:
       summary: Delete staff
       tags:
@@ -2723,10 +2723,5 @@ components:
       schema:
         type: string
       description: Unique ID of a payment link generated to take payment against a booking
-  schemas:
-    StaffRequest:
-      $ref: ../models/StaffRequest.yaml
-    StaffResponse:
-      $ref: ../models/StaffResponse.yaml
 security:
   - OAuth2: []
