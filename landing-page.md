@@ -1,5 +1,9 @@
 # ROLLER Developer Center
 
+**Select an API from the sidebar to get started, or see [Overview](https://docs.roller.app/docs/api/1uypb6irt156u-overview) for a guide to all available APIs.**
+
+---
+
 <!--theme:info -->
 > Please see the [**Changelog**](https://docs.roller.app/docs/api/iglgjf34psufs-changelog) for all the latest updates.
 
