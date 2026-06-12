@@ -1,3 +1,5 @@
+<!--NOTE: UPDATES TO THIS FILE WILL NOT SYNC WITH STOPLIGHT AND MUST BE MANUALLY UPDATED VIA STOPLIGHT ADMIN UI-->
+
 # ROLLER Developer Center
 
 **See [Overview](https://docs.roller.app/docs/api/1uypb6irt156u-overview) for a guide to all available APIs.**
