@@ -150,8 +150,8 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - Ability to update ticket `name` via the [**Update a booking**](../reference/rest-api.yaml) endpoint (REST API).
 - [**Update guest detail**](../reference/rest-api.yaml) endpoint (REST API).
-- Ability to backfill historical data over multiple days via the [**Bulk Export API**](https://docs.roller.app/docs/bulk-exports/66otoe75x30hk):
-  - [**Bulk export request**](https://docs.roller.app/docs/bulk-exports/w8rlc9iamhm5j) for requesting asynchronous data downloads via the bulk export webhook.
+- Ability to backfill historical data over multiple days via the [**Bulk Export API**](bulk-exports-overview.md):
+  - [**Bulk export request**](../reference/reporting-api.yaml) for requesting asynchronous data downloads via the bulk export webhook.
   - [**Bulk export webhook**](bulk-export-webhook.md) to be notified when bulk export requests are complete.
 - `ticketCapacityRemaining` and `resourceCapacityRemaining` properties to the [**Get product availability**](../reference/rest-api.yaml) endpoint (REST API).
 - Ability to [**manage discounts**](discounts.md) and discount codes (REST API):
@@ -176,7 +176,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ### Added
 
-- Ability to use [**ROLLER Payments via API**](https://docs.roller.app/docs/roller-payments/e4x9qrxpg5iwd) to process transactions when creating bookings (REST API).
+- Ability to use [**ROLLER Payments via API**](roller-payments-workflow.md) to process transactions when creating bookings (REST API).
 
 ### Changed
 
