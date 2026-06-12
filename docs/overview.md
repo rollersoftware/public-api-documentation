@@ -8,7 +8,7 @@ ROLLER offers two public APIs that serve different integration needs. Use this p
 
 ## Reporting API
 
-The ROLLER Reporting API enables secure, structured access to your ROLLER data for integration with enterprise data warehouses, analytics platforms, and cloud storage solutions. It supports use cases like business intelligence, custom reporting, and data synchronization.
+The Reporting API enables secure, structured access to your ROLLER data for integration with enterprise data warehouses, analytics platforms, and cloud storage solutions. It supports use cases like business intelligence, custom reporting, and data synchronization.
 
 Key characteristics:
 

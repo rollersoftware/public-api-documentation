@@ -1,7 +1,7 @@
-# Stoplight published URL: https://docs.roller.app/docs/public-api-documentation/1524dfc060aaf-roller-reporting-api
+# Stoplight published URL: https://docs.roller.app/docs/api/1524dfc060aaf-reporting-api
 openapi: 3.1.0
 info:
-  title: ROLLER Reporting API
+  title: Reporting API
   version: 1.0.0
   description: ''
   contact:
