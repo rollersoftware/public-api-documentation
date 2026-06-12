@@ -8,7 +8,7 @@
 
 Welcome! These APIs enable you to connect your ROLLER venue across your software ecosystem — enabling real-time availability and booking workflows, data access, event-driven integrations and more.
 
-**[Use our Postman Collection to get started](https://docs.roller.app/docs/api/dhkft63bountn-postman-collection)**
+[**Use our Postman Collection to get started**](https://docs.roller.app/docs/api/dhkft63bountn-postman-collection)
 
 - **Are you a ROLLER customer and venue operator?** → Head to [**Getting API Access**](https://docs.roller.app/docs/api/qc5cvegxcl1cy-getting-api-access) to find out how to generate your API keys and authenticate
 - **Interested in becoming a ROLLER partner / integrator?** → Head to our [**Partner Directory**](https://www.roller.software/integration-partners/) to learn more
