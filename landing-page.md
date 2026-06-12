@@ -1,11 +1,8 @@
 # ROLLER Developer Center
 
-**Select an API from the sidebar to get started, or see [Overview](https://docs.roller.app/docs/api/1uypb6irt156u-overview) for a guide to all available APIs.**
+**See [Overview](https://docs.roller.app/docs/api/1uypb6irt156u-overview) for a guide to all available APIs.**
 
 ---
-
-<!--theme:info -->
-> Please see the [**Changelog**](https://docs.roller.app/docs/api/iglgjf34psufs-changelog) for all the latest updates.
 
 Welcome! These APIs enable you to connect your ROLLER venue across your software ecosystem — enabling real-time availability and booking workflows, data access, event-driven integrations and more.
 
@@ -13,9 +10,8 @@ Welcome! These APIs enable you to connect your ROLLER venue across your software
 
 - **Are you a ROLLER customer and venue operator?** → Head to [**Getting API Access**](https://docs.roller.app/docs/api/qc5cvegxcl1cy-getting-api-access) to find out how to generate your API keys and authenticate
 - **Interested in becoming a ROLLER partner / integrator?** → Head to our [**Partner Directory**](https://www.roller.software/integration-partners/) to learn more
-- **Just looking around?** → Read more about our available APIs below, or access them via the left sidebar to get started
+- **Just looking around?** → Read more about our available APIs below
 
----
 ## Explore our APIs
 
 <!--
@@ -79,6 +75,9 @@ We officially support the **OCTO API Core** plus the **Pricing Capability** as p
 [**Learn more about Channel Management**](https://www.roller.software/features/channel-management)
 
 <!-- type: tab-end -->
+
+<!--theme:info -->
+> Please see the [**Changelog**](https://docs.roller.app/docs/api/iglgjf34psufs-changelog) for all the latest updates.
 
 ---
 
