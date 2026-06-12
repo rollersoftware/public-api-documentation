@@ -1,0 +1,26 @@
+title: ProductAvailabilityCalendarDay
+type: object
+description: Availability status for a single day in a product availability calendar
+properties:
+  date:
+    type: string
+    format: date
+    description: 'The date in `yyyy-MM-dd` format'
+    example: '2026-07-01'
+  availability:
+    type: string
+    description: |-
+      The availability status for this date:
+
+      - `available` — The product has capacity available
+      - `filling` — The product has limited capacity remaining
+      - `soldOut` — No capacity remaining on this date
+      - `notAvailable` — The product is not offered on this date (e.g. outside its schedule or in an exclusion period)
+      - `onlineSalesClosed` — The product exists but online sales are closed for this date (e.g. outside its sale period or past cut-off)
+    enum:
+      - available
+      - filling
+      - soldOut
+      - notAvailable
+      - onlineSalesClosed
+    example: available

@@ -86,6 +86,17 @@ properties:
     type: string
     description: "Notes saved from POS when processing a booking\r\n"
     example: 'Guest will return to pickup lost&found item #004'
+  metadata:
+    type: object
+    description: |-
+      User-defined key-value pairs stored against the booking. Omitted from the response when no metadata has been stored.
+
+      Keys are case-sensitive strings (max 40 characters). Values are strings (max 500 characters, HTML is stripped on write).
+    additionalProperties:
+      type: string
+    example:
+      reservationSource: partner-portal
+      groupId: '881234'
   payments:
     type: array
     description: Payment records against the booking
