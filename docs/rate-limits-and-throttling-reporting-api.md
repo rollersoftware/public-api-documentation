@@ -5,7 +5,7 @@ stoplight-id: 0cfnlry8rdx2k
 # Rate Limits & Throttling [Reporting API]
 
 <!-- theme: warning -->
-> The ROLLER Reporting API is **read-only** and not intended for real-time use cases.
+> The Reporting API is **read-only** and not intended for real-time use cases.
 
 The Reporting API does not support querying individual records. Instead, it provides **paginated exports** based on a record's **modified date**, which is ideal for **daily batch exports**. This lets you retrieve both new and updated records in a single call for syncing with external systems such as enterprise data warehouses or analytics platforms.
 

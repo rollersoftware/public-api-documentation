@@ -1,6 +1,7 @@
+# Stoplight published URL: https://docs.roller.app/docs/api/64548cf9032b4-rest-api
 openapi: 3.1.0
 info:
-  title: ROLLER REST API
+  title: REST API
   version: 1.0.0
   description: ''
   contact:

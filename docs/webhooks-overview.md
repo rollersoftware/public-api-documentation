@@ -10,4 +10,4 @@ Webhooks are ideal for integrations which require data in real time, generally f
 
 See the sidebar for more information.
 
-> For integrations which do not require real time data (such as a reporting integration) the [**ROLLER Reporting API**](overview.md) is better suited.
+> For integrations which do not require real time data (such as a reporting integration) the [**Reporting API**](overview.md) is better suited.
