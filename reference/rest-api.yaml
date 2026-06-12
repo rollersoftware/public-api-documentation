@@ -128,6 +128,45 @@ paths:
                       example: Season Pass
                       deprecated: true
       operationId: getProductAvailability
+  /product-availability/calendar:
+    get:
+      tags:
+        - Product
+      summary: Get product availability calendar
+      description: |-
+        Returns the availability status for each day in a given month for a single product. Designed for use in date picker and calendar UIs in third-party checkouts, allowing guests to see at a glance which dates have availability before selecting a specific date.
+
+        Once the guest has selected a date, call [**Get product availability**](#/paths/~1product-availability/get) to retrieve session-level detail and capacity for that date.
+
+        > Response data is cached for 1 minute and is invalidated when a new booking is created.
+      operationId: getProductAvailabilityCalendar
+      parameters:
+        - name: productId
+          in: query
+          required: true
+          description: The ID of the product to retrieve calendar availability for
+          schema:
+            type: integer
+            example: 107399
+        - name: date
+          in: query
+          required: true
+          description: 'The month to retrieve availability for, in `YYYY-MM` format'
+          schema:
+            type: string
+            example: '2026-07'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                description: One entry for each day in the requested month
+                items:
+                  $ref: ../models/ProductAvailabilityCalendarDay.yaml
+        '404':
+          description: Product not found
   /products:
     get:
       tags:
@@ -808,6 +847,15 @@ paths:
                     - 'null'
                   example: 1
                   description: 'The number of hours until the booking will auto-expire, used to create a tentative booking. Leave empty if unused. '
+                metadata:
+                  type: object
+                  description: |-
+                    User-defined key-value pairs to store against the booking. Supports up to 20 entries. Keys are case-sensitive strings (max 40 characters). Values are strings (max 500 characters, HTML stripped on write).
+                  additionalProperties:
+                    type: string
+                  example:
+                    reservationSource: partner-portal
+                    groupId: '881234'
         description: ''
       description: "Create a booking in ROLLER, and optionally add an associated payment record.\r\n\r\n> **Guest Records**\r\n> * Values provided in the `customer` object will create a **Guest** record\r\n> * This Guest record will be automatically attached to the booking as the **booking holder**\r\n> * An existing Guest record will be used where a match is found on `email`\r\n> * Where a match is found and other fields on the record are different, they will be updated to reflect the new value"
       operationId: createBooking
@@ -1275,6 +1323,15 @@ paths:
                 customerPaysFees:
                   type: boolean
                   description: When true fees setup in ROLLER are applied. Please note if manual `creditCardFees` are provided in the request it will override all fees setup in ROLLER.
+                metadata:
+                  type: object
+                  description: |-
+                    User-defined key-value pairs to store against the booking. Supports up to 20 entries. Keys are case-sensitive strings (max 40 characters). Values are strings (max 500 characters, HTML stripped on write).
+                  additionalProperties:
+                    type: string
+                  example:
+                    reservationSource: partner-portal
+                    groupId: '881234'
         description: ''
       description: '> Create a draft booking with discounts and gift card payments, then receive back the associated booking cost information and a secure payment JSON Web Token to process payment'
       operationId: createDraftBooking
@@ -1601,6 +1658,17 @@ paths:
                   description: Additional detail about the booking
                   example: Customer has not visited before
                   maxLength: 500
+                metadata:
+                  type: object
+                  description: |-
+                    User-defined key-value pairs to update on the booking. Uses merge semantics — keys present in this object are set or updated, keys absent from the object are left unchanged. Set a key's value to `null` to remove it. Supports up to 20 entries. Keys are case-sensitive strings (max 40 characters). Values are strings (max 500 characters, HTML stripped on write).
+                  additionalProperties:
+                    type:
+                      - string
+                      - 'null'
+                  example:
+                    reservationSource: partner-portal
+                    groupId: null
                 newItems:
                   type: array
                   items:
@@ -2207,6 +2275,7 @@ paths:
                         membershipDetail: true
                         locations: true
                         customerFlags: true
+                        metadata: true
                       filter:
                         channels:
                           - VenueManager
@@ -2410,7 +2479,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StaffResponse'
+                $ref: ../models/StaffResponse.yaml
         '403':
           description: Forbidden - Staff management API may be disabled for the venue
         '409':
@@ -2423,7 +2492,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/StaffRequest'
+              $ref: ../models/StaffRequest.yaml
   '/staff/{uniqueId}':
     parameters:
       - schema:
@@ -2443,7 +2512,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StaffResponse'
+                $ref: ../models/StaffResponse.yaml
         '403':
           description: Forbidden - Staff management API may be disabled for the venue
         '404':
@@ -2462,7 +2531,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StaffResponse'
+                $ref: ../models/StaffResponse.yaml
         '403':
           description: Forbidden - Staff management API may be disabled for the venue
         '404':
@@ -2477,7 +2546,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/StaffRequest'
+              $ref: ../models/StaffRequest.yaml
     delete:
       summary: Delete staff
       tags:
@@ -2654,10 +2723,5 @@ components:
       schema:
         type: string
       description: Unique ID of a payment link generated to take payment against a booking
-  schemas:
-    StaffRequest:
-      $ref: ../models/StaffRequest.yaml
-    StaffResponse:
-      $ref: ../models/StaffResponse.yaml
 security:
   - OAuth2: []
