@@ -6,8 +6,8 @@ stoplight-id: 8yttl7sipu1uo
 
 The staff API allows staff accounts belonging to a venue to be created, updated, and archived. This includes HQ venues and HQ controlled venues.
 
-* **Venue staff** can be retrieved via the [**Reporting API**](../reference/reporting-api.yaml).
-* **Venue staff roles** can be retrieved via the [**Reporting API**](../reference/reporting-api.yaml).
+* **Venue staff** can be retrieved via the [**Get staff**](../reference/reporting-api.yaml/paths/~1data~1staffs/get) endpoint in the Reporting API.
+* **Venue staff roles** can be retrieved via the [**Get roles**](../reference/reporting-api.yaml/paths/~1data~1roles/get) endpoint in the Reporting API.
 
 ---
 

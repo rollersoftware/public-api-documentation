@@ -4,7 +4,7 @@ stoplight-id: vynaklh7qg8d1
 
 # Signed Waiver Webhook
 
-> [**Create**](../reference/rest-api.yaml), [**view**](../reference/rest-api.yaml) and [**delete**](../reference/rest-api.yaml) webhooks using our REST API.
+> [**Create**](../reference/rest-api.yaml/paths/~1webhooks/post), [**view**](../reference/rest-api.yaml/paths/~1webhooks/get) and [**delete**](../reference/rest-api.yaml/paths/~1webhooks~1{webhookId}/delete) webhooks using our REST API.
 
 ## Payload
 

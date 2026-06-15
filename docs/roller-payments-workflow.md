@@ -12,13 +12,13 @@ This page outlines the steps required to integrate ROLLER Payments via API for p
 ## Workflow
 
 1. **Guest visits custom checkout**
-   1. Merchant (You) calls [**Get Venue Detail**](../reference/rest-api.yaml) endpoint to retrieve venue information containing payment configuration settings. This should be cached as it rarely changes.
+   1. Merchant (You) calls [**Get Venue Detail**](../reference/rest-api.yaml/paths/~1venues~1me/get) endpoint to retrieve venue information containing payment configuration settings. This should be cached as it rarely changes.
    2. Custom checkout bootstraps ROLLER's payment library using the retrieved payment configuration settings.
    3. Payment package fetches payment configuration from Adyen
 2. **Guest chooses booking items**
-   1. Merchant can optionally use [**Booking Costs**](../reference/rest-api.yaml) to calculate the cost of the booking. This uses the same structure as the draft endpoint which is also the same structure as creating a booking.
+   1. Merchant can optionally use [**Booking Costs**](../reference/rest-api.yaml/paths/~1bookings~1draft~1costs/post) to calculate the cost of the booking. This uses the same structure as the draft endpoint which is also the same structure as creating a booking.
 3. **Guest proceeds to payment**
-   1. Merchant calls [**Create Draft Booking**](../reference/rest-api.yaml). The response includes a unique ID for the booking, booking costs and the payment JWT required to setup payment on the custom checkout.
+   1. Merchant calls [**Create Draft Booking**](../reference/rest-api.yaml/paths/~1bookings~1draft/post). The response includes a unique ID for the booking, booking costs and the payment JWT required to setup payment on the custom checkout.
    2. Custom checkout calls `setupPayment` on the payment library, passing in the payment JWT. Payment drop-in is rendered with a new payment session and the guest can now enter their payment details.
 4. **Guest enters payment details**
    1. The adyen drop-in component will provide status on the success of the payment which can be used to redirect the guest.
@@ -165,4 +165,4 @@ setupPayment() {
 
 ### How are payments (or refunds) processed for existing bookings?
 
-Currently, the ROLLER Payments API does not support capturing additional payments or issuing refunds for existing bookings. However, you can still record an external payment using the [**add payment**](../reference/rest-api.yaml) endpoint.
+Currently, the ROLLER Payments API does not support capturing additional payments or issuing refunds for existing bookings. However, you can still record an external payment using the [**add payment**](../reference/rest-api.yaml/paths/~1bookings~1{uniqueId}~1payments/post) endpoint.
