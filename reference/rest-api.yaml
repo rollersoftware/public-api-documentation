@@ -471,7 +471,7 @@ paths:
         Returns product information for a venue.
         > Changes in this data are not expected to change frequently. As such data must be cached and this endpoint used sparingly.
         > Detail includes when the product is offered, but calls should be made to [**get product availability**](#/paths/~1product-availability/get) to determine if there's capacity on a given day.
-      operationId: get-products
+      operationId: get-product-detail
   /products/stock:
     post:
       summary: Create stock products
@@ -598,7 +598,7 @@ paths:
       description: |-
         > Validate and reserve capacity prior to creating a booking.
         > This endpoint is used to ensure there is no double booking of capacity within ROLLER.
-      operationId: reserve-capacity
+      operationId: validate-and-reserve-capacity
   '/capacity-reservation/{uniqueId}':
     delete:
       tags:
@@ -613,7 +613,7 @@ paths:
         > Delete a capacity reservation.
         > Use this endpoint to clear out existing reserved capacity so other customers may book.
         > Capacity reservations that are not deleted will automatically expire after 10 minutes.
-      operationId: delete-capacity-reservation
+      operationId: delete-a-capacity-reservation
     parameters:
       - $ref: '#/components/parameters/uniqueId'
   /capacity-reservation/block:
@@ -668,7 +668,7 @@ paths:
                   type: string
                   description: Additional notes or reason for the block
       description: '> Block capacity for the specified resource.'
-      operationId: block-capacity
+      operationId: block-resource-capacity
     get:
       summary: Search resource capacity blocks
       tags:
@@ -682,7 +682,7 @@ paths:
                 type: array
                 items:
                   $ref: ../models/ResourceCapacityBlock.yaml
-      operationId: search-capacity-blocks
+      operationId: search-resource-capacity-blocks
       description: '> Search for existing resource capacity blocks.'
       parameters:
         - in: query
@@ -708,7 +708,7 @@ paths:
           description: Capacity block successfully deleted.
         '404':
           description: Resource capacity block not found.
-      operationId: delete-capacity-block
+      operationId: delete-resource-capacity-block
       description: '> Delete an existing resource capacity block.'
     get:
       summary: Get resource capacity block
@@ -723,7 +723,7 @@ paths:
                 $ref: ../models/ResourceCapacityBlock.yaml
         '404':
           description: Resource capacity block not found
-      operationId: get-capacity-block
+      operationId: get-resource-capacity-block
       description: '> Get an existing resource capacity block.'
   /bookings:
     post:
@@ -859,7 +859,7 @@ paths:
                     groupId: '881234'
         description: ''
       description: "Create a booking in ROLLER, and optionally add an associated payment record.\r\n\r\n> **Guest Records**\r\n> * Values provided in the `customer` object will create a **Guest** record\r\n> * This Guest record will be automatically attached to the booking as the **booking holder**\r\n> * An existing Guest record will be used where a match is found on `email`\r\n> * Where a match is found and other fields on the record are different, they will be updated to reflect the new value"
-      operationId: create-booking
+      operationId: create-a-booking
       tags:
         - Booking Management
     get:
@@ -909,7 +909,7 @@ paths:
                     type: array
                     items:
                       $ref: ../models/BookingBasicDetail.yaml
-      operationId: search-bookings
+      operationId: search-for-bookings
       tags:
         - Booking Information
   /bookings/draft/costs:
@@ -1386,7 +1386,7 @@ paths:
                   description: Unique ID of the booking to be published (provided in the Create Draft Booking response)
                   example: afb0feb2-383d-415c-bcbe-9e1644ec2598
       description: '> Publish a draft booking that does not require any payment. Only bookings which have an owing amount of 0.0 can be published this way.'
-      operationId: publish-draft-booking
+      operationId: publish-draft-booking-no-payment
       tags:
         - Booking Management
   /discounts:
@@ -1769,7 +1769,7 @@ paths:
                               maxLength: 50
         description: ''
       description: '> Update booking details or add/remove items from a booking.'
-      operationId: update-booking
+      operationId: update-a-booking
       tags:
         - Booking Management
     delete:
@@ -1778,7 +1778,7 @@ paths:
         '200':
           description: Deleted successfully
       description: "Delete a booking, along with all associated transaction records.\r\n\r\n> * You can only delete bookings you've made via the API\r\n> * You can only delete future bookings\r\n> * Cancelled bookings cannot be deleted\r\n> * All records of the booking will be deleted from all ROLLER reports"
-      operationId: delete-booking
+      operationId: delete-a-booking
       tags:
         - Booking Management
       requestBody:
@@ -1802,7 +1802,7 @@ paths:
                 $ref: ../models/BookingDetail.yaml
         '404':
           description: Booking not found
-      operationId: get-booking
+      operationId: get-booking-detail
       tags:
         - Booking Information
     parameters:
@@ -1865,7 +1865,7 @@ paths:
         > * Cancelled bookings will still be visible in some pages in VM
         > * Any associated payment records will still be present for cancelled bookings
         > * Refunds must be processed externally of ROLLER - Only a record of the refund can be added via API.
-      operationId: cancel-booking
+      operationId: cancel-a-booking
       tags:
         - Booking Management
     parameters:
@@ -1950,7 +1950,7 @@ paths:
                   type: string
                   description: Optionally provide the transaction datetime in UTC - generally used when re-creating bookings and needing to retain the original datetime
                   example: '2020-07-29T06:57:18.5326035+00:00'
-      operationId: create-transaction
+      operationId: add-transaction-record
       tags:
         - Transaction
     parameters:
