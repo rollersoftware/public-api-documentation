@@ -1,0 +1,55 @@
+# ROLLER API Spectral ruleset — self-contained: no token, no network.
+# Rebuilt from .stoplight/styleguide*.json after the hosted, token-bearing
+# ruleset URL in the old .spectral.mjs went dead (404, project prj:314216).
+#
+# The style guide inherited Stoplight's OpenAPI template, whose linting rules
+# are core spectral:oas (bundled in Spectral — needs no token or network), plus
+# the two ROLLER-specific rules reproduced verbatim below. Severities follow
+# spectral:oas defaults, which match the style guide.
+extends:
+  - spectral:oas
+aliases:
+  Custom-Examples:
+    targets:
+      - formats: [oas3]
+        given:
+          - "$.paths.*.*.responses.*.content.*.schema.properties.*"
+      - formats: [oas3]
+        given:
+          - "$.paths.*.*.responses.*.content.*.schema.properties.*.items.properties.*"
+      - formats: [oas3]
+        given:
+          - "$.paths.*.*.parameters.*.schema"
+  Custom-Descriptions:
+    targets:
+      - formats: [oas3]
+        given:
+          - "$.paths.*.*.parameters.*"
+      - formats: [oas3]
+        given:
+          - "$.paths.*.*.responses.*.content.*.schema.properties.*"
+      - formats: [oas3]
+        given:
+          - "$.paths.*.*.responses.*.content.*.schema.properties.*.items.properties.*"
+rules:
+  # Disabled: triggers a Spectral/nimma crash ("Cannot read properties of null
+  # (reading 'enum')") during recursive descent over any null node in a document
+  # (e.g. an example value of null). Re-enable once the upstream bug is fixed.
+  duplicated-entry-in-enum: "off"
+  # Two ROLLER-specific rules (hint-level), preserved verbatim from the style guide.
+  description-missing:
+    given:
+      - "#Custom-Descriptions"
+    severity: "hint"
+    then:
+      function: truthy
+      field: description
+    message: "Description missing for {{path}}"
+  example-missing:
+    given:
+      - "#Custom-Examples"
+    severity: "hint"
+    then:
+      function: truthy
+      field: example
+    message: "Example missing for {{path}}"
