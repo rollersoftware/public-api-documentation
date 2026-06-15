@@ -21,7 +21,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - New [**Get NetSuite settings**](https://docs.roller.app/docs/api/rest/operations/get-netsuite-settings) and [**Update NetSuite settings**](https://docs.roller.app/docs/api/rest/operations/update-netsuite-settings) endpoints to manage NetSuite integration settings for a venue: `locationId` (maps the ROLLER venue to a NetSuite location for consolidated reporting) and `exportId` (prefix for NetSuite export row IDs) (REST API).
 - [**Get product availability calendar**](https://docs.roller.app/docs/api/rest/operations/get-product-availability-calendar) endpoint (`GET /product-availability/calendar`) to retrieve the availability status for each day in a given month for a single product. Designed for date picker and calendar UIs in third-party checkouts (REST API).
-- **Booking metadata** — User-defined key-value pairs can now be stored against bookings. The `metadata` property is supported on [**Create booking**](https://docs.roller.app/docs/api/rest/operations/create-booking), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), and [**Update booking**](https://docs.roller.app/docs/api/rest/operations/update-booking) (with merge semantics). The field is returned in [**Get booking**](https://docs.roller.app/docs/api/rest/operations/get-booking) responses and can be opted into via the [**booking webhook**](booking-webhook.md) `include.metadata` flag (REST API).
+- **Booking metadata** — User-defined key-value pairs can now be stored against bookings. The `metadata` property is supported on [**Create booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), and [**Update booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking) (with merge semantics). The field is returned in [**Get booking**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) responses and can be opted into via the [**booking webhook**](booking-webhook.md) `include.metadata` flag (REST API).
 - **Booking webhook event channel filter** — A new `eventChannels` filter can be added to [**booking webhook**](booking-webhook.md) subscriptions to filter events by the application that triggered them (e.g. only fire when a booking is updated from POS). Unlike the existing `channels` filter — which filters on where the booking was *created* — `eventChannels` filters on what application performed the specific action. Backwards compatible: existing subscriptions without this filter continue to receive events from all channels (REST API).
 
 ---
@@ -34,7 +34,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ### Changed
 
-- Added the ability to filter by `productType` and `productSubType` to [**Get products**](https://docs.roller.app/docs/api/reporting/operations/get-products) (Reporting API) and [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-products) (REST API).
+- Added the ability to filter by `productType` and `productSubType` to [**Get products**](https://docs.roller.app/docs/api/reporting/operations/get-products) (Reporting API) and [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) (REST API).
 
 ---
 
@@ -64,7 +64,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ### Added
 
-- `automaticCancelHours` property to [**Create booking**](https://docs.roller.app/docs/api/rest/operations/create-booking) (REST API).
+- `automaticCancelHours` property to [**Create booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking) (REST API).
 
 ---
 
@@ -73,7 +73,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 ### Added
 
 - `operatorName` property to [**Get POS till reconciliations**](https://docs.roller.app/docs/api/reporting/operations/get-pos-till-reconciliations) (Reporting API).
-- A list of booking `payments` to [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking), and as an available inclusion for [**booking webhooks**](booking-webhook.md) (REST API).
+- A list of booking `payments` to [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail), and as an available inclusion for [**booking webhooks**](booking-webhook.md) (REST API).
 
 ---
 
@@ -81,7 +81,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ### Added
 
-- `acceptMarketingSms` property to [**Get customers**](https://docs.roller.app/docs/api/reporting/operations/get-customers) (Reporting API), and to [**Create a booking**](https://docs.roller.app/docs/api/rest/operations/create-booking), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), [**Get guest detail**](https://docs.roller.app/docs/api/rest/operations/get-guest-detail), and [**Update guest detail**](https://docs.roller.app/docs/api/rest/operations/update-guest-detail) (REST API).
+- `acceptMarketingSms` property to [**Get customers**](https://docs.roller.app/docs/api/reporting/operations/get-customers) (Reporting API), and to [**Create a booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), [**Get guest detail**](https://docs.roller.app/docs/api/rest/operations/get-guest-detail), and [**Update guest detail**](https://docs.roller.app/docs/api/rest/operations/update-guest-detail) (REST API).
 
 ---
 
@@ -103,7 +103,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ### Added
 
-- `taxIdentificationNumber` property to [**Get guest detail**](https://docs.roller.app/docs/api/rest/operations/get-guest-detail), [**Update guest detail**](https://docs.roller.app/docs/api/rest/operations/update-guest-detail), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), and [**Create booking**](https://docs.roller.app/docs/api/rest/operations/create-booking) (REST API), and to [**Get customers**](https://docs.roller.app/docs/api/reporting/operations/get-customers) (Reporting API).
+- `taxIdentificationNumber` property to [**Get guest detail**](https://docs.roller.app/docs/api/rest/operations/get-guest-detail), [**Update guest detail**](https://docs.roller.app/docs/api/rest/operations/update-guest-detail), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), and [**Create booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking) (REST API), and to [**Get customers**](https://docs.roller.app/docs/api/reporting/operations/get-customers) (Reporting API).
 
 ---
 
@@ -128,10 +128,10 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ### Added
 
-- `quantity` property to [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking) (REST API).
+- `quantity` property to [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) (REST API).
 - `manualGiftCardAdjustment` property to [**Get revenue entries**](https://docs.roller.app/docs/api/reporting/operations/get-revenue-entries) to surface manual gift card adjustments (Reporting API).
 - `taxes` property to [**Get venue detail**](https://docs.roller.app/docs/api/rest/operations/get-venue-detail) to return a list of tax rates defined for the venue (REST API).
-- `price`, `taxId`, `barcodeId`, `costOfGoods`, and `parLevel` properties to [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-products) (REST API).
+- `price`, `taxId`, `barcodeId`, `costOfGoods`, and `parLevel` properties to [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) (REST API).
 - `price`, `taxId`, `barcodeId`, `costOfGoods`, and `parLevel` properties to [**Get products**](https://docs.roller.app/docs/api/reporting/operations/get-products) (Reporting API).
 
 ---
@@ -140,7 +140,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ### Fixed
 
-- Issue where [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking) did not return discounts at the booking item level (REST API).
+- Issue where [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) did not return discounts at the booking item level (REST API).
 - Issue where [**Get reporting categories**](https://docs.roller.app/docs/api/reporting/operations/get-reporting-categories) did not return all product IDs when using HQ reporting category syncs (Reporting API).
 
 ---
@@ -149,7 +149,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ### Added
 
-- Ability to update ticket `name` via the [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-booking) endpoint (REST API).
+- Ability to update ticket `name` via the [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking) endpoint (REST API).
 - [**Update guest detail**](https://docs.roller.app/docs/api/rest/operations/update-guest-detail) endpoint (REST API).
 - Ability to backfill historical data over multiple days via the [**Bulk Export API**](bulk-exports-overview.md):
   - [**Bulk export request**](https://docs.roller.app/docs/api/reporting/operations/bulk-data-export-request) for requesting asynchronous data downloads via the bulk export webhook.
@@ -189,7 +189,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ### Fixed
 
-- Issue where the `cost` field returned by [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking) sometimes returned an empty value (REST API).
+- Issue where the `cost` field returned by [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) sometimes returned an empty value (REST API).
 
 ---
 
@@ -200,15 +200,15 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - Ability to validate ticket redemptions by the time they were redeemed, using existing redemption devices configured in Venue Manager (REST API):
   - `redemptionDevice` property to [**Redeem tickets**](https://docs.roller.app/docs/api/rest/operations/redeem-tickets) (REST API).
 - Ability to manage blocked capacity (REST API):
-  - [**Search blocked capacity**](https://docs.roller.app/docs/api/rest/operations/search-capacity-blocks) (REST API).
-  - [**Get blocked capacity**](https://docs.roller.app/docs/api/rest/operations/get-capacity-block) (REST API).
-  - [**Block capacity**](https://docs.roller.app/docs/api/rest/operations/block-capacity) (REST API).
-  - [**Delete blocked capacity**](https://docs.roller.app/docs/api/rest/operations/delete-capacity-block) (REST API).
+  - [**Search blocked capacity**](https://docs.roller.app/docs/api/rest/operations/search-resource-capacity-blocks) (REST API).
+  - [**Get blocked capacity**](https://docs.roller.app/docs/api/rest/operations/get-resource-capacity-block) (REST API).
+  - [**Block capacity**](https://docs.roller.app/docs/api/rest/operations/block-resource-capacity) (REST API).
+  - [**Delete blocked capacity**](https://docs.roller.app/docs/api/rest/operations/delete-resource-capacity-block) (REST API).
 - Guest `flags` to [**Get customers**](https://docs.roller.app/docs/api/reporting/operations/get-customers) (Reporting API).
 - Guest `flags` to [**Get customer detail**](https://docs.roller.app/docs/api/rest/operations/get-customer-detail) (REST API).
 - `BookingUniqueId`, `meta`: { `ExternalBookingId` }, `bookingName`, `bookingPosNotes`, `bookingTotal`, `bookingFeeAmount`, and `bookingEndDate` properties to [**Get bookings**](https://docs.roller.app/docs/api/reporting/operations/get-bookings) (Reporting API).
-- `bookingEndDate` and `customTicketId` properties to [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-booking) (REST API).
-- `posNotes` property to [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking) (REST API).
+- `bookingEndDate` and `customTicketId` properties to [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking) (REST API).
+- `posNotes` property to [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) (REST API).
 - `deviceId` property to the [**redemption webhook**](redemption-webhook.md) payload (REST API).
 
 ---
