@@ -155,7 +155,7 @@ paths:
           description: 'The month to retrieve availability for, in `YYYY-MM` format'
           schema:
             type: string
-            example: '2026-07'
+            example: 2026-07
       responses:
         '200':
           description: Successful
@@ -850,8 +850,7 @@ paths:
                   description: 'The number of hours until the booking will auto-expire, used to create a tentative booking. Leave empty if unused. '
                 metadata:
                   type: object
-                  description: |-
-                    User-defined key-value pairs to store against the booking. Supports up to 20 entries. Keys are case-sensitive strings (max 40 characters). Values are strings (max 500 characters, HTML stripped on write).
+                  description: 'User-defined key-value pairs to store against the booking. Supports up to 20 entries. Keys are case-sensitive strings (max 40 characters). Values are strings (max 500 characters, HTML stripped on write).'
                   additionalProperties:
                     type: string
                   example:
@@ -1326,8 +1325,7 @@ paths:
                   description: When true fees setup in ROLLER are applied. Please note if manual `creditCardFees` are provided in the request it will override all fees setup in ROLLER.
                 metadata:
                   type: object
-                  description: |-
-                    User-defined key-value pairs to store against the booking. Supports up to 20 entries. Keys are case-sensitive strings (max 40 characters). Values are strings (max 500 characters, HTML stripped on write).
+                  description: 'User-defined key-value pairs to store against the booking. Supports up to 20 entries. Keys are case-sensitive strings (max 40 characters). Values are strings (max 500 characters, HTML stripped on write).'
                   additionalProperties:
                     type: string
                   example:
@@ -1661,8 +1659,7 @@ paths:
                   maxLength: 500
                 metadata:
                   type: object
-                  description: |-
-                    User-defined key-value pairs to update on the booking. Uses merge semantics — keys present in this object are set or updated, keys absent from the object are left unchanged. Set a key's value to `null` to remove it. Supports up to 20 entries. Keys are case-sensitive strings (max 40 characters). Values are strings (max 500 characters, HTML stripped on write).
+                  description: 'User-defined key-value pairs to update on the booking. Uses merge semantics — keys present in this object are set or updated, keys absent from the object are left unchanged. Set a key''s value to `null` to remove it. Supports up to 20 entries. Keys are case-sensitive strings (max 40 characters). Values are strings (max 500 characters, HTML stripped on write).'
                   additionalProperties:
                     type:
                       - string
@@ -2454,6 +2451,7 @@ paths:
       operationId: get-netsuite-settings
       x-stoplight:
         id: 2s4y3w6nppfgh
+      description: Retrieve the NetSuite configuration fields available for this venue.
     put:
       summary: Update NetSuite Settings
       tags:
@@ -2469,6 +2467,7 @@ paths:
           application/json:
             schema:
               $ref: ../models/NetSuiteSettings.yaml
+      description: Update the NetSuite configuration fields available for this venue.
   /staff:
     post:
       summary: Create staff
