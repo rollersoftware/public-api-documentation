@@ -197,7 +197,8 @@
     {
       "type": "item",
       "title": "Creating Webhooks",
-      "uri": "/docs/creating-webhooks.md"
+      "uri": "/docs/creating-webhooks.md",
+      "slug": "creating-webhooks"
     },
     {
       "type": "group",

@@ -4,7 +4,7 @@ stoplight-id: 6e4snhv85tuk2
 
 # Product Type Mapping
 
-The `ProductType` and `ProductSubType` properties (for example, those returned via [**Get products**](../reference/reporting-api.yaml)) correspond to a type of product in ROLLER. The table below maps the property values to expect for each corresponding ROLLER product type.
+The `ProductType` and `ProductSubType` properties (for example, those returned via [**Get products**](../reference/reporting-api.yaml/paths/~1data~1products/get)) correspond to a type of product in ROLLER. The table below maps the property values to expect for each corresponding ROLLER product type.
 
 | ROLLER product | ProductType | ProductSubType |
 |---|---|---|
