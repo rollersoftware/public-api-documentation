@@ -8,17 +8,20 @@
     {
       "type": "item",
       "title": "Overview",
-      "uri": "/docs/overview.md"
+      "uri": "/docs/overview.md",
+      "slug": "overview"
     },
     {
       "type": "item",
       "title": "Getting API Access",
-      "uri": "/docs/getting-api-access.md"
+      "uri": "/docs/getting-api-access.md",
+      "slug": "getting-api-access"
     },
     {
       "type": "item",
       "title": "Authentication",
-      "uri": "/docs/authentication.md"
+      "uri": "/docs/authentication.md",
+      "slug": "authentication"
     },
     {
       "type": "item",
@@ -38,12 +41,14 @@
     {
       "type": "item",
       "title": "Postman Collection",
-      "uri": "/docs/postman-collection.md"
+      "uri": "/docs/postman-collection.md",
+      "slug": "postman-collection"
     },
     {
       "type": "item",
       "title": "Changelog",
-      "uri": "/docs/changelog.md"
+      "uri": "/docs/changelog.md",
+      "slug": "changelog"
     },
     {
       "type": "divider",
@@ -52,7 +57,8 @@
     {
       "type": "item",
       "title": "REST API Reference",
-      "uri": "/reference/rest-api.yaml"
+      "uri": "/reference/rest-api.yaml",
+      "slug": "rest"
     },
     {
       "type": "group",
@@ -61,52 +67,62 @@
         {
           "type": "item",
           "title": "BookingDetail",
-          "uri": "/models/BookingDetail.yaml"
+          "uri": "/models/BookingDetail.yaml",
+          "slug": "booking-detail"
         },
         {
           "type": "item",
           "title": "CustomerDetail",
-          "uri": "/models/CustomerDetail.yaml"
+          "uri": "/models/CustomerDetail.yaml",
+          "slug": "customer-detail"
         },
         {
           "type": "item",
           "title": "RedemptionDetail",
-          "uri": "/models/RedemptionDetail.yaml"
+          "uri": "/models/RedemptionDetail.yaml",
+          "slug": "redemption-detail"
         },
         {
           "type": "item",
           "title": "SignedWaivers",
-          "uri": "/models/SignedWaivers.yaml"
+          "uri": "/models/SignedWaivers.yaml",
+          "slug": "signed-waivers"
         },
         {
           "type": "item",
           "title": "PaymentLink",
-          "uri": "/models/PaymentLink.yaml"
+          "uri": "/models/PaymentLink.yaml",
+          "slug": "payment-link"
         },
         {
           "type": "item",
           "title": "MembershipDetail",
-          "uri": "/models/MembershipDetail.yaml"
+          "uri": "/models/MembershipDetail.yaml",
+          "slug": "membership-detail"
         },
         {
           "type": "item",
           "title": "CustomerFlag",
-          "uri": "/models/CustomerFlag.yaml"
+          "uri": "/models/CustomerFlag.yaml",
+          "slug": "customer-flag"
         },
         {
           "type": "item",
           "title": "MultiPass",
-          "uri": "/models/MultiPass.yaml"
+          "uri": "/models/MultiPass.yaml",
+          "slug": "multi-pass"
         },
         {
           "type": "item",
           "title": "StaffRequest",
-          "uri": "/models/StaffRequest.yaml"
+          "uri": "/models/StaffRequest.yaml",
+          "slug": "staff-request"
         },
         {
           "type": "item",
           "title": "StaffResponse",
-          "uri": "/models/StaffResponse.yaml"
+          "uri": "/models/StaffResponse.yaml",
+          "slug": "staff-response"
         }
       ]
     },
@@ -132,7 +148,8 @@
     {
       "type": "item",
       "title": "Reporting API Reference",
-      "uri": "/reference/reporting-api.yaml"
+      "uri": "/reference/reporting-api.yaml",
+      "slug": "reporting"
     },
     {
       "type": "group",
@@ -141,12 +158,14 @@
         {
           "type": "item",
           "title": "Page",
-          "uri": "/models/Page.yaml"
+          "uri": "/models/Page.yaml",
+          "slug": "page"
         },
         {
           "type": "item",
           "title": "Staff",
-          "uri": "/models/Staff.yaml"
+          "uri": "/models/Staff.yaml",
+          "slug": "staff"
         }
       ]
     },
@@ -172,7 +191,8 @@
     {
       "type": "item",
       "title": "Webhooks Overview",
-      "uri": "/docs/webhooks-overview.md"
+      "uri": "/docs/webhooks-overview.md",
+      "slug": "webhooks-overview"
     },
     {
       "type": "item",
@@ -186,12 +206,14 @@
         {
           "type": "item",
           "title": "WebhookMessageDefinition",
-          "uri": "/models/WebhookMessageDefinition.yaml"
+          "uri": "/models/WebhookMessageDefinition.yaml",
+          "slug": "webhook-message-definition"
         },
         {
           "type": "item",
           "title": "BulkDataExportCompleted",
-          "uri": "/models/BulkDataExportCompleted.yaml"
+          "uri": "/models/BulkDataExportCompleted.yaml",
+          "slug": "bulk-data-export-completed"
         }
       ]
     },

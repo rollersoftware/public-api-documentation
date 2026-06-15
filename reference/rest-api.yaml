@@ -1,4 +1,4 @@
-# Stoplight published URL: https://docs.roller.app/docs/api/64548cf9032b4-rest-api
+# Stoplight published URL: https://docs.roller.app/docs/api/rest
 openapi: 3.1.0
 info:
   title: REST API
@@ -128,7 +128,7 @@ paths:
                       maxLength: 75
                       example: Season Pass
                       deprecated: true
-      operationId: getProductAvailability
+      operationId: get-product-availability
   /product-availability/calendar:
     get:
       tags:
@@ -140,7 +140,7 @@ paths:
         Once the guest has selected a date, call [**Get product availability**](#/paths/~1product-availability/get) to retrieve session-level detail and capacity for that date.
 
         > Response data is cached for 1 minute and is invalidated when a new booking is created.
-      operationId: getProductAvailabilityCalendar
+      operationId: get-product-availability-calendar
       parameters:
         - name: productId
           in: query
@@ -471,7 +471,7 @@ paths:
         Returns product information for a venue.
         > Changes in this data are not expected to change frequently. As such data must be cached and this endpoint used sparingly.
         > Detail includes when the product is offered, but calls should be made to [**get product availability**](#/paths/~1product-availability/get) to determine if there's capacity on a given day.
-      operationId: getProducts
+      operationId: get-products
   /products/stock:
     post:
       summary: Create stock products
@@ -484,7 +484,7 @@ paths:
             application/json:
               schema:
                 $ref: ../models/UpdateProductStock.yaml
-      operationId: createStockProducts
+      operationId: create-stock-products
       requestBody:
         content:
           application/json:
@@ -502,7 +502,7 @@ paths:
             application/json:
               schema:
                 $ref: ../models/UpdateProductStock.yaml
-      operationId: updateStockProducts
+      operationId: update-stock-products
       requestBody:
         content:
           application/json:
@@ -521,7 +521,7 @@ paths:
             application/json:
               schema:
                 $ref: ../models/UpdateProductStock.yaml
-      operationId: updateStockQuantity
+      operationId: update-stock-quantity
       requestBody:
         content:
           application/json:
@@ -598,7 +598,7 @@ paths:
       description: |-
         > Validate and reserve capacity prior to creating a booking.
         > This endpoint is used to ensure there is no double booking of capacity within ROLLER.
-      operationId: reserveCapacity
+      operationId: reserve-capacity
   '/capacity-reservation/{uniqueId}':
     delete:
       tags:
@@ -613,7 +613,7 @@ paths:
         > Delete a capacity reservation.
         > Use this endpoint to clear out existing reserved capacity so other customers may book.
         > Capacity reservations that are not deleted will automatically expire after 10 minutes.
-      operationId: deleteCapacityReservation
+      operationId: delete-capacity-reservation
     parameters:
       - $ref: '#/components/parameters/uniqueId'
   /capacity-reservation/block:
@@ -668,7 +668,7 @@ paths:
                   type: string
                   description: Additional notes or reason for the block
       description: '> Block capacity for the specified resource.'
-      operationId: blockCapacity
+      operationId: block-capacity
     get:
       summary: Search resource capacity blocks
       tags:
@@ -682,7 +682,7 @@ paths:
                 type: array
                 items:
                   $ref: ../models/ResourceCapacityBlock.yaml
-      operationId: searchCapacityBlocks
+      operationId: search-capacity-blocks
       description: '> Search for existing resource capacity blocks.'
       parameters:
         - in: query
@@ -708,7 +708,7 @@ paths:
           description: Capacity block successfully deleted.
         '404':
           description: Resource capacity block not found.
-      operationId: deleteCapacityBlock
+      operationId: delete-capacity-block
       description: '> Delete an existing resource capacity block.'
     get:
       summary: Get resource capacity block
@@ -723,7 +723,7 @@ paths:
                 $ref: ../models/ResourceCapacityBlock.yaml
         '404':
           description: Resource capacity block not found
-      operationId: getCapacityBlock
+      operationId: get-capacity-block
       description: '> Get an existing resource capacity block.'
   /bookings:
     post:
@@ -859,7 +859,7 @@ paths:
                     groupId: '881234'
         description: ''
       description: "Create a booking in ROLLER, and optionally add an associated payment record.\r\n\r\n> **Guest Records**\r\n> * Values provided in the `customer` object will create a **Guest** record\r\n> * This Guest record will be automatically attached to the booking as the **booking holder**\r\n> * An existing Guest record will be used where a match is found on `email`\r\n> * Where a match is found and other fields on the record are different, they will be updated to reflect the new value"
-      operationId: createBooking
+      operationId: create-booking
       tags:
         - Booking Management
     get:
@@ -909,7 +909,7 @@ paths:
                     type: array
                     items:
                       $ref: ../models/BookingBasicDetail.yaml
-      operationId: searchBookings
+      operationId: search-bookings
       tags:
         - Booking Information
   /bookings/draft/costs:
@@ -1148,7 +1148,7 @@ paths:
                   default: false
         description: ''
       description: '> Provide a draft booking request and receive associated booking cost information. This will not actually create a draft booking, only provide relevant booking costs.'
-      operationId: getBookingCosts
+      operationId: get-booking-costs
       tags:
         - Transaction
   /bookings/draft:
@@ -1335,7 +1335,7 @@ paths:
                     groupId: '881234'
         description: ''
       description: '> Create a draft booking with discounts and gift card payments, then receive back the associated booking cost information and a secure payment JSON Web Token to process payment'
-      operationId: createDraftBooking
+      operationId: create-draft-booking
       tags:
         - Booking Management
   /bookings/draft/publish:
@@ -1386,7 +1386,7 @@ paths:
                   description: Unique ID of the booking to be published (provided in the Create Draft Booking response)
                   example: afb0feb2-383d-415c-bcbe-9e1644ec2598
       description: '> Publish a draft booking that does not require any payment. Only bookings which have an owing amount of 0.0 can be published this way.'
-      operationId: publishDraftBooking
+      operationId: publish-draft-booking
       tags:
         - Booking Management
   /discounts:
@@ -1410,7 +1410,7 @@ paths:
                     type: integer
                     example: 266
                     description: Unique ID of a discount configuration
-      operationId: createDiscount
+      operationId: create-discount
       tags:
         - Discount
   '/discounts/{discountId}':
@@ -1424,7 +1424,7 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Discount.yaml
-      operationId: getDiscount
+      operationId: get-discount
       tags:
         - Discount
     put:
@@ -1438,7 +1438,7 @@ paths:
       responses:
         '200':
           description: Successful response
-      operationId: updateDiscount
+      operationId: update-discount
       tags:
         - Discount
     parameters:
@@ -1465,7 +1465,7 @@ paths:
       responses:
         '200':
           description: Successful response
-      operationId: createDiscountCodes
+      operationId: create-discount-codes
       tags:
         - Discount
     delete:
@@ -1487,7 +1487,7 @@ paths:
                   description: List of codes to delete from the discount.
                   items:
                     type: string
-      operationId: deleteDiscountCodes
+      operationId: delete-discount-codes
       tags:
         - Discount
     parameters:
@@ -1613,7 +1613,7 @@ paths:
 
         > Validate whether a discount code is valid and the value of that discount against products in ROLLER.
         > You can send a request with multiple products, quantities and discount codes, and you will receive the specific discounted amounts against each item, as well as the booking totals
-      operationId: validateDiscountCodes
+      operationId: validate-discount-codes
       deprecated: true
       tags:
         - Discount
@@ -1769,7 +1769,7 @@ paths:
                               maxLength: 50
         description: ''
       description: '> Update booking details or add/remove items from a booking.'
-      operationId: updateBooking
+      operationId: update-booking
       tags:
         - Booking Management
     delete:
@@ -1778,7 +1778,7 @@ paths:
         '200':
           description: Deleted successfully
       description: "Delete a booking, along with all associated transaction records.\r\n\r\n> * You can only delete bookings you've made via the API\r\n> * You can only delete future bookings\r\n> * Cancelled bookings cannot be deleted\r\n> * All records of the booking will be deleted from all ROLLER reports"
-      operationId: deleteBooking
+      operationId: delete-booking
       tags:
         - Booking Management
       requestBody:
@@ -1802,7 +1802,7 @@ paths:
                 $ref: ../models/BookingDetail.yaml
         '404':
           description: Booking not found
-      operationId: getBooking
+      operationId: get-booking
       tags:
         - Booking Information
     parameters:
@@ -1865,7 +1865,7 @@ paths:
         > * Cancelled bookings will still be visible in some pages in VM
         > * Any associated payment records will still be present for cancelled bookings
         > * Refunds must be processed externally of ROLLER - Only a record of the refund can be added via API.
-      operationId: cancelBooking
+      operationId: cancel-booking
       tags:
         - Booking Management
     parameters:
@@ -1950,7 +1950,7 @@ paths:
                   type: string
                   description: Optionally provide the transaction datetime in UTC - generally used when re-creating bookings and needing to retain the original datetime
                   example: '2020-07-29T06:57:18.5326035+00:00'
-      operationId: createTransaction
+      operationId: create-transaction
       tags:
         - Transaction
     parameters:
@@ -2003,7 +2003,7 @@ paths:
                   type: string
                   description: Recipient phone (Not required if `email` is provided)
                   example: '0497911898'
-      operationId: createPaymentLink
+      operationId: create-payment-link
       tags:
         - Transaction
       x-internal: false
@@ -2024,7 +2024,7 @@ paths:
           description: Not Found - No booking/payment link found for `uniqueIdentifier`/`paymentLinkId`
         '409':
           description: 'Conflict - "Payment link `{`paymentLinkId`}` does not belong to booking `uniqueIdentifier`'
-      operationId: cancelPaymentLink
+      operationId: cancel-payment-link
       description: 'Cancel a payment link so it can no longer be used to take payment against the booking. '
   '/customers/{customerId}':
     get:
@@ -2039,7 +2039,7 @@ paths:
         '404':
           description: Not Found - Customer does not exist
       description: "<!-- theme: warning-->\r\n\r\n> #### This endpoint is being deprecated\r\n> `Customer` as a name/object has been renamed to `Guest`.\r\n> \r\n> Please use the [**get guest detail endpoint**](#/paths/~1guests~1{guestId}/get) to retrieve customer detail instead.\r\n\r\n\r\nThis endpoint returns details of a customer."
-      operationId: getCustomerDetail
+      operationId: get-customer-detail
       deprecated: true
       tags:
         - Guest
@@ -2060,7 +2060,7 @@ paths:
         '404':
           description: Not Found - Guest does not exist
       description: Get a list of guest multi-pass balances including expiry and exhaustion status.
-      operationId: getGuestMultiPasses
+      operationId: get-guest-multi-passes
       tags:
         - Guest
     parameters:
@@ -2079,7 +2079,7 @@ paths:
                 $ref: ../models/Guest.yaml
         '404':
           description: Not Found - Guest does not exist
-      operationId: getGuestDetail
+      operationId: get-guest-detail
       description: Returns details of a guest.
     parameters:
       - $ref: '#/components/parameters/guestId'
@@ -2090,7 +2090,7 @@ paths:
       responses:
         '200':
           description: OK
-      operationId: updateGuestDetail
+      operationId: update-guest-detail
       requestBody:
         content:
           application/json:
@@ -2126,7 +2126,7 @@ paths:
                     expiryDate: '2026-07-14T03:43:40.4085882Z'
                     isValid: true
                     createdDate: '2020-07-31T03:43:40.4085882Z'
-      operationId: getSignedWaiver
+      operationId: get-signed-waiver
       description: Retrieve a waiver signed by a guest
   /redemptions:
     post:
@@ -2187,7 +2187,7 @@ paths:
                   type: string
                   description: 'The name of the device where the ticket is being redeemed. Includes redemption devices, POS, MCI and SSK devices.'
       description: "> Redeem tickets in ROLLER\r\n\r\n* There is a maximum of 10 ticket redemptions per call\r\n* Redeemed Ticket IDs must be unique per call\r\n* Only the following products are supported for redemption via API:\r\n  * Standard Passes\r\n  * Session Passes\r\n  * Recurring Sessions\r\n  * Memberships (the booking item, not the membership discount) "
-      operationId: redeemTickets
+      operationId: redeem-tickets
   /webhooks:
     post:
       tags:
@@ -2218,8 +2218,8 @@ paths:
             schema:
               $ref: ../models/CreateWebhookConfiguration.yaml
             examples: {}
-      description: "Create a webhook.\r\n\r\nFor more information see [**Webhooks Overview**](https://docs.roller.app/docs/webhooks/fz6hj1zplosiu).\r\n\r\n>Note:\r\n> - `enabled` must be set to `true` to make the webhook active\r\n> - The `events` object is only required for at least **one** webhook type. "
-      operationId: createWebhook
+      description: "Create a webhook.\r\n\r\nFor more information see [**Webhooks Overview**](https://docs.roller.app/docs/api/webhooks-overview).\r\n\r\n>Note:\r\n> - `enabled` must be set to `true` to make the webhook active\r\n> - The `events` object is only required for at least **one** webhook type. "
+      operationId: create-webhook
     get:
       tags:
         - Webhooks
@@ -2242,8 +2242,8 @@ paths:
                     description: Date the webhook was created
                   configuration:
                     $ref: ../models/WebhookConfiguration.yaml
-      description: "Get information about existing webhooks.\r\n\r\nFor more information see [**Webhooks Overview**](https://docs.roller.app/docs/webhooks/fz6hj1zplosiu)."
-      operationId: getWebhooks
+      description: "Get information about existing webhooks.\r\n\r\nFor more information see [**Webhooks Overview**](https://docs.roller.app/docs/api/webhooks-overview)."
+      operationId: get-webhooks
   '/webhooks/{webhookId}':
     put:
       summary: Update webhook
@@ -2252,8 +2252,8 @@ paths:
       responses:
         '200':
           description: OK
-      operationId: updateWebhook
-      description: "Updates an existing webhook.\r\n\r\nFor more information see [**Webhooks Overview**](https://docs.roller.app/docs/webhooks/fz6hj1zplosiu)."
+      operationId: update-webhook
+      description: "Updates an existing webhook.\r\n\r\nFor more information see [**Webhooks Overview**](https://docs.roller.app/docs/api/webhooks-overview)."
       requestBody:
         content:
           application/json:
@@ -2306,8 +2306,8 @@ paths:
       responses:
         '200':
           description: Webhook deleted
-      description: "Delete an existing webhook.\r\n\r\nFor more information see [**Webhooks Overview**](https://docs.roller.app/docs/webhooks/fz6hj1zplosiu)."
-      operationId: deleteWebhook
+      description: "Delete an existing webhook.\r\n\r\nFor more information see [**Webhooks Overview**](https://docs.roller.app/docs/api/webhooks-overview)."
+      operationId: delete-webhook
     parameters:
       - $ref: '#/components/parameters/webhookId'
   /venues/me:
@@ -2438,7 +2438,7 @@ paths:
                           items:
                             type: string
                             format: uuid
-      operationId: getVenueDetail
+      operationId: get-venue-detail
   /netsuite-settings:
     get:
       summary: Get NetSuite Settings
@@ -2461,7 +2461,7 @@ paths:
       responses:
         '200':
           description: OK
-      operationId: put-netsuite-settings
+      operationId: update-netsuite-settings
       x-stoplight:
         id: nz5lwfjddm03o
       requestBody:
@@ -2645,7 +2645,7 @@ components:
   securitySchemes:
     OAuth2:
       type: oauth2
-      description: 'See [**authentication**](https://docs.roller.app/docs/public-api-documentation/501c2cc6476da-authentication).'
+      description: 'See [**authentication**](https://docs.roller.app/docs/api/authentication).'
       flows:
         clientCredentials:
           tokenUrl: 'https://api.roller.app/token'

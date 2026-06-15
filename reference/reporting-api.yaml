@@ -1,4 +1,4 @@
-# Stoplight published URL: https://docs.roller.app/docs/api/1524dfc060aaf-reporting-api
+# Stoplight published URL: https://docs.roller.app/docs/api/reporting
 openapi: 3.1.0
 info:
   title: Reporting API
@@ -298,7 +298,7 @@ paths:
                     barcodeId: '0019927711'
                     deviceId: '2810'
                     cost: 29.95
-      operationId: getBookings
+      operationId: get-bookings
   /data/tickets:
     get:
       tags:
@@ -430,7 +430,7 @@ paths:
                       - '9178'
                     numberOfRecurringPayments: 4
                     recurringPaymentFrequency: Monthly
-      operationId: getTickets
+      operationId: get-tickets
   /data/bookingpayments:
     get:
       tags:
@@ -544,7 +544,7 @@ paths:
                     authorizingStaffId: '2293'
                     deviceId: '910293'
                     paymentMethod: Cash
-      operationId: getPayments
+      operationId: get-payments
   /data/tillreconciliations:
     get:
       tags:
@@ -663,7 +663,7 @@ paths:
                     expectedCashBalance: 850
                     actualCashBalance: 860.5
                     cashVariance: 10.5
-      operationId: getPosTillReconciliations
+      operationId: get-pos-till-reconciliations
   /data/devices:
     get:
       tags:
@@ -729,7 +729,7 @@ paths:
                     deviceType: 0
                     deviceStatus: Active
                     createdDate: '2018-07-20T03:23:07Z'
-      operationId: getDevices
+      operationId: get-devices
   /data/giftcards:
     get:
       tags:
@@ -828,7 +828,7 @@ paths:
                     expiryDate: '2022-08-29T22:51:44Z'
                     createdDate: '2018-08-29T22:51:44Z'
                     modifiedDate: '2020-01-12T00:00:00Z'
-      operationId: getGiftCards
+      operationId: get-gift-cards
   /data/products:
     get:
       tags:
@@ -961,7 +961,7 @@ paths:
                     productStatus: Published
                     hqProductId: '836612'
                     hqCode: '92110100'
-      operationId: getProducts
+      operationId: get-products
   /data/modifiers:
     get:
       tags:
@@ -1024,7 +1024,7 @@ paths:
                     modifierName: Soy Milk
                     modifierType: price
                     amount: 1.5
-      operationId: getModifiers
+      operationId: get-modifiers
   /data/roles:
     get:
       summary: Get roles
@@ -1044,7 +1044,7 @@ paths:
                   roleName:
                     type: string
                     description: Display name of the role
-      operationId: getRoles
+      operationId: get-roles
       description: '> Returns detail on roles'
       parameters:
         - schema:
@@ -1091,7 +1091,7 @@ paths:
                     items:
                       $ref: ../models/Staff.yaml
               examples: {}
-      operationId: getStaff
+      operationId: get-staff
       x-internal: false
   /data/reportingcategories:
     get:
@@ -1163,7 +1163,7 @@ paths:
                           - '1099257'
                         categories:
                           - null
-      operationId: getReportingCategories
+      operationId: get-reporting-categories
   /data/waivers:
     get:
       tags:
@@ -1231,7 +1231,7 @@ paths:
                     minorAgeLimitsInYears: 18
                     createdDate: '2018-07-30T12:53:56'
                     requiresSignature: true
-      operationId: getWaivers
+      operationId: get-waivers
   /data/discounts:
     get:
       tags:
@@ -1399,7 +1399,7 @@ paths:
                       type: 1
                     codes:
                       - 1997AHT631
-      operationId: getDiscounts
+      operationId: get-discounts
   /data/locations:
     get:
       tags:
@@ -1452,7 +1452,7 @@ paths:
                     parentLocationId: '92116'
                     name: General Admission
                     allowMultipleBookings: true
-      operationId: getResources
+      operationId: get-resources
   /data/customers:
     get:
       tags:
@@ -1622,7 +1622,7 @@ paths:
                       postcode: '27385'
                       city: Los Angeles
                       country: United States
-      operationId: getCustomers
+      operationId: get-customers
   /reporting/gxs:
     get:
       tags:
@@ -1794,7 +1794,7 @@ paths:
                     actionedDate: '2022-07-18T01:25:23Z'
                     createdDate: '2022-07-14T01:25:23Z'
                     modifiedDate: '2022-07-14T01:25:23Z'
-      operationId: getGxScoreResponses
+      operationId: get-gx-score-responses
   /data/attendances:
     get:
       tags:
@@ -1911,7 +1911,7 @@ paths:
                     locationIds:
                       - '1099211'
                     employeeId: '29182'
-      operationId: getAttendances
+      operationId: get-attendances
   /data/membershipredemptions:
     get:
       tags:
@@ -1960,7 +1960,7 @@ paths:
                     redemptionDate: '2020-01-03T03:48:37Z'
                     bookingReference: '2910029'
                     ticketId: '199201192'
-      operationId: getMembershipRedemptions
+      operationId: get-membership-redemptions
   /data/membershipstatuses:
     get:
       tags:
@@ -2052,7 +2052,7 @@ paths:
                     customTicketId: '28819'
                     previousStatus: Pending Activation
                     newStatus: Current
-      operationId: getMembershipStatuses
+      operationId: get-membership-statuses
   /data/membershipcredits:
     get:
       tags:
@@ -2121,7 +2121,7 @@ paths:
                     ticketId: New
                     status: Voided
                     comment: Customer was unsatisfied with service
-      operationId: getMembershipCredits
+      operationId: get-membership-credits
   /data/signedwaivers:
     get:
       tags:
@@ -2239,7 +2239,7 @@ paths:
                     modifiedDate: '2019-02-11T12:56:02Z'
                     isValid: true
                     createdDate: '2019-02-11T12:56:02Z'
-      operationId: getSignedWaivers
+      operationId: get-signed-waivers
   /data/bookingsignedwaivers:
     get:
       tags:
@@ -2318,7 +2318,7 @@ paths:
                     ticketId: 2010922-19928331
                     modifiedDate: '2019-02-11T17:42:56Z'
                     createdDate: '2019-02-11T17:42:56Z'
-      operationId: getBookingSignedWaivers
+      operationId: get-booking-signed-waivers
   /reporting/revenue-entries:
     get:
       tags:
@@ -2531,7 +2531,7 @@ paths:
                     description: Name of the company linked as the booking holder for the booking
                     example: ROLLER
               examples: {}
-      operationId: getRevenueEntries
+      operationId: get-revenue-entries
   /data/revenues:
     get:
       summary: Get revenue entries (Legacy)
@@ -2668,7 +2668,7 @@ paths:
                     type: string
                     description: The unique payment identifier from the payment gateway - or gift card number for gift card payments
                     example: 21398JJDUW992
-      operationId: getRevenueEntriesLegacy
+      operationId: get-revenue-entries-legacy
       deprecated: true
       x-internal: true
       parameters:
@@ -2710,7 +2710,7 @@ paths:
           description: Bad Request
         '429':
           description: Too Many Requests
-      operationId: post-reporting-bulk
+      operationId: bulk-data-export-request
       x-stoplight:
         id: w8rlc9iamhm5j
       description: 'Submit a bulk data export request. Once processed, a webhook of type `bulkExport` will be sent to subscribed endpoints containing presigned URL(s) to download the exported data.'
