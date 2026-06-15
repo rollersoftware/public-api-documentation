@@ -508,7 +508,7 @@ paths:
           application/json:
             schema:
               $ref: ../models/UpdateProductStock.yaml
-      description: "Update an existing stock product by editing details or creating new variations.\r\n\r\n> 1. Ensure all field values (Including those that aren't being updated) are in the request otherwise they will be overwritten to be empty\r\n> 2. To update an existing variation, the child/variation level `productId` is required.\r\n> 3. To create a new variation, the child/variation level `externalId` is required (with no `productId`)."
+      description: "Update an existing stock product by editing details or creating new variations. \r\n\r\n> 1. Ensure all field values (Including those that aren't being updated) are in the request otherwise they will be overwritten to be empty\r\n> 2. To update an existing variation, the child/variation level `productId` is required.\r\n> 3. To create a new variation, the child/variation level `externalId` is required (with no `productId`)."
   '/products/stock/{parentProductId}/quantity':
     put:
       summary: Update stock quantity
