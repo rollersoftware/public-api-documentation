@@ -47,7 +47,7 @@ If a webhook delivery fails due to issues on either side, ROLLER employs a struc
 >
 > When a webhook reaches its sixth retry attempt, ROLLER will alert the venue's `Account Owner` and `Primary Contact`. This notification serves as a proactive measure, allowing the third-party sufficient time to address and resolve any issues before the webhook is disabled.
 >
-> [Learn how to configure contact information](https://support.roller.software/hc/en-us/articles/6674794303247-How-do-I-update-the-account-owner-primary-contact-billing-contact-and-technical-contact#question-0-0).
+> [**Learn how to configure contact information**](https://support.roller.software/hc/en-us/articles/6674794303247-How-do-I-update-the-account-owner-primary-contact-billing-contact-and-technical-contact#question-0-0).
 
 ---
 
