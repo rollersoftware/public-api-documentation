@@ -26,17 +26,20 @@
     {
       "type": "item",
       "title": "Environments",
-      "uri": "/docs/environments.md"
+      "uri": "/docs/environments.md",
+      "slug": "environments"
     },
     {
       "type": "item",
       "title": "Formatting",
-      "uri": "/docs/formatting.md"
+      "uri": "/docs/formatting.md",
+      "slug": "formatting"
     },
     {
       "type": "item",
       "title": "Product Type Mapping",
-      "uri": "/docs/product-type-mapping.md"
+      "uri": "/docs/product-type-mapping.md",
+      "slug": "product-type-mapping"
     },
     {
       "type": "item",
@@ -129,17 +132,20 @@
     {
       "type": "item",
       "title": "Rate Limits & Throttling [REST API]",
-      "uri": "/docs/rate-limits-and-throttling-rest-api.md"
+      "uri": "/docs/rate-limits-and-throttling-rest-api.md",
+      "slug": "rate-limits-rest-api"
     },
     {
       "type": "item",
       "title": "Booking Limitations",
-      "uri": "/docs/booking-limitations.md"
+      "uri": "/docs/booking-limitations.md",
+      "slug": "booking-limitations"
     },
     {
       "type": "item",
       "title": "Managing Staff via API",
-      "uri": "/docs/managing-staff-via-api.md"
+      "uri": "/docs/managing-staff-via-api.md",
+      "slug": "managing-staff"
     },
     {
       "type": "divider",
@@ -172,17 +178,20 @@
     {
       "type": "item",
       "title": "Bulk Exports Overview",
-      "uri": "/docs/bulk-exports-overview.md"
+      "uri": "/docs/bulk-exports-overview.md",
+      "slug": "bulk-exports-overview"
     },
     {
       "type": "item",
       "title": "Rate Limits & Throttling [Reporting API]",
-      "uri": "/docs/rate-limits-and-throttling-reporting-api.md"
+      "uri": "/docs/rate-limits-and-throttling-reporting-api.md",
+      "slug": "rate-limits-reporting-api"
     },
     {
       "type": "item",
       "title": "Filtering & Pagination",
-      "uri": "/docs/filtering-and-pagination.md"
+      "uri": "/docs/filtering-and-pagination.md",
+      "slug": "filtering-and-pagination"
     },
     {
       "type": "divider",
@@ -225,39 +234,46 @@
         {
           "type": "item",
           "title": "Booking Webhook",
-          "uri": "/docs/booking-webhook.md"
+          "uri": "/docs/booking-webhook.md",
+          "slug": "booking-webhook"
         },
         {
           "type": "item",
           "title": "Guest Webhook",
-          "uri": "/docs/guest-webhook.md"
+          "uri": "/docs/guest-webhook.md",
+          "slug": "guest-webhook"
         },
         {
           "type": "item",
           "title": "Redemption Webhook",
-          "uri": "/docs/redemption-webhook.md"
+          "uri": "/docs/redemption-webhook.md",
+          "slug": "redemption-webhook"
         },
         {
           "type": "item",
           "title": "Bulk Export Webhook",
-          "uri": "/docs/bulk-export-webhook.md"
+          "uri": "/docs/bulk-export-webhook.md",
+          "slug": "bulk-export-webhook"
         },
         {
           "type": "item",
           "title": "Signed Waiver Webhook",
-          "uri": "/docs/signed-waiver-webhook.md"
+          "uri": "/docs/signed-waiver-webhook.md",
+          "slug": "signed-waiver-webhook"
         },
         {
           "type": "item",
           "title": "Payment Link Webhook",
-          "uri": "/docs/payment-link-webhook.md"
+          "uri": "/docs/payment-link-webhook.md",
+          "slug": "payment-link-webhook"
         }
       ]
     },
     {
       "type": "item",
       "title": "Retry Logic and Response Handling",
-      "uri": "/docs/retry-logic-and-response-handling.md"
+      "uri": "/docs/retry-logic-and-response-handling.md",
+      "slug": "retry-logic"
     },
     {
       "type": "divider",
@@ -266,7 +282,8 @@
     {
       "type": "item",
       "title": "Managing Discounts over API",
-      "uri": "/docs/discounts.md"
+      "uri": "/docs/discounts.md",
+      "slug": "discounts"
     },
     {
       "type": "group",
@@ -275,22 +292,26 @@
         {
           "type": "item",
           "title": "Overview",
-          "uri": "/docs/third-party-checkout-overview.md"
+          "uri": "/docs/third-party-checkout-overview.md",
+          "slug": "third-party-checkout"
         },
         {
           "type": "item",
           "title": "Checkout Workflow",
-          "uri": "/docs/checkout-workflow.md"
+          "uri": "/docs/checkout-workflow.md",
+          "slug": "checkout-workflow"
         },
         {
           "type": "item",
           "title": "Editing or Deleting Bookings",
-          "uri": "/docs/editing-or-deleting-bookings.md"
+          "uri": "/docs/editing-or-deleting-bookings.md",
+          "slug": "editing-or-deleting-bookings"
         },
         {
           "type": "item",
           "title": "Managing Refunds",
-          "uri": "/docs/managing-refunds.md"
+          "uri": "/docs/managing-refunds.md",
+          "slug": "managing-refunds"
         },
         {
           "type": "group",
@@ -299,12 +320,14 @@
             {
               "type": "item",
               "title": "Workflow",
-              "uri": "/docs/roller-payments-workflow.md"
+              "uri": "/docs/roller-payments-workflow.md",
+              "slug": "roller-payments"
             },
             {
               "type": "item",
               "title": "Version History",
-              "uri": "/docs/roller-payments-version-history.md"
+              "uri": "/docs/roller-payments-version-history.md",
+              "slug": "roller-payments-history"
             }
           ]
         }
@@ -317,27 +340,32 @@
         {
           "type": "item",
           "title": "Creating Customer Records in ROLLER",
-          "uri": "/docs/creating-customer-records.md"
+          "uri": "/docs/creating-customer-records.md",
+          "slug": "creating-customer-records"
         },
         {
           "type": "item",
           "title": "Associating Signed Waivers to Customers",
-          "uri": "/docs/associating-signed-waivers-to-customers.md"
+          "uri": "/docs/associating-signed-waivers-to-customers.md",
+          "slug": "associating-signed-waivers"
         },
         {
           "type": "item",
           "title": "Associating Customers to Bookings",
-          "uri": "/docs/associating-customers-to-bookings.md"
+          "uri": "/docs/associating-customers-to-bookings.md",
+          "slug": "associating-customers-to-bookings"
         },
         {
           "type": "item",
           "title": "Visitation",
-          "uri": "/docs/visitation.md"
+          "uri": "/docs/visitation.md",
+          "slug": "visitation"
         },
         {
           "type": "item",
           "title": "Spend",
-          "uri": "/docs/spend.md"
+          "uri": "/docs/spend.md",
+          "slug": "spend"
         }
       ]
     },
@@ -348,12 +376,14 @@
         {
           "type": "item",
           "title": "Identifying Membership Bookings",
-          "uri": "/docs/identifying-membership-bookings.md"
+          "uri": "/docs/identifying-membership-bookings.md",
+          "slug": "identifying-membership-bookings"
         },
         {
           "type": "item",
           "title": "Identifying Key Membership Properties",
-          "uri": "/docs/identifying-key-membership-properties.md"
+          "uri": "/docs/identifying-key-membership-properties.md",
+          "slug": "membership-properties"
         }
       ]
     }
