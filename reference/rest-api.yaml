@@ -1869,7 +1869,7 @@ paths:
       - $ref: '#/components/parameters/uniqueId'
   '/bookings/{uniqueId}/payments':
     post:
-      summary: Add transaction record
+      summary: Add a transaction record
       description: |
         * Add a transaction record (Such as a **payment** or **refund**) to an existing booking in ROLLER.
         * Payments must be processed externally of ROLLER, only a record of a successful transaction can be created via the API.
@@ -1947,7 +1947,7 @@ paths:
                   type: string
                   description: Optionally provide the transaction datetime in UTC - generally used when re-creating bookings and needing to retain the original datetime
                   example: '2020-07-29T06:57:18.5326035+00:00'
-      operationId: add-transaction-record
+      operationId: add-a-transaction-record
       tags:
         - Transaction
     parameters:
