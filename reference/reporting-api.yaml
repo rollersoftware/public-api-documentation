@@ -20,12 +20,14 @@ servers:
 tags:
   - name: Bookings
     description: Get data related to bookings and payments against them
-  - name: Venue Information
-    description: Get venue configuration data
+  - name: Bulk Exports
+    description: Get revenue entry data relating to funds received and recognised revenue
   - name: Customers
     description: 'Get data related to your customers, their waivers and visits'
   - name: Revenue
     description: Get revenue entry data relating to funds received and recognised revenue
+  - name: Venue Information
+    description: Get venue configuration data
 paths:
   /data/bookingitems:
     get:
@@ -2698,6 +2700,7 @@ paths:
           in: query
           name: bookingReferences
           description: Booking references specified in comma separated value. Max limit is 100.
+      description: Returns revenue entry data relating to funds received and recognised revenue.
   /reporting/bulk:
     post:
       summary: Bulk data export request

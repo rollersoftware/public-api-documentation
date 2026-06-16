@@ -14,28 +14,28 @@ servers:
   - url: 'https://api.play.roller.app'
     description: Playground (Test Environment)
 tags:
-  - name: Product
-    description: 'Retrieve product availability and product detail, and manage stock products.'
   - name: Booking Information
     description: Search for bookings and retrieve the detail of a single booking.
   - name: Booking Management
     description: 'Create, update, cancel, and delete bookings, including draft bookings.'
   - name: Capacity Reservation
     description: 'Reserve and release product capacity, and manage resource capacity blocks.'
-  - name: Transaction
-    description: 'Record payments and refunds against bookings, calculate booking costs, and manage payment links.'
   - name: Discount
     description: 'Create, retrieve, and update discounts, and manage discount codes.'
-  - name: Redemption
-    description: Redeem tickets against a booking.
   - name: Guest
     description: 'Retrieve and update guest records, multi-passes, and signed waivers.'
+  - name: Product
+    description: 'Retrieve product availability and product detail, and manage stock products.'
+  - name: Redemption
+    description: Redeem tickets against a booking.
+  - name: Staff
+    description: 'Create, retrieve, update, and delete staff accounts. Lock, unlock, and send email invitations to staff members.'
+  - name: Transaction
+    description: 'Record payments and refunds against bookings, calculate booking costs, and manage payment links.'
   - name: Venue Information
     description: Retrieve detail about the authenticated venue.
   - name: Webhooks
     description: Webhooks
-  - name: Staff
-    description: 'Create, retrieve, update, and delete staff accounts. Lock, unlock, and send email invitations to staff members.'
 paths:
   /product-availability:
     get:
