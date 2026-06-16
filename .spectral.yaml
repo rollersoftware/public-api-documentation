@@ -1,11 +1,3 @@
-# ROLLER API Spectral ruleset — self-contained: no token, no network.
-# Rebuilt from .stoplight/styleguide*.json after the hosted, token-bearing
-# ruleset URL in the old .spectral.mjs went dead (404, project prj:314216).
-#
-# The style guide inherited Stoplight's OpenAPI template, whose linting rules
-# are core spectral:oas (bundled in Spectral — needs no token or network), plus
-# the two ROLLER-specific rules reproduced verbatim below. Severities follow
-# spectral:oas defaults, which match the style guide.
 extends:
   - spectral:oas
 aliases:
