@@ -15,17 +15,6 @@ Releases are grouped by month and listed most-recent-first. Within each release,
 
 Each entry notes the affected API (Reporting API or REST API) and links to the relevant reference.
 
-## 2026-06
-
-### Added
-
-- New [**Get NetSuite settings**](https://docs.roller.app/docs/api/rest/operations/list-netsuite-settings) and [**Update NetSuite settings**](https://docs.roller.app/docs/api/rest/operations/update-a-netsuite-setting) endpoints to manage NetSuite integration settings for a venue: `locationId` (maps the ROLLER venue to a NetSuite location for consolidated reporting) and `exportId` (prefix for NetSuite export row IDs) (REST API).
-- [**Get product availability calendar**](https://docs.roller.app/docs/api/rest/operations/get-a-product-availability-calendar) endpoint (`GET /product-availability/calendar`) to retrieve the availability status for each day in a given month for a single product. Designed for date picker and calendar UIs in third-party checkouts (REST API).
-- **Booking metadata** — User-defined key-value pairs can now be stored against bookings. The `metadata` property is supported on [**Create booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking-draft), and [**Update booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking) (with merge semantics). The field is returned in [**Get booking**](https://docs.roller.app/docs/api/rest/operations/get-a-booking) responses and can be opted into via the [**booking webhook**](booking-webhook.md) `include.metadata` flag (REST API).
-- **Booking webhook event channel filter** — A new `eventChannels` filter can be added to [**booking webhook**](booking-webhook.md) subscriptions to filter events by the application that triggered them (e.g. only fire when a booking is updated from POS). Unlike the existing `channels` filter — which filters on where the booking was *created* — `eventChannels` filters on what application performed the specific action. Backwards compatible: existing subscriptions without this filter continue to receive events from all channels (REST API).
-
----
-
 ## 2026-05
 
 ### Added
