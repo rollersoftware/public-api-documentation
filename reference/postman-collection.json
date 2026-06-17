@@ -639,6 +639,70 @@
       "response": []
     },
     {
+      "name": "Rest API > Gift Card > Create gift cards",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"externalId\": \"RESELLER-ORDER-2026-0045\",   // (required) External reference, unique per venue; acts as an idempotency key (max 64 chars)\n  \"productId\": 9573,                           // (required) ID of the gift card product to create cards from\n  \"bookingOwner\": {                            // (required) Primary contact for the created booking\n    \"firstName\": \"Jordan\",\n    \"lastName\": \"Avery\",\n    \"email\": \"jordan.avery@acme-resellers.com\",\n    \"phone\": \"+61 400 123 456\"\n  },\n  \"giftCards\": [                               // (required) One entry per card to create (min 1)\n    {\n      \"value\": 50,                             // Card value; required for open-value products, omit for fixed-value\n      \"recipient\": {                           // Who the card is addressed to (optional)\n        \"name\": \"Sam Rivera\",\n        \"email\": \"sam.rivera@example.com\",\n        \"message\": \"Happy birthday! Enjoy a day out on us.\",\n        \"deliveryDateTime\": \"2026-12-24T09:00:00Z\"\n      }\n    },\n    {\n      \"value\": 25,\n      \"giftCardNumber\": \"ACME-PROMO-000124\",   // Optional custom number (6-128 chars), unique within request and venue\n      \"recipient\": {\n        \"name\": \"Alex Chen\",\n        \"email\": \"alex.chen@example.com\"\n      }\n    }\n  ],\n  \"sendConfirmations\": false,                  // Send the booking confirmation to the booking owner (optional)\n  \"sendGiftCardEmails\": true                   // Send each recipient their gift card email (optional)\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/giftcards",
+          "host": ["{{baseUrl}}"],
+          "path": ["giftcards"]
+        },
+        "description": "Create one or more gift cards for a single gift card product. Each entry in `giftCards` creates one card; all cards are created against a single booking owned by `bookingOwner`. Returns the created gift card numbers in request order; caller-supplied numbers are echoed back, otherwise a number is generated.\n\n**Request body fields:**\n- `externalId` (string, required) — External reference, unique per venue; acts as an idempotency key (max 64 chars)\n- `productId` (integer, required) — ID of the gift card product to create cards from\n- `bookingOwner` (object, required) — Primary contact for the created booking (firstName, lastName, email, phone)\n- `giftCards` (array, required) — One entry per card to create (min 1)\n- `giftCards[].value` (number, conditional) — Required for open-value products, rejected for fixed-value; must be greater than zero\n- `giftCards[].giftCardNumber` (string, optional) — Custom card number (6-128 chars), unique within request and venue; omit to auto-generate\n- `giftCards[].recipient` (object, optional) — Recipient name and email (required together), optional message and future deliveryDateTime (UTC)\n- `sendConfirmations` (boolean, optional) — Send the booking confirmation to the booking owner\n- `sendGiftCardEmails` (boolean, optional) — Send each recipient their gift card email; every card must then have a recipient name and email\n\nDocs: https://docs.roller.app/docs/api/rest/operations/create-gift-cards"
+      },
+      "response": []
+    },
+    {
+      "name": "Rest API > Gift Card > Get gift card balance",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"giftCardNumber\": \"2606947188\" // (required) The gift card code (unique identifier)\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/giftcards/balance",
+          "host": ["{{baseUrl}}"],
+          "path": ["giftcards", "balance"]
+        },
+        "description": "Get the current balance and details of a gift card by its number. The number is sent in the request body because gift card numbers may contain characters that are unsafe in a URL.\n\n**Request body fields:**\n- `giftCardNumber` (string, required) — The gift card code (unique identifier)\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-gift-card-balance"
+      },
+      "response": []
+    },
+    {
       "name": "Rest API > Guest > Get guest detail",
       "request": {
         "method": "GET",
