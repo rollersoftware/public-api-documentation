@@ -1,4 +1,8 @@
 {
+  "exclude": [
+    ".spectral.yaml",
+    ".spectral.mjs"
+  ],
   "formats": {
     "openapi": {
       "rootDir": "reference",
