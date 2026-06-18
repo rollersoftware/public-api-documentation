@@ -17,6 +17,8 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ## 2026-06
 
+> **🚧 Upcoming release — not yet live.** The changes in this section are part of the June 2026 release and may not be available in production yet. Operations and links referenced below may return a `404` until the release is published.
+
 ### Added
 
 - New [**Get NetSuite settings**](https://docs.roller.app/docs/api/rest/operations/get-netsuite-settings) and [**Update NetSuite settings**](https://docs.roller.app/docs/api/rest/operations/update-netsuite-settings) endpoints to manage NetSuite integration settings for a venue: `locationId` (maps the ROLLER venue to a NetSuite location for consolidated reporting) and `exportId` (prefix for NetSuite export row IDs) (REST API).
