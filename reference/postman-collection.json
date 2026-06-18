@@ -113,6 +113,31 @@
               "response": []
             },
             {
+              "name": "Get booking form responses",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bookings/ABC123XYZ0/form-responses",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bookings",
+                    "ABC123XYZ0",
+                    "form-responses"
+                  ]
+                },
+                "description": "Returns all form responses captured against a booking, structured as questions and answers. A booking may have more than one form response where multiple forms were completed.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-booking-form-responses"
+              },
+              "response": []
+            },
+            {
               "name": "Search for bookings",
               "request": {
                 "method": "GET",
@@ -913,6 +938,31 @@
                   ]
                 },
                 "description": "Retrieve a waiver signed by a guest.\n\n**Path parameters:**\n- `signedWaiverId` (string, required) — Unique ID of the signed waiver record\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-signed-waiver"
+              },
+              "response": []
+            },
+            {
+              "name": "Get signed waiver form responses",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/signed-waivers/18829122/form-responses",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "signed-waivers",
+                    "18829122",
+                    "form-responses"
+                  ]
+                },
+                "description": "Returns the form responses captured on a signed waiver, structured as questions and answers. Returns an empty object when the waiver has no associated form response.\n\n**Path parameters:**\n- `signedWaiverId` (string, required) — Unique ID of the signed waiver record\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-signed-waiver-form-responses"
               },
               "response": []
             },
@@ -1999,6 +2049,54 @@
           ]
         },
         {
+          "name": "Bulk Exports",
+          "item": [
+            {
+              "name": "Bulk data export request",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "TimeZone-Designators",
+                    "value": "Offset",
+                    "description": "Optional. Set to 'Offset' to use venue timezone in export files instead of UTC",
+                    "disabled": true
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exportType\": \"RevenueEntries\",  // (required) Type of data to export: RevenueEntries, Customers, Attendance, Payments, MembershipRedemptions, MembershipStatuses, MembershipCredits, Tickets, Giftcards, BookingItems, PosTillReconciliations, SignedWaivers, BookingSignedWaivers\n  \"startDate\": \"2025-07-01\",       // (required) Start date inclusive (yyyy-MM-dd)\n  \"endDate\": \"2025-07-31\"          // (required) End date exclusive (yyyy-MM-dd); must be at least 1 day after startDate\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reporting/bulk",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reporting",
+                    "bulk"
+                  ]
+                },
+                "description": "Submit a bulk data export request. Once processed, a webhook of type `bulkExport` will be sent to subscribed endpoints containing presigned URL(s) to download the exported data.\n\n**Request body fields:**\n- `exportType` (string, required) — Type of data to export\n- `startDate` (string, required) — Start date inclusive (yyyy-MM-dd)\n- `endDate` (string, required) — End date exclusive (yyyy-MM-dd); must be at least 1 day after startDate\n\n**Request headers:**\n- `TimeZone-Designators` (string, optional) — Set to `Offset` to use venue timezone in export files (default is UTC)\n\nDocs: https://docs.roller.app/docs/api/reporting/operations/bulk-data-export-request"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Customers",
           "item": [
             {
@@ -2357,49 +2455,6 @@
         {
           "name": "Revenue",
           "item": [
-            {
-              "name": "Bulk data export request",
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "TimeZone-Designators",
-                    "value": "Offset",
-                    "description": "Optional. Set to 'Offset' to use venue timezone in export files instead of UTC",
-                    "disabled": true
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"exportType\": \"RevenueEntries\",  // (required) Type of data to export: RevenueEntries, Customers, Attendance, Payments, MembershipRedemptions, MembershipStatuses, MembershipCredits, Tickets, Giftcards, BookingItems, PosTillReconciliations, SignedWaivers, BookingSignedWaivers\n  \"startDate\": \"2025-07-01\",       // (required) Start date inclusive (yyyy-MM-dd)\n  \"endDate\": \"2025-07-31\"          // (required) End date exclusive (yyyy-MM-dd); must be at least 1 day after startDate\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{baseUrl}}/reporting/bulk",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "reporting",
-                    "bulk"
-                  ]
-                },
-                "description": "Submit a bulk data export request. Once processed, a webhook of type `bulkExport` will be sent to subscribed endpoints containing presigned URL(s) to download the exported data.\n\n**Request body fields:**\n- `exportType` (string, required) — Type of data to export\n- `startDate` (string, required) — Start date inclusive (yyyy-MM-dd)\n- `endDate` (string, required) — End date exclusive (yyyy-MM-dd); must be at least 1 day after startDate\n\n**Request headers:**\n- `TimeZone-Designators` (string, optional) — Set to `Offset` to use venue timezone in export files (default is UTC)\n\nDocs: https://docs.roller.app/docs/api/reporting/operations/bulk-data-export-request"
-              },
-              "response": []
-            },
             {
               "name": "Get revenue entries",
               "request": {
