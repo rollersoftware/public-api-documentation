@@ -2025,6 +2025,38 @@ paths:
           description: 'Conflict - "Payment link `{`paymentLinkId`}` does not belong to booking `uniqueIdentifier`'
       operationId: cancel-payment-link
       description: 'Cancel a payment link so it can no longer be used to take payment against the booking. '
+  '/bookings/{uniqueId}/form-responses':
+    parameters:
+      - $ref: '#/components/parameters/uniqueId'
+    get:
+      summary: Get booking form responses
+      description: Returns all form responses captured against a booking, structured as questions and answers. A booking may have more than one form response where multiple forms were completed.
+      operationId: get-booking-form-responses
+      tags:
+        - Booking Information
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: ../models/BookingFormResponses.yaml
+              examples:
+                Example 1:
+                  value:
+                    formResponses:
+                      - formName: Waiver and safety form
+                        responses:
+                          - question: What is your t-shirt size?
+                            answer: Medium
+                          - groupName: Emergency contact
+                            items:
+                              - question: Contact name
+                                answer: Jane Smith
+                              - question: Contact phone
+                                answer: '0400000000'
+        '404':
+          description: Booking not found
   '/customers/{customerId}':
     get:
       summary: Get customer detail
@@ -2127,6 +2159,36 @@ paths:
                     createdDate: '2020-07-31T03:43:40.4085882Z'
       operationId: get-signed-waiver
       description: Retrieve a waiver signed by a guest
+  '/signed-waivers/{signedWaiverId}/form-responses':
+    parameters:
+      - $ref: '#/components/parameters/signedWaiverId'
+    get:
+      summary: Get signed waiver form responses
+      description: Returns the form responses captured on a signed waiver, structured as questions and answers. Returns an empty object when the waiver has no associated form response.
+      operationId: get-signed-waiver-form-responses
+      tags:
+        - Guest
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/SignedWaiverFormResponses.yaml
+              examples:
+                Example 1:
+                  value:
+                    responses:
+                      - question: What is your t-shirt size?
+                        answer: Medium
+                      - groupName: Emergency contact
+                        items:
+                          - question: Contact name
+                            answer: Jane Smith
+                          - question: Contact phone
+                            answer: '0400000000'
+        '404':
+          description: Signed waiver not found
   /redemptions:
     post:
       tags:
