@@ -17,7 +17,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ## 2026-06
 
-> **🚧 Upcoming release — not yet live.** The changes in this section are part of the June 2026 release and may not be available in production yet. Operations and links referenced below may return a `404` until the release is published.
+> **🚧 Upcoming release —** Please note the changes in this section may not be available in production yet. Operations and links referenced below may return a `404` until release is published.
 
 ### Added
 
