@@ -1,0 +1,9 @@
+title: SignedWaiverFormResponses
+type: object
+description: The form responses captured on a signed waiver. Returns an empty object when the waiver has no associated form response.
+properties:
+  responses:
+    type: array
+    description: The questions and answers captured on the waiver's form.
+    items:
+      $ref: ./FormResponseQuestionAnswer.yaml

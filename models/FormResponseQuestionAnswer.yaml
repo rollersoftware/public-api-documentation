@@ -1,0 +1,25 @@
+title: FormResponseQuestionAnswer
+type: object
+description: >-
+  A single entry in a form response. Each entry is one of two shapes: a
+  question/answer pair (`question` and `answer`), or a group of related entries
+  (`groupName` and `items`). Fields that do not apply to an entry are omitted
+  from the response.
+properties:
+  question:
+    type: string
+    description: The question text. Returned for question/answer entries; omitted for group entries.
+    example: What is your t-shirt size?
+  answer:
+    type: string
+    description: The guest's answer to the question. Returned for question/answer entries; omitted for group entries.
+    example: Medium
+  groupName:
+    type: string
+    description: The name of a group of related entries (for example a repeated or nested section of the form). Returned for group entries; omitted for question/answer entries.
+    example: Emergency contact
+  items:
+    type: array
+    description: The entries nested within a group. Each item is itself a question/answer pair or a further nested group. Returned for group entries; omitted for question/answer entries.
+    items:
+      $ref: ./FormResponseQuestionAnswer.yaml

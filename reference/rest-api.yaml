@@ -22,6 +22,8 @@ tags:
     description: 'Reserve and release product capacity, and manage resource capacity blocks.'
   - name: Discount
     description: 'Create, retrieve, and update discounts, and manage discount codes.'
+  - name: Gift Card
+    description: Create gift cards and check gift card balances.
   - name: Guest
     description: 'Retrieve and update guest records, multi-passes, and signed waivers.'
   - name: Product
@@ -2023,6 +2025,38 @@ paths:
           description: 'Conflict - "Payment link `{`paymentLinkId`}` does not belong to booking `uniqueIdentifier`'
       operationId: cancel-payment-link
       description: 'Cancel a payment link so it can no longer be used to take payment against the booking. '
+  '/bookings/{uniqueId}/form-responses':
+    parameters:
+      - $ref: '#/components/parameters/uniqueId'
+    get:
+      summary: Get booking form responses
+      description: Returns all form responses captured against a booking, structured as questions and answers. A booking may have more than one form response where multiple forms were completed.
+      operationId: get-booking-form-responses
+      tags:
+        - Booking Information
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: ../models/BookingFormResponses.yaml
+              examples:
+                Example 1:
+                  value:
+                    formResponses:
+                      - formName: Waiver and safety form
+                        responses:
+                          - question: What is your t-shirt size?
+                            answer: Medium
+                          - groupName: Emergency contact
+                            items:
+                              - question: Contact name
+                                answer: Jane Smith
+                              - question: Contact phone
+                                answer: '0400000000'
+        '404':
+          description: Booking not found
   '/customers/{customerId}':
     get:
       summary: Get customer detail
@@ -2125,6 +2159,36 @@ paths:
                     createdDate: '2020-07-31T03:43:40.4085882Z'
       operationId: get-signed-waiver
       description: Retrieve a waiver signed by a guest
+  '/signed-waivers/{signedWaiverId}/form-responses':
+    parameters:
+      - $ref: '#/components/parameters/signedWaiverId'
+    get:
+      summary: Get signed waiver form responses
+      description: Returns the form responses captured on a signed waiver, structured as questions and answers. Returns an empty object when the waiver has no associated form response.
+      operationId: get-signed-waiver-form-responses
+      tags:
+        - Guest
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/SignedWaiverFormResponses.yaml
+              examples:
+                Example 1:
+                  value:
+                    responses:
+                      - question: What is your t-shirt size?
+                        answer: Medium
+                      - groupName: Emergency contact
+                        items:
+                          - question: Contact name
+                            answer: Jane Smith
+                          - question: Contact phone
+                            answer: '0400000000'
+        '404':
+          description: Signed waiver not found
   /redemptions:
     post:
       tags:
@@ -2185,6 +2249,218 @@ paths:
                   description: 'The name of the device where the ticket is being redeemed. Includes redemption devices, POS, MCI and SSK devices.'
       description: "> Redeem tickets in ROLLER\r\n\r\n* There is a maximum of 10 ticket redemptions per call\r\n* Redeemed Ticket IDs must be unique per call\r\n* Only the following products are supported for redemption via API:\r\n  * Standard Passes\r\n  * Session Passes\r\n  * Recurring Sessions\r\n  * Memberships (the booking item, not the membership discount) "
       operationId: redeem-tickets
+  /giftcards:
+    post:
+      tags:
+        - Gift Card
+      summary: Create gift cards
+      operationId: create-gift-cards
+      description: "Create one or more gift cards for a single gift card product. Each entry in `giftCards` creates one card, and all cards are created against a single booking owned by `bookingOwner`.\r\n\r\nGift card numbers are returned in `giftCardNumbers`, in the same order as the request — a caller-supplied `giftCardNumber` is echoed back, otherwise a generated number is returned. Cards are activated asynchronously shortly after creation.\r\n\r\n* `externalId` is unique per venue and acts as an idempotency key. Reusing one returns a `409`.\r\n* `value` is required for open-value gift card products, and rejected for fixed-value products.\r\n* A `recipient` must include both `name` and `email`, or neither.\r\n* When `sendGiftCardEmails` is `true`, every card must have a recipient `name` and `email`.\r\n* `deliveryDateTime` must be in the future (UTC)."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - externalId
+                - productId
+                - bookingOwner
+                - giftCards
+              properties:
+                externalId:
+                  type: string
+                  maxLength: 64
+                  description: External reference for this request. Unique per venue, and acts as an idempotency key.
+                  example: RESELLER-ORDER-2026-0045
+                productId:
+                  type: integer
+                  format: int32
+                  description: The ID of the gift card product to create cards from. Must be a gift card product in the venue.
+                  example: 9573
+                bookingOwner:
+                  type: object
+                  description: The primary contact for the booking the gift cards are created against.
+                  required:
+                    - firstName
+                    - lastName
+                    - email
+                    - phone
+                  properties:
+                    firstName:
+                      type: string
+                      maxLength: 32
+                      example: Jordan
+                    lastName:
+                      type: string
+                      maxLength: 32
+                      example: Avery
+                    email:
+                      type: string
+                      maxLength: 256
+                      description: Receives the booking confirmation when `sendConfirmations` is `true`.
+                      example: jordan.avery@acme-resellers.com
+                    phone:
+                      type: string
+                      maxLength: 20
+                      example: '+61 400 123 456'
+                giftCards:
+                  type: array
+                  minItems: 1
+                  description: The gift cards to create. Each entry produces one card.
+                  items:
+                    type: object
+                    properties:
+                      giftCardNumber:
+                        type: string
+                        minLength: 6
+                        maxLength: 128
+                        description: Optional custom gift card number. Must be unique within the request and the venue. Omit to have a number generated.
+                        example: ACME-PROMO-000124
+                      value:
+                        type: number
+                        description: The value to load on the card. Required for open-value products, rejected for fixed-value products. Must be greater than zero.
+                        example: 50
+                      recipient:
+                        type:
+                          - object
+                          - 'null'
+                        description: The recipient the card is addressed to. Omit or set to null for an unassigned card.
+                        properties:
+                          name:
+                            type: string
+                            description: Required together with `email`.
+                            example: Sam Rivera
+                          email:
+                            type: string
+                            description: Required together with `name`.
+                            example: sam.rivera@example.com
+                          message:
+                            type: string
+                            maxLength: 500
+                            description: Optional personal message shown on the card and in the recipient email.
+                            example: Happy birthday! Enjoy a day out on us.
+                          deliveryDateTime:
+                            type: string
+                            format: date-time
+                            description: Optional scheduled send time in UTC. Must be in the future, and requires a recipient `name` and `email`.
+                            example: '2026-12-24T09:00:00Z'
+                sendConfirmations:
+                  type: boolean
+                  default: false
+                  description: When `true`, sends the booking confirmation to the booking owner after creation.
+                sendGiftCardEmails:
+                  type: boolean
+                  default: false
+                  description: When `true`, sends each card's recipient their gift card email. Every card must then have a recipient `name` and `email`.
+      responses:
+        '200':
+          description: Gift cards created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  giftCardNumbers:
+                    type: array
+                    description: The created gift card numbers, in the same order as the gift cards in the request. Caller-supplied numbers are echoed back; otherwise the generated number is returned.
+                    items:
+                      type: string
+                    example:
+                      - '2606947188'
+                      - '2606749291'
+                      - ACME-PROMO-000124
+        '400':
+          description: 'Bad Request - The request body failed validation (eg: a required field is missing, an email is invalid, or a length limit is exceeded).'
+        '409':
+          description: 'Conflict - A business rule was violated (eg: the externalId already exists, the product is not a gift card, or a gift card number is not unique).'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: Name of the error
+                          example: ExternalId
+                        message:
+                          type: string
+                          description: Error message
+                          example: The booking RESELLER-ORDER-2026-0045 already exists
+  /giftcards/balance:
+    post:
+      tags:
+        - Gift Card
+      summary: Get gift card balance
+      operationId: get-gift-card-balance
+      description: "Get the current balance and details of a gift card by its number.\r\n\r\nThe gift card number is sent in the request body because gift card numbers may contain characters that are unsafe in a URL."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - giftCardNumber
+              properties:
+                giftCardNumber:
+                  type: string
+                  description: The gift card code (unique identifier).
+                  example: '2606947188'
+      responses:
+        '200':
+          description: Gift card balance
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  giftCardNumber:
+                    type: string
+                    description: The gift card code (unique identifier).
+                    example: '2606947188'
+                  balance:
+                    type:
+                      - number
+                      - 'null'
+                    description: The current balance of the gift card.
+                    example: 35.5
+                  initialValue:
+                    type:
+                      - number
+                      - 'null'
+                    description: The initial value of the gift card when it was issued. May be null, as this is not always available for external gift cards.
+                    example: 50
+                  expiryDate:
+                    type:
+                      - string
+                      - 'null'
+                    format: date-time
+                    description: The date the gift card expires. If null, the gift card does not expire.
+                    example: '2027-12-24T00:00:00'
+        '409':
+          description: 'Conflict - The gift card could not be found, or the request was invalid (eg: gift card number is required).'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: Name of the error
+                          example: GiftCardNumber
+                        message:
+                          type: string
+                          description: Error message
+                          example: Gift card number is required
   /webhooks:
     post:
       tags:

@@ -1,0 +1,19 @@
+title: BookingFormResponses
+type: object
+description: All form responses captured against a booking. A booking may have more than one form response where multiple forms were completed.
+properties:
+  formResponses:
+    type: array
+    description: One entry per form completed for the booking.
+    items:
+      type: object
+      properties:
+        formName:
+          type: string
+          description: The name of the form that was completed.
+          example: Waiver and safety form
+        responses:
+          type: array
+          description: The questions and answers captured on this form.
+          items:
+            $ref: ./FormResponseQuestionAnswer.yaml
