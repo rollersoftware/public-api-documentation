@@ -306,7 +306,7 @@ paths:
       tags:
         - Bookings
       summary: Get tickets
-      description: "Returns detail on individual \"tickets\" within bookings, based on the **booking modified date**.\r\n\r\n> \"Tickets\" only includes the following product types: Standard Passes, Session Passes, Recurring Passes, and Memberships. This includes where these tickets were part of a Package product (not Party Packages).\r\n>\r\n> i.e. only booking items where `ProductType` == `Pass` are returned. See [**product type mapping**](../docs/product-type-mapping.md) for more."
+      description: "Returns detail on individual \"tickets\" within bookings, based on the **booking modified date**.\r\n\r\n> \"Tickets\" only includes the following product types: Standard Passes, Session Passes, Recurring Passes, and Memberships. This includes where these tickets were part of a Package product (not Party Packages).\r\n>\r\n> i.e. only booking items where `ProductType` == `Pass` are returned. See [**product type mapping**](https://docs.roller.app/docs/api/product-type-mapping) for more."
       parameters:
         - name: startDate
           in: query
@@ -857,13 +857,13 @@ paths:
             example: pass
           in: query
           name: productType
-          description: 'Optionally filter by product type. See [**product type mapping**](../docs/product-type-mapping.md).'
+          description: 'Optionally filter by product type. See [**product type mapping**](https://docs.roller.app/docs/api/product-type-mapping).'
         - schema:
             type: string
             example: membership
           in: query
           name: productSubType
-          description: 'Optionally filter by product sub type. See [**product type mapping**](../docs/product-type-mapping.md).'
+          description: 'Optionally filter by product sub type. See [**product type mapping**](https://docs.roller.app/docs/api/product-type-mapping).'
       responses:
         '200':
           description: Successful
@@ -898,11 +898,11 @@ paths:
                     example: 1.5
                   productType:
                     type: string
-                    description: 'The type/variation of the product. See [**product type mapping**](../docs/product-type-mapping.md).'
+                    description: 'The type/variation of the product. See [**product type mapping**](https://docs.roller.app/docs/api/product-type-mapping).'
                     example: Pass
                   productSubType:
                     type: string
-                    description: 'The sub type/variation of the product. See [**product type mapping**](../docs/product-type-mapping.md).'
+                    description: 'The sub type/variation of the product. See [**product type mapping**](https://docs.roller.app/docs/api/product-type-mapping).'
                     example: Membership
                   reportingCategoryName:
                     type: string

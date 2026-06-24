@@ -187,13 +187,13 @@ paths:
             example: Pass
           in: query
           name: productType
-          description: 'Optionally filter by product type. See [**product type mapping**](../docs/resources/product-type-mapping.md).'
+          description: 'Optionally filter by product type. See [**product type mapping**](https://docs.roller.app/docs/api/product-type-mapping).'
         - schema:
             type: string
             example: Membership
           in: query
           name: productSubType
-          description: 'Optionally filter by product sub type. See [**product type mapping**](../docs/resources/product-type-mapping.md).'
+          description: 'Optionally filter by product sub type. See [**product type mapping**](https://docs.roller.app/docs/api/product-type-mapping).'
       responses:
         '200':
           description: Successful
@@ -2763,7 +2763,7 @@ paths:
       operationId: create-staff
       x-stoplight:
         id: h7d52xvbkchk1
-      description: 'Create a staff account. See [**managing staff via API**](../docs/managing-staff-via-api.md) for more detail on staff account states and lifecycle.'
+      description: 'Create a staff account. See [**managing staff via API**](https://docs.roller.app/docs/api/managing-staff) for more detail on staff account states and lifecycle.'
       requestBody:
         content:
           application/json:
