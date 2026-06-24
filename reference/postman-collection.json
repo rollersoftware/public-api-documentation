@@ -108,7 +108,7 @@
                     "ABC123XYZ0"
                   ]
                 },
-                "description": "Returns detail of a specific booking. The `bookingReference` (i.e. the ROLLER `bookingId`) can be used instead of `uniqueId` as the path parameter.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking (or bookingReference)\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-booking"
+                "description": "Returns detail of a specific booking. The `bookingReference` (i.e. the ROLLER `bookingId`) can be used instead of `uniqueId` as the path parameter.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking (or bookingReference)\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-booking-detail"
               },
               "response": []
             },
@@ -186,7 +186,7 @@
                     }
                   ]
                 },
-                "description": "Returns basic booking detail for up to 100 of the most recent bookings matching the search criteria. At least one query parameter is required.\n\n**Query parameters:**\n- `keywords` (string, optional) — Search on booking name, ticket ID, guest first/last name, email, phone (min 3 chars)\n- `date` (string, optional) — Booking date of booking items (yyyy-MM-dd)\n- `startTime` (string, optional) — Session start time in 24hr format\n- `productIds` (string, optional) — Comma separated product IDs; date is required\n- `locationIds` (string, optional) — Comma separated resource IDs; date is required\n\nDocs: https://docs.roller.app/docs/api/rest/operations/search-bookings"
+                "description": "Returns basic booking detail for up to 100 of the most recent bookings matching the search criteria. At least one query parameter is required.\n\n**Query parameters:**\n- `keywords` (string, optional) — Search on booking name, ticket ID, guest first/last name, email, phone (min 3 chars)\n- `date` (string, optional) — Booking date of booking items (yyyy-MM-dd)\n- `startTime` (string, optional) — Session start time in 24hr format\n- `productIds` (string, optional) — Comma separated product IDs; date is required\n- `locationIds` (string, optional) — Comma separated resource IDs; date is required\n\nDocs: https://docs.roller.app/docs/api/rest/operations/search-for-bookings"
               },
               "response": []
             }
@@ -229,7 +229,7 @@
                     "cancel"
                   ]
                 },
-                "description": "Cancel a booking and optionally mark it as refunded in a single transaction. Only bookings created via API can be cancelled via API; only future bookings can be cancelled.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `issueRefund` (boolean, required) — Whether to refund any booking payments\n- `refundType` (string, required when issueRefund is true) — Refund method\n- `refundTransactionId` (string, optional) — Transaction ID of the refund\n- `refundTransactionDate` (string, optional) — UTC datetime of the refund transaction\n- `comments` (string, optional) — Comments to add against the refund\n\nDocs: https://docs.roller.app/docs/api/rest/operations/cancel-booking"
+                "description": "Cancel a booking and optionally mark it as refunded in a single transaction. Only bookings created via API can be cancelled via API; only future bookings can be cancelled.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `issueRefund` (boolean, required) — Whether to refund any booking payments\n- `refundType` (string, required when issueRefund is true) — Refund method\n- `refundTransactionId` (string, optional) — Transaction ID of the refund\n- `refundTransactionDate` (string, optional) — UTC datetime of the refund transaction\n- `comments` (string, optional) — Comments to add against the refund\n\nDocs: https://docs.roller.app/docs/api/rest/operations/cancel-a-booking"
               },
               "response": []
             },
@@ -265,7 +265,7 @@
                     "bookings"
                   ]
                 },
-                "description": "Create a booking in ROLLER and optionally add an associated payment record. Guest records are automatically created or matched on email.\n\n**Request body fields:**\n- `externalId` (string, required) — 3rd party booking reference (max 64 chars)\n- `customer` (object, required) — Booking owner / primary contact\n- `items` (array, required) — Products being purchased\n- `name` (string, optional) — Title of the booking\n- `comments` (string, optional) — Additional detail (max 500 chars)\n- `capacityReservationId` (string, optional) — GUID from capacity reservation API\n- `sendConfirmations` (boolean, optional) — Send booking confirmation to customer\n- `customerPaysFees` (boolean, optional) — Apply ROLLER fees\n- `payments` (array, optional) — Initial payments\n- `discounts` (array, optional) — Discount codes or custom discounts\n- `giftCards` (array, optional) — Gift cards applied\n- `metadata` (object, optional) — User-defined key-value pairs (up to 20 entries)\n\nDocs: https://docs.roller.app/docs/api/rest/operations/create-booking"
+                "description": "Create a booking in ROLLER and optionally add an associated payment record. Guest records are automatically created or matched on email.\n\n**Request body fields:**\n- `externalId` (string, required) — 3rd party booking reference (max 64 chars)\n- `customer` (object, required) — Booking owner / primary contact\n- `items` (array, required) — Products being purchased\n- `name` (string, optional) — Title of the booking\n- `comments` (string, optional) — Additional detail (max 500 chars)\n- `capacityReservationId` (string, optional) — GUID from capacity reservation API\n- `sendConfirmations` (boolean, optional) — Send booking confirmation to customer\n- `customerPaysFees` (boolean, optional) — Apply ROLLER fees\n- `payments` (array, optional) — Initial payments\n- `discounts` (array, optional) — Discount codes or custom discounts\n- `giftCards` (array, optional) — Gift cards applied\n- `metadata` (object, optional) — User-defined key-value pairs (up to 20 entries)\n\nDocs: https://docs.roller.app/docs/api/rest/operations/create-a-booking"
               },
               "response": []
             },
@@ -339,7 +339,7 @@
                     "ABC123XYZ0"
                   ]
                 },
-                "description": "Delete a booking along with all associated transaction records. Only bookings created via the API can be deleted; only future bookings can be deleted; cancelled bookings cannot be deleted.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `comments` (string, optional) — Reason for deleting the booking\n\nDocs: https://docs.roller.app/docs/api/rest/operations/delete-booking"
+                "description": "Delete a booking along with all associated transaction records. Only bookings created via the API can be deleted; only future bookings can be deleted; cancelled bookings cannot be deleted.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `comments` (string, optional) — Reason for deleting the booking\n\nDocs: https://docs.roller.app/docs/api/rest/operations/delete-a-booking"
               },
               "response": []
             },
@@ -377,7 +377,7 @@
                     "publish"
                   ]
                 },
-                "description": "Publish a draft booking that does not require any payment. Only bookings with an owing amount of 0.0 can be published this way.\n\n**Request body fields:**\n- `uniqueId` (string, required) — Unique ID of the draft booking to publish (from Create Draft Booking response)\n\nDocs: https://docs.roller.app/docs/api/rest/operations/publish-draft-booking"
+                "description": "Publish a draft booking that does not require any payment. Only bookings with an owing amount of 0.0 can be published this way.\n\n**Request body fields:**\n- `uniqueId` (string, required) — Unique ID of the draft booking to publish (from Create Draft Booking response)\n\nDocs: https://docs.roller.app/docs/api/rest/operations/publish-draft-booking-no-payment"
               },
               "response": []
             },
@@ -414,7 +414,7 @@
                     "ABC123XYZ0"
                   ]
                 },
-                "description": "Update booking details or add/remove items from a booking.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `name` (string, optional) — New title for the booking\n- `comments` (string, optional) — Updated detail (max 500 chars)\n- `metadata` (object, optional) — Key-value pairs to merge; set value to null to remove\n- `newItems` (array, optional) — New booking items to add\n- `idsToRemove` (array, optional) — bookingItemIds of items to remove\n- `itemsToUpdate` (array, optional) — Booking items to update fields on\n\nDocs: https://docs.roller.app/docs/api/rest/operations/update-booking"
+                "description": "Update booking details or add/remove items from a booking.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `name` (string, optional) — New title for the booking\n- `comments` (string, optional) — Updated detail (max 500 chars)\n- `metadata` (object, optional) — Key-value pairs to merge; set value to null to remove\n- `newItems` (array, optional) — New booking items to add\n- `idsToRemove` (array, optional) — bookingItemIds of items to remove\n- `itemsToUpdate` (array, optional) — Booking items to update fields on\n\nDocs: https://docs.roller.app/docs/api/rest/operations/update-a-booking"
               },
               "response": []
             }
@@ -456,7 +456,7 @@
                     "block"
                   ]
                 },
-                "description": "Block capacity for the specified resource.\n\n**Request body fields:**\n- `resourceId` (integer, required) — ID of the resource to block\n- `blockoutCapacity` (integer, required) — Total capacity to block out\n- `date` (string, required) — Date of the capacity block (yyyy-MM-dd)\n- `startTime` (string, required when blockEntireDay is false) — Start time in 24h format\n- `endTime` (string, required when blockEntireDay is false) — End time in 24h format\n- `blockEntireDay` (boolean, optional) — Whether the block applies to the entire day\n- `notes` (string, optional) — Additional notes or reason for the block\n\nDocs: https://docs.roller.app/docs/api/rest/operations/block-capacity"
+                "description": "Block capacity for the specified resource.\n\n**Request body fields:**\n- `resourceId` (integer, required) — ID of the resource to block\n- `blockoutCapacity` (integer, required) — Total capacity to block out\n- `date` (string, required) — Date of the capacity block (yyyy-MM-dd)\n- `startTime` (string, required when blockEntireDay is false) — Start time in 24h format\n- `endTime` (string, required when blockEntireDay is false) — End time in 24h format\n- `blockEntireDay` (boolean, optional) — Whether the block applies to the entire day\n- `notes` (string, optional) — Additional notes or reason for the block\n\nDocs: https://docs.roller.app/docs/api/rest/operations/block-resource-capacity"
               },
               "response": []
             },
@@ -480,7 +480,7 @@
                     "ffdae420-a912-4d93-9234-9faca5e6194f"
                   ]
                 },
-                "description": "Delete a capacity reservation. Use this to clear reserved capacity so other customers may book. Reservations not deleted will automatically expire after 10 minutes.\n\n**Path parameters:**\n- `uniqueId` (string, required) — The unique capacity reservation ID\n\nDocs: https://docs.roller.app/docs/api/rest/operations/delete-capacity-reservation"
+                "description": "Delete a capacity reservation. Use this to clear reserved capacity so other customers may book. Reservations not deleted will automatically expire after 10 minutes.\n\n**Path parameters:**\n- `uniqueId` (string, required) — The unique capacity reservation ID\n\nDocs: https://docs.roller.app/docs/api/rest/operations/delete-a-capacity-reservation"
               },
               "response": []
             },
@@ -505,7 +505,7 @@
                     "1"
                   ]
                 },
-                "description": "Delete an existing resource capacity block.\n\n**Path parameters:**\n- `blockId` (integer, required) — The unique resource capacity block ID\n\nDocs: https://docs.roller.app/docs/api/rest/operations/delete-capacity-block"
+                "description": "Delete an existing resource capacity block.\n\n**Path parameters:**\n- `blockId` (integer, required) — The unique resource capacity block ID\n\nDocs: https://docs.roller.app/docs/api/rest/operations/delete-resource-capacity-block"
               },
               "response": []
             },
@@ -530,7 +530,7 @@
                     "1"
                   ]
                 },
-                "description": "Get an existing resource capacity block by its ID.\n\n**Path parameters:**\n- `blockId` (integer, required) — The unique resource capacity block ID\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-capacity-block"
+                "description": "Get an existing resource capacity block by its ID.\n\n**Path parameters:**\n- `blockId` (integer, required) — The unique resource capacity block ID\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-resource-capacity-block"
               },
               "response": []
             },
@@ -567,7 +567,7 @@
                     }
                   ]
                 },
-                "description": "Search for existing resource capacity blocks.\n\n**Query parameters:**\n- `date` (string, optional) — Date for which to retrieve capacity blocks (yyyy-MM-dd)\n- `resourceId` (string, optional) — ID of the resource to filter by\n\nDocs: https://docs.roller.app/docs/api/rest/operations/search-capacity-blocks"
+                "description": "Search for existing resource capacity blocks.\n\n**Query parameters:**\n- `date` (string, optional) — Date for which to retrieve capacity blocks (yyyy-MM-dd)\n- `resourceId` (string, optional) — ID of the resource to filter by\n\nDocs: https://docs.roller.app/docs/api/rest/operations/search-resource-capacity-blocks"
               },
               "response": []
             },
@@ -603,7 +603,7 @@
                     "capacity-reservation"
                   ]
                 },
-                "description": "Validate and reserve capacity prior to creating a booking. Use this endpoint to ensure there is no double booking of capacity within ROLLER.\n\n**Request body fields:**\n- `items` (array, required) — The products being purchased (booking items)\n\nDocs: https://docs.roller.app/docs/api/rest/operations/reserve-capacity"
+                "description": "Validate and reserve capacity prior to creating a booking. Use this endpoint to ensure there is no double booking of capacity within ROLLER.\n\n**Request body fields:**\n- `items` (array, required) — The products being purchased (booking items)\n\nDocs: https://docs.roller.app/docs/api/rest/operations/validate-and-reserve-capacity"
               },
               "response": []
             }
@@ -1162,7 +1162,7 @@
                     }
                   ]
                 },
-                "description": "Returns product information for a venue. Response data should be cached as it does not change frequently.\n\n**Query parameters:**\n- `ProductCategory` (string, optional) — Filter by product category\n- `productType` (string, optional) — Filter by product type\n- `productSubType` (string, optional) — Filter by product sub type\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-products"
+                "description": "Returns product information for a venue. Response data should be cached as it does not change frequently.\n\n**Query parameters:**\n- `ProductCategory` (string, optional) — Filter by product category\n- `productType` (string, optional) — Filter by product type\n- `productSubType` (string, optional) — Filter by product sub type\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-product-detail"
               },
               "response": []
             },
@@ -1523,7 +1523,7 @@
                     "payments"
                   ]
                 },
-                "description": "Add a transaction record (payment or refund) to an existing booking. Payments must be processed externally; only a record of the successful transaction is created via the API.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `id` (string, required) — Unique payment/transaction ID\n- `paymentType` (string, required) — Tender type used\n- `amount` (number, required) — Payment total including fees; use negative for refunds\n- `creditCardFees` (number, optional) — Credit card fees\n- `transactionDate` (string, optional) — UTC datetime of the transaction\n\nDocs: https://docs.roller.app/docs/api/rest/operations/create-transaction"
+                "description": "Add a transaction record (payment or refund) to an existing booking. Payments must be processed externally; only a record of the successful transaction is created via the API.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `id` (string, required) — Unique payment/transaction ID\n- `paymentType` (string, required) — Tender type used\n- `amount` (number, required) — Payment total including fees; use negative for refunds\n- `creditCardFees` (number, optional) — Credit card fees\n- `transactionDate` (string, optional) — UTC datetime of the transaction\n\nDocs: https://docs.roller.app/docs/api/rest/operations/add-transaction-record"
               },
               "response": []
             },
@@ -2143,7 +2143,7 @@
                     }
                   ]
                 },
-                "description": "Returns attendance records for guests based on attendance date. Attendance is recorded when a booking item is redeemed. Stock and addon type products are not included.\n\n**Query parameters:**\n- `startDate` (string, required) — The date (yyyy-mm-dd) you need data for\n- `endDate` (string, required) — Should be +1 day from startDate\n- `pageNumber` (integer, optional) — Page number (default 1)\n- `pageSize` (integer, optional) — Page size (default 100)\n\nDocs: https://docs.roller.app/docs/api/reporting/operations/get-attendances"
+                "description": "Returns attendance records for guests based on attendance date. Attendance is recorded when a booking item is redeemed. Stock and addon type products are not included.\n\n**Query parameters:**\n- `startDate` (string, required) — The date (yyyy-mm-dd) you need data for\n- `endDate` (string, required) — Should be +1 day from startDate\n- `pageNumber` (integer, optional) — Page number (default 1)\n- `pageSize` (integer, optional) — Page size (default 100)\n\nDocs: https://docs.roller.app/docs/api/reporting/operations/get-attendance"
               },
               "response": []
             },
@@ -2887,7 +2887,7 @@
                     }
                   ]
                 },
-                "description": "Returns waiver terms and configuration on active and historic waivers. These are waiver templates, not records of waivers signed by customers — see Get signed waivers for those.\n\n**Query parameters:**\n- `pageNumber` (integer, optional) — Page number (default 1)\n- `pageSize` (integer, optional) — Page size (default 100)\n\nDocs: https://docs.roller.app/docs/api/reporting/operations/get-waivers"
+                "description": "Returns waiver terms and configuration on active and historic waivers. These are waiver templates, not records of waivers signed by customers — see Get signed waivers for those.\n\n**Query parameters:**\n- `pageNumber` (integer, optional) — Page number (default 1)\n- `pageSize` (integer, optional) — Page size (default 100)\n\nDocs: https://docs.roller.app/docs/api/reporting/operations/get-waivers-information"
               },
               "response": []
             }

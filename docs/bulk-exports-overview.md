@@ -9,7 +9,7 @@ Bulk exports via API allows the ability to backfill historical ROLLER data from 
 ## Steps to setup
 
 1. [**Create a webhook**](creating-webhooks.md) with type **bulkExport** and subscribe to the `Created` event type
-2. Use the [**bulk data export request endpoint**](../reference/reporting-api.yaml/paths/~1reporting~1bulk/post) to submit a new export request
+2. Use the [**bulk data export request endpoint**](https://docs.roller.app/docs/api/reporting/operations/bulk-data-export-request) to submit a new export request
 3. Once the request has finished processing, you'll receive a [**bulk data export payload**](../models/BulkDataExportCompleted.yaml) via the webhook registered in step 1, containing presigned URL's hosting the requested data.
 
 ---

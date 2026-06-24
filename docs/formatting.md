@@ -31,6 +31,8 @@ By default, all dates and times in the Reporting API (and Bulk Export API) are i
 
 This does not affect the date range parameters `startDate` or `endDate`, which are always in the venue time zone.
 
+>Please note, any **custom reporting offsets** defined for your reporting in `Venue Manager` do not affect the API. 
+
 ## Media types
 
 ROLLER APIs support only the `application/json` format. You must include both of the following headers in your requests. Use `UTF-8` for all content encoding.
