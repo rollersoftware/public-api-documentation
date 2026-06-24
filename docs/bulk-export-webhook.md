@@ -4,7 +4,7 @@ stoplight-id: qg14o9szv8d26
 
 # Bulk Export Webhook
 
-> [**Create**](../reference/rest-api.yaml/paths/~1webhooks/post), [**view**](../reference/rest-api.yaml/paths/~1webhooks/get) and [**delete**](../reference/rest-api.yaml/paths/~1webhooks~1{webhookId}/delete) webhooks using our REST API.
+> [**Create**](https://docs.roller.app/docs/api/rest/operations/create-webhook), [**view**](https://docs.roller.app/docs/api/rest/operations/get-webhooks) and [**delete**](https://docs.roller.app/docs/api/rest/operations/delete-webhook) webhooks using our REST API.
 
 ## Payload
 

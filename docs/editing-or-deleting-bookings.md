@@ -8,13 +8,13 @@ Bookings that have been created via the API can be adjusted, cancelled, or delet
 
 ## Editing a booking
 
-Adjust bookings using the [**Update a booking**](../reference/rest-api.yaml/paths/~1bookings~1{uniqueId}/put) endpoint. This method only allows you to add or remove products, with associated quantities, to or from the booking.
+Adjust bookings using the [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking) endpoint. This method only allows you to add or remove products, with associated quantities, to or from the booking.
 
 > If you wish to adjust the quantity, date, or another property of an existing item, remove that item and re-add it with the adjusted property.
 
 ## Cancelling a booking
 
-Cancel bookings using the [**Cancel a booking**](../reference/rest-api.yaml/paths/~1bookings~1{uniqueId}~1cancel/post) endpoint, and optionally add a refund as a payment record in ROLLER.
+Cancel bookings using the [**Cancel a booking**](https://docs.roller.app/docs/api/rest/operations/cancel-a-booking) endpoint, and optionally add a refund as a payment record in ROLLER.
 
 > - Only bookings created via the API can be cancelled via the API.
 > - You can only cancel future bookings.
@@ -24,7 +24,7 @@ Cancel bookings using the [**Cancel a booking**](../reference/rest-api.yaml/path
 
 ## Deleting a booking
 
-Delete bookings using the [**Delete a booking**](../reference/rest-api.yaml/paths/~1bookings~1{uniqueId}/delete) endpoint, along with all associated transaction records.
+Delete bookings using the [**Delete a booking**](https://docs.roller.app/docs/api/rest/operations/delete-a-booking) endpoint, along with all associated transaction records.
 
 > - You can only delete bookings you've made via the API.
 > - You can only delete future bookings.

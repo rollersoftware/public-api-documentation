@@ -20,10 +20,10 @@ Available webhook types can be found in the sidebar.
 
 ## REST API endpoints for managing webhooks
 
-- [**Create webhooks**](../reference/rest-api.yaml/paths/~1webhooks/post)
-- [**View existing webhooks**](../reference/rest-api.yaml/paths/~1webhooks/get)
-- [**Update existing webhooks**](../reference/rest-api.yaml/paths/~1webhooks~1{webhookId}/put)
-- [**Delete webhooks**](../reference/rest-api.yaml/paths/~1webhooks~1{webhookId}/delete)
+- [**Create webhooks**](https://docs.roller.app/docs/api/rest/operations/create-webhook)
+- [**View existing webhooks**](https://docs.roller.app/docs/api/rest/operations/get-webhooks)
+- [**Update existing webhooks**](https://docs.roller.app/docs/api/rest/operations/update-webhook)
+- [**Delete webhooks**](https://docs.roller.app/docs/api/rest/operations/delete-webhook)
 
 <!-- theme: warning -->
 > Please note, deleted or disabled API keys do not currently delete or disable webhooks registered with that API key.

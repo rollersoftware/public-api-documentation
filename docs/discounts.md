@@ -15,13 +15,13 @@ The REST API allows you to create and update discount configurations, including 
 
 ## Available discount endpoints
 
-- Reporting API > [**Get discounts**](../reference/reporting-api.yaml/paths/~1data~1discounts/get)
-- REST API > [**Get discount**](../reference/rest-api.yaml/paths/~1discounts~1{discountId}/get)
-- REST API > [**Update discount**](../reference/rest-api.yaml/paths/~1discounts~1{discountId}/put)
-- REST API > [**Create discount**](../reference/rest-api.yaml/paths/~1discounts/post)
-- REST API > [**Create discount codes**](../reference/rest-api.yaml/paths/~1discounts~1{discountId}~1codes/post)
-- REST API > [**Delete discount codes**](../reference/rest-api.yaml/paths/~1discounts~1{discountId}~1codes/delete)
-- REST API > [**Booking costs**](../reference/rest-api.yaml/paths/~1bookings~1draft~1costs/post) (for **discount code validation**)
+- Reporting API > [**Get discounts**](https://docs.roller.app/docs/api/reporting/operations/get-discounts)
+- REST API > [**Get discount**](https://docs.roller.app/docs/api/rest/operations/get-discount)
+- REST API > [**Update discount**](https://docs.roller.app/docs/api/rest/operations/update-discount)
+- REST API > [**Create discount**](https://docs.roller.app/docs/api/rest/operations/create-discount)
+- REST API > [**Create discount codes**](https://docs.roller.app/docs/api/rest/operations/create-discount-codes)
+- REST API > [**Delete discount codes**](https://docs.roller.app/docs/api/rest/operations/delete-discount-codes)
+- REST API > [**Booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs) (for **discount code validation**)
 
 ## What discount configurations are currently supported?
 
@@ -45,21 +45,21 @@ Discount `codes` can be added to or removed from any discount in your venue. How
 | Additional booking rules | ❌ |
 | "Allow multiple uses of a code in the same booking" | ❌ |
 
-> Additional configuration detail can be found using [**Get discounts**](../reference/reporting-api.yaml/paths/~1data~1discounts/get) via the Reporting API.
+> Additional configuration detail can be found using [**Get discounts**](https://docs.roller.app/docs/api/reporting/operations/get-discounts) via the Reporting API.
 
 ## How do I get all codes for a discount?
 
-Use [**Get discounts**](../reference/reporting-api.yaml/paths/~1data~1discounts/get) via the Reporting API.
+Use [**Get discounts**](https://docs.roller.app/docs/api/reporting/operations/get-discounts) via the Reporting API.
 
 <!-- theme: warning -->
 > The Reporting API is not to be used for real-time scenarios. We recommend that discounts are cached on a daily basis or called infrequently.
 
 ## How do I validate codes in real time?
 
-Use the [**Booking costs**](../reference/rest-api.yaml/paths/~1bookings~1draft~1costs/post) endpoint.
+Use the [**Booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs) endpoint.
 
 ## What happens when I add new codes to an existing discount?
 
-When using [**Update discount**](../reference/rest-api.yaml/paths/~1discounts~1{discountId}/put), all codes are additional to existing codes — they do not replace them. Codes can only be removed via [**Delete discount codes**](../reference/rest-api.yaml/paths/~1discounts~1{discountId}~1codes/delete).
+When using [**Update discount**](https://docs.roller.app/docs/api/rest/operations/update-discount), all codes are additional to existing codes — they do not replace them. Codes can only be removed via [**Delete discount codes**](https://docs.roller.app/docs/api/rest/operations/delete-discount-codes).
 
 > When codes are batch uploaded to a discount manually via Venue Manager, **this overwrites all existing codes**.
