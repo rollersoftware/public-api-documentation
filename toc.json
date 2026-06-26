@@ -79,7 +79,7 @@
         "search-for-bookings": "search-for-bookings",
         "get-booking-costs": "get-booking-costs",
         "create-draft-booking": "create-draft-booking",
-        //"publish-draft-booking-no-payment": "publish-draft-booking-no-payment",
+        "publish-draft-booking-no-payment": "publish-draft-booking-no-payment",
         "create-discount": "create-discount",
         "get-discount": "get-discount",
         "update-discount": "update-discount",
