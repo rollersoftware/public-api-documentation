@@ -254,7 +254,6 @@
         "get-signed-waivers": "get-signed-waivers",
         "get-booking-signed-waivers": "get-booking-signed-waivers",
         "get-revenue-entries": "get-revenue-entries",
-        "get-revenue-entries-legacy": "get-revenue-entries-legacy",
         "bulk-data-export-request": "bulk-data-export-request"
       }
     },
