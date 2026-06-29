@@ -10,7 +10,7 @@ Postman is an API client for testing endpoints. Our collection ships every ROLLE
 
 1. Download [**Postman**](https://www.postman.com/) and launch it.
 2. From the top-left menu, choose **File > Import**.
-3. Drop in the collection, downloadable [**here**](https://drive.google.com/file/d/1-4rhEEpjIckVidAbsziXzm34fOgRCeU8/view?usp=sharing).
+3. Drop in the collection, downloadable [**here**](https://github.com/rollersoftware/public-api-documentation/blob/master/reference/postman-collection.json).
 
 ## Authenticate and start calling
 
