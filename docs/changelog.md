@@ -19,6 +19,16 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 >
 >To get a preview of the schema for upcoming changes, use the sidebar on the left to select the next release (if available).
 
+## 2026-07
+
+### Added
+
+- **Gift card payments and refunds** — [**Add transaction record**](https://docs.roller.app/docs/api/rest/operations/add-transaction-record) now supports gift cards: set `paymentType` to `Giftcard` with a `giftcardNumber` to record a payment, or use a negative `amount` to refund to the same card. Only ROLLER-issued gift cards are supported (REST API).
+- [**Add a tip**](https://docs.roller.app/docs/api/rest/operations/add-a-tip) endpoint (`POST /bookings/{uniqueId}/payments/tips`) to record a tip-only payment against a booking. Gift card tips are not supported (REST API).
+- `stockProductType` property to classify stock products (`untagged`, `foodAndBeverage`, `retail`, `miscellaneous`), on [**Create stock products**](https://docs.roller.app/docs/api/rest/operations/create-stock-products), [**Update stock products**](https://docs.roller.app/docs/api/rest/operations/update-stock-products), and [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) (REST API).
+
+---
+
 ## 2026-06
 
 ### Added
