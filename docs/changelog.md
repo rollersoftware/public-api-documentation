@@ -15,7 +15,9 @@ Releases are grouped by month and listed most-recent-first. Within each release,
 
 Each entry notes the affected API (Reporting API or REST API) and links to the relevant reference.
 
-> **🚧 Upcoming release —** Please note changes below may not be available in production yet. Operations and links referenced may return a `404` until that release is published.
+> **🚧 Upcoming release —** Please note changes below may not be available in production yet. Operations and links referenced may return a `404` until that release is published. 
+>
+>To get a preview of the schema for upcoming changes, use the sidebar on the left to select the next release (if available).
 
 ## 2026-06
 

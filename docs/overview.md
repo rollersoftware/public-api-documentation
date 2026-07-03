@@ -6,6 +6,8 @@ stoplight-id: 1uypb6irt156u
 
 ROLLER offers two public APIs that serve different integration needs. Use this page to choose the right one for your use case, then follow the links in the sidebar for setup and reference detail.
 
+>See our [**changelog**](changelog.md) for recent additions and changes.
+
 ## Reporting API
 
 The Reporting API enables secure, structured access to your ROLLER data for integration with enterprise data warehouses, analytics platforms, and cloud storage solutions. It supports use cases like business intelligence, custom reporting, and data synchronization.
