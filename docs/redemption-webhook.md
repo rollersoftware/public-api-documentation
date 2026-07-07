@@ -42,7 +42,7 @@ View the [**create**](https://docs.roller.app/docs/api/rest/operations/create-we
 
 The following fields will only be returned in the [**redemption payload**](../models/RedemptionDetail.yaml) if their corresponding value in the `include` object is `true`:
 
-* [**Membership Detail**](../models/MembershipDetail.yaml)
+* Membership detail — populates the `membershipStatus` field on each redemption in the payload
 * [**Multi-Pass Detail**](../models/MultiPass.yaml)
 
 View the [**create**](https://docs.roller.app/docs/api/rest/operations/create-webhook) webhooks endpoint for more detail.

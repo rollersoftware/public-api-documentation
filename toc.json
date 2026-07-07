@@ -155,12 +155,6 @@
         },
         {
           "type": "item",
-          "title": "MembershipDetail",
-          "uri": "/models/MembershipDetail.yaml",
-          "slug": "membership-detail"
-        },
-        {
-          "type": "item",
           "title": "CustomerFlag",
           "uri": "/models/CustomerFlag.yaml",
           "slug": "customer-flag"
