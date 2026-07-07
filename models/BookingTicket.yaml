@@ -16,8 +16,20 @@ properties:
     example: Ben Smith
   membershipStatus:
     type: string
-    description: 'Only returned if the ticket is a Membership, returns the current status of the membership. Can be - Current, Pending Activation, Declined Payment, Terminated, Pending Cancellation, Upgraded, Expired.'
+    description: 'Only returned if the ticket is a Membership, returns the current status of the membership. Can be - Current, Pending Activation, Declined Payment, Terminated, Pending Cancellation, Upgraded, Expired, Paused, Pending Pause.'
     example: Current
+  membershipPauseDate:
+    type: string
+    description: 'Only returned if the ticket is a Membership with a status of Paused or Pending Pause. The date the current or upcoming membership pause begins, in venue local time (`yyyy-MM-dd`).'
+    example: '2026-07-14'
+  membershipResumeDate:
+    type: string
+    description: 'Only returned if the ticket is a Membership with a status of Paused or Pending Pause. The date the membership pause ends and the membership resumes, in venue local time (`yyyy-MM-dd`).'
+    example: '2026-08-14'
+  membershipCancellationDate:
+    type: string
+    description: 'Only returned if the ticket is a Membership with a status of Pending Cancellation or Terminated. The scheduled cancellation date of the membership, in venue local time (`yyyy-MM-dd`).'
+    example: '2026-09-01'
   photoUrl:
     type: string
     description: URL of the photo taken for the ticket holder

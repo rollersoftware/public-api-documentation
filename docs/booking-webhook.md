@@ -99,7 +99,7 @@ The `channels` and `eventChannels` filters serve different purposes:
 
 The following fields will only be returned in the [**booking payload**](../models/BookingDetail.yaml) if their corresponding value in the `include` object is `true`:
 
-* [**Membership Detail**](../models/MembershipDetail.yaml)
+* Membership detail — populates the membership fields on each ticket in the payload (`membershipStatus`, `membershipPauseDate`, `membershipResumeDate`, `membershipCancellationDate`)
 * [**Guest Flags**](../models/CustomerFlag.yaml)
 * External ID
 * Tickets
