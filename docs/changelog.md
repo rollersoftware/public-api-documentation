@@ -28,10 +28,6 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - `stockProductType` property to classify stock products (`untagged`, `foodAndBeverage`, `retail`, `miscellaneous`), on [**Create stock products**](https://docs.roller.app/docs/api/rest/operations/create-stock-products), [**Update stock products**](https://docs.roller.app/docs/api/rest/operations/update-stock-products), and [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) (REST API).
 - **Membership pause and cancellation dates** — `membershipPauseDate`, `membershipResumeDate`, and `membershipCancellationDate` properties on booking tickets, returned by [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) and in the [**booking webhook**](booking-webhook.md) payload (with `include.membershipDetail` enabled). Returned when a membership is paused, pending pause, or scheduled for cancellation. `membershipStatus` can now also return `Paused` and `Pending Pause` (REST API).
 
-### Changed
-
-- Corrected the [**booking webhook**](booking-webhook.md) and [**redemption webhook**](redemption-webhook.md) documentation for the `include.membershipDetail` flag: it populates membership fields on each ticket or redemption in the payload. The previously documented standalone MembershipDetail object was never returned, and its schema page has been removed (REST API).
-
 ---
 
 ## 2026-06
