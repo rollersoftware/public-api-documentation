@@ -19,6 +19,8 @@ Upon receiving a webhook from ROLLER, third-party services are expected to quick
 - **Optimal Response Time:** Responses should ideally be acknowledged in under `1 second`.
 - **Maximum Allowed Time:** Webhook requests must be acknowledged within `10 seconds` to avoid retries or deactivation.
 
+> Webhooks can be expected to be delivered within 2-5 seconds after the event trigger.
+
 ### Event Ordering
 ROLLER does not guarantee delivery of events in the order in which they are generated. For example, you might get a redemption event before the booking created event.
 
