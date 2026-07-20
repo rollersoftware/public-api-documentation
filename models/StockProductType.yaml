@@ -1,0 +1,8 @@
+title: StockProductType
+enum:
+  - untagged
+  - foodAndBeverage
+  - retail
+  - miscellaneous
+description: 'Classifies a stock product for reporting and F&B checkout features. Only populated for stock products. When updating a stock product, omitting this field clears the existing value.'
+x-internal: false

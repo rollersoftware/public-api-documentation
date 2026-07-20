@@ -91,6 +91,7 @@
         "get-booking-detail": "get-booking-detail",
         "cancel-a-booking": "cancel-a-booking",
         "add-transaction-record": "add-transaction-record",
+        "add-a-tip": "add-a-tip",
         "create-payment-link": "create-payment-link",
         "cancel-payment-link": "cancel-payment-link",
         "get-booking-form-responses": "get-booking-form-responses",

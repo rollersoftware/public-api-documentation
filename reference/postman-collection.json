@@ -1024,7 +1024,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"externalId\": \"EXT-TSHIRT-001\", // (required) External reference for the parent product (max 64 chars)\n  \"name\": \"Gift Shop T-Shirt\",    // (required) Parent product name (max 128 chars)\n  \"hqMasterName\": \"Apparel\",       // HQ master product name for linking variations (HQ venues only, optional)\n  \"reportingCategory\": \"Merchandise\", // Reporting category to map the product to (optional)\n  \"products\": [                   // (required) Stock product variations / children to create\n    {\n      \"name\": \"Small\",            // (required) Child / variation product name (max 128 chars)\n      \"externalId\": \"EXT-TSHIRT-S\", // External reference for the child product (optional, max 64 chars)\n      \"hqMasterCode\": \"APP\",       // HQ master code for linking variations (HQ venues only, optional)\n      \"price\": 29.95,              // Product price (optional)\n      \"costOfGoods\": 12.5,         // Cost associated with producing/selling the item (optional)\n      \"parLevel\": 5,               // Quantity at which stock should be replenished (optional)\n      \"taxCode\": \"State Tax\",      // Name of the custom tax variation defined in ROLLER (optional)\n      \"taxId\": 52,                 // ID of the custom tax variation defined in ROLLER (optional)\n      \"barcodeId\": \"588199203\"     // Scannable barcode for the product (optional)\n    }\n  ]\n}",
+                  "raw": "{\n  \"externalId\": \"EXT-TSHIRT-001\", // (required) External reference for the parent product (max 64 chars)\n  \"name\": \"Gift Shop T-Shirt\",    // (required) Parent product name (max 128 chars)\n  \"hqMasterName\": \"Apparel\",       // HQ master product name for linking variations (HQ venues only, optional)\n  \"reportingCategory\": \"Merchandise\", // Reporting category to map the product to (optional)\n  \"stockProductType\": \"retail\",  // Classifies the stock product: untagged, foodAndBeverage, retail, miscellaneous (optional)\n  \"products\": [                   // (required) Stock product variations / children to create\n    {\n      \"name\": \"Small\",            // (required) Child / variation product name (max 128 chars)\n      \"externalId\": \"EXT-TSHIRT-S\", // External reference for the child product (optional, max 64 chars)\n      \"hqMasterCode\": \"APP\",       // HQ master code for linking variations (HQ venues only, optional)\n      \"price\": 29.95,              // Product price (optional)\n      \"costOfGoods\": 12.5,         // Cost associated with producing/selling the item (optional)\n      \"parLevel\": 5,               // Quantity at which stock should be replenished (optional)\n      \"taxCode\": \"State Tax\",      // Name of the custom tax variation defined in ROLLER (optional)\n      \"taxId\": 52,                 // ID of the custom tax variation defined in ROLLER (optional)\n      \"barcodeId\": \"588199203\"     // Scannable barcode for the product (optional)\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1041,7 +1041,7 @@
                     "stock"
                   ]
                 },
-                "description": "Create a new stock product.\n\n**Request body fields:**\n- `externalId` (string, required) — External reference for the parent product (max 64 chars)\n- `name` (string, required) — Parent product name (max 128 chars)\n- `hqMasterName` (string, optional) — HQ master product name for linking variations (HQ venues only)\n- `reportingCategory` (string, optional) — Reporting category to map the product to\n- `products` (array, required) — Variations/children to create; each requires `name`\n  - `externalId` (string, optional) — External reference for the child product\n  - `hqMasterCode` (string, optional) — HQ master code (HQ venues only)\n  - `price` (number, optional) — Product price\n  - `costOfGoods` (number, optional) — Cost to produce/sell the item\n  - `parLevel` (integer, optional) — Quantity at which stock should be replenished\n  - `taxCode` (string, optional) — Name of the custom tax variation\n  - `taxId` (integer, optional) — ID of the custom tax variation\n  - `barcodeId` (string, optional) — Scannable barcode\n\nNote: stock quantity is not set on create — use **Update stock quantity**.\n\nDocs: https://docs.roller.app/docs/api/rest/operations/create-stock-products"
+                "description": "Create a new stock product.\n\n**Request body fields:**\n- `externalId` (string, required) — External reference for the parent product (max 64 chars)\n- `name` (string, required) — Parent product name (max 128 chars)\n- `hqMasterName` (string, optional) — HQ master product name for linking variations (HQ venues only)\n- `reportingCategory` (string, optional) — Reporting category to map the product to\n- `stockProductType` (string, optional) — Classifies the stock product (`untagged`, `foodAndBeverage`, `retail`, `miscellaneous`)\n- `products` (array, required) — Variations/children to create; each requires `name`\n  - `externalId` (string, optional) — External reference for the child product\n  - `hqMasterCode` (string, optional) — HQ master code (HQ venues only)\n  - `price` (number, optional) — Product price\n  - `costOfGoods` (number, optional) — Cost to produce/sell the item\n  - `parLevel` (integer, optional) — Quantity at which stock should be replenished\n  - `taxCode` (string, optional) — Name of the custom tax variation\n  - `taxId` (integer, optional) — ID of the custom tax variation\n  - `barcodeId` (string, optional) — Scannable barcode\n\nNote: stock quantity is not set on create — use **Update stock quantity**.\n\nDocs: https://docs.roller.app/docs/api/rest/operations/create-stock-products"
               },
               "response": []
             },
@@ -1182,7 +1182,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"productId\": \"153444\",          // ROLLER parent product ID (identify the parent by productId or externalId)\n  \"externalId\": \"EXT-TSHIRT-001\", // External reference for the parent product (optional)\n  \"name\": \"Gift Shop T-Shirt\",    // Parent product name\n  \"hqMasterName\": \"Apparel\",       // HQ master product name (HQ venues only, optional)\n  \"reportingCategory\": \"Merchandise\", // Reporting category to map the product to (optional)\n  \"products\": [                   // Variations / children to update or create\n    {\n      \"productId\": \"245252\",       // ROLLER child product ID — provide to update an existing variation\n      \"externalId\": \"EXT-TSHIRT-S\", // External reference — provide with no productId to create a new variation\n      \"name\": \"Small\",            // Child / variation product name\n      \"hqMasterCode\": \"APP\",       // HQ master code (HQ venues only, optional)\n      \"price\": 32.95,              // Product price\n      \"costOfGoods\": 12.5,         // Cost associated with producing/selling the item (optional)\n      \"parLevel\": 5,               // Quantity at which stock should be replenished (optional)\n      \"taxCode\": \"State Tax\",      // Name of the custom tax variation (optional)\n      \"taxId\": 52,                 // ID of the custom tax variation (optional)\n      \"barcodeId\": \"588199203\"     // Scannable barcode (optional)\n    }\n  ]\n}",
+                  "raw": "{\n  \"productId\": \"153444\",          // ROLLER parent product ID (identify the parent by productId or externalId)\n  \"externalId\": \"EXT-TSHIRT-001\", // External reference for the parent product (optional)\n  \"name\": \"Gift Shop T-Shirt\",    // Parent product name\n  \"hqMasterName\": \"Apparel\",       // HQ master product name (HQ venues only, optional)\n  \"reportingCategory\": \"Merchandise\", // Reporting category to map the product to (optional)\n  \"stockProductType\": \"retail\",  // Classifies the stock product: untagged, foodAndBeverage, retail, miscellaneous. Omitting clears the value\n  \"products\": [                   // Variations / children to update or create\n    {\n      \"productId\": \"245252\",       // ROLLER child product ID — provide to update an existing variation\n      \"externalId\": \"EXT-TSHIRT-S\", // External reference — provide with no productId to create a new variation\n      \"name\": \"Small\",            // Child / variation product name\n      \"hqMasterCode\": \"APP\",       // HQ master code (HQ venues only, optional)\n      \"price\": 32.95,              // Product price\n      \"costOfGoods\": 12.5,         // Cost associated with producing/selling the item (optional)\n      \"parLevel\": 5,               // Quantity at which stock should be replenished (optional)\n      \"taxCode\": \"State Tax\",      // Name of the custom tax variation (optional)\n      \"taxId\": 52,                 // ID of the custom tax variation (optional)\n      \"barcodeId\": \"588199203\"     // Scannable barcode (optional)\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1199,7 +1199,7 @@
                     "stock"
                   ]
                 },
-                "description": "Update an existing stock product by editing details or creating new variations. Identify the parent product by `productId` (ROLLER ID) or `externalId`. To update an existing variation, provide its child `productId`. To create a new variation, provide an `externalId` with no `productId`.\n\n**Request body fields:**\n- `productId` (string, optional) — ROLLER parent product ID\n- `externalId` (string, optional) — External reference for the parent product\n- `name` (string, optional) — Parent product name\n- `hqMasterName` (string, optional) — HQ master product name (HQ venues only)\n- `reportingCategory` (string, optional) — Reporting category to map the product to\n- `products` (array, optional) — Variations to update or create\n  - `productId` (string, optional) — ROLLER child product ID (to update an existing variation)\n  - `externalId` (string, optional) — External reference (to create a new variation)\n  - `name`, `hqMasterCode`, `price`, `costOfGoods`, `parLevel`, `taxCode`, `taxId`, `barcodeId` — as per Create stock products\n\nNote: stock quantity is not changed here — use **Update stock quantity**.\n\nDocs: https://docs.roller.app/docs/api/rest/operations/update-stock-products"
+                "description": "Update an existing stock product by editing details or creating new variations. Identify the parent product by `productId` (ROLLER ID) or `externalId`. To update an existing variation, provide its child `productId`. To create a new variation, provide an `externalId` with no `productId`.\n\n**Request body fields:**\n- `productId` (string, optional) — ROLLER parent product ID\n- `externalId` (string, optional) — External reference for the parent product\n- `name` (string, optional) — Parent product name\n- `hqMasterName` (string, optional) — HQ master product name (HQ venues only)\n- `reportingCategory` (string, optional) — Reporting category to map the product to\n- `stockProductType` (string, optional) — Classifies the stock product (`untagged`, `foodAndBeverage`, `retail`, `miscellaneous`); omitting this field clears the existing value\n- `products` (array, optional) — Variations to update or create\n  - `productId` (string, optional) — ROLLER child product ID (to update an existing variation)\n  - `externalId` (string, optional) — External reference (to create a new variation)\n  - `name`, `hqMasterCode`, `price`, `costOfGoods`, `parLevel`, `taxCode`, `taxId`, `barcodeId` — as per Create stock products\n\nNote: stock quantity is not changed here — use **Update stock quantity**.\n\nDocs: https://docs.roller.app/docs/api/rest/operations/update-stock-products"
               },
               "response": []
             },
@@ -1490,6 +1490,45 @@
           "name": "Transaction",
           "item": [
             {
+              "name": "Add a tip",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"HYA728830013\",        // (required) Unique payment/transaction ID\n  \"paymentType\": \"CreditCard\", // (required) Tender type funding the tip: CreditCard, CreditCardPreAuth, Cash, Cheque, BankTransfer, Other (Giftcard not supported)\n  \"amount\": 5,                 // (required) Tip amount in venue currency; must be positive\n  \"tipNote\": \"Great service\"   // Optional note attached to the tip\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/bookings/ABC123XYZ0/payments/tips",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bookings",
+                    "ABC123XYZ0",
+                    "payments",
+                    "tips"
+                  ]
+                },
+                "description": "Add a tip to an existing booking as a tip-only payment, assigned to the general tip pool. The amount must be positive; Giftcard is not a supported payment type, and refunding a tip is not supported via the API.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `id` (string, required) — Unique payment/transaction ID\n- `paymentType` (string, required) — Tender type used to fund the tip; Giftcard not supported\n- `amount` (number, required) — Tip amount in venue currency; must be positive\n- `tipNote` (string, optional) — Note attached to the tip\n\nDocs: https://docs.roller.app/docs/api/rest/operations/add-a-tip"
+              },
+              "response": []
+            },
+            {
               "name": "Add transaction record",
               "request": {
                 "method": "POST",
@@ -1505,7 +1544,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"HYA728830013\",           // (required) Unique payment/transaction ID\n  \"paymentType\": \"CreditCard\",    // (required) Tender type: CreditCard, CreditCardPreAuth, Cash, Cheque, BankTransfer, Other\n  \"amount\": 25.5,                 // (required) Payment total including fees (use negative for refunds)\n  \"creditCardFees\": 1.5,          // Credit card fees associated with the payment (optional)\n  \"transactionDate\": \"2025-07-01T09:00:00+00:00\" // Optional UTC datetime of the transaction\n}",
+                  "raw": "{\n  \"id\": \"HYA728830013\",           // (required) Unique payment/transaction ID\n  \"paymentType\": \"CreditCard\",    // (required) Tender type: CreditCard, CreditCardPreAuth, Cash, Cheque, BankTransfer, Other, Giftcard\n  \"amount\": 25.5,                 // (required) Payment total including fees (use negative for refunds)\n  \"creditCardFees\": 1.5,          // Credit card fees associated with the payment (optional)\n  \"transactionDate\": \"2025-07-01T09:00:00+00:00\", // Optional UTC datetime of the transaction\n  \"giftcardNumber\": \"2606947188\" // Gift card number; required when paymentType is Giftcard (ROLLER-issued cards only)\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1523,7 +1562,7 @@
                     "payments"
                   ]
                 },
-                "description": "Add a transaction record (payment or refund) to an existing booking. Payments must be processed externally; only a record of the successful transaction is created via the API.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `id` (string, required) — Unique payment/transaction ID\n- `paymentType` (string, required) — Tender type used\n- `amount` (number, required) — Payment total including fees; use negative for refunds\n- `creditCardFees` (number, optional) — Credit card fees\n- `transactionDate` (string, optional) — UTC datetime of the transaction\n\nDocs: https://docs.roller.app/docs/api/rest/operations/add-transaction-record"
+                "description": "Add a transaction record (payment or refund) to an existing booking. Payments must be processed externally; only a record of the successful transaction is created via the API.\n\n**Path parameters:**\n- `uniqueId` (string, required) — Unique ID of a booking\n\n**Request body fields:**\n- `id` (string, required) — Unique payment/transaction ID\n- `paymentType` (string, required) — Tender type used\n- `amount` (number, required) — Payment total including fees; use negative for refunds\n- `creditCardFees` (number, optional) — Credit card fees\n- `transactionDate` (string, optional) — UTC datetime of the transaction\n- `giftcardNumber` (string, optional) — Gift card number to charge or refund; required when `paymentType` is `Giftcard`. Only ROLLER-issued gift cards are supported. Use a negative `amount` to refund to the same card.\n\nDocs: https://docs.roller.app/docs/api/rest/operations/add-transaction-record"
               },
               "response": []
             },
