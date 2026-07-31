@@ -71,8 +71,8 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - Ability to **get**, **create**, **update**, and **delete** venue staff accounts (REST API). [**Available upon request**](https://helpcenter.roller.software/).
 - Ability to generate and cancel payment links for bookings via API (REST API) (This feature is currently being reviewed, please reach out to ROLLER support to gain access):
-  - [**Add payment link**](https://docs.roller.app/docs/api/rest/operations/create-payment-link) (REST API).
-  - [**Cancel payment link**](https://docs.roller.app/docs/api/rest/operations/cancel-payment-link) (REST API).
+  - **Add payment link** (REST API).
+  - **Cancel payment link**) (REST API).
   - [**Payment link webhook**](payment-link-webhook.md) to be notified when a payment is submitted against a new payment link.
 - `taxComponents` property to [**Get venue detail**](https://docs.roller.app/docs/api/rest/operations/get-venue-detail) (REST API).
 - `ianaTimeZone` property to [**Get venue detail**](https://docs.roller.app/docs/api/rest/operations/get-venue-detail) (REST API).
