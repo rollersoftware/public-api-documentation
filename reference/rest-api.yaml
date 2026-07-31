@@ -2005,7 +2005,7 @@ paths:
       operationId: create-payment-link
       tags:
         - Transaction
-      x-internal: false
+      x-internal: true
     parameters:
       - $ref: '#/components/parameters/uniqueId'
   '/bookings/{uniqueId}/payments/links/{paymentLinkId}':
@@ -2025,6 +2025,7 @@ paths:
           description: 'Conflict - "Payment link `{`paymentLinkId`}` does not belong to booking `uniqueIdentifier`'
       operationId: cancel-payment-link
       description: 'Cancel a payment link so it can no longer be used to take payment against the booking. '
+      x-internal: true
   '/bookings/{uniqueId}/form-responses':
     parameters:
       - $ref: '#/components/parameters/uniqueId'

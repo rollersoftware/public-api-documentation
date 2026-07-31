@@ -6,6 +6,10 @@ stoplight-id: 7gn4zuznopwes
 
 > [**Create**](https://docs.roller.app/docs/api/rest/operations/create-webhook), [**view**](https://docs.roller.app/docs/api/rest/operations/get-webhooks) and [**delete**](https://docs.roller.app/docs/api/rest/operations/delete-webhook) webhooks using our REST API.
 
+<!-- theme: warning -->
+>This feature is currently being reviewed, please reach out to ROLLER support to gain access.
+
+
 ## Payload
 
 The endpoint at the specified URL will receive a [**webhook message definition**](../models/WebhookMessageDefinition.yaml) with a [**payment link payload**](../models/PaymentLink.yaml) under the `data` object.
