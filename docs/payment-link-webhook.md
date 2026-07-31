@@ -7,7 +7,7 @@ stoplight-id: 7gn4zuznopwes
 > [**Create**](https://docs.roller.app/docs/api/rest/operations/create-webhook), [**view**](https://docs.roller.app/docs/api/rest/operations/get-webhooks) and [**delete**](https://docs.roller.app/docs/api/rest/operations/delete-webhook) webhooks using our REST API.
 
 <!-- theme: warning -->
->This feature is currently being reviewed, please reach out to ROLLER support to gain access.
+>This feature is currently being reviewed, please reach out to ROLLER support to request access.
 
 
 ## Payload
