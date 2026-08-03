@@ -33,7 +33,7 @@ tags:
   - name: Staff
     description: 'Create, retrieve, update, and delete staff accounts. Lock, unlock, and send email invitations to staff members.'
   - name: Transaction
-    description: 'Record payments and refunds against bookings, calculate booking costs, and manage payment links.'
+    description: 'Record payments, refunds, and tips against bookings, calculate booking costs, and manage payment links.'
   - name: Venue Information
     description: Retrieve detail about the authenticated venue.
   - name: Webhooks
@@ -216,6 +216,8 @@ paths:
                       description: Parent product name
                     type:
                       $ref: ../models/ProductType.yaml
+                    stockProductType:
+                      $ref: ../models/StockProductType.yaml
                     products:
                       type: array
                       items:
@@ -1876,8 +1878,13 @@ paths:
         * Add a transaction record (Such as a **payment** or **refund**) to an existing booking in ROLLER.
         * Payments must be processed externally of ROLLER, only a record of a successful transaction can be created via the API.
 
+        <!-- theme: info -->
+        > #### Gift card payments
+        > * To pay with a gift card, set `paymentType` to `Giftcard` and provide the `giftcardNumber`. Only ROLLER-issued gift cards are supported.
+        > * To refund to a gift card, use a negative `amount` with `paymentType` `Giftcard` — the refund is returned to the same card.
+
         <!-- theme: warning -->
-        > #### When processing refunds 
+        > #### When processing refunds
         > * Ensure you do not refund more than the amount already paid on the booking
         > * This only affects the record in ROLLER and does not actually refund the guest. The refund must still be actioned separately (for example refunded via your payment gateway).
       responses:
@@ -1935,6 +1942,7 @@ paths:
                     - Cheque
                     - BankTransfer
                     - Other
+                    - Giftcard
                   description: The tender type used
                   example: CreditCard
                 amount:
@@ -1949,7 +1957,95 @@ paths:
                   type: string
                   description: Optionally provide the transaction datetime in UTC - generally used when re-creating bookings and needing to retain the original datetime
                   example: '2020-07-29T06:57:18.5326035+00:00'
+                giftcardNumber:
+                  type: string
+                  maxLength: 64
+                  description: 'The gift card number to charge or refund. Required when `paymentType` is `Giftcard`, and ignored for all other payment types. Only ROLLER-issued gift cards are supported.'
+                  example: '2606947188'
       operationId: add-transaction-record
+      tags:
+        - Transaction
+    parameters:
+      - $ref: '#/components/parameters/uniqueId'
+  '/bookings/{uniqueId}/payments/tips':
+    post:
+      summary: Add a tip
+      description: |
+        Add a tip to an existing booking as a tip-only payment. The tip is assigned to the general tip pool.
+
+        * The tip `amount` must be a positive value — zero and negative amounts are rejected.
+        * `Giftcard` is not a supported `paymentType` for tips.
+        * Refunding a tip is not supported via the API; reconcile tips in Venue Manager or POS.
+      responses:
+        '201':
+          description: Tip recorded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uniqueId:
+                    type: string
+                    description: Unique payment ID for the recorded tip
+                    example: ffdae420-a912-4d93-9234-9faca5e6194f
+        '400':
+          description: 'Bad request - the amount was zero or negative, or Giftcard was used as the payment type.'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: Name of the error
+                          example: Booking
+                        message:
+                          type: string
+                          description: Error message
+                          example: Booking 'ffdae420-a912-4d93-9234-9faca5e6194f' not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - paymentType
+                - amount
+              properties:
+                id:
+                  type: string
+                  maxLength: 32
+                  description: Unique payment or transaction ID. This must be unique otherwise the tip record will not be added.
+                  example: HYA728830013
+                paymentType:
+                  type: string
+                  enum:
+                    - CreditCard
+                    - CreditCardPreAuth
+                    - Cash
+                    - Cheque
+                    - BankTransfer
+                    - Other
+                  description: The tender type used to fund the tip. `Giftcard` is not supported.
+                  example: CreditCard
+                amount:
+                  type: number
+                  description: The tip amount in the venue's local currency. Must be a positive value.
+                  example: 5
+                tipNote:
+                  type: string
+                  maxLength: 1000
+                  description: Optional note attached to the tip.
+                  example: Great service
+      operationId: add-a-tip
       tags:
         - Transaction
     parameters:
