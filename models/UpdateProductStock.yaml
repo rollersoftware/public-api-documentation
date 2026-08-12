@@ -25,6 +25,8 @@ properties:
     type: string
     description: Reporting category to map the product to
     example: Food and beverage
+  stockProductType:
+    $ref: ./StockProductType.yaml
   products:
     description: The list of stock products to update.
     type: array
