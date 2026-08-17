@@ -2578,7 +2578,8 @@ paths:
                     - PosTillReconciliations
                     - SignedWaivers
                     - BookingSignedWaivers
-                  description: The type of data to export.
+                    - AuditLog
+                  description: 'The type of data to export. `AuditLog` exports venue audit log events — see [**Bulk Exports Overview**](https://docs.roller.app/docs/api/bulk-exports-overview) for the record format.'
                 startDate:
                   type: string
                   x-stoplight:

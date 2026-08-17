@@ -2046,7 +2046,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"exportType\": \"RevenueEntries\",  // (required) Type of data to export: RevenueEntries, Customers, Attendance, Payments, MembershipRedemptions, MembershipStatuses, MembershipCredits, Tickets, Giftcards, BookingItems, PosTillReconciliations, SignedWaivers, BookingSignedWaivers\n  \"startDate\": \"2025-07-01\",       // (required) Start date inclusive (yyyy-MM-dd)\n  \"endDate\": \"2025-07-31\"          // (required) End date exclusive (yyyy-MM-dd); must be at least 1 day after startDate\n}",
+                  "raw": "{\n  \"exportType\": \"RevenueEntries\",  // (required) Type of data to export: RevenueEntries, Customers, Attendance, Payments, MembershipRedemptions, MembershipStatuses, MembershipCredits, Tickets, Giftcards, BookingItems, PosTillReconciliations, SignedWaivers, BookingSignedWaivers, AuditLog\n  \"startDate\": \"2025-07-01\",       // (required) Start date inclusive (yyyy-MM-dd)\n  \"endDate\": \"2025-07-31\"          // (required) End date exclusive (yyyy-MM-dd); must be at least 1 day after startDate\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2063,7 +2063,7 @@
                     "bulk"
                   ]
                 },
-                "description": "Submit a bulk data export request. Once processed, a webhook of type `bulkExport` will be sent to subscribed endpoints containing presigned URL(s) to download the exported data.\n\n**Request body fields:**\n- `exportType` (string, required) — Type of data to export\n- `startDate` (string, required) — Start date inclusive (yyyy-MM-dd)\n- `endDate` (string, required) — End date exclusive (yyyy-MM-dd); must be at least 1 day after startDate\n\n**Request headers:**\n- `TimeZone-Designators` (string, optional) — Set to `Offset` to use venue timezone in export files (default is UTC)\n\nDocs: https://docs.roller.app/docs/api/reporting/operations/bulk-data-export-request"
+                "description": "Submit a bulk data export request. Once processed, a webhook of type `bulkExport` will be sent to subscribed endpoints containing presigned URL(s) to download the exported data.\n\n**Request body fields:**\n- `exportType` (string, required) — Type of data to export. `AuditLog` exports venue audit log events (see https://docs.roller.app/docs/api/audit-log-entry for the record format)\n- `startDate` (string, required) — Start date inclusive (yyyy-MM-dd)\n- `endDate` (string, required) — End date exclusive (yyyy-MM-dd); must be at least 1 day after startDate\n\n**Request headers:**\n- `TimeZone-Designators` (string, optional) — Set to `Offset` to use venue timezone in export files (default is UTC)\n\nDocs: https://docs.roller.app/docs/api/reporting/operations/bulk-data-export-request"
               },
               "response": []
             }

@@ -19,6 +19,14 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 >
 >To get a preview of the schema for upcoming changes, use the sidebar on the left to select the next release (if available).
 
+## 2026-08
+
+### Added
+
+- `AuditLog` export type on [**Bulk data export request**](https://docs.roller.app/docs/api/reporting/operations/bulk-data-export-request) (`POST /reporting/bulk`) to export venue audit log events in bulk — staff and system actions across bookings, payments, refunds, discounts, products, and settings, including refund and custom discount reason codes. Exported records follow the [**AuditLogEntry**](../models/AuditLogEntry.yaml) schema; see the [**Bulk Exports Overview**](bulk-exports-overview.md) (Reporting API).
+
+---
+
 ## 2026-07
 
 ### Added
