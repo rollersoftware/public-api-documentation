@@ -14,3 +14,9 @@ properties:
     type: number
     description: "The discount percentage that applies to the booking as a whole, eg. 10 for 10% off"
     example: 10
+  productIds:
+    type: array
+    description: "Restrict a custom discount to specific products. A booking item is eligible when its own product ID, or its parent product ID, appears in this list.\r\n\r\n- Applies to custom discounts only, i.e. those supplying `amount` or `percentage` without a `code`.\r\n- When omitted or empty the discount applies across all booking items.\r\n- ROLLER must first enable a meta setting for your platform before this is honoured; until then it is ignored."
+    items:
+      type: integer
+      example: 12345679

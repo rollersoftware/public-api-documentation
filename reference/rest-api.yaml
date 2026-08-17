@@ -1696,9 +1696,9 @@ paths:
                         type: number
                         description: Use this when the price you're charging is not the same as the product price in ROLLER
                         example: 23.8
-                      packageInclusions:
+                      partyPackageInclusions:
                         type: array
-                        description: Define which Party Package inclusions have been selected by the guest
+                        description: 'Define which Party Package inclusions have been selected by the guest. Applies to products configured with legacy inclusions - use `optionSetSelections` instead where the product is configured with option sets.'
                         items:
                           type: object
                           properties:
@@ -1709,6 +1709,24 @@ paths:
                             quantity:
                               type: integer
                               description: The quantity of the selected inclusion
+                              example: 2
+                      optionSetSelections:
+                        type: array
+                        description: "Define which option set selections have been made for a package or party package product. Use this in place of `partyPackageInclusions` where the product is configured with option sets.\r\n\r\n- Only the selections you supply are created - an option set is not auto-filled to its required quantity.\r\n- ROLLER must first enable a meta setting for your platform before option sets can be used on packages or party packages."
+                        items:
+                          type: object
+                          properties:
+                            productPackageOptionSetId:
+                              type: integer
+                              description: The ID of the option set the selection applies to. Returned as `packageOptionSets[].productPackageOptionSetId` by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail).
+                              example: 4471
+                            productId:
+                              type: integer
+                              description: Variation ID (Child Product ID) of the option chosen from the option set
+                              example: 9817726
+                            quantity:
+                              type: integer
+                              description: The number of this option to include - one inclusion item is created per unit of quantity
                               example: 2
                       tickets:
                         type: array
