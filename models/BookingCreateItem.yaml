@@ -60,7 +60,7 @@ properties:
           example: 2
   optionSetSelections:
     type: array
-    description: "Define which option set selections have been made for a package or party package product. Use this in place of `partyPackageInclusions` where the product is configured with option sets.\r\n\r\n- Only the selections you supply are created - an option set is not auto-filled to its required quantity.\r\n- ROLLER must first enable a meta setting for your platform before option sets can be used on packages or party packages."
+    description: "Define which option set selections have been made for a package or party package product. Use this in place of `partyPackageInclusions` where the product is configured with option sets.\r\n\r\n- Only the selections you supply are created - an option set is not auto-filled to its required quantity.\r\n- This requires ROLLER first enables a meta setting for your platform to use."
     items:
       type: object
       properties:
