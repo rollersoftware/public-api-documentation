@@ -1,0 +1,49 @@
+title: SaleProductPackageOptionSet
+type: object
+description: 'Details of an option set on a package or party package - a group of products the guest chooses between, in place of a fixed inclusion'
+properties:
+  productPackageOptionSetId:
+    type: string
+    example: '4471'
+    description: 'ID of the option set. Supply this as `optionSetSelections[].productPackageOptionSetId` when creating or updating a booking'
+  packageProductId:
+    type: string
+    example: '1422536'
+    description: The Product ID of the package this option set belongs to
+  productIds:
+    type: array
+    description: Product IDs of the options the guest can choose between within this option set
+    items:
+      type: string
+      example: '107400'
+  name:
+    type: string
+    example: Choice of drink
+    description: Name of the option set as shown to the guest
+  cost:
+    type: number
+    example: 3.5
+    description: Unit cost of a selection from this option set
+  quantity:
+    type: integer
+    example: 2
+    description: The number of selections to be made from this option set within the package
+  quantityPerGuest:
+    type:
+      - integer
+      - 'null'
+    example: 5
+    description: 'The number of guests required to increment the option set quantity. For example, with a quantity of 2 and 5 quantityPerGuest, for every 5 additional guests 2 more selections are added'
+  quantityType:
+    enum:
+      - Guest
+      - Package
+    description: 'The way selections are quantified for a party package product, either X selections per guest or X selections per package'
+  packageRequirement:
+    $ref: ./PackageRequirement.yaml
+  displayOrder:
+    type:
+      - integer
+      - 'null'
+    example: 1
+    description: The order in which the option set is presented to the guest

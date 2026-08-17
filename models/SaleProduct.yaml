@@ -100,6 +100,11 @@ properties:
     description: Product detail of items contained within a package
     items:
       $ref: ./SaleProductPackageItem.yaml
+  packageOptionSets:
+    type: array
+    description: 'Option sets configured on a package or party package, where the guest chooses between products rather than receiving a fixed inclusion. Use `productPackageOptionSetId` to make a selection when creating or updating a booking'
+    items:
+      $ref: ./SaleProductPackageOptionSet.yaml
   packagePricingType:
     enum:
       - PerGuest
