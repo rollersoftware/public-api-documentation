@@ -240,7 +240,7 @@
         "get-waivers-information": "get-waivers-information",
         "get-discounts": "get-discounts",
         "get-resources": "get-resources",
-        "get-customers": "get-customers",
+        "get-guests": "get-guests",
         "get-gx-score-responses": "get-gx-score-responses",
         "get-attendance": "get-attendance",
         "get-membership-redemptions": "get-membership-redemptions",
