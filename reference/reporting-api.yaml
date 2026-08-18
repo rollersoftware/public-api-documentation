@@ -1461,74 +1461,6 @@ paths:
                     deviceStatus: Active
                     createdDate: '2018-07-20T03:23:07Z'
       operationId: get-devices
-  /data/waivers:
-    get:
-      tags:
-        - Venue Information
-      summary: Get waivers information
-      description: '> Returns waiver terms and configuration on active and historic waivers. These are not records of waivers actually signed by guests, these are located on the Signed Waivers endpoint'
-      parameters:
-        - name: pageNumber
-          in: query
-          description: 'Optional, default value = 1'
-          required: false
-          schema:
-            type: integer
-            example: 1
-        - name: pageSize
-          in: query
-          description: 'Optional, default value = 100'
-          required: false
-          schema:
-            type: integer
-            example: 100
-      responses:
-        '200':
-          description: Successful
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  waiverId:
-                    type: string
-                    description: Unique identifier of the waiver the guests are signing
-                    example: '9918'
-                  name:
-                    type: string
-                    description: Name of the waiver
-                    example: Adventure Land Waiver
-                  terms:
-                    type: string
-                    description: Terms of the waiver
-                    example: The terms of the waiver are...
-                  validityInDays:
-                    type: integer
-                    description: How long the waiver is valid for once signed
-                    example: 365
-                  minorAgeLimitsInYears:
-                    type: integer
-                    description: What age a guest must be to be considered an adult when signing the waiver
-                    example: 18
-                  createdDate:
-                    type: string
-                    description: Date the waiver was created
-                    example: '2018-07-30T12:53:56'
-                  requiresSignature:
-                    type: boolean
-                    description: Whether or not the waiver requires a signature
-                    example: true
-              examples:
-                Example:
-                  value:
-                    waiverId: '9918'
-                    name: Adventure Land Waiver
-                    terms: The terms of the waiver are...
-                    validityInDays: 365
-                    minorAgeLimitsInYears: 18
-                    createdDate: '2018-07-30T12:53:56'
-                    requiresSignature: true
-      operationId: get-waivers-information
   /data/staffs:
     get:
       tags:
@@ -1668,6 +1600,74 @@ paths:
                         categories:
                           - null
       operationId: get-reporting-categories
+  /data/waivers:
+    get:
+      tags:
+        - Venue Information
+      summary: Get waivers information
+      description: '> Returns waiver terms and configuration on active and historic waivers. These are not records of waivers actually signed by guests, these are located on the Signed Waivers endpoint'
+      parameters:
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  waiverId:
+                    type: string
+                    description: Unique identifier of the waiver the guests are signing
+                    example: '9918'
+                  name:
+                    type: string
+                    description: Name of the waiver
+                    example: Adventure Land Waiver
+                  terms:
+                    type: string
+                    description: Terms of the waiver
+                    example: The terms of the waiver are...
+                  validityInDays:
+                    type: integer
+                    description: How long the waiver is valid for once signed
+                    example: 365
+                  minorAgeLimitsInYears:
+                    type: integer
+                    description: What age a guest must be to be considered an adult when signing the waiver
+                    example: 18
+                  createdDate:
+                    type: string
+                    description: Date the waiver was created
+                    example: '2018-07-30T12:53:56'
+                  requiresSignature:
+                    type: boolean
+                    description: Whether or not the waiver requires a signature
+                    example: true
+              examples:
+                Example:
+                  value:
+                    waiverId: '9918'
+                    name: Adventure Land Waiver
+                    terms: The terms of the waiver are...
+                    validityInDays: 365
+                    minorAgeLimitsInYears: 18
+                    createdDate: '2018-07-30T12:53:56'
+                    requiresSignature: true
+      operationId: get-waivers-information
   /data/customers:
     get:
       tags:
