@@ -1016,7 +1016,7 @@ paths:
                           type: string
                           description: Gift Card number being redeemed
                           example: '8839920172'
-                        amountDeducuted:
+                        amountDeducted:
                           type: number
                           description: Dollar value being deducted from the gift card when this booking is published
                           example: 20
@@ -1212,32 +1212,32 @@ paths:
                         type: number
                         description: Value of discounts on the booking. Discounts are already factored in to the booking totals
                         example: 5
-                      discounts:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            discount:
-                              type: number
-                              description: Amount discounted using this discount code
-                              example: 5
-                            code:
-                              type: string
-                              description: Discount code used
-                              example: JMA99281
-                      giftCards:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            giftCardNumber:
-                              type: string
-                              description: Gift Card number being redeemed
-                              example: '8839920172'
-                            amountDeducuted:
-                              type: number
-                              description: Dollar value being deducted from the gift card when this booking is published
-                              example: 20
+                  discounts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        discount:
+                          type: number
+                          description: Amount discounted using this discount code
+                          example: 5
+                        code:
+                          type: string
+                          description: Discount code used
+                          example: JMA99281
+                  giftCards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        giftCardNumber:
+                          type: string
+                          description: Gift Card number being redeemed
+                          example: '8839920172'
+                        amountDeducted:
+                          type: number
+                          description: Dollar value being deducted from the gift card when this booking is published
+                          example: 20
                   paymentJwt:
                     type: string
                     description: JSON Web Token for taking payment
