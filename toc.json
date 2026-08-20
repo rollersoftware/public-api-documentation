@@ -267,6 +267,12 @@
           "title": "Staff",
           "uri": "/models/Staff.yaml",
           "slug": "staff"
+        },
+        {
+          "type": "item",
+          "title": "AuditLogEntry",
+          "uri": "/models/AuditLogEntry.yaml",
+          "slug": "audit-log-entry"
         }
       ]
     },

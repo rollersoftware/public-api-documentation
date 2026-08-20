@@ -31,8 +31,11 @@ The following `exportType`'s are supported:
 * `PosTillReconciliations`
 * `SignedWaivers`
 * `BookingSignedWaivers`
+* `AuditLog`
 
 > The format of each export is the same as the corresponding export requests via the [**Reporting API**](../reference/reporting-api.yaml).
+>
+> `AuditLog` is the exception — it has no corresponding Reporting API endpoint and is available exclusively as a bulk export. Each exported record follows the [**AuditLogEntry**](../models/AuditLogEntry.yaml) schema, covering staff and system actions performed at the venue (bookings, payments, refunds, discounts, products, settings and more), including refund and custom discount reason codes in `metadata` where the venue requires them.
 
 ---
 

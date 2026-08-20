@@ -1,0 +1,65 @@
+title: AuditLogEntry
+type: object
+description: >-
+  A single audit log event, as returned by the `AuditLog` bulk export type of the
+  [**Bulk data export request**](https://docs.roller.app/docs/api/reporting/operations/bulk-data-export-request)
+  endpoint. Records staff and system actions performed at a venue — bookings, payments, refunds,
+  discounts, products, settings, and more. Properties with `null` values are omitted from the
+  exported JSON.
+x-internal: false
+properties:
+  scope:
+    type: integer
+    description: >-
+      The entity area the event belongs to. Values: `0` System, `1` Authentication, `2` Booking,
+      `3` Product, `4` POS actions, `5` Device, `6` Staff member, `7` Role, `8` Discount,
+      `9` Customer, `10` Venue, `11` Resource, `12` Tax, `14` Membership, `15` Print station,
+      `16` Company, `17` API key, `18` Pricing rule, `19` Product category, `20` Tag,
+      `21` Wristband, `22` Checkout settings, `23` Segment.
+    example: 2
+  entityId:
+    type: string
+    description: 'Identifier of the entity the event relates to, scoped by `scope` (e.g. the booking ID for booking events).'
+    example: '12345678'
+  channel:
+    type: string
+    description: 'The application the action was performed from. Values include `VenueManager`, `PointOfSale`, `Checkout`, `SelfServeKiosk`, `Api`, `ChannelPartners`, `CPanel`, `BackgroundTask`, `DataImport`, `Iq`, `Unknown`.'
+    example: VenueManager
+  venueManagerId:
+    type: integer
+    description: 'Identifier of the staff member who performed the action. Omitted for system-initiated events.'
+    example: 4321
+  deviceId:
+    type: integer
+    description: 'Identifier of the device the action was performed on. Omitted when not applicable.'
+    example: 987
+  action:
+    type: integer
+    description: >-
+      Numeric code for the specific action. Codes are grouped in ranges by `scope` (e.g. booking
+      events are `2000`–`2999`, POS events `4000`–`4999`). Use `description` for the
+      human-readable rendering of the event.
+    example: 2033
+  description:
+    type: string
+    description: Human-readable description of the event.
+    example: 'Booking payment refunded'
+  timestamp:
+    type: string
+    description: 'When the event occurred. UTC by default; honours the `TimeZone-Designators` request header of the export request.'
+    example: '2026-07-14T10:30:00Z'
+  metadata:
+    type: array
+    description: >-
+      Additional key-value context for the event. `ReasonCode` is currently the only key returned —
+      populated on refund and custom discount events when the venue requires reason codes for
+      those actions.
+    items:
+      type: object
+      properties:
+        key:
+          type: string
+          example: ReasonCode
+        value:
+          type: string
+          example: Customer cancelled
