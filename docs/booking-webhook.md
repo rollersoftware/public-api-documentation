@@ -106,7 +106,7 @@ The following fields will only be returned in the [**booking payload**](../model
 * Locations
 * Payments
 * Metadata
-* Discounts — the discount codes applied to the booking, in the same shape as [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) returns with `includeDiscounts=true`
+* Discounts
 
 View the [**create**](https://docs.roller.app/docs/api/rest/operations/create-webhook) webhooks endpoint for more detail.
 

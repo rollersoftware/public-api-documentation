@@ -30,10 +30,6 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - **Add or remove discounts on existing bookings** — new `discounts` object on [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking), with `add` (apply discount codes or custom discounts to the booking) and `removeByDiscountId` (remove applied discounts by their `discountId`). Codes to add are validated before any change is applied, and the booking cost is recalculated (REST API).
 - **Discounts on the booking webhook** — a new `discounts` flag in the [**booking webhook**](booking-webhook.md) `include` object. When enabled, webhook payloads include the discount codes applied to the booking, in the same shape as [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) (REST API).
 
-### Fixed
-
-- Added the `metadata` include flag to the documented [**Create webhook**](https://docs.roller.app/docs/api/rest/operations/create-webhook) request schema. The flag has been supported since its June release but was missing from the request documentation (REST API).
-
 ---
 
 ## 2026-07
@@ -46,10 +42,6 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - **Membership pause and cancellation dates** — `membershipPauseDate`, `membershipResumeDate`, and `membershipCancellationDate` properties on booking tickets, returned by [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) and in the [**booking webhook**](booking-webhook.md) payload (with `include.membershipDetail` enabled). Returned when a membership is paused, pending pause, or scheduled for cancellation. `membershipStatus` can now also return `Paused` and `Pending Pause` (REST API).
 - **Package option sets** — `optionSetSelections` property on booking items, to select a guest's choices on packages and party packages configured with option sets. Supported on [**Create a booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), [**Get booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs), [**Validate and reserve capacity**](https://docs.roller.app/docs/api/rest/operations/validate-and-reserve-capacity), and on `newItems` for [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking). The available option sets are returned as `packageOptionSets` by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail). Use `partyPackageInclusions` where a product is configured with legacy inclusions instead. This requires ROLLER first enables a meta setting for your platform to use (REST API).
 - `productIds` property on [**Create a booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking) `discounts`, restricting a custom discount to specific products rather than the whole booking. This requires ROLLER first enables a meta setting for your platform to use (REST API).
-
-### Fixed
-
-- Corrected the inclusion property documented on [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking) `newItems`, from `packageInclusions` to `partyPackageInclusions`. The documented name did not match the property the endpoint accepts, so inclusion selections sent under the old name were ignored (REST API).
 
 ---
 
