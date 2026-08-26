@@ -1786,8 +1786,36 @@ paths:
                               description: "The name of the ticket holder.\r\n\r\n- Provide an empty string to remove the existing `name`.\r\n- `NULL`values are ignored; no changes will be made to the existing name."
                               example: John Smith
                               maxLength: 50
+                discounts:
+                  type: object
+                  description: Discounts to add to or remove from the booking. The booking cost is recalculated to reflect the change. When omitted, the booking's discounts are unchanged
+                  properties:
+                    add:
+                      type: array
+                      description: "The discount codes or custom discounts to add to the booking.\r\n\r\n- Every code is validated before any change is applied - if any code is invalid the whole request is rejected and no discounts are added or removed.\r\n- Unlike [**Create a booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking), restricting a custom discount to specific products via `productIds` is not supported when updating."
+                      items:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            description: The discount code used by the customer
+                            example: JMA99281
+                          amount:
+                            type: number
+                            description: The dollar amount of a custom discount that applies to the booking as a whole
+                            example: 4.5
+                          percentage:
+                            type: number
+                            description: "The percentage of a custom discount that applies to the booking as a whole, eg. 10 for 10% off"
+                            example: 10
+                    removeByDiscountId:
+                      type: array
+                      description: "The IDs of the discounts to remove from the booking, matching the `discountId` returned on the booking's applied discounts (see [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) with `includeDiscounts=true`). If any supplied ID is not applied to the booking the request is rejected."
+                      items:
+                        type: integer
+                        example: 4471
         description: ''
-      description: '> Update booking details or add/remove items from a booking.'
+      description: '> Update booking details, add/remove items, or add/remove discount codes from a booking.'
       operationId: update-a-booking
       tags:
         - Booking Management
@@ -1812,6 +1840,14 @@ paths:
     get:
       summary: Get booking detail
       description: "Returns detail of a specific booking based on the booking.\r\n\r\n> `bookingReference` (i.e. the ROLLER `bookingId`) can be used instead of `uniqueId` as the path parameter."
+      parameters:
+        - name: includeDiscounts
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: false
+          description: When `true`, the response includes the `discounts` array listing the discount codes applied to the booking
       responses:
         '200':
           description: Successful
