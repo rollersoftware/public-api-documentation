@@ -21,9 +21,6 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ## 2026-09
 
-> **🚧 Upcoming release —** Please note the changes in this section may not be available in production yet.
-> Operations and links referenced below may return a `404` until release is published.
-
 ### Added
 
 - **Applied discounts on bookings** — new `includeDiscounts` query parameter on [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail). When `true`, the response includes a `discounts` array listing each discount code applied to the booking (`discountId`, `code`, `amount`). Only discounts redeemed with a code are listed (REST API).
