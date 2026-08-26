@@ -75,6 +75,24 @@ properties:
     type: number
     description: Discount amount applied to the booking
     example: 10.2
+  discounts:
+    type: array
+    description: "The discount codes applied to the booking, one entry per applied discount.\r\n\r\n- Returned by [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) only when `includeDiscounts=true`, and in the [**booking webhook**](https://docs.roller.app/docs/api/booking-webhook) payload only when `include.discounts` is enabled on the webhook - omitted otherwise.\r\n- Only discounts redeemed with a discount code are listed. Custom amount or percentage discounts applied without a code are excluded, so the amounts listed here will not always add up to `discount`."
+    items:
+      type: object
+      properties:
+        discountId:
+          type: integer
+          description: ID of the applied discount. Use this value with `discounts.removeByDiscountId` on [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking) to remove it
+          example: 4471
+        code:
+          type: string
+          description: The discount code that was redeemed
+          example: JMA99281
+        amount:
+          type: number
+          description: Total discounted amount for this discount across the booking, summed over every booking item it was applied to
+          example: 7.5
   items:
     $ref: ./Items.yaml
     description: Items in the booking

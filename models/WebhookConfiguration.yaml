@@ -62,6 +62,9 @@ properties:
               metadata:
                 type: boolean
                 description: Return any user-defined key-value metadata stored against the booking
+              discounts:
+                type: boolean
+                description: Return the discount codes applied to the booking
           filter:
             type: object
             description: Conditional filters on what triggers the webhook (optional).
