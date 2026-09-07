@@ -965,6 +965,32 @@ paths:
                         type: number
                         description: Credit card fees on the booking
                         example: 0.64
+                      productFee:
+                        type: number
+                        description: Total product fees on the booking
+                        example: 1.5
+                      productFees:
+                        type: array
+                        description: The product fee rules charged on the booking
+                        items:
+                          type: object
+                          properties:
+                            productFeeId:
+                              type: integer
+                              description: Identifier of the product fee rule
+                              example: 42
+                            name:
+                              type: string
+                              description: Name of the product fee
+                              example: Booking fee
+                            description:
+                              type: string
+                              description: Description of the product fee
+                              example: Applied to online bookings
+                            amount:
+                              type: number
+                              description: Fee amount charged on the booking
+                              example: 1.5
                       fees:
                         type: number
                         description: Total Fees (Service Fees) (i.e. Transaction Fees + Card Fees)
@@ -1208,6 +1234,32 @@ paths:
                         type: number
                         description: Value of credit card fees on the booking
                         example: 0
+                      productFee:
+                        type: number
+                        description: Value of product fees on the booking
+                        example: 1.5
+                      productFees:
+                        type: array
+                        description: The product fee rules charged on the booking
+                        items:
+                          type: object
+                          properties:
+                            productFeeId:
+                              type: integer
+                              description: Identifier of the product fee rule
+                              example: 42
+                            name:
+                              type: string
+                              description: Name of the product fee
+                              example: Booking fee
+                            description:
+                              type: string
+                              description: Description of the product fee
+                              example: Applied to online bookings
+                            amount:
+                              type: number
+                              description: Fee amount charged on the booking
+                              example: 1.5
                       discount:
                         type: number
                         description: Value of discounts on the booking. Discounts are already factored in to the booking totals
@@ -1572,6 +1624,32 @@ paths:
                         type: number
                         description: Amount of credit card fees on the booking
                         example: 0
+                      productFee:
+                        type: number
+                        description: Amount of product fees on the booking
+                        example: 1.5
+                      productFees:
+                        type: array
+                        description: The product fee rules charged on the booking
+                        items:
+                          type: object
+                          properties:
+                            productFeeId:
+                              type: integer
+                              description: Identifier of the product fee rule
+                              example: 42
+                            name:
+                              type: string
+                              description: Name of the product fee
+                              example: Booking fee
+                            description:
+                              type: string
+                              description: Description of the product fee
+                              example: Applied to online bookings
+                            amount:
+                              type: number
+                              description: Fee amount charged on the booking
+                              example: 1.5
                       discount:
                         type: number
                         description: Amount of discount on the booking

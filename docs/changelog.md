@@ -19,6 +19,19 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 >
 >To get a preview of the schema for upcoming changes, use the sidebar on the left to select the next release (if available).
 
+## 2026-09
+
+### Added
+
+- `productFee` and `productFees` properties on booking costs, returning the total product fees and the individual product fee rules charged on a booking, on [**Get booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), and [**Validate discount codes**](https://docs.roller.app/docs/api/rest/operations/validate-discount-codes) (REST API).
+- `productFee` property on product variations returned by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail), describing the product fee rule that applies so a checkout can preview the fee (REST API).
+
+### Deprecated
+
+- `fee` property on product variations returned by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) is now always `null`. Product fees are configured as rules; use `productFee` instead (REST API).
+
+---
+
 ## 2026-07
 
 ### Added
