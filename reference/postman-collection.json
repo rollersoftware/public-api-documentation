@@ -1006,6 +1006,34 @@
           ]
         },
         {
+          "name": "Price Rule",
+          "item": [
+            {
+              "name": "Get price rules",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/price-rules",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "price-rules"
+                  ]
+                },
+                "description": "Returns the active time-based price rules configured for the venue: the tiers a product can be priced at, and the days, times and override dates each tier applies to. The price each ticket type charges per tier is returned by Get product detail (`priceRule.timeTiers`) — join on `priceRuleId`, then match on `tierId`. Response data should be cached as it does not change frequently.\n\nDocs: https://docs.roller.app/docs/api/rest/operations/get-price-rules"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Product",
           "item": [
             {

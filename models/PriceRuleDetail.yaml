@@ -1,0 +1,77 @@
+title: PriceRuleDetail
+type: object
+description: 'The configuration of a time-based price rule: the tiers a product can be priced at and when each one applies. The price charged for each tier is returned per ticket type by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail).'
+properties:
+  priceRuleId:
+    type: string
+    format: uuid
+    description: Unique ID of the price rule. Matches `priceRuleId` on the product and on each ticket type's `priceRule` returned by **Get product detail**.
+    example: 22f29d68-1c94-4de2-b616-020108d92a06
+  name:
+    type: string
+    description: Name of the price rule
+    example: Peak and off peak
+    maxLength: 75
+  type:
+    enum:
+      - time
+    description: The dimension the rule varies price by. Only `time` rules are returned by this endpoint.
+  timeRule:
+    type: object
+    description: The tiers of the rule and when each one applies
+    properties:
+      tiers:
+        type: array
+        description: The named tiers of the rule. The first tier is the base price tier and has an empty `name`.
+        items:
+          type: object
+          properties:
+            tierId:
+              type: string
+              description: ID of the tier, unique within the rule. Ticket type prices in `timeTiers` are keyed by this value.
+              example: '2'
+            name:
+              type: string
+              description: Name of the tier. Empty for the base price tier.
+              example: On peak
+              maxLength: 75
+      recurring:
+        type: array
+        description: The tier that applies on each day of the week. Always contains one entry per day.
+        items:
+          $ref: ./PriceRuleDay.yaml
+      overrideDates:
+        type: array
+        description: Date ranges that take precedence over the recurring days
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name of the override
+              example: School holidays
+            tierId:
+              type: string
+              description: The tier that applies across the dates, unless a more specific day is listed in `days`
+              example: '2'
+            dates:
+              type: array
+              description: The date ranges this override covers
+              items:
+                type: object
+                properties:
+                  startDate:
+                    type: string
+                    format: date
+                    description: First date of the range (inclusive)
+                    example: '2026-12-24'
+                  endDate:
+                    type: string
+                    format: date
+                    description: Last date of the range (inclusive)
+                    example: '2026-12-26'
+            days:
+              type: array
+              description: Days of the week within the date ranges that use a different tier to the override `tierId`
+              items:
+                $ref: ./PriceRuleDay.yaml

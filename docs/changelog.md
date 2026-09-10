@@ -19,6 +19,19 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 >
 >To get a preview of the schema for upcoming changes, use the sidebar on the left to select the next release (if available).
 
+## 2026-08
+
+### Added
+
+- **Price rules** — [**Get price rules**](https://docs.roller.app/docs/api/rest/operations/get-price-rules) endpoint (`GET /price-rules`) to retrieve the venue's time-based price rules: the tiers a product can be priced at, and the days, times and override dates each tier applies to. Designed so third-party checkouts can display the correct price before a booking is costed (REST API).
+- `priceRuleId` on [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) products, and a `priceRule` object on each ticket type with the prices it charges for each tier (`time`) or bracket (`quantity`, `earlyBird`, `capacity`) of its price rule. See [**Price rules**](price-rules.md) for how to combine this with **Get price rules** and how each rule type is applied (REST API).
+
+### Deprecated
+
+- `pricingRuleId` on [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) products, replaced by `priceRuleId`. Both are returned with the same value (REST API).
+
+---
+
 ## 2026-07
 
 ### Added

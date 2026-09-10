@@ -1,0 +1,16 @@
+title: ProductPriceRuleBracket
+type: object
+description: 'The price charged for one range of a `quantity`, `earlyBird` or `capacity` price rule'
+properties:
+  from:
+    type: integer
+    description: Lower bound of the range (inclusive)
+    example: 1
+  to:
+    type: integer
+    description: Upper bound of the range (inclusive). `0` on the last bracket means the range has no upper bound.
+    example: 3
+  price:
+    type: number
+    description: Price charged within this range
+    example: 25
