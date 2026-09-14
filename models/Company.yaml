@@ -1,0 +1,75 @@
+title: Company
+type: object
+x-internal: false
+description: A venue company profile.
+properties:
+  companyId:
+    type: integer
+    example: 4821
+    description: The venue-scoped company identifier.
+  companyName:
+    type: string
+    example: Acme Play Pty Ltd
+    description: The company display name.
+  primaryContactId:
+    type:
+      - integer
+      - 'null'
+    example: 32444
+    description: 'Guest ID of the primary company contact. Resolve contact details via [**Get guest detail**](https://docs.roller.app/docs/api/rest/operations/get-guest-detail). `null` when no contact is linked.'
+  phone:
+    type:
+      - string
+      - 'null'
+    example: '+61 3 9000 0000'
+    description: The company phone number.
+  fax:
+    type:
+      - string
+      - 'null'
+    description: The company fax number.
+  taxIdentificationNumber:
+    type:
+      - string
+      - 'null'
+    description: The company tax identification number.
+  registrationNumber:
+    type:
+      - string
+      - 'null'
+    description: The company registration number.
+  websiteUrl:
+    type:
+      - string
+      - 'null'
+    example: 'https://www.acmeplay.com'
+    description: The company website URL.
+  address:
+    type: object
+    description: The company postal address.
+    properties:
+      street:
+        type:
+          - string
+          - 'null'
+        description: Street address.
+      city:
+        type:
+          - string
+          - 'null'
+        description: City or suburb.
+      state:
+        type:
+          - string
+          - 'null'
+        description: State or region.
+      postcode:
+        type:
+          - string
+          - 'null'
+        description: Postcode or ZIP code.
+      country:
+        type:
+          - string
+          - 'null'
+        description: Country.

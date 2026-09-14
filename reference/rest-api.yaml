@@ -20,6 +20,8 @@ tags:
     description: 'Create, update, cancel, and delete bookings, including draft bookings.'
   - name: Capacity Reservation
     description: 'Reserve and release product capacity, and manage resource capacity blocks.'
+  - name: Company
+    description: Retrieve and update venue company profiles.
   - name: Discount
     description: 'Create, retrieve, and update discounts, and manage discount codes.'
   - name: Gift Card
@@ -1391,6 +1393,44 @@ paths:
       operationId: publish-draft-booking-no-payment
       tags:
         - Booking Management
+  '/companies/{companyId}':
+    get:
+      summary: Get company detail
+      description: Returns the profile of a venue company, including its primary contact and postal address.
+      tags:
+        - Company
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Company.yaml
+        '404':
+          description: Not Found - Company does not exist
+      operationId: get-company-detail
+    put:
+      summary: Update company detail
+      description: 'Updates the profile fields of a venue company. Contact details are managed via guest endpoints. Omitted or `null` optional fields preserve their existing values.'
+      tags:
+        - Company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/CompanyUpdate.yaml
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Company.yaml
+        '404':
+          description: Not Found - Company does not exist
+      operationId: update-company-detail
+    parameters:
+      - $ref: '#/components/parameters/companyId'
   /discounts:
     post:
       summary: Create discount
@@ -3083,6 +3123,14 @@ components:
         type: string
         example: '17'
       description: ID of a registered webhook
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 4821
+      description: The venue-scoped company identifier
     discountId:
       name: discountId
       in: path

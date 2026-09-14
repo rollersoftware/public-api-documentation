@@ -19,6 +19,18 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 >
 >To get a preview of the schema for upcoming changes, use the sidebar on the left to select the next release (if available).
 
+## 2026-09
+
+> **🚧 Upcoming release —** Please note the changes in this section may not be available in production yet.
+> Operations and links referenced below may return a `404` until release is published.
+
+### Added
+
+- [**Get company detail**](https://docs.roller.app/docs/api/rest/operations/get-company-detail) endpoint (`GET /companies/{companyId}`) to retrieve a venue company profile, including its primary contact and postal address (REST API).
+- [**Update company detail**](https://docs.roller.app/docs/api/rest/operations/update-company-detail) endpoint (`PUT /companies/{companyId}`) to update a company's profile fields, such as name, contact numbers, registration details, and address (REST API).
+
+---
+
 ## 2026-07
 
 ### Added
