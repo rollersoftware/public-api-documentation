@@ -1,6 +1,10 @@
 # Price Rules
 
-A price rule changes the price of a ticket type based on the quantity purchased, the day and time of the booking, how far in advance it is booked, or how much capacity remains. ROLLER applies the rule when it costs a booking. The REST API also exposes the rule configuration, so a third-party checkout can show the guest the right price before the booking is costed.
+A price rule dynamically changes ticket prices based on demand, timing, and purchase conditions. Including : 
+- Quantity: Number of tickets purchased.
+- Time: Day and time of the scheduled visit.
+- Early-bird: How far in advance the booking is made.
+- Capacity: Remaining availability for the session.
 
 ## Available price rule endpoints
 
