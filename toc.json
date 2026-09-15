@@ -69,6 +69,7 @@
         "create-stock-products": "create-stock-products",
         "update-stock-products": "update-stock-products",
         "update-stock-quantity": "update-stock-quantity",
+        "get-price-rules": "get-price-rules",
         "validate-and-reserve-capacity": "validate-and-reserve-capacity",
         "delete-a-capacity-reservation": "delete-a-capacity-reservation",
         "block-resource-capacity": "block-resource-capacity",
@@ -195,6 +196,18 @@
           "title": "FormResponseQuestionAnswer",
           "uri": "/models/FormResponseQuestionAnswer.yaml",
           "slug": "form-response-question-answer"
+        },
+        {
+          "type": "item",
+          "title": "PriceRuleDetail",
+          "uri": "/models/PriceRuleDetail.yaml",
+          "slug": "price-rule-detail"
+        },
+        {
+          "type": "item",
+          "title": "ProductPriceRule",
+          "uri": "/models/ProductPriceRule.yaml",
+          "slug": "product-price-rule"
         }
       ]
     },
@@ -379,6 +392,12 @@
       "title": "Managing Discounts over API",
       "uri": "/docs/discounts.md",
       "slug": "discounts"
+    },
+    {
+      "type": "item",
+      "title": "Price Rules",
+      "uri": "/docs/price-rules.md",
+      "slug": "price-rules"
     },
     {
       "type": "group",

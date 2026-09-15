@@ -1,0 +1,36 @@
+title: PriceRuleDay
+type: object
+description: The tier of a time-based price rule that applies on a day of the week
+properties:
+  dayOfWeek:
+    enum:
+      - sunday
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+    description: Day of the week
+  tierId:
+    type: string
+    description: The tier that applies for the whole day, unless a more specific time is listed in `times`
+    example: '1'
+  times:
+    type: array
+    description: Times of day that use a different tier to the rest of the day
+    items:
+      type: object
+      properties:
+        tierId:
+          type: string
+          description: The tier that applies between `startTime` and `endTime`
+          example: '2'
+        startTime:
+          type: integer
+          description: 'Start of the time range (inclusive), as an integer in 24h `Hmm` format. e.g. `900` = 9:00 AM, `1530` = 3:30 PM'
+          example: 900
+        endTime:
+          type: integer
+          description: 'End of the time range (exclusive), as an integer in 24h `Hmm` format. e.g. `1500` = 3:00 PM'
+          example: 1500

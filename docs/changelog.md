@@ -29,10 +29,13 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - **Membership discounts identified** — each entry in the `discounts` array on [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) now includes `isMembershipDiscount`, which is `true` when the discount was applied because the booking holder was identified as a member (REST API).
 - `productFee` and `productFees` properties on booking costs, returning the total product fees and the individual product fee rules charged on a booking, on [**Get booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), and [**Validate discount codes**](https://docs.roller.app/docs/api/rest/operations/validate-discount-codes) (REST API).
 - `productFee` property on product variations returned by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail), describing the product fee rule that applies so a checkout can preview the fee (REST API).
+- **Price rules** — [**Get price rules**](https://docs.roller.app/docs/api/rest/operations/get-price-rules) endpoint (`GET /price-rules`) to retrieve the venue's time-based price rules: the tiers a product can be priced at, and the days, times and override dates each tier applies to. Designed so third-party checkouts can display the correct price before a booking is costed (REST API).
+- `priceRuleId` on [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) products, and a `priceRule` object on each ticket type with the prices it charges for each tier (`time`) or bracket (`quantity`, `earlyBird`, `capacity`) of its price rule. See [**Price rules**](price-rules.md) for how to combine this with **Get price rules** and how each rule type is applied (REST API).
 
 ### Deprecated
 
 - `fee` property on product variations returned by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) is now always `null`. Product fees are configured as rules; use `productFee` instead (REST API).
+- `pricingRuleId` on [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) products, replaced by `priceRuleId`. Both are returned with the same value (REST API).
 
 ---
 
