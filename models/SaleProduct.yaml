@@ -48,8 +48,37 @@ properties:
     type:
       - number
       - 'null'
-    description: A fee that is applied when the product is purchased
-    example: 25.5
+    description: 'DEPRECATED. Always `null`. Previously carried a per-product booking fee; product fees are now configured as rules and exposed via `productFee`.'
+    deprecated: true
+  productFee:
+    type:
+      - object
+      - 'null'
+    description: 'The product fee rule configured against this variation, so a checkout can preview the fee itself. Returned when a product fee rule applies to the variation, otherwise `null`. Only one of `amount` or `percent` is set.'
+    properties:
+      name:
+        type: string
+        description: Name of the product fee
+        example: Booking fee
+      description:
+        type: string
+        description: Description of the product fee
+        example: Applied to online bookings
+      amount:
+        type:
+          - number
+          - 'null'
+        description: The fixed fee amount, when the fee is charged as a fixed amount
+        example: 1.5
+      percent:
+        type:
+          - number
+          - 'null'
+        description: The fee percentage, when the fee is charged as a percentage of the product price
+        example: 5
+      calculationMethod:
+        type: string
+        description: How the product fee is calculated
   groupSize:
     type: integer
     description: "Group size is a multiple applied to the quantity purchased. \r\n- eg: Purchasing a single $300 product configured with a group size of 15, will still cost $300 but will reserve 15 resource capacity and generate 15 separate tickets"

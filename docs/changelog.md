@@ -27,6 +27,12 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - **Add or remove discounts on existing bookings** — new `discounts` object on [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking), with `add` (apply discount codes or custom discounts to the booking) and `removeByDiscountId` (remove applied discounts by their `discountId`). Codes to add are validated before any change is applied, and the booking cost is recalculated (REST API).
 - **Discounts on the booking webhook** — a new `discounts` flag in the [**booking webhook**](booking-webhook.md) `include` object. When enabled, webhook payloads include the discount codes applied to the booking, in the same shape as [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) (REST API).
 - **Membership discounts identified** — each entry in the `discounts` array on [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) now includes `isMembershipDiscount`, which is `true` when the discount was applied because the booking holder was identified as a member (REST API).
+- `productFee` and `productFees` properties on booking costs, returning the total product fees and the individual product fee rules charged on a booking, on [**Get booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), and [**Validate discount codes**](https://docs.roller.app/docs/api/rest/operations/validate-discount-codes) (REST API).
+- `productFee` property on product variations returned by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail), describing the product fee rule that applies so a checkout can preview the fee (REST API).
+
+### Deprecated
+
+- `fee` property on product variations returned by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) is now always `null`. Product fees are configured as rules; use `productFee` instead (REST API).
 
 ---
 
