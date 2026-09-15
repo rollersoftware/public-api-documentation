@@ -22,6 +22,8 @@ The REST API allows you to create and update discount configurations, including 
 - REST API > [**Create discount codes**](https://docs.roller.app/docs/api/rest/operations/create-discount-codes)
 - REST API > [**Delete discount codes**](https://docs.roller.app/docs/api/rest/operations/delete-discount-codes)
 - REST API > [**Booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs) (for **discount code validation**)
+- REST API > [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking) (to **add or remove discounts on an existing booking**)
+- REST API > [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) (to **view the discounts applied to a booking**, with `includeDiscounts=true`)
 
 ## What discount configurations are currently supported?
 
@@ -57,6 +59,21 @@ Use [**Get discounts**](https://docs.roller.app/docs/api/reporting/operations/ge
 ## How do I validate codes in real time?
 
 Use the [**Booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs) endpoint.
+
+## How do I add or remove discounts on an existing booking?
+
+Use the `discounts` object on [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking):
+
+- `add` — apply discount codes (or custom amount/percentage discounts) to the booking. Every code is validated before any change is applied.
+- `removeByDiscountId` — remove applied discounts by their `discountId`.
+
+The booking cost is recalculated to reflect the change.
+
+## How do I see which discounts are applied to a booking?
+
+Use [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) with `includeDiscounts=true`. The response's `discounts` array returns each applied discount's `discountId`, `code`, and total discounted `amount`.
+
+> Only discounts redeemed with a discount code are listed. Custom amount or percentage discounts applied without a code are excluded, so the amounts listed will not always add up to the booking's `discount` total.
 
 ## What happens when I add new codes to an existing discount?
 

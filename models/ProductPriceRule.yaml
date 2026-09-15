@@ -1,0 +1,50 @@
+title: ProductPriceRule
+type: object
+description: 'The prices a ticket type charges for each tier or bracket of its price rule. Omitted when the product has no price rule. Only the property for the rule `type` is returned; the rest are omitted. For a `time` rule, use [**Get price rules**](https://docs.roller.app/docs/api/rest/operations/get-price-rules) to find out what each tier is called and when it applies.'
+properties:
+  priceRuleId:
+    type: string
+    format: uuid
+    description: Unique ID of the price rule. For a `time` rule, matches `priceRuleId` returned by **Get price rules**.
+    example: 22f29d68-1c94-4de2-b616-020108d92a06
+  type:
+    enum:
+      - quantity
+      - time
+      - earlyBird
+      - capacity
+    description: 'The dimension the rule varies price by. See [**Price rules**](https://docs.roller.app/docs/api/price-rules) for how each type is applied.'
+  quantityBrackets:
+    type: array
+    description: Price per bracket of quantity purchased. Only returned for a `quantity` rule.
+    items:
+      $ref: ./ProductPriceRuleBracket.yaml
+  quantityCalculation:
+    enum:
+      - perProduct
+      - perVariation
+    description: 'How quantity is totalled before a bracket is chosen. `perProduct` totals every ticket type of the product, `perVariation` totals this ticket type alone. Only returned for a `quantity` rule.'
+  timeTiers:
+    type: array
+    description: Price per tier. Only returned for a `time` rule. If a tier has no entry here, the base `price` applies.
+    items:
+      type: object
+      properties:
+        tierId:
+          type: string
+          description: ID of the tier, matching `tierId` in **Get price rules**
+          example: '2'
+        price:
+          type: number
+          description: Price charged for this tier
+          example: 30
+  earlyBirdBrackets:
+    type: array
+    description: Price per bracket of days between purchase and the booking date. Only returned for an `earlyBird` rule.
+    items:
+      $ref: ./ProductPriceRuleBracket.yaml
+  capacityBrackets:
+    type: array
+    description: 'Price per bracket of percentage capacity remaining for the session. Only returned for a `capacity` rule.'
+    items:
+      $ref: ./ProductPriceRuleBracket.yaml

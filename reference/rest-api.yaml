@@ -28,6 +28,8 @@ tags:
     description: Create gift cards and check gift card balances.
   - name: Guest
     description: 'Retrieve and update guest records, multi-passes, and signed waivers.'
+  - name: Price Rule
+    description: Retrieve the configuration of time-based price rules.
   - name: Product
     description: 'Retrieve product availability and product detail, and manage stock products.'
   - name: Redemption
@@ -308,13 +310,21 @@ paths:
                       type: integer
                       example: 1
                       description: Minimum product purchase
+                    priceRuleId:
+                      type:
+                        - string
+                        - 'null'
+                      format: uuid
+                      description: 'ID of the price rule applied to this product, if any. The prices each ticket type charges under the rule are returned in `priceRule` on each item in `products`. For a `time` rule, use [**Get price rules**](#/paths/~1price-rules/get) for the tiers and when each one applies. See [**Price rules**](https://docs.roller.app/docs/api/price-rules).'
+                      example: 22f29d68-1c94-4de2-b616-020108d92a06
                     pricingRuleId:
                       type:
                         - string
                         - 'null'
                       format: uuid
-                      description: 'Pricing rule identifier that links the product to a custom pricing rule, for session pass type products.'
+                      description: 'Pricing rule identifier that links the product to a custom pricing rule, for session pass type products. (This has been replaced by `priceRuleId`)'
                       example: 22f29d68-1c94-4de2-b616-020108d92a06
+                      deprecated: true
                     depositPercentage:
                       type: number
                       description: The minimum percentage of the product cost required for purchase. Only one of `depositPercentage` or `depositAmount` should be used.
@@ -551,6 +561,28 @@ paths:
       description: "Update an existing stock product by editing the quantity.\r\n\r\n* Setting `quantity` to `null` will set the stock quantity to **unlimited**\r\n* `quantity` cannot be set to `null` if `parLevel` is not set to zero (`0`) \r\n"
     parameters:
       - $ref: '#/components/parameters/parentProductId'
+  /price-rules:
+    get:
+      tags:
+        - Price Rule
+      summary: Get price rules
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/PriceRuleDetail.yaml
+      description: |-
+        Returns the active time-based price rules configured for the venue. Each rule describes the tiers a product can be priced at and when each tier applies, as recurring days of the week with optional times of day, and override date ranges.
+
+        The price each ticket type charges for a tier is not returned here. It is returned as `priceRule.timeTiers` on each ticket type by [**Get product detail**](#/paths/~1products/get). Join the two on `priceRuleId`, then match tiers on `tierId`. If a tier has no entry in `timeTiers`, the ticket type's base `price` applies.
+
+        Every other type of price rule (`quantity`, `earlyBird` and `capacity`) is described in full by **Get product detail** and is not returned here. See [**Price rules**](https://docs.roller.app/docs/api/price-rules) for how each type is applied.
+        > Changes in this data are not expected to be frequent. As such data must be cached and this endpoint used sparingly.
+      operationId: get-price-rules
   /capacity-reservation:
     post:
       tags:
@@ -967,6 +999,32 @@ paths:
                         type: number
                         description: Credit card fees on the booking
                         example: 0.64
+                      productFee:
+                        type: number
+                        description: Total product fees on the booking
+                        example: 1.5
+                      productFees:
+                        type: array
+                        description: The product fee rules charged on the booking
+                        items:
+                          type: object
+                          properties:
+                            productFeeId:
+                              type: integer
+                              description: Identifier of the product fee rule
+                              example: 42
+                            name:
+                              type: string
+                              description: Name of the product fee
+                              example: Booking fee
+                            description:
+                              type: string
+                              description: Description of the product fee
+                              example: Applied to online bookings
+                            amount:
+                              type: number
+                              description: Fee amount charged on the booking
+                              example: 1.5
                       fees:
                         type: number
                         description: Total Fees (Service Fees) (i.e. Transaction Fees + Card Fees)
@@ -1210,6 +1268,32 @@ paths:
                         type: number
                         description: Value of credit card fees on the booking
                         example: 0
+                      productFee:
+                        type: number
+                        description: Value of product fees on the booking
+                        example: 1.5
+                      productFees:
+                        type: array
+                        description: The product fee rules charged on the booking
+                        items:
+                          type: object
+                          properties:
+                            productFeeId:
+                              type: integer
+                              description: Identifier of the product fee rule
+                              example: 42
+                            name:
+                              type: string
+                              description: Name of the product fee
+                              example: Booking fee
+                            description:
+                              type: string
+                              description: Description of the product fee
+                              example: Applied to online bookings
+                            amount:
+                              type: number
+                              description: Fee amount charged on the booking
+                              example: 1.5
                       discount:
                         type: number
                         description: Value of discounts on the booking. Discounts are already factored in to the booking totals
@@ -1612,6 +1696,32 @@ paths:
                         type: number
                         description: Amount of credit card fees on the booking
                         example: 0
+                      productFee:
+                        type: number
+                        description: Amount of product fees on the booking
+                        example: 1.5
+                      productFees:
+                        type: array
+                        description: The product fee rules charged on the booking
+                        items:
+                          type: object
+                          properties:
+                            productFeeId:
+                              type: integer
+                              description: Identifier of the product fee rule
+                              example: 42
+                            name:
+                              type: string
+                              description: Name of the product fee
+                              example: Booking fee
+                            description:
+                              type: string
+                              description: Description of the product fee
+                              example: Applied to online bookings
+                            amount:
+                              type: number
+                              description: Fee amount charged on the booking
+                              example: 1.5
                       discount:
                         type: number
                         description: Amount of discount on the booking
@@ -1826,8 +1936,36 @@ paths:
                               description: "The name of the ticket holder.\r\n\r\n- Provide an empty string to remove the existing `name`.\r\n- `NULL`values are ignored; no changes will be made to the existing name."
                               example: John Smith
                               maxLength: 50
+                discounts:
+                  type: object
+                  description: Discounts to add to or remove from the booking. The booking cost is recalculated to reflect the change. When omitted, the booking's discounts are unchanged
+                  properties:
+                    add:
+                      type: array
+                      description: "The discount codes or custom discounts to add to the booking.\r\n\r\n- Every code is validated before any change is applied - if any code is invalid the whole request is rejected and no discounts are added or removed.\r\n- Unlike [**Create a booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking), restricting a custom discount to specific products via `productIds` is not supported when updating."
+                      items:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            description: The discount code used by the customer
+                            example: JMA99281
+                          amount:
+                            type: number
+                            description: The dollar amount of a custom discount that applies to the booking as a whole
+                            example: 4.5
+                          percentage:
+                            type: number
+                            description: "The percentage of a custom discount that applies to the booking as a whole, eg. 10 for 10% off"
+                            example: 10
+                    removeByDiscountId:
+                      type: array
+                      description: "The IDs of the discounts to remove from the booking, matching the `discountId` returned on the booking's applied discounts (see [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) with `includeDiscounts=true`). If any supplied ID is not applied to the booking the request is rejected."
+                      items:
+                        type: integer
+                        example: 4471
         description: ''
-      description: '> Update booking details or add/remove items from a booking.'
+      description: '> Update booking details, add/remove items, or add/remove discount codes from a booking.'
       operationId: update-a-booking
       tags:
         - Booking Management
@@ -1852,6 +1990,14 @@ paths:
     get:
       summary: Get booking detail
       description: "Returns detail of a specific booking based on the booking.\r\n\r\n> `bookingReference` (i.e. the ROLLER `bookingId`) can be used instead of `uniqueId` as the path parameter."
+      parameters:
+        - name: includeDiscounts
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: false
+          description: When `true`, the response includes the `discounts` array listing the discount codes applied to the booking
       responses:
         '200':
           description: Successful

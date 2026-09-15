@@ -106,6 +106,7 @@ The following fields will only be returned in the [**booking payload**](../model
 * Locations
 * Payments
 * Metadata
+* Discounts
 
 View the [**create**](https://docs.roller.app/docs/api/rest/operations/create-webhook) webhooks endpoint for more detail.
 
