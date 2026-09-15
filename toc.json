@@ -81,6 +81,8 @@
         "get-booking-costs": "get-booking-costs",
         "create-draft-booking": "create-draft-booking",
         "publish-draft-booking-no-payment": "publish-draft-booking-no-payment",
+        "get-company-detail": "get-company-detail",
+        "update-company-detail": "update-company-detail",
         "create-discount": "create-discount",
         "get-discount": "get-discount",
         "update-discount": "update-discount",
