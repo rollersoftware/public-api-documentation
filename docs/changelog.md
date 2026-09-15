@@ -26,6 +26,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - **Applied discounts on bookings** — new `includeDiscounts` query parameter on [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail). When `true`, the response includes a `discounts` array listing each discount code applied to the booking (`discountId`, `code`, `amount`). Only discounts redeemed with a code are listed (REST API).
 - **Add or remove discounts on existing bookings** — new `discounts` object on [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking), with `add` (apply discount codes or custom discounts to the booking) and `removeByDiscountId` (remove applied discounts by their `discountId`). Codes to add are validated before any change is applied, and the booking cost is recalculated (REST API).
 - **Discounts on the booking webhook** — a new `discounts` flag in the [**booking webhook**](booking-webhook.md) `include` object. When enabled, webhook payloads include the discount codes applied to the booking, in the same shape as [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) (REST API).
+- **Membership discounts identified** — each entry in the `discounts` array on [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) now includes `isMembershipDiscount`, which is `true` when the discount was applied because the booking holder was identified as a member (REST API).
 
 ---
 

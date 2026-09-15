@@ -82,7 +82,9 @@ properties:
       type: object
       properties:
         discountId:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: ID of the applied discount. Use this value with `discounts.removeByDiscountId` on [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking) to remove it
           example: 4471
         code:
@@ -93,6 +95,10 @@ properties:
           type: number
           description: Total discounted amount for this discount across the booking, summed over every booking item it was applied to
           example: 7.5
+        isMembershipDiscount:
+          type: boolean
+          description: True when the discount is a membership benefit, applied because the booking was discounted using a membership ticket that identifies the booking holder as a member
+          example: false
   items:
     $ref: ./Items.yaml
     description: Items in the booking
