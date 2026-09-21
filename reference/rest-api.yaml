@@ -28,6 +28,8 @@ tags:
     description: Create gift cards and check gift card balances.
   - name: Guest
     description: 'Retrieve and update guest records, multi-passes, and signed waivers.'
+  - name: Modifier
+    description: 'List, retrieve, create, and update modifier groups.'
   - name: Price Rule
     description: Retrieve the configuration of time-based price rules.
   - name: Product
@@ -583,6 +585,91 @@ paths:
         Every other type of price rule (`quantity`, `earlyBird` and `capacity`) is described in full by **Get product detail** and is not returned here. See [**Price rules**](https://docs.roller.app/docs/api/price-rules) for how each type is applied.
         > Changes in this data are not expected to be frequent. As such data must be cached and this endpoint used sparingly.
       operationId: get-price-rules
+  /modifiers:
+    get:
+      tags:
+        - Modifier
+      summary: List modifier groups
+      description: Returns the venue's modifier groups and their modifiers. Optionally filter by name with `keywords`, or to the groups linked to a stock product with `productId`.
+      parameters:
+        - name: keywords
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter to modifier groups whose name contains this text
+        - name: productId
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Filter to modifier groups linked to this stock product
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/ModifierGroup.yaml
+      operationId: list-modifier-groups
+    post:
+      tags:
+        - Modifier
+      summary: Create modifier group
+      description: Creates a modifier group, its modifiers, and the stock products it is linked to.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/ModifierGroupRequest.yaml
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: ../models/ModifierGroup.yaml
+      operationId: create-modifier-group
+  '/modifiers/{groupId}':
+    get:
+      tags:
+        - Modifier
+      summary: Get modifier group
+      description: Returns a single modifier group and its modifiers.
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: ../models/ModifierGroup.yaml
+        '404':
+          description: Modifier group not found
+      operationId: get-modifier-group
+    put:
+      tags:
+        - Modifier
+      summary: Update modifier group
+      description: 'Replaces an existing modifier group with the definition supplied. Modifiers sent with an existing `id` are updated; those sent without one are created.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/ModifierGroupRequest.yaml
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: ../models/ModifierGroup.yaml
+        '404':
+          description: Modifier group not found
+      operationId: update-modifier-group
+    parameters:
+      - $ref: '#/components/parameters/groupId'
   /capacity-reservation:
     post:
       tags:
@@ -1067,6 +1154,33 @@ paths:
                           type: number
                           description: Value of the discount against this specific item
                           example: 2.2
+                  items:
+                    type: array
+                    description: Per-item cost breakdown for the booking
+                    items:
+                      type: object
+                      properties:
+                        uniqueId:
+                          type: string
+                          format: uuid
+                          description: Unique reference for this item in the booking
+                          example: c7585bf9-cdbe-433a-8ab9-a4260d9ebbca
+                        productId:
+                          type: integer
+                          description: Product ID of the item
+                          example: 153444
+                        quantity:
+                          type: integer
+                          description: Quantity of the product
+                          example: 2
+                        unitCost:
+                          type: number
+                          description: Cost of a single unit
+                          example: 11
+                        totalCost:
+                          type: number
+                          description: Total cost for the quantity
+                          example: 22
                   giftCards:
                     type: array
                     items:
@@ -3285,6 +3399,14 @@ components:
         type: integer
         example: 266
       description: Unique ID of a discount configuration
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 214
+      description: Unique ID of a modifier group
     parentProductId:
       name: parentProductId
       in: path
