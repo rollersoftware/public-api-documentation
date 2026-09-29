@@ -19,6 +19,40 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 >
 >To get a preview of the schema for upcoming changes, use the sidebar on the left to select the next release (if available).
 
+## 2026-09
+
+### Added
+
+- **Modifier groups** — endpoints to manage the modifier groups guests can add to stock products: [**List modifier groups**](https://docs.roller.app/docs/api/rest/operations/list-modifier-groups) (`GET /modifiers`), [**Get modifier group**](https://docs.roller.app/docs/api/rest/operations/get-modifier-group) (`GET /modifiers/{groupId}`), [**Create modifier group**](https://docs.roller.app/docs/api/rest/operations/create-modifier-group) (`POST /modifiers`), and [**Update modifier group**](https://docs.roller.app/docs/api/rest/operations/update-modifier-group) (`PUT /modifiers/{groupId}`) (REST API).
+- `items` property on [**Get booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs), giving a per-item cost breakdown for the booking (`uniqueId`, `productId`, `quantity`, `unitCost`, `totalCost`) (REST API).
+- **Applied discounts on bookings** — new `includeDiscounts` query parameter on [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail). When `true`, the response includes a `discounts` array listing each discount code applied to the booking (`discountId`, `code`, `amount`). Only discounts redeemed with a code are listed (REST API).
+- **Add or remove discounts on existing bookings** — new `discounts` object on [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking), with `add` (apply discount codes or custom discounts to the booking) and `removeByDiscountId` (remove applied discounts by their `discountId`). Codes to add are validated before any change is applied, and the booking cost is recalculated (REST API).
+- **Discounts on the booking webhook** — a new `discounts` flag in the [**booking webhook**](booking-webhook.md) `include` object. When enabled, webhook payloads include the discount codes applied to the booking, in the same shape as [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) (REST API).
+- **Membership discounts identified** — each entry in the `discounts` array on [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) now includes `isMembershipDiscount`, which is `true` when the discount was applied because the booking holder was identified as a member (REST API).
+- `productFee` and `productFees` properties on booking costs, returning the total product fees and the individual product fee rules charged on a booking, on [**Get booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), and [**Validate discount codes**](https://docs.roller.app/docs/api/rest/operations/validate-discount-codes) (REST API).
+- `productFee` property on product variations returned by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail), describing the product fee rule that applies so a checkout can preview the fee (REST API).
+- **Price rules** — [**Get price rules**](https://docs.roller.app/docs/api/rest/operations/get-price-rules) endpoint (`GET /price-rules`) to retrieve the venue's time-based price rules: the tiers a product can be priced at, and the days, times and override dates each tier applies to. Designed so third-party checkouts can display the correct price before a booking is costed (REST API).
+- `priceRuleId` on [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) products, and a `priceRule` object on each ticket type with the prices it charges for each tier (`time`) or bracket (`quantity`, `earlyBird`, `capacity`) of its price rule. See [**Price rules**](price-rules.md) for how to combine this with **Get price rules** and how each rule type is applied (REST API).
+- [**Get company detail**](https://docs.roller.app/docs/api/rest/operations/get-company-detail) endpoint (`GET /companies/{companyId}`) to retrieve a venue company profile, including its postal address and the guest ID of its primary contact — resolve that contact's details via [**Get guest detail**](https://docs.roller.app/docs/api/rest/operations/get-guest-detail) (REST API).
+- [**Update company detail**](https://docs.roller.app/docs/api/rest/operations/update-company-detail) endpoint (`PUT /companies/{companyId}`) to update a company's profile fields, such as name, contact numbers, registration details, and address (REST API).
+
+### Deprecated
+
+- `fee` property on product variations returned by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) is now always `null`. Product fees are configured as rules; use `productFee` instead (REST API).
+- `pricingRuleId` on [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) products, replaced by `priceRuleId`. Both are returned with the same value (REST API).
+
+---
+
+## 2026-08
+
+### Added
+
+- [**Get segments**](https://docs.roller.app/docs/api/rest/operations/get-segments) endpoint (`GET /segments`) to retrieve the guest segments configured for the venue, each with its ID and name (REST API).
+- [**Get guest segments**](https://docs.roller.app/docs/api/reporting/operations/get-guest-segments) endpoint (`GET /reporting/guest-segments`) to retrieve the memberships of a segment that changed within a requested date range (Reporting API).
+- `minPurchase` and `capacityRemainingPercent` properties on [**Get product availability**](https://docs.roller.app/docs/api/rest/operations/get-product-availability) (REST API).
+
+---
+
 ## 2026-07
 
 ### Added
@@ -29,10 +63,6 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - **Membership pause and cancellation dates** — `membershipPauseDate`, `membershipResumeDate`, and `membershipCancellationDate` properties on booking tickets, returned by [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) and in the [**booking webhook**](booking-webhook.md) payload (with `include.membershipDetail` enabled). Returned when a membership is paused, pending pause, or scheduled for cancellation. `membershipStatus` can now also return `Paused` and `Pending Pause` (REST API).
 - **Package option sets** — `optionSetSelections` property on booking items, to select a guest's choices on packages and party packages configured with option sets. Supported on [**Create a booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking), [**Create draft booking**](https://docs.roller.app/docs/api/rest/operations/create-draft-booking), [**Get booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs), [**Validate and reserve capacity**](https://docs.roller.app/docs/api/rest/operations/validate-and-reserve-capacity), and on `newItems` for [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking). The available option sets are returned as `packageOptionSets` by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail). Use `partyPackageInclusions` where a product is configured with legacy inclusions instead. This requires ROLLER first enables a meta setting for your platform to use (REST API).
 - `productIds` property on [**Create a booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking) `discounts`, restricting a custom discount to specific products rather than the whole booking. This requires ROLLER first enables a meta setting for your platform to use (REST API).
-
-### Fixed
-
-- Corrected the inclusion property documented on [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking) `newItems`, from `packageInclusions` to `partyPackageInclusions`. The documented name did not match the property the endpoint accepts, so inclusion selections sent under the old name were ignored (REST API).
 
 ---
 

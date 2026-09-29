@@ -1,0 +1,80 @@
+title: ModifierGroup
+type: object
+description: A modifier group and the modifiers a guest can add to the stock products it is linked to.
+properties:
+  id:
+    type: integer
+    description: Unique ID of the modifier group
+    example: 214
+  name:
+    type: string
+    description: Name of the modifier group
+    example: Sauces
+  isRequired:
+    type: boolean
+    description: Whether a modifier from this group must be selected
+  isSingleChoice:
+    type: boolean
+    description: Whether only one modifier from this group can be selected
+  isOpenQuantity:
+    type: boolean
+    description: Whether a modifier can be selected more than once
+  displayName:
+    type: string
+    description: Name shown to guests, if different to the group name
+    example: Choose your sauce
+  modifiers:
+    type: array
+    description: The modifiers in this group
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique ID of the modifier
+          example: 988835b8-d64e-4369-96cb-caaa20a7396c
+        amount:
+          type:
+            - number
+            - 'null'
+          description: Fixed price adjustment added to the item when selected. Null when the modifier is a percentage.
+          example: 2.5
+        percentage:
+          type:
+            - number
+            - 'null'
+          description: Percentage price adjustment of the item subtotal when selected. Null when the modifier is a fixed amount.
+        name:
+          type: string
+          description: Name of the modifier
+          example: BBQ sauce
+        description:
+          type: string
+          description: Description of the modifier
+        termsAndConditions:
+          type: string
+          description: Terms and conditions of the modifier
+        imageUrl:
+          type: string
+          description: URL of the modifier image
+        isRequiredForOnlinePurchase:
+          type: boolean
+          description: Whether this modifier must be selected for online purchase
+        isDefault:
+          type: boolean
+          description: Whether this modifier is selected by default
+        defaultQuantity:
+          type: integer
+          description: Quantity selected by default
+          example: 1
+  products:
+    type: array
+    description: The stock products this group is linked to
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Product ID of a linked stock product
+          example: 153444

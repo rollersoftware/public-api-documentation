@@ -1,0 +1,79 @@
+title: CompanyUpdate
+type: object
+x-internal: false
+description: Request body for updating a venue company profile. Updates company-level profile fields only; contact details are managed via guest endpoints.
+required:
+  - companyName
+  - phone
+properties:
+  companyName:
+    type: string
+    example: Acme Play Pty Ltd
+    description: The company display name.
+    maxLength: 256
+  phone:
+    type: string
+    example: '+61 3 9000 0000'
+    description: The company phone number.
+    maxLength: 32
+  fax:
+    type:
+      - string
+      - 'null'
+    description: The company fax number.
+    maxLength: 32
+  taxIdentificationNumber:
+    type:
+      - string
+      - 'null'
+    description: The company tax identification number.
+    maxLength: 64
+  registrationNumber:
+    type:
+      - string
+      - 'null'
+    description: The company registration number.
+    maxLength: 16
+  websiteUrl:
+    type:
+      - string
+      - 'null'
+    example: 'https://www.acmeplay.com'
+    description: The company website URL.
+    maxLength: 256
+  address:
+    type:
+      - object
+      - 'null'
+    description: The company postal address. Omitted or `null` address parts preserve existing values.
+    properties:
+      street:
+        type:
+          - string
+          - 'null'
+        description: Street address.
+        maxLength: 512
+      city:
+        type:
+          - string
+          - 'null'
+        description: City or suburb.
+        maxLength: 128
+      state:
+        type:
+          - string
+          - 'null'
+        description: State or region.
+        maxLength: 64
+      postcode:
+        type:
+          - string
+          - 'null'
+        description: Postcode or ZIP code.
+        maxLength: 12
+      country:
+        type:
+          - string
+          - 'null'
+        description: Country.
+        maxLength: 128

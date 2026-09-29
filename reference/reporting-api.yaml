@@ -2608,6 +2608,59 @@ paths:
           in: header
           name: TimeZone-Designators
           description: 'Optional. By default all dates and times in the export files will be in UTC unless this header value is specified as `offset`, after which the venue timezone will be used instead. Note: This does not affect the date range parameters `startDate` or `endDate` which are always in the venue timezone.'
+  /reporting/guest-segments:
+    get:
+      tags:
+        - Guests
+      summary: Get guest segments
+      description: '> Returns the memberships of a segment that changed within the requested date range, based on the date the membership last changed'
+      parameters:
+        - name: segmentId
+          in: query
+          description: Unique identifier for the segment
+          required: true
+          schema:
+            type: integer
+            example: 42
+        - name: startDate
+          in: query
+          description: Search start date (yyyy-mm-dd), based on the date the membership last changed
+          required: true
+          schema:
+            type: string
+            format: date
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: Should be +1 day from the startDate, based on the date the membership last changed
+          required: true
+          schema:
+            type: string
+            format: date
+            example: '2020-07-30'
+        - name: pageNumber
+          in: query
+          description: 'Optional, default value = 1'
+          required: false
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: 'Optional, default value = 100'
+          required: false
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                description: A membership of the requested guest segment that changed within the requested date range
+      operationId: get-guest-segments
 components:
   securitySchemes:
     OAuth2:

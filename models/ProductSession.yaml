@@ -42,6 +42,12 @@ properties:
     type: array
     items:
       $ref: ./ProductCapacityAllocation.yaml
+  minPurchase:
+    type:
+      - integer
+      - 'null'
+    description: "The minimum purchase applicable to this session slot when the venue uses 'Min. guests to run session': the first-booking minimum while the session is empty, otherwise the product's standard minimum purchase. `null` means no session-state-aware minimum applies."
+    example: 4
   remainingSessionCapacity:
     type:
       - integer

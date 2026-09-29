@@ -69,6 +69,11 @@
         "create-stock-products": "create-stock-products",
         "update-stock-products": "update-stock-products",
         "update-stock-quantity": "update-stock-quantity",
+        "get-price-rules": "get-price-rules",
+        "list-modifier-groups": "list-modifier-groups",
+        "create-modifier-group": "create-modifier-group",
+        "get-modifier-group": "get-modifier-group",
+        "update-modifier-group": "update-modifier-group",
         "validate-and-reserve-capacity": "validate-and-reserve-capacity",
         "delete-a-capacity-reservation": "delete-a-capacity-reservation",
         "block-resource-capacity": "block-resource-capacity",
@@ -80,6 +85,8 @@
         "get-booking-costs": "get-booking-costs",
         "create-draft-booking": "create-draft-booking",
         "publish-draft-booking-no-payment": "publish-draft-booking-no-payment",
+        "get-company-detail": "get-company-detail",
+        "update-company-detail": "update-company-detail",
         "create-discount": "create-discount",
         "get-discount": "get-discount",
         "update-discount": "update-discount",
@@ -117,7 +124,8 @@
         "delete-staff": "delete-staff",
         "send-invitation": "send-invitation",
         "lock-staff": "lock-staff",
-        "unlock-staff": "unlock-staff"
+        "unlock-staff": "unlock-staff",
+        "get-segments": "get-segments"
       }
     },
     {
@@ -195,6 +203,30 @@
           "title": "FormResponseQuestionAnswer",
           "uri": "/models/FormResponseQuestionAnswer.yaml",
           "slug": "form-response-question-answer"
+        },
+        {
+          "type": "item",
+          "title": "PriceRuleDetail",
+          "uri": "/models/PriceRuleDetail.yaml",
+          "slug": "price-rule-detail"
+        },
+        {
+          "type": "item",
+          "title": "ProductPriceRule",
+          "uri": "/models/ProductPriceRule.yaml",
+          "slug": "product-price-rule"
+        },
+        {
+          "type": "item",
+          "title": "ModifierGroup",
+          "uri": "/models/ModifierGroup.yaml",
+          "slug": "modifier-group"
+        },
+        {
+          "type": "item",
+          "title": "ModifierGroupRequest",
+          "uri": "/models/ModifierGroupRequest.yaml",
+          "slug": "modifier-group-request"
         }
       ]
     },
@@ -249,7 +281,8 @@
         "get-signed-waivers": "get-signed-waivers",
         "get-booking-signed-waivers": "get-booking-signed-waivers",
         "get-revenue-entries": "get-revenue-entries",
-        "bulk-data-export-request": "bulk-data-export-request"
+        "bulk-data-export-request": "bulk-data-export-request",
+        "get-guest-segments": "get-guest-segments"
       }
     },
     {
@@ -379,6 +412,12 @@
       "title": "Managing Discounts over API",
       "uri": "/docs/discounts.md",
       "slug": "discounts"
+    },
+    {
+      "type": "item",
+      "title": "Price Rules",
+      "uri": "/docs/price-rules.md",
+      "slug": "price-rules"
     },
     {
       "type": "group",

@@ -20,16 +20,24 @@ tags:
     description: 'Create, update, cancel, and delete bookings, including draft bookings.'
   - name: Capacity Reservation
     description: 'Reserve and release product capacity, and manage resource capacity blocks.'
+  - name: Company
+    description: Retrieve and update venue company profiles.
   - name: Discount
     description: 'Create, retrieve, and update discounts, and manage discount codes.'
   - name: Gift Card
     description: Create gift cards and check gift card balances.
   - name: Guest
     description: 'Retrieve and update guest records, multi-passes, and signed waivers.'
+  - name: Modifier
+    description: 'List, retrieve, create, and update modifier groups.'
+  - name: Price Rule
+    description: Retrieve the configuration of time-based price rules.
   - name: Product
     description: 'Retrieve product availability and product detail, and manage stock products.'
   - name: Redemption
     description: Redeem tickets against a booking.
+  - name: Segments
+    description: Retrieve the guest segments configured for the venue.
   - name: Staff
     description: 'Create, retrieve, update, and delete staff accounts. Lock, unlock, and send email invitations to staff members.'
   - name: Transaction
@@ -306,13 +314,21 @@ paths:
                       type: integer
                       example: 1
                       description: Minimum product purchase
+                    priceRuleId:
+                      type:
+                        - string
+                        - 'null'
+                      format: uuid
+                      description: 'ID of the price rule applied to this product, if any. The prices each ticket type charges under the rule are returned in `priceRule` on each item in `products`. For a `time` rule, use [**Get price rules**](#/paths/~1price-rules/get) for the tiers and when each one applies. See [**Price rules**](https://docs.roller.app/docs/api/price-rules).'
+                      example: 22f29d68-1c94-4de2-b616-020108d92a06
                     pricingRuleId:
                       type:
                         - string
                         - 'null'
                       format: uuid
-                      description: 'Pricing rule identifier that links the product to a custom pricing rule, for session pass type products.'
+                      description: 'Pricing rule identifier that links the product to a custom pricing rule, for session pass type products. (This has been replaced by `priceRuleId`)'
                       example: 22f29d68-1c94-4de2-b616-020108d92a06
+                      deprecated: true
                     depositPercentage:
                       type: number
                       description: The minimum percentage of the product cost required for purchase. Only one of `depositPercentage` or `depositAmount` should be used.
@@ -549,6 +565,113 @@ paths:
       description: "Update an existing stock product by editing the quantity.\r\n\r\n* Setting `quantity` to `null` will set the stock quantity to **unlimited**\r\n* `quantity` cannot be set to `null` if `parLevel` is not set to zero (`0`) \r\n"
     parameters:
       - $ref: '#/components/parameters/parentProductId'
+  /price-rules:
+    get:
+      tags:
+        - Price Rule
+      summary: Get price rules
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/PriceRuleDetail.yaml
+      description: |-
+        Returns the active time-based price rules configured for the venue. Each rule describes the tiers a product can be priced at and when each tier applies, as recurring days of the week with optional times of day, and override date ranges.
+
+        The price each ticket type charges for a tier is not returned here. It is returned as `priceRule.timeTiers` on each ticket type by [**Get product detail**](#/paths/~1products/get). Join the two on `priceRuleId`, then match tiers on `tierId`. If a tier has no entry in `timeTiers`, the ticket type's base `price` applies.
+
+        Every other type of price rule (`quantity`, `earlyBird` and `capacity`) is described in full by **Get product detail** and is not returned here. See [**Price rules**](https://docs.roller.app/docs/api/price-rules) for how each type is applied.
+        > Changes in this data are not expected to be frequent. As such data must be cached and this endpoint used sparingly.
+      operationId: get-price-rules
+  /modifiers:
+    get:
+      tags:
+        - Modifier
+      summary: List modifier groups
+      description: Returns the venue's modifier groups and their modifiers. Optionally filter by name with `keywords`, or to the groups linked to a stock product with `productId`.
+      parameters:
+        - name: keywords
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter to modifier groups whose name contains this text
+        - name: productId
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Filter to modifier groups linked to this stock product
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/ModifierGroup.yaml
+      operationId: list-modifier-groups
+    post:
+      tags:
+        - Modifier
+      summary: Create modifier group
+      description: Creates a modifier group, its modifiers, and the stock products it is linked to.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/ModifierGroupRequest.yaml
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: ../models/ModifierGroup.yaml
+      operationId: create-modifier-group
+  '/modifiers/{groupId}':
+    get:
+      tags:
+        - Modifier
+      summary: Get modifier group
+      description: Returns a single modifier group and its modifiers.
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: ../models/ModifierGroup.yaml
+        '404':
+          description: Modifier group not found
+      operationId: get-modifier-group
+    put:
+      tags:
+        - Modifier
+      summary: Update modifier group
+      description: 'Replaces an existing modifier group with the definition supplied. Modifiers sent with an existing `id` are updated; those sent without one are created.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/ModifierGroupRequest.yaml
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: ../models/ModifierGroup.yaml
+        '404':
+          description: Modifier group not found
+      operationId: update-modifier-group
+    parameters:
+      - $ref: '#/components/parameters/groupId'
   /capacity-reservation:
     post:
       tags:
@@ -965,6 +1088,32 @@ paths:
                         type: number
                         description: Credit card fees on the booking
                         example: 0.64
+                      productFee:
+                        type: number
+                        description: Total product fees on the booking
+                        example: 1.5
+                      productFees:
+                        type: array
+                        description: The product fee rules charged on the booking
+                        items:
+                          type: object
+                          properties:
+                            productFeeId:
+                              type: integer
+                              description: Identifier of the product fee rule
+                              example: 42
+                            name:
+                              type: string
+                              description: Name of the product fee
+                              example: Booking fee
+                            description:
+                              type: string
+                              description: Description of the product fee
+                              example: Applied to online bookings
+                            amount:
+                              type: number
+                              description: Fee amount charged on the booking
+                              example: 1.5
                       fees:
                         type: number
                         description: Total Fees (Service Fees) (i.e. Transaction Fees + Card Fees)
@@ -1007,6 +1156,33 @@ paths:
                           type: number
                           description: Value of the discount against this specific item
                           example: 2.2
+                  items:
+                    type: array
+                    description: Per-item cost breakdown for the booking
+                    items:
+                      type: object
+                      properties:
+                        uniqueId:
+                          type: string
+                          format: uuid
+                          description: Unique reference for this item in the booking
+                          example: c7585bf9-cdbe-433a-8ab9-a4260d9ebbca
+                        productId:
+                          type: integer
+                          description: Product ID of the item
+                          example: 153444
+                        quantity:
+                          type: integer
+                          description: Quantity of the product
+                          example: 2
+                        unitCost:
+                          type: number
+                          description: Cost of a single unit
+                          example: 11
+                        totalCost:
+                          type: number
+                          description: Total cost for the quantity
+                          example: 22
                   giftCards:
                     type: array
                     items:
@@ -1208,6 +1384,32 @@ paths:
                         type: number
                         description: Value of credit card fees on the booking
                         example: 0
+                      productFee:
+                        type: number
+                        description: Value of product fees on the booking
+                        example: 1.5
+                      productFees:
+                        type: array
+                        description: The product fee rules charged on the booking
+                        items:
+                          type: object
+                          properties:
+                            productFeeId:
+                              type: integer
+                              description: Identifier of the product fee rule
+                              example: 42
+                            name:
+                              type: string
+                              description: Name of the product fee
+                              example: Booking fee
+                            description:
+                              type: string
+                              description: Description of the product fee
+                              example: Applied to online bookings
+                            amount:
+                              type: number
+                              description: Fee amount charged on the booking
+                              example: 1.5
                       discount:
                         type: number
                         description: Value of discounts on the booking. Discounts are already factored in to the booking totals
@@ -1391,6 +1593,44 @@ paths:
       operationId: publish-draft-booking-no-payment
       tags:
         - Booking Management
+  '/companies/{companyId}':
+    get:
+      summary: Get company detail
+      description: Returns the profile of a venue company, including its primary contact and postal address.
+      tags:
+        - Company
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Company.yaml
+        '404':
+          description: Not Found - Company does not exist
+      operationId: get-company-detail
+    put:
+      summary: Update company detail
+      description: 'Updates the profile fields of a venue company. Contact details are managed via guest endpoints. Omitted or `null` optional fields preserve their existing values.'
+      tags:
+        - Company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/CompanyUpdate.yaml
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Company.yaml
+        '404':
+          description: Not Found - Company does not exist
+      operationId: update-company-detail
+    parameters:
+      - $ref: '#/components/parameters/companyId'
   /discounts:
     post:
       summary: Create discount
@@ -1572,6 +1812,32 @@ paths:
                         type: number
                         description: Amount of credit card fees on the booking
                         example: 0
+                      productFee:
+                        type: number
+                        description: Amount of product fees on the booking
+                        example: 1.5
+                      productFees:
+                        type: array
+                        description: The product fee rules charged on the booking
+                        items:
+                          type: object
+                          properties:
+                            productFeeId:
+                              type: integer
+                              description: Identifier of the product fee rule
+                              example: 42
+                            name:
+                              type: string
+                              description: Name of the product fee
+                              example: Booking fee
+                            description:
+                              type: string
+                              description: Description of the product fee
+                              example: Applied to online bookings
+                            amount:
+                              type: number
+                              description: Fee amount charged on the booking
+                              example: 1.5
                       discount:
                         type: number
                         description: Amount of discount on the booking
@@ -1786,8 +2052,36 @@ paths:
                               description: "The name of the ticket holder.\r\n\r\n- Provide an empty string to remove the existing `name`.\r\n- `NULL`values are ignored; no changes will be made to the existing name."
                               example: John Smith
                               maxLength: 50
+                discounts:
+                  type: object
+                  description: Discounts to add to or remove from the booking. The booking cost is recalculated to reflect the change. When omitted, the booking's discounts are unchanged
+                  properties:
+                    add:
+                      type: array
+                      description: "The discount codes or custom discounts to add to the booking.\r\n\r\n- Every code is validated before any change is applied - if any code is invalid the whole request is rejected and no discounts are added or removed.\r\n- Unlike [**Create a booking**](https://docs.roller.app/docs/api/rest/operations/create-a-booking), restricting a custom discount to specific products via `productIds` is not supported when updating."
+                      items:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            description: The discount code used by the customer
+                            example: JMA99281
+                          amount:
+                            type: number
+                            description: The dollar amount of a custom discount that applies to the booking as a whole
+                            example: 4.5
+                          percentage:
+                            type: number
+                            description: "The percentage of a custom discount that applies to the booking as a whole, eg. 10 for 10% off"
+                            example: 10
+                    removeByDiscountId:
+                      type: array
+                      description: "The IDs of the discounts to remove from the booking, matching the `discountId` returned on the booking's applied discounts (see [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) with `includeDiscounts=true`). If any supplied ID is not applied to the booking the request is rejected."
+                      items:
+                        type: integer
+                        example: 4471
         description: ''
-      description: '> Update booking details or add/remove items from a booking.'
+      description: '> Update booking details, add/remove items, or add/remove discount codes from a booking.'
       operationId: update-a-booking
       tags:
         - Booking Management
@@ -1812,6 +2106,14 @@ paths:
     get:
       summary: Get booking detail
       description: "Returns detail of a specific booking based on the booking.\r\n\r\n> `bookingReference` (i.e. the ROLLER `bookingId`) can be used instead of `uniqueId` as the path parameter."
+      parameters:
+        - name: includeDiscounts
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: false
+          description: When `true`, the response includes the `discounts` array listing the discount codes applied to the booking
       responses:
         '200':
           description: Successful
@@ -3031,6 +3333,36 @@ paths:
       x-stoplight:
         id: begjp2uz3c98u
       description: Unlock a staff account. Only possible if the staff member's email is verified.
+  /segments:
+    get:
+      tags:
+        - Segments
+      summary: Get segments
+      description: Returns the guest segments configured for the venue.
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    segmentId:
+                      type: integer
+                      description: Unique identifier of the segment
+                      example: 42
+                    name:
+                      type: string
+                      description: Name of the segment
+                      example: VIP Members
+              examples:
+                Example:
+                  value:
+                    - segmentId: 42
+                      name: VIP Members
+      operationId: get-segments
 components:
   securitySchemes:
     OAuth2:
@@ -3083,6 +3415,14 @@ components:
         type: string
         example: '17'
       description: ID of a registered webhook
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 4821
+      description: The venue-scoped company identifier
     discountId:
       name: discountId
       in: path
@@ -3091,6 +3431,14 @@ components:
         type: integer
         example: 266
       description: Unique ID of a discount configuration
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 214
+      description: Unique ID of a modifier group
     parentProductId:
       name: parentProductId
       in: path
