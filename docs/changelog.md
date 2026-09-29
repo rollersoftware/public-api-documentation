@@ -23,6 +23,8 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ### Added
 
+- **Modifier groups** — endpoints to manage the modifier groups guests can add to stock products: [**List modifier groups**](https://docs.roller.app/docs/api/rest/operations/list-modifier-groups) (`GET /modifiers`), [**Get modifier group**](https://docs.roller.app/docs/api/rest/operations/get-modifier-group) (`GET /modifiers/{groupId}`), [**Create modifier group**](https://docs.roller.app/docs/api/rest/operations/create-modifier-group) (`POST /modifiers`), and [**Update modifier group**](https://docs.roller.app/docs/api/rest/operations/update-modifier-group) (`PUT /modifiers/{groupId}`) (REST API).
+- `items` property on [**Get booking costs**](https://docs.roller.app/docs/api/rest/operations/get-booking-costs), giving a per-item cost breakdown for the booking (`uniqueId`, `productId`, `quantity`, `unitCost`, `totalCost`) (REST API).
 - **Applied discounts on bookings** — new `includeDiscounts` query parameter on [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail). When `true`, the response includes a `discounts` array listing each discount code applied to the booking (`discountId`, `code`, `amount`). Only discounts redeemed with a code are listed (REST API).
 - **Add or remove discounts on existing bookings** — new `discounts` object on [**Update a booking**](https://docs.roller.app/docs/api/rest/operations/update-a-booking), with `add` (apply discount codes or custom discounts to the booking) and `removeByDiscountId` (remove applied discounts by their `discountId`). Codes to add are validated before any change is applied, and the booking cost is recalculated (REST API).
 - **Discounts on the booking webhook** — a new `discounts` flag in the [**booking webhook**](booking-webhook.md) `include` object. When enabled, webhook payloads include the discount codes applied to the booking, in the same shape as [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) (REST API).
@@ -38,6 +40,16 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - `fee` property on product variations returned by [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) is now always `null`. Product fees are configured as rules; use `productFee` instead (REST API).
 - `pricingRuleId` on [**Get product detail**](https://docs.roller.app/docs/api/rest/operations/get-product-detail) products, replaced by `priceRuleId`. Both are returned with the same value (REST API).
+
+---
+
+## 2026-08
+
+### Added
+
+- [**Get segments**](https://docs.roller.app/docs/api/rest/operations/get-segments) endpoint (`GET /segments`) to retrieve the guest segments configured for the venue, each with its ID and name (REST API).
+- [**Get guest segments**](https://docs.roller.app/docs/api/reporting/operations/get-guest-segments) endpoint (`GET /reporting/guest-segments`) to retrieve the memberships of a segment that changed within a requested date range (Reporting API).
+- `minPurchase` and `capacityRemainingPercent` properties on [**Get product availability**](https://docs.roller.app/docs/api/rest/operations/get-product-availability) (REST API).
 
 ---
 

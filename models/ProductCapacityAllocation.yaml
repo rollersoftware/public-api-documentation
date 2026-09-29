@@ -28,3 +28,9 @@ properties:
     type: array
     items:
       $ref: ./ProductResourceTimeUsage.yaml
+  capacityRemainingPercent:
+    type:
+      - integer
+      - 'null'
+    description: "Percentage of session capacity remaining for this variation (0–100). `null` when capacity is not configured or tracked."
+    example: 75

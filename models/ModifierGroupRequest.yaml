@@ -1,0 +1,75 @@
+title: ModifierGroupRequest
+type: object
+description: The full definition of a modifier group. The group is replaced with exactly what is sent, including its modifiers and linked products.
+required:
+  - name
+properties:
+  name:
+    type: string
+    description: Name of the modifier group
+    maxLength: 60
+    example: Sauces
+  displayName:
+    type: string
+    description: Name shown to guests, if different to the group name
+    maxLength: 60
+    example: Choose your sauce
+  isRequired:
+    type: boolean
+    description: Whether a modifier from this group must be selected
+  isSingleChoice:
+    type: boolean
+    description: Whether only one modifier from this group can be selected
+  isOpenQuantity:
+    type: boolean
+    description: Whether a modifier can be selected more than once
+  products:
+    type: array
+    description: The full set of stock products this group applies to. Omitting the field or sending an empty array unlinks all products.
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Product ID of a stock product to link
+          example: 153444
+  modifiers:
+    type: array
+    description: The full set of modifiers in this group
+    items:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: Supply an existing modifier ID to update it, or omit to create a new modifier.
+        name:
+          type: string
+          description: Name of the modifier
+          maxLength: 100
+          example: BBQ sauce
+        amount:
+          type:
+            - number
+            - 'null'
+          description: Fixed price adjustment added to the item when selected. Mutually exclusive with `percentage`.
+          example: 2.5
+        percentage:
+          type:
+            - number
+            - 'null'
+          description: Percentage price adjustment of the item subtotal when selected. Mutually exclusive with `amount`.
+        description:
+          type: string
+          description: Description of the modifier
+        isDefault:
+          type: boolean
+          description: Whether this modifier is selected by default
+        defaultQuantity:
+          type: integer
+          description: Quantity selected by default
+          example: 1
