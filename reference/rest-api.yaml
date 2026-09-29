@@ -36,6 +36,8 @@ tags:
     description: 'Retrieve product availability and product detail, and manage stock products.'
   - name: Redemption
     description: Redeem tickets against a booking.
+  - name: Segments
+    description: Retrieve the guest segments configured for the venue.
   - name: Staff
     description: 'Create, retrieve, update, and delete staff accounts. Lock, unlock, and send email invitations to staff members.'
   - name: Transaction
@@ -3331,6 +3333,36 @@ paths:
       x-stoplight:
         id: begjp2uz3c98u
       description: Unlock a staff account. Only possible if the staff member's email is verified.
+  /segments:
+    get:
+      tags:
+        - Segments
+      summary: Get segments
+      description: Returns the guest segments configured for the venue.
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    segmentId:
+                      type: integer
+                      description: Unique identifier of the segment
+                      example: 42
+                    name:
+                      type: string
+                      description: Name of the segment
+                      example: VIP Members
+              examples:
+                Example:
+                  value:
+                    - segmentId: 42
+                      name: VIP Members
+      operationId: get-segments
 components:
   securitySchemes:
     OAuth2:

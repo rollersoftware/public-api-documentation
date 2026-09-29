@@ -124,7 +124,8 @@
         "delete-staff": "delete-staff",
         "send-invitation": "send-invitation",
         "lock-staff": "lock-staff",
-        "unlock-staff": "unlock-staff"
+        "unlock-staff": "unlock-staff",
+        "get-segments": "get-segments"
       }
     },
     {
@@ -280,7 +281,8 @@
         "get-signed-waivers": "get-signed-waivers",
         "get-booking-signed-waivers": "get-booking-signed-waivers",
         "get-revenue-entries": "get-revenue-entries",
-        "bulk-data-export-request": "bulk-data-export-request"
+        "bulk-data-export-request": "bulk-data-export-request",
+        "get-guest-segments": "get-guest-segments"
       }
     },
     {

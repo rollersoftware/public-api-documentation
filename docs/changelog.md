@@ -43,6 +43,16 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 ---
 
+## 2026-08
+
+### Added
+
+- [**Get segments**](https://docs.roller.app/docs/api/rest/operations/get-segments) endpoint (`GET /segments`) to retrieve the guest segments configured for the venue, each with its ID and name (REST API).
+- [**Get guest segments**](https://docs.roller.app/docs/api/reporting/operations/get-guest-segments) endpoint (`GET /reporting/guest-segments`) to retrieve the memberships of a segment that changed within a requested date range (Reporting API).
+- `minPurchase` and `capacityRemainingPercent` properties on [**Get product availability**](https://docs.roller.app/docs/api/rest/operations/get-product-availability) (REST API).
+
+---
+
 ## 2026-07
 
 ### Added
