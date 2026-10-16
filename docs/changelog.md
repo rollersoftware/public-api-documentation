@@ -19,6 +19,15 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 >
 >To get a preview of the schema for upcoming changes, use the sidebar on the left to select the next release (if available).
 
+## 2026-10
+
+### Added
+
+- [**Get failed webhook messages**](https://docs.roller.app/docs/api/rest/operations/get-failed-webhook-messages) endpoint (`GET /webhooks/messages/failed`) to retrieve the most recent webhook messages that failed to deliver, each with its delivery-attempt history (REST API).
+- [**Bulk revenue export request**](https://docs.roller.app/docs/api/reporting/operations/bulk-revenue-export-request) endpoint (`GET /reporting/bulk/revenue-activity`) to request a bulk export of revenue activity; once processed, the data is delivered via a `bulkExport` webhook (Reporting API).
+
+---
+
 ## 2026-09
 
 ### Added
