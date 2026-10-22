@@ -19,6 +19,14 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 >
 >To get a preview of the schema for upcoming changes, use the sidebar on the left to select the next release (if available).
 
+## 2026-10
+
+### Added
+
+- `packageBookingItemId` property on each item returned by [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) and in the [**booking webhook**](booking-webhook.md) payload, identifying the related package booking item when the item belongs to a package (REST API).
+
+---
+
 ## 2026-09
 
 ### Added
