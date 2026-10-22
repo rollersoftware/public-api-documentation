@@ -24,6 +24,7 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 ### Added
 
 - `packageBookingItemId` property on each item returned by [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) and in the [**booking webhook**](booking-webhook.md) payload, identifying the related package booking item when the item belongs to a package (REST API).
+- [**Bulk revenue export request**](https://docs.roller.app/docs/api/reporting/operations/bulk-revenue-export-request) endpoint (`GET /reporting/bulk/revenue-activity`) to request a bulk export of revenue activity; once processed, the data is delivered via a `bulkExport` webhook (Reporting API).
 
 ---
 

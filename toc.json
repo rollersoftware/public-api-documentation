@@ -282,6 +282,7 @@
         "get-booking-signed-waivers": "get-booking-signed-waivers",
         "get-revenue-entries": "get-revenue-entries",
         "bulk-data-export-request": "bulk-data-export-request",
+        "bulk-revenue-export-request": "bulk-revenue-export-request",
         "get-guest-segments": "get-guest-segments"
       }
     },

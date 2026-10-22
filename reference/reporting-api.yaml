@@ -2608,6 +2608,37 @@ paths:
           in: header
           name: TimeZone-Designators
           description: 'Optional. By default all dates and times in the export files will be in UTC unless this header value is specified as `offset`, after which the venue timezone will be used instead. Note: This does not affect the date range parameters `startDate` or `endDate` which are always in the venue timezone.'
+  /reporting/bulk/revenue-activity:
+    get:
+      summary: Bulk revenue export request
+      tags:
+        - Bulk Exports
+      description: 'Submit a bulk revenue activity export request. Once processed, a webhook of type `bulkExport` will be sent to subscribed endpoints containing presigned URL(s) to download the exported data.'
+      operationId: bulk-revenue-export-request
+      parameters:
+        - name: startDate
+          in: query
+          description: 'The start date (inclusive) you need data for. Format: `yyyy-MM-dd`'
+          required: true
+          schema:
+            type: string
+            format: date
+            example: '2020-07-29'
+        - name: endDate
+          in: query
+          description: 'The end date (exclusive) you need data for. Format: `yyyy-MM-dd`'
+          required: true
+          schema:
+            type: string
+            format: date
+            example: '2020-07-30'
+      responses:
+        '200':
+          description: Successful
+        '400':
+          description: Bad Request
+        '429':
+          description: Too Many Requests
   /reporting/guest-segments:
     get:
       tags:
