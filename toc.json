@@ -113,7 +113,6 @@
         "get-gift-card-balance": "get-gift-card-balance",
         "create-webhook": "create-webhook",
         "get-webhooks": "get-webhooks",
-        "get-failed-webhook-messages": "get-failed-webhook-messages",
         "update-webhook": "update-webhook",
         "delete-webhook": "delete-webhook",
         "get-venue-detail": "get-venue-detail",
