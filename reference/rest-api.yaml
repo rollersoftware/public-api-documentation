@@ -620,7 +620,15 @@ paths:
       tags:
         - Modifier
       summary: Create modifier group
-      description: Creates a modifier group, its modifiers, and the stock products it is linked to.
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
+        Creates a modifier group, its modifiers, and the stock products it is linked to.
       requestBody:
         content:
           application/json:
@@ -654,7 +662,15 @@ paths:
       tags:
         - Modifier
       summary: Update modifier group
-      description: 'Replaces an existing modifier group with the definition supplied. Modifiers sent with an existing `id` are updated; those sent without one are created.'
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
+        Replaces an existing modifier group with the definition supplied. Modifiers sent with an existing `id` are updated; those sent without one are created.
       requestBody:
         content:
           application/json:
@@ -723,6 +739,13 @@ paths:
                   items:
                     $ref: ../models/BookingCreateItem.yaml
       description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
         > Validate and reserve capacity prior to creating a booking.
         > This endpoint is used to ensure there is no double booking of capacity within ROLLER.
       operationId: validate-and-reserve-capacity
@@ -737,6 +760,13 @@ paths:
         '400':
           description: Invalid request
       description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
         > Delete a capacity reservation.
         > Use this endpoint to clear out existing reserved capacity so other customers may book.
         > Capacity reservations that are not deleted will automatically expire after 10 minutes.
@@ -794,7 +824,15 @@ paths:
                 notes:
                   type: string
                   description: Additional notes or reason for the block
-      description: '> Block capacity for the specified resource.'
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
+        > Block capacity for the specified resource.
       operationId: block-resource-capacity
     get:
       summary: Search resource capacity blocks
@@ -836,7 +874,15 @@ paths:
         '404':
           description: Resource capacity block not found.
       operationId: delete-resource-capacity-block
-      description: '> Delete an existing resource capacity block.'
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
+        > Delete an existing resource capacity block.
     get:
       summary: Get resource capacity block
       tags:
@@ -984,7 +1030,7 @@ paths:
                     reservationSource: partner-portal
                     groupId: '881234'
         description: ''
-      description: "Create a booking in ROLLER, and optionally add an associated payment record.\r\n\r\n> **Guest Records**\r\n> * Values provided in the `customer` object will create a **Guest** record\r\n> * This Guest record will be automatically attached to the booking as the **booking holder**\r\n> * An existing Guest record will be used where a match is found on `email`\r\n> * Where a match is found and other fields on the record are different, they will be updated to reflect the new value"
+      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nCreate a booking in ROLLER, and optionally add an associated payment record.\r\n\r\n> **Guest Records**\r\n> * Values provided in the `customer` object will create a **Guest** record\r\n> * This Guest record will be automatically attached to the booking as the **booking holder**\r\n> * An existing Guest record will be used where a match is found on `email`\r\n> * Where a match is found and other fields on the record are different, they will be updated to reflect the new value"
       operationId: create-a-booking
       tags:
         - Booking Management
@@ -1326,7 +1372,15 @@ paths:
                   example: false
                   default: false
         description: ''
-      description: '> Provide a draft booking request and receive associated booking cost information. This will not actually create a draft booking, only provide relevant booking costs.'
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
+        > Provide a draft booking request and receive associated booking cost information. This will not actually create a draft booking, only provide relevant booking costs.
       operationId: get-booking-costs
       tags:
         - Transaction
@@ -1538,7 +1592,15 @@ paths:
                     reservationSource: partner-portal
                     groupId: '881234'
         description: ''
-      description: '> Create a draft booking with discounts and gift card payments, then receive back the associated booking cost information and a secure payment JSON Web Token to process payment'
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
+        > Create a draft booking with discounts and gift card payments, then receive back the associated booking cost information and a secure payment JSON Web Token to process payment
       operationId: create-draft-booking
       tags:
         - Booking Management
@@ -1589,7 +1651,15 @@ paths:
                   type: string
                   description: Unique ID of the booking to be published (provided in the Create Draft Booking response)
                   example: afb0feb2-383d-415c-bcbe-9e1644ec2598
-      description: '> Publish a draft booking that does not require any payment. Only bookings which have an owing amount of 0.0 can be published this way.'
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
+        > Publish a draft booking that does not require any payment. Only bookings which have an owing amount of 0.0 can be published this way.
       operationId: publish-draft-booking-no-payment
       tags:
         - Booking Management
@@ -2081,7 +2151,15 @@ paths:
                         type: integer
                         example: 4471
         description: ''
-      description: '> Update booking details, add/remove items, or add/remove discount codes from a booking.'
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
+        > Update booking details, add/remove items, or add/remove discount codes from a booking.
       operationId: update-a-booking
       tags:
         - Booking Management
@@ -2090,7 +2168,7 @@ paths:
       responses:
         '200':
           description: Deleted successfully
-      description: "Delete a booking, along with all associated transaction records.\r\n\r\n> * You can only delete bookings you've made via the API\r\n> * You can only delete future bookings\r\n> * Cancelled bookings cannot be deleted\r\n> * All records of the booking will be deleted from all ROLLER reports"
+      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nDelete a booking, along with all associated transaction records.\r\n\r\n> * You can only delete bookings you've made via the API\r\n> * You can only delete future bookings\r\n> * Cancelled bookings cannot be deleted\r\n> * All records of the booking will be deleted from all ROLLER reports"
       operationId: delete-a-booking
       tags:
         - Booking Management
@@ -2180,6 +2258,13 @@ paths:
                   example: Customer called and cancelled their booking.
         description: ''
       description: |
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
         Cancel a booking, and optionally mark it as refunded in a single transaction.
         > * Only bookings created via API can be cancelled via API
         > * You can only cancel future bookings
@@ -2195,6 +2280,13 @@ paths:
     post:
       summary: Add transaction record
       description: |
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
         * Add a transaction record (Such as a **payment** or **refund**) to an existing booking in ROLLER.
         * Payments must be processed externally of ROLLER, only a record of a successful transaction can be created via the API.
 
@@ -2291,6 +2383,13 @@ paths:
     post:
       summary: Add a tip
       description: |
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
         Add a tip to an existing booking as a tip-only payment. The tip is assigned to the general tip pool.
 
         * The tip `amount` must be a positive value — zero and negative amounts are rejected.
@@ -2373,7 +2472,7 @@ paths:
   '/bookings/{uniqueId}/payments/links':
     post:
       summary: Create payment link
-      description: "Create a payment link to send to a recipient email or phone (via SMS) to take payment.\r\n\r\nTo see delivery status of the payment link, please see the activity log on the relevant booking in VM.\r\n\r\n* Payment links **can** be generated for bookings created via both API, and via ROLLER applications.\r\n* Payment links **cannot** be created for API-draft, or venue-draft bookings.\r\n\r\nNote: If both `email` and `phone` is provided, `email` will be ignored and an SMS will be sent.\r\nNote: Sending payment links to a recipient `phone` (via SMS) is unsupported in **Playground**.  \r\n<!-- theme: warning-->\r\n> This will not create a guest record of the recipient, or attach them to the booking in VM.\r\n"
+      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nCreate a payment link to send to a recipient email or phone (via SMS) to take payment.\r\n\r\nTo see delivery status of the payment link, please see the activity log on the relevant booking in VM.\r\n\r\n* Payment links **can** be generated for bookings created via both API, and via ROLLER applications.\r\n* Payment links **cannot** be created for API-draft, or venue-draft bookings.\r\n\r\nNote: If both `email` and `phone` is provided, `email` will be ignored and an SMS will be sent.\r\nNote: Sending payment links to a recipient `phone` (via SMS) is unsupported in **Playground**.  \r\n<!-- theme: warning-->\r\n> This will not create a guest record of the recipient, or attach them to the booking in VM.\r\n"
       responses:
         '200':
           description: Success
@@ -2440,7 +2539,15 @@ paths:
         '409':
           description: 'Conflict - "Payment link `{`paymentLinkId`}` does not belong to booking `uniqueIdentifier`'
       operationId: cancel-payment-link
-      description: 'Cancel a payment link so it can no longer be used to take payment against the booking. '
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
+        Cancel a payment link so it can no longer be used to take payment against the booking.
       x-internal: true
   '/bookings/{uniqueId}/form-responses':
     parameters:
@@ -3180,7 +3287,17 @@ paths:
       operationId: create-staff
       x-stoplight:
         id: h7d52xvbkchk1
-      description: 'Create a staff account. See [**managing staff via API**](https://docs.roller.app/docs/api/managing-staff) for more detail on staff account states and lifecycle.'
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        >
+        > Staff endpoints also need the Staff API enabled for your venue.
+
+        Create a staff account. See [**managing staff via API**](https://docs.roller.app/docs/api/managing-staff) for more detail on staff account states and lifecycle.
       requestBody:
         content:
           application/json:
@@ -3213,7 +3330,17 @@ paths:
       operationId: get-staff
       x-stoplight:
         id: 8fxeddhz12zj8
-      description: Get staff detail
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        >
+        > Staff endpoints also need the Staff API enabled for your venue.
+
+        Get staff detail
     put:
       summary: Update staff
       tags:
@@ -3234,7 +3361,17 @@ paths:
       operationId: update-staff
       x-stoplight:
         id: w4wkae8oqzmtt
-      description: Update staff
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        >
+        > Staff endpoints also need the Staff API enabled for your venue.
+
+        Update staff
       requestBody:
         content:
           application/json:
@@ -3254,7 +3391,17 @@ paths:
       operationId: delete-staff
       x-stoplight:
         id: n3q42kie5rjhu
-      description: Delete staff
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        >
+        > Staff endpoints also need the Staff API enabled for your venue.
+
+        Delete staff
   '/staff/{uniqueId}/send-invitation':
     parameters:
       - schema:
@@ -3280,7 +3427,17 @@ paths:
       operationId: send-invitation
       x-stoplight:
         id: r3ugbd9cpa2ev
-      description: Send an email invitation to a staff member
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        >
+        > Staff endpoints also need the Staff API enabled for your venue.
+
+        Send an email invitation to a staff member
   '/staff/{uniqueId}/lock':
     parameters:
       - schema:
@@ -3306,7 +3463,17 @@ paths:
       operationId: lock-staff
       x-stoplight:
         id: xgit2fqsadj2f
-      description: Lock a staff account. Prevents login via email/password and POS PIN.
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        >
+        > Staff endpoints also need the Staff API enabled for your venue.
+
+        Lock a staff account. Prevents login via email/password and POS PIN.
   '/staff/{uniqueId}/unlock':
     parameters:
       - schema:
@@ -3332,7 +3499,17 @@ paths:
       operationId: unlock-staff
       x-stoplight:
         id: begjp2uz3c98u
-      description: Unlock a staff account. Only possible if the staff member's email is verified.
+      description: |-
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        >
+        > Staff endpoints also need the Staff API enabled for your venue.
+
+        Unlock a staff account. Only possible if the staff member's email is verified.
   /segments:
     get:
       tags:
