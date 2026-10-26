@@ -40,8 +40,9 @@ Requests to a restricted endpoint from an API key without access return `403 For
 
 Contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-) and include:
 
-- the **Client ID** of the API key
+- the **Client key name** and **Client ID** of the API key
 - the endpoints you need access to
+- your use case, or why you need access to those endpoints
 
 > **Just getting started?**
 >
