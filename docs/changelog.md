@@ -26,6 +26,10 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 - `packageBookingItemId` property on each item returned by [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) and in the [**booking webhook**](booking-webhook.md) payload, identifying the related package booking item when the item belongs to a package (REST API).
 - [**Bulk revenue export request**](https://docs.roller.app/docs/api/reporting/operations/bulk-revenue-export-request) endpoint (`GET /reporting/bulk/revenue-activity`) to request a bulk export of revenue activity; once processed, the data is delivered via a `bulkExport` webhook (Reporting API).
 
+### Changed
+
+- [**Create payment link**](https://docs.roller.app/docs/api/rest/operations/create-payment-link) (`POST /bookings/{uniqueId}/payments/links`) and [**Cancel payment link**](https://docs.roller.app/docs/api/rest/operations/cancel-payment-link) (`DELETE /bookings/{uniqueId}/payments/links/{paymentLinkId}`) are now listed in the REST API reference. The reference now matches the API: only one of `email` or `phone` is required, the returned `id` and the `paymentLinkId` path parameter are integers, and cancelling a link that is already cancelled returns `200`. Access is still restricted; contact ROLLER support to request it (REST API).
+
 ---
 
 ## 2026-09
@@ -116,8 +120,8 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - Ability to **get**, **create**, **update**, and **delete** venue staff accounts (REST API). [**Available upon request**](https://helpcenter.roller.software/).
 - Ability to generate and cancel payment links for bookings via API (REST API) (This feature is currently being reviewed, please reach out to ROLLER support to request access):
-  - **Add payment link** (REST API).
-  - **Cancel payment link**) (REST API).
+  - [**Create payment link**](https://docs.roller.app/docs/api/rest/operations/create-payment-link) (REST API).
+  - [**Cancel payment link**](https://docs.roller.app/docs/api/rest/operations/cancel-payment-link) (REST API).
   - [**Payment link webhook**](payment-link-webhook.md) to be notified when a payment is submitted against a new payment link.
 - `taxComponents` property to [**Get venue detail**](https://docs.roller.app/docs/api/rest/operations/get-venue-detail) (REST API).
 - `ianaTimeZone` property to [**Get venue detail**](https://docs.roller.app/docs/api/rest/operations/get-venue-detail) (REST API).

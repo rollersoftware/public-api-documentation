@@ -2472,29 +2472,48 @@ paths:
   '/bookings/{uniqueId}/payments/links':
     post:
       summary: Create payment link
-      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nCreate a payment link to send to a recipient email or phone (via SMS) to take payment.\r\n\r\nTo see delivery status of the payment link, please see the activity log on the relevant booking in VM.\r\n\r\n* Payment links **can** be generated for bookings created via both API, and via ROLLER applications.\r\n* Payment links **cannot** be created for API-draft, or venue-draft bookings.\r\n\r\nNote: If both `email` and `phone` is provided, `email` will be ignored and an SMS will be sent.\r\nNote: Sending payment links to a recipient `phone` (via SMS) is unsupported in **Playground**.  \r\n<!-- theme: warning-->\r\n> This will not create a guest record of the recipient, or attach them to the booking in VM.\r\n"
+      description: |
+        <!-- theme: info -->
+
+        > #### This endpoint requires additional access
+        > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
+        >
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+
+        Create a payment link for an amount owing on a booking, and send it to the recipient by email or by SMS.
+
+        * Provide `email` or `phone`. If both are provided, the link is sent by SMS to `phone` and `email` is ignored.
+        * `amount` plus the amounts of the booking's other unpaid, uncancelled payment links cannot be more than the amount owing on the booking.
+        * Payment links **can** be generated for bookings created via both API, and via ROLLER applications.
+        * Payment links **cannot** be created for API-draft, or venue-draft bookings.
+        * Sending payment links to a recipient `phone` (via SMS) is unsupported in **Playground**.
+        * A `200` response means the payment link was created. It does not confirm delivery. To see the delivery status, see the activity log on the booking in Venue Manager.
+        * Use the [**payment link webhook**](https://docs.roller.app/docs/api/payment-link-webhook) to be notified when a payment is made against the link.
+
+        <!-- theme: warning -->
+        > This does not create a guest record for the recipient, or attach them to the booking in Venue Manager.
       responses:
         '200':
-          description: Success
+          description: Payment link created
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   id:
-                    type: string
-                    description: Payment link ID
-                    example: '2566'
+                    type: integer
+                    description: Payment link ID. Use this as `paymentLinkId` to cancel the link.
+                    example: 2566
                   url:
                     type: string
-                    description: Payment link URL
+                    description: Payment link URL sent to the recipient
                     example: 'https://...'
         '400':
-          description: 'Bad Request - Validation issue (eg: Email or phone is required).'
+          description: 'Bad Request - `amount` is missing, or neither `email` nor `phone` was provided.'
         '404':
-          description: Not Found - No booking found for `uniqueIdentifier`
+          description: Not Found - No booking found for `uniqueId`.
         '409':
-          description: 'Conflict - Business rule (eg: Booking already paid, or payment link requests more than current owing amount).'
+          description: 'Conflict - The booking is already paid in full, `amount` plus the booking''s unpaid payment links is more than the amount owing, or the payment link could not be created.'
       requestBody:
         content:
           application/json:
@@ -2502,8 +2521,6 @@ paths:
               type: object
               required:
                 - amount
-                - email
-                - phone
               properties:
                 amount:
                   type: number
@@ -2511,16 +2528,15 @@ paths:
                   example: 32.2
                 email:
                   type: string
-                  description: Recipient email (Not required if `phone` is provided)
+                  description: Recipient email. Required if `phone` is not provided.
                   example: finn.mertons@roller.com
                 phone:
                   type: string
-                  description: Recipient phone (Not required if `email` is provided)
+                  description: Recipient phone number for SMS delivery. Required if `email` is not provided. Takes precedence over `email` when both are provided.
                   example: '0497911898'
       operationId: create-payment-link
       tags:
         - Transaction
-      x-internal: true
     parameters:
       - $ref: '#/components/parameters/uniqueId'
   '/bookings/{uniqueId}/payments/links/{paymentLinkId}':
@@ -2533,11 +2549,11 @@ paths:
         - Transaction
       responses:
         '200':
-          description: OK
+          description: Payment link cancelled, or it was already cancelled
         '404':
-          description: Not Found - No booking/payment link found for `uniqueIdentifier`/`paymentLinkId`
+          description: Not Found - No booking found for `uniqueId`, or no payment link found for `paymentLinkId`.
         '409':
-          description: 'Conflict - "Payment link `{`paymentLinkId`}` does not belong to booking `uniqueIdentifier`'
+          description: 'Conflict - The payment link does not belong to the booking, or it could not be cancelled.'
       operationId: cancel-payment-link
       description: |-
         <!-- theme: info -->
@@ -2547,8 +2563,7 @@ paths:
         >
         > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
 
-        Cancel a payment link so it can no longer be used to take payment against the booking.
-      x-internal: true
+        Cancel a payment link so it can no longer be used to take payment against the booking. Cancelling a link that is already cancelled returns `200`.
   '/bookings/{uniqueId}/form-responses':
     parameters:
       - $ref: '#/components/parameters/uniqueId'
@@ -3637,7 +3652,7 @@ components:
       in: path
       required: true
       schema:
-        type: string
-      description: Unique ID of a payment link generated to take payment against a booking
+        type: integer
+      description: 'Unique ID of a payment link generated to take payment against a booking (the `id` returned by [**Create payment link**](https://docs.roller.app/docs/api/rest/operations/create-payment-link))'
 security:
   - OAuth2: []
