@@ -626,7 +626,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         Creates a modifier group, its modifiers, and the stock products it is linked to.
       requestBody:
@@ -668,7 +668,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         Replaces an existing modifier group with the definition supplied. Modifiers sent with an existing `id` are updated; those sent without one are created.
       requestBody:
@@ -744,7 +744,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         > Validate and reserve capacity prior to creating a booking.
         > This endpoint is used to ensure there is no double booking of capacity within ROLLER.
@@ -765,7 +765,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         > Delete a capacity reservation.
         > Use this endpoint to clear out existing reserved capacity so other customers may book.
@@ -830,7 +830,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         > Block capacity for the specified resource.
       operationId: block-resource-capacity
@@ -880,7 +880,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         > Delete an existing resource capacity block.
     get:
@@ -1030,7 +1030,7 @@ paths:
                     reservationSource: partner-portal
                     groupId: '881234'
         description: ''
-      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nCreate a booking in ROLLER, and optionally add an associated payment record.\r\n\r\n> **Guest Records**\r\n> * Values provided in the `customer` object will create a **Guest** record\r\n> * This Guest record will be automatically attached to the booking as the **booking holder**\r\n> * An existing Guest record will be used where a match is found on `email`\r\n> * Where a match is found and other fields on the record are different, they will be updated to reflect the new value"
+      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).\r\n\r\nCreate a booking in ROLLER, and optionally add an associated payment record.\r\n\r\n> **Guest Records**\r\n> * Values provided in the `customer` object will create a **Guest** record\r\n> * This Guest record will be automatically attached to the booking as the **booking holder**\r\n> * An existing Guest record will be used where a match is found on `email`\r\n> * Where a match is found and other fields on the record are different, they will be updated to reflect the new value"
       operationId: create-a-booking
       tags:
         - Booking Management
@@ -1378,7 +1378,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         > Provide a draft booking request and receive associated booking cost information. This will not actually create a draft booking, only provide relevant booking costs.
       operationId: get-booking-costs
@@ -1598,7 +1598,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         > Create a draft booking with discounts and gift card payments, then receive back the associated booking cost information and a secure payment JSON Web Token to process payment
       operationId: create-draft-booking
@@ -1657,7 +1657,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         > Publish a draft booking that does not require any payment. Only bookings which have an owing amount of 0.0 can be published this way.
       operationId: publish-draft-booking-no-payment
@@ -2157,7 +2157,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         > Update booking details, add/remove items, or add/remove discount codes from a booking.
       operationId: update-a-booking
@@ -2168,7 +2168,7 @@ paths:
       responses:
         '200':
           description: Deleted successfully
-      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nDelete a booking, along with all associated transaction records.\r\n\r\n> * You can only delete bookings you've made via the API\r\n> * You can only delete future bookings\r\n> * Cancelled bookings cannot be deleted\r\n> * All records of the booking will be deleted from all ROLLER reports"
+      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).\r\n\r\nDelete a booking, along with all associated transaction records.\r\n\r\n> * You can only delete bookings you've made via the API\r\n> * You can only delete future bookings\r\n> * Cancelled bookings cannot be deleted\r\n> * All records of the booking will be deleted from all ROLLER reports"
       operationId: delete-a-booking
       tags:
         - Booking Management
@@ -2263,7 +2263,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         Cancel a booking, and optionally mark it as refunded in a single transaction.
         > * Only bookings created via API can be cancelled via API
@@ -2285,7 +2285,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         * Add a transaction record (Such as a **payment** or **refund**) to an existing booking in ROLLER.
         * Payments must be processed externally of ROLLER, only a record of a successful transaction can be created via the API.
@@ -2388,7 +2388,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         Add a tip to an existing booking as a tip-only payment. The tip is assigned to the general tip pool.
 
@@ -2478,7 +2478,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         Create a payment link for an amount owing on a booking, and send it to the recipient by email or by SMS.
 
@@ -2561,7 +2561,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
 
         Cancel a payment link so it can no longer be used to take payment against the booking. Cancelling a link that is already cancelled returns `200`.
   '/bookings/{uniqueId}/form-responses':
@@ -3308,7 +3308,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
         >
         > Staff endpoints also need the Staff API enabled for your venue.
 
@@ -3351,7 +3351,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
         >
         > Staff endpoints also need the Staff API enabled for your venue.
 
@@ -3382,7 +3382,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
         >
         > Staff endpoints also need the Staff API enabled for your venue.
 
@@ -3412,7 +3412,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
         >
         > Staff endpoints also need the Staff API enabled for your venue.
 
@@ -3448,7 +3448,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
         >
         > Staff endpoints also need the Staff API enabled for your venue.
 
@@ -3484,7 +3484,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
         >
         > Staff endpoints also need the Staff API enabled for your venue.
 
@@ -3520,7 +3520,7 @@ paths:
         > #### This endpoint requires additional access
         > This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.
         >
-        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.
+        > Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our [**support team**](https://support.roller.software/hc/en-us/articles/115001690793-Contacting-ROLLER-Support-).
         >
         > Staff endpoints also need the Staff API enabled for your venue.
 
