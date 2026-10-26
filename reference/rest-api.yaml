@@ -619,7 +619,7 @@ paths:
     post:
       tags:
         - Modifier
-      summary: Create modifier group
+      summary: Create modifier group 🔒
       description: |-
         <!-- theme: info -->
 
@@ -661,7 +661,7 @@ paths:
     put:
       tags:
         - Modifier
-      summary: Update modifier group
+      summary: Update modifier group 🔒
       description: |-
         <!-- theme: info -->
 
@@ -692,7 +692,7 @@ paths:
     post:
       tags:
         - Capacity Reservation
-      summary: Validate and reserve capacity
+      summary: Validate and reserve capacity 🔒
       responses:
         '200':
           description: The unique capacity reservation Id
@@ -753,7 +753,7 @@ paths:
     delete:
       tags:
         - Capacity Reservation
-      summary: Delete a capacity reservation
+      summary: Delete a capacity reservation 🔒
       responses:
         '200':
           description: Deleted successfully
@@ -777,7 +777,7 @@ paths:
     post:
       tags:
         - Capacity Reservation
-      summary: Block resource capacity
+      summary: Block resource capacity 🔒
       responses:
         '200':
           description: The unique resource capacity block ID.
@@ -865,7 +865,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/blockId'
     delete:
-      summary: Delete resource capacity block
+      summary: Delete resource capacity block 🔒
       tags:
         - Capacity Reservation
       responses:
@@ -900,7 +900,7 @@ paths:
       description: '> Get an existing resource capacity block.'
   /bookings:
     post:
-      summary: Create a booking
+      summary: Create a booking 🔒
       responses:
         '201':
           description: Booking identifiers
@@ -1086,7 +1086,7 @@ paths:
         - Booking Information
   /bookings/draft/costs:
     post:
-      summary: Get booking costs
+      summary: Get booking costs 🔒
       responses:
         '200':
           description: Bookings Costs
@@ -1386,7 +1386,7 @@ paths:
         - Transaction
   /bookings/draft:
     post:
-      summary: Create draft booking
+      summary: Create draft booking 🔒
       responses:
         '200':
           description: Draft Booking
@@ -1606,7 +1606,7 @@ paths:
         - Booking Management
   /bookings/draft/publish:
     post:
-      summary: Publish draft booking (no payment)
+      summary: Publish draft booking (no payment) 🔒
       responses:
         '200':
           description: Publish Draft Booking
@@ -1957,7 +1957,7 @@ paths:
         - Discount
   '/bookings/{uniqueId}':
     put:
-      summary: Update a booking
+      summary: Update a booking 🔒
       responses:
         '200':
           description: Success
@@ -2164,7 +2164,7 @@ paths:
       tags:
         - Booking Management
     delete:
-      summary: Delete a booking
+      summary: Delete a booking 🔒
       responses:
         '200':
           description: Deleted successfully
@@ -2208,7 +2208,7 @@ paths:
       - $ref: '#/components/parameters/uniqueId'
   '/bookings/{uniqueId}/cancel':
     post:
-      summary: Cancel a booking
+      summary: Cancel a booking 🔒
       responses:
         '200':
           description: Success
@@ -2278,7 +2278,7 @@ paths:
       - $ref: '#/components/parameters/uniqueId'
   '/bookings/{uniqueId}/payments':
     post:
-      summary: Add transaction record
+      summary: Add transaction record 🔒
       description: |
         <!-- theme: info -->
 
@@ -2381,7 +2381,7 @@ paths:
       - $ref: '#/components/parameters/uniqueId'
   '/bookings/{uniqueId}/payments/tips':
     post:
-      summary: Add a tip
+      summary: Add a tip 🔒
       description: |
         <!-- theme: info -->
 
@@ -2471,7 +2471,7 @@ paths:
       - $ref: '#/components/parameters/uniqueId'
   '/bookings/{uniqueId}/payments/links':
     post:
-      summary: Create payment link
+      summary: Create payment link 🔒
       description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nCreate a payment link to send to a recipient email or phone (via SMS) to take payment.\r\n\r\nTo see delivery status of the payment link, please see the activity log on the relevant booking in VM.\r\n\r\n* Payment links **can** be generated for bookings created via both API, and via ROLLER applications.\r\n* Payment links **cannot** be created for API-draft, or venue-draft bookings.\r\n\r\nNote: If both `email` and `phone` is provided, `email` will be ignored and an SMS will be sent.\r\nNote: Sending payment links to a recipient `phone` (via SMS) is unsupported in **Playground**.  \r\n<!-- theme: warning-->\r\n> This will not create a guest record of the recipient, or attach them to the booking in VM.\r\n"
       responses:
         '200':
@@ -2528,7 +2528,7 @@ paths:
       - $ref: '#/components/parameters/uniqueId'
       - $ref: '#/components/parameters/paymentLinkId'
     delete:
-      summary: Cancel payment link
+      summary: Cancel payment link 🔒
       tags:
         - Transaction
       responses:
@@ -3270,7 +3270,7 @@ paths:
       description: Update the NetSuite configuration fields available for this venue.
   /staff:
     post:
-      summary: Create staff
+      summary: Create staff 🔒
       tags:
         - Staff
       responses:
@@ -3313,7 +3313,7 @@ paths:
         required: true
         description: Unique ID of the staff member
     get:
-      summary: Get staff
+      summary: Get staff 🔒
       tags:
         - Staff
       responses:
@@ -3342,7 +3342,7 @@ paths:
 
         Get staff detail
     put:
-      summary: Update staff
+      summary: Update staff 🔒
       tags:
         - Staff
       responses:
@@ -3378,7 +3378,7 @@ paths:
             schema:
               $ref: ../models/StaffRequest.yaml
     delete:
-      summary: Delete staff
+      summary: Delete staff 🔒
       tags:
         - Staff
       responses:
@@ -3412,7 +3412,7 @@ paths:
         required: true
         description: Unique ID of the staff member
     post:
-      summary: Send invitation
+      summary: Send invitation 🔒
       tags:
         - Staff
       responses:
@@ -3448,7 +3448,7 @@ paths:
         required: true
         description: Unique ID of the staff member
     post:
-      summary: Lock staff
+      summary: Lock staff 🔒
       tags:
         - Staff
       responses:
@@ -3484,7 +3484,7 @@ paths:
         required: true
         description: Unique ID of the staff member
     post:
-      summary: Unlock staff
+      summary: Unlock staff 🔒
       tags:
         - Staff
       responses:
