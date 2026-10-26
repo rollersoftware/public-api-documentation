@@ -621,6 +621,8 @@ paths:
         - Modifier
       summary: Create modifier group
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -663,6 +665,8 @@ paths:
         - Modifier
       summary: Update modifier group
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -739,6 +743,8 @@ paths:
                   items:
                     $ref: ../models/BookingCreateItem.yaml
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -760,6 +766,8 @@ paths:
         '400':
           description: Invalid request
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -825,6 +833,8 @@ paths:
                   type: string
                   description: Additional notes or reason for the block
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -875,6 +885,8 @@ paths:
           description: Resource capacity block not found.
       operationId: delete-resource-capacity-block
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -1030,7 +1042,7 @@ paths:
                     reservationSource: partner-portal
                     groupId: '881234'
         description: ''
-      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nCreate a booking in ROLLER, and optionally add an associated payment record.\r\n\r\n> **Guest Records**\r\n> * Values provided in the `customer` object will create a **Guest** record\r\n> * This Guest record will be automatically attached to the booking as the **booking holder**\r\n> * An existing Guest record will be used where a match is found on `email`\r\n> * Where a match is found and other fields on the record are different, they will be updated to reflect the new value"
+      description: "[![Restricted](../assets/images/restricted-badge.svg \"This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)\r\n\r\n<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nCreate a booking in ROLLER, and optionally add an associated payment record.\r\n\r\n> **Guest Records**\r\n> * Values provided in the `customer` object will create a **Guest** record\r\n> * This Guest record will be automatically attached to the booking as the **booking holder**\r\n> * An existing Guest record will be used where a match is found on `email`\r\n> * Where a match is found and other fields on the record are different, they will be updated to reflect the new value"
       operationId: create-a-booking
       tags:
         - Booking Management
@@ -1373,6 +1385,8 @@ paths:
                   default: false
         description: ''
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -1593,6 +1607,8 @@ paths:
                     groupId: '881234'
         description: ''
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -1652,6 +1668,8 @@ paths:
                   description: Unique ID of the booking to be published (provided in the Create Draft Booking response)
                   example: afb0feb2-383d-415c-bcbe-9e1644ec2598
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -2152,6 +2170,8 @@ paths:
                         example: 4471
         description: ''
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -2168,7 +2188,7 @@ paths:
       responses:
         '200':
           description: Deleted successfully
-      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nDelete a booking, along with all associated transaction records.\r\n\r\n> * You can only delete bookings you've made via the API\r\n> * You can only delete future bookings\r\n> * Cancelled bookings cannot be deleted\r\n> * All records of the booking will be deleted from all ROLLER reports"
+      description: "[![Restricted](../assets/images/restricted-badge.svg \"This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)\r\n\r\n<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nDelete a booking, along with all associated transaction records.\r\n\r\n> * You can only delete bookings you've made via the API\r\n> * You can only delete future bookings\r\n> * Cancelled bookings cannot be deleted\r\n> * All records of the booking will be deleted from all ROLLER reports"
       operationId: delete-a-booking
       tags:
         - Booking Management
@@ -2258,6 +2278,8 @@ paths:
                   example: Customer called and cancelled their booking.
         description: ''
       description: |
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -2280,6 +2302,8 @@ paths:
     post:
       summary: Add transaction record
       description: |
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -2383,6 +2407,8 @@ paths:
     post:
       summary: Add a tip
       description: |
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -2472,7 +2498,7 @@ paths:
   '/bookings/{uniqueId}/payments/links':
     post:
       summary: Create payment link
-      description: "<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nCreate a payment link to send to a recipient email or phone (via SMS) to take payment.\r\n\r\nTo see delivery status of the payment link, please see the activity log on the relevant booking in VM.\r\n\r\n* Payment links **can** be generated for bookings created via both API, and via ROLLER applications.\r\n* Payment links **cannot** be created for API-draft, or venue-draft bookings.\r\n\r\nNote: If both `email` and `phone` is provided, `email` will be ignored and an SMS will be sent.\r\nNote: Sending payment links to a recipient `phone` (via SMS) is unsupported in **Playground**.  \r\n<!-- theme: warning-->\r\n> This will not create a guest record of the recipient, or attach them to the booking in VM.\r\n"
+      description: "[![Restricted](../assets/images/restricted-badge.svg \"This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)\r\n\r\n<!-- theme: info -->\r\n\r\n> #### This endpoint requires additional access\r\n> This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.\r\n>\r\n> Requests from API keys without access return `403 Forbidden` with the error code `INSUFFICIENT_SCOPE`. To request access, contact our support team.\r\n\r\nCreate a payment link to send to a recipient email or phone (via SMS) to take payment.\r\n\r\nTo see delivery status of the payment link, please see the activity log on the relevant booking in VM.\r\n\r\n* Payment links **can** be generated for bookings created via both API, and via ROLLER applications.\r\n* Payment links **cannot** be created for API-draft, or venue-draft bookings.\r\n\r\nNote: If both `email` and `phone` is provided, `email` will be ignored and an SMS will be sent.\r\nNote: Sending payment links to a recipient `phone` (via SMS) is unsupported in **Playground**.  \r\n<!-- theme: warning-->\r\n> This will not create a guest record of the recipient, or attach them to the booking in VM.\r\n"
       responses:
         '200':
           description: Success
@@ -2540,6 +2566,8 @@ paths:
           description: 'Conflict - "Payment link `{`paymentLinkId`}` does not belong to booking `uniqueIdentifier`'
       operationId: cancel-payment-link
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -3288,6 +3316,8 @@ paths:
       x-stoplight:
         id: h7d52xvbkchk1
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -3331,6 +3361,8 @@ paths:
       x-stoplight:
         id: 8fxeddhz12zj8
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -3362,6 +3394,8 @@ paths:
       x-stoplight:
         id: w4wkae8oqzmtt
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -3392,6 +3426,8 @@ paths:
       x-stoplight:
         id: n3q42kie5rjhu
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -3428,6 +3464,8 @@ paths:
       x-stoplight:
         id: r3ugbd9cpa2ev
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -3464,6 +3502,8 @@ paths:
       x-stoplight:
         id: xgit2fqsadj2f
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
@@ -3500,6 +3540,8 @@ paths:
       x-stoplight:
         id: begjp2uz3c98u
       description: |-
+        [![Restricted](../assets/images/restricted-badge.svg "This endpoint isn't included in standard API access. ROLLER must enable it for your API key before you can use it.")](https://docs.roller.app/docs/api/getting-api-access#restricted-endpoints)
+
         <!-- theme: info -->
 
         > #### This endpoint requires additional access
