@@ -19,6 +19,14 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 >
 >To get a preview of the schema for upcoming changes, use the sidebar on the left to select the next release (if available).
 
+## 2026-11
+
+### Changed
+
+- [**Redeem tickets**](https://docs.roller.app/docs/api/rest/operations/redeem-tickets) no longer returns the `Duplicate custom ticket IDs found` error when a `customTicketId` matches more than one ticket. The earliest-created matching ticket that passes the redemption checks is redeemed instead. If none of the matching tickets can be redeemed, the `409` response returns the reason a ticket failed, such as `Ticket usage exhausted` (REST API).
+
+---
+
 ## 2026-10
 
 ### Added
