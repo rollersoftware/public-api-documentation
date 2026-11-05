@@ -2737,7 +2737,7 @@ paths:
         '200':
           description: Redeemed successfully
         '409':
-          description: "Invalid redemption. \r\n\r\nPossible error messages:\r\n* Ticket does not exist\r\n* Booking Cancelled\r\n* Ticket is not valid for this date\r\n* Ticket IDs must be unique per request\r\n* Ticket usage exhausted\r\n* Product type not accepted\r\n* Membership Invalid\r\n* Ticket redemption usage exhausted\r\n* Redemption device not found\r\n* Duplicate custom ticket IDs found\r\n* Custom ticket ID not found\r\n\r\nIf using **Redemption device** setting `Validate session times`:\r\n* Ticket cannot be redeemed before the session start time\r\n* Ticket cannot be redeemed after the session end time\r\n"
+          description: "Invalid redemption. \r\n\r\nPossible error messages:\r\n* Ticket does not exist\r\n* Booking Cancelled\r\n* Ticket is not valid for this date\r\n* Ticket IDs must be unique per request\r\n* Ticket usage exhausted\r\n* Product type not accepted\r\n* Membership Invalid\r\n* Ticket redemption usage exhausted\r\n* Redemption device not found\r\n* Custom ticket ID not found\r\n\r\nIf using **Redemption device** setting `Validate session times`:\r\n* Ticket cannot be redeemed before the session start time\r\n* Ticket cannot be redeemed after the session end time\r\n"
           content:
             application/json:
               schema:
@@ -2777,7 +2777,7 @@ paths:
                     properties:
                       ticketId:
                         type: string
-                        description: ROLLER Ticket ID being redeemed. This can either be the ROLLER generated `ticketId` or a `customTicketId` if applied.
+                        description: ROLLER Ticket ID being redeemed. This can either be the ROLLER generated `ticketId` or a `customTicketId` if applied. If a `customTicketId` matches more than one ticket, the earliest-created ticket that can be redeemed is used.
                         example: 3288921-29937813
                       redemptionDate:
                         type: string
