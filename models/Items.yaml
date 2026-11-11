@@ -58,3 +58,9 @@ properties:
           type: integer
           description: The number of times this modifier has been applied to this booking item
           example: 1
+  packageBookingItemId:
+    type:
+      - integer
+      - 'null'
+    description: Unique identifier for the related package booking item (if any)
+    example: 9384021
