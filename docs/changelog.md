@@ -25,6 +25,10 @@ Each entry notes the affected API (Reporting API or REST API) and links to the r
 
 - [**Redeem tickets**](https://docs.roller.app/docs/api/rest/operations/redeem-tickets) no longer returns the `Duplicate custom ticket IDs found` error when a `customTicketId` matches more than one ticket. The earliest-created matching ticket that passes the redemption checks is redeemed instead. If none of the matching tickets can be redeemed, the `409` response returns the reason a ticket failed, such as `Ticket usage exhausted` (REST API).
 
+### Fixed
+
+- Issue where [**Get booking detail**](https://docs.roller.app/docs/api/rest/operations/get-booking-detail) returned `GroupMembership` as the ticket `membershipStatus` for group memberships. Each ticket now returns its group membership's status, along with its `membershipPauseDate`, `membershipResumeDate`, and `membershipCancellationDate` (REST API).
+
 ---
 
 ## 2026-10
